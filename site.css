@@ -3717,6 +3717,8 @@ button {
   .menu-toggle {
     position: relative;
     display: inline-flex;
+    justify-self: end;
+    margin-left: auto;
   }
 
   .mobile-panel {
@@ -4039,7 +4041,11 @@ button {
   .article-recommendations,
   .footer-grid,
   .footer-bottom {
-    width: min(100% - 32px, 1180px);
+    width: min(100% - 48px, 1180px);
+  }
+
+  .header-inner {
+    width: min(100% - 40px, 1180px);
   }
 
   .brand {
@@ -4063,7 +4069,7 @@ button {
   }
 
   .hero-content {
-    width: min(100% - 32px, 980px);
+    width: min(100% - 48px, 980px);
   }
 
   .hero-kicker,
@@ -4241,7 +4247,7 @@ button {
   }
 
   .final-cta-copy {
-    width: min(100% - 32px, 720px);
+    width: min(100% - 48px, 720px);
   }
 
   .final-cta .cta-actions {
@@ -4266,7 +4272,7 @@ button {
   }
 
   .internal-hero > div {
-    width: min(100% - 32px, 980px);
+    width: min(100% - 48px, 980px);
     text-align: left;
   }
 
@@ -4295,17 +4301,17 @@ button {
   }
 
   .about-hero-inner {
-    width: min(100% - 32px, 980px);
+    width: min(100% - 48px, 980px);
     text-align: left;
   }
 
   .practice-hero-inner {
-    width: min(100% - 32px, 1040px);
+    width: min(100% - 48px, 1040px);
     text-align: left;
   }
 
   .worker-hero-inner {
-    width: min(100% - 32px, 1040px);
+    width: min(100% - 48px, 1040px);
     text-align: left;
   }
 
@@ -4394,7 +4400,7 @@ button {
   }
 
   .pillar-grid {
-    width: min(100% - 32px, 980px);
+    width: min(100% - 48px, 980px);
   }
 
   .pillar-item {
@@ -4416,7 +4422,7 @@ button {
   }
 
   .about-final-cta {
-    padding: 76px 16px;
+    padding: 76px 24px;
   }
 
   .practice-manifest > div {
@@ -4443,7 +4449,7 @@ button {
   }
 
   .practice-final-copy {
-    width: min(100% - 32px, 720px);
+    width: min(100% - 48px, 720px);
   }
 
   .worker-manifest > div {
@@ -4457,7 +4463,7 @@ button {
 
   .worker-inline-cta {
     grid-template-columns: 1fr;
-    width: min(100% - 32px, 1180px);
+    width: min(100% - 48px, 1180px);
     padding: 28px;
   }
 
@@ -4504,7 +4510,7 @@ button {
   }
 
   .worker-final-copy {
-    width: min(100% - 32px, 720px);
+    width: min(100% - 48px, 720px);
   }
 
   .contact-hero {
@@ -4522,12 +4528,12 @@ button {
   }
 
   .contact-hero-inner {
-    width: min(100% - 32px, 980px);
+    width: min(100% - 48px, 980px);
     text-align: left;
   }
 
   .editorial-hero-inner {
-    width: min(100% - 32px, 980px);
+    width: min(100% - 48px, 980px);
     text-align: left;
   }
 
@@ -4643,7 +4649,7 @@ button {
   }
 
   .article-hero-inner {
-    width: min(100% - 32px, 1180px);
+    width: min(100% - 48px, 1180px);
     gap: 34px;
   }
 

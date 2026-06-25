@@ -17,11 +17,14 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   background: var(--off-white);
   color: var(--graphite);
@@ -35,7 +38,8 @@ body.is-locked {
 }
 
 img,
-video {
+video,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -4141,8 +4145,33 @@ button {
   }
 
   .section-heading {
+    width: min(760px, 100%);
     margin-bottom: 34px;
     text-align: left;
+  }
+
+  .practice-section > .section-heading,
+  .thinking-section > .section-heading {
+    width: min(100% - 48px, 760px);
+  }
+
+  main,
+  section,
+  header,
+  footer {
+    max-width: 100%;
+  }
+
+  .about-hero,
+  .practice-hero,
+  .worker-hero,
+  .contact-hero,
+  .editorial-hero,
+  .article-hero,
+  .practice-section,
+  .thinking-section,
+  .pathway-panel-section {
+    overflow-x: hidden;
   }
 
   .section-heading h2,

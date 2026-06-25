@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO deploy: replace https://TODO-DOMINIO-FINAL with the final production domain before publishing. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/quem-somos</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/atuacao</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-trabalhista-trabalhadores</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-trabalhista-empresas</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-imobiliario</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-de-familia</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/artigos</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca</loc>
+  </url>
+  <url>
+    <loc>https://TODO-DOMINIO-FINAL/contato</loc>
+  </url>
+</urlset>

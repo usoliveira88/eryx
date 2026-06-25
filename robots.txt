@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO deploy: replace the placeholder below with the final production domain.
+Sitemap: https://TODO-DOMINIO-FINAL/sitemap.xml

@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO deploy: replace https://TODO-DOMINIO-FINAL with the final production domain before publishing. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/</loc>
+    <loc>https://advmartinsfernandes.com.br/</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/quem-somos</loc>
+    <loc>https://advmartinsfernandes.com.br/quem-somos</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/atuacao</loc>
+    <loc>https://advmartinsfernandes.com.br/atuacao</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-trabalhista-trabalhadores</loc>
+    <loc>https://advmartinsfernandes.com.br/atuacao/direito-trabalhista-trabalhadores</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-trabalhista-empresas</loc>
+    <loc>https://advmartinsfernandes.com.br/atuacao/direito-trabalhista-empresas</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-imobiliario</loc>
+    <loc>https://advmartinsfernandes.com.br/atuacao/direito-imobiliario</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/atuacao/direito-de-familia</loc>
+    <loc>https://advmartinsfernandes.com.br/atuacao/direito-de-familia</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/artigos</loc>
+    <loc>https://advmartinsfernandes.com.br/artigos</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica</loc>
+    <loc>https://advmartinsfernandes.com.br/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar</loc>
+    <loc>https://advmartinsfernandes.com.br/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca</loc>
+    <loc>https://advmartinsfernandes.com.br/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca</loc>
   </url>
   <url>
-    <loc>https://TODO-DOMINIO-FINAL/contato</loc>
+    <loc>https://advmartinsfernandes.com.br/contato</loc>
   </url>
 </urlset>

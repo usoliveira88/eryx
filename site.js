@@ -3436,36 +3436,45 @@ function initArticleFilters() {
   });
 }
 
+export function renderPageHtml(pathname) {
+  const path = normalizePath(pathname);
+
+  return path === "/"
+    ? homeTemplate()
+    : path === "/quem-somos"
+      ? aboutTemplate()
+      : path === "/atuacao"
+        ? practiceOverviewTemplate()
+        : path === "/artigos"
+          ? articlesTemplate()
+          : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
+            ? laborRightsArticleTemplate()
+            : path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"
+              ? realEstateContractsArticleTemplate()
+              : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"
+                ? familyDecisionsArticleTemplate()
+                : path === "/atuacao/direito-trabalhista-trabalhadores"
+                  ? workerLaborTemplate()
+                  : path === "/atuacao/direito-trabalhista-empresas"
+                    ? companyLaborTemplate()
+                    : path === "/atuacao/direito-imobiliario"
+                      ? realEstateTemplate()
+                      : path === "/atuacao/direito-de-familia"
+                        ? familyLawTemplate()
+                        : path === "/contato"
+                          ? contactTemplate()
+                          : internalTemplate(path);
+}
+
 function render() {
   const path = normalizePath(window.location.pathname);
   const app = document.querySelector("#app");
   updateDocumentMeta(path);
-  app.innerHTML =
-    path === "/"
-      ? homeTemplate()
-      : path === "/quem-somos"
-        ? aboutTemplate()
-        : path === "/atuacao"
-          ? practiceOverviewTemplate()
-          : path === "/artigos"
-            ? articlesTemplate()
-          : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
-            ? laborRightsArticleTemplate()
-          : path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"
-            ? realEstateContractsArticleTemplate()
-          : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"
-            ? familyDecisionsArticleTemplate()
-          : path === "/atuacao/direito-trabalhista-trabalhadores"
-            ? workerLaborTemplate()
-            : path === "/atuacao/direito-trabalhista-empresas"
-              ? companyLaborTemplate()
-              : path === "/atuacao/direito-imobiliario"
-                ? realEstateTemplate()
-                : path === "/atuacao/direito-de-familia"
-                  ? familyLawTemplate()
-                  : path === "/contato"
-                    ? contactTemplate()
-                    : internalTemplate(path);
+
+  if (!app.hasAttribute("data-static-rendered") || !app.children.length) {
+    app.innerHTML = renderPageHtml(path);
+  }
+
   initHeader();
   initRotatingWord();
   initPracticePanel();
@@ -3475,5 +3484,7 @@ function render() {
   honorReducedMotion();
 }
 
-render();
+if (typeof window !== "undefined" && typeof document !== "undefined") {
+  render();
+}
 

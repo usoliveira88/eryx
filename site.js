@@ -816,10 +816,22 @@ function homeTemplate() {
     ${headerTemplate("/")}
     <main id="conteudo">
       <section class="hero-home" aria-label="Apresentação">
-        <video class="hero-video" autoplay muted loop playsinline poster="/home-hero-fallback.jpg" preload="metadata">
-          <source src="/home-hero-video-mobile.mp4" type="video/mp4" media="(max-width: 720px)" />
-          <source src="/home-hero-video.mp4" type="video/mp4" />
-        </video>
+        <picture class="hero-poster" aria-hidden="true">
+          <source media="(max-width: 767px)" srcset="/home-hero-fallback-mobile.avif" type="image/avif" />
+          <source media="(max-width: 767px)" srcset="/home-hero-fallback-mobile.webp" type="image/webp" />
+          <source srcset="/home-hero-fallback-desktop.avif" type="image/avif" />
+          <source srcset="/home-hero-fallback-desktop.webp" type="image/webp" />
+          <img src="/home-hero-fallback-desktop.webp" alt="" fetchpriority="high" decoding="async" />
+        </picture>
+        <video
+          class="hero-video"
+          muted
+          loop
+          playsinline
+          preload="none"
+          data-src-mobile="/home-hero-video-mobile.mp4"
+          data-src-desktop="/home-hero-video.mp4"
+          aria-hidden="true"></video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <p class="hero-kicker">Eryx Fernandes Advocacia</p>
@@ -3330,6 +3342,45 @@ function honorReducedMotion() {
   });
 }
 
+function initHeroVideo() {
+  const video = document.querySelector(".hero-video");
+  if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const loadVideo = () => {
+    if (video.dataset.loaded === "true") return;
+
+    const isMobile = window.matchMedia("(max-width: 720px)").matches;
+    const src = isMobile ? video.dataset.srcMobile : video.dataset.srcDesktop;
+    if (!src) return;
+
+    video.addEventListener("loadeddata", () => video.classList.add("is-ready"), { once: true });
+    video.src = src;
+    video.autoplay = true;
+    video.dataset.loaded = "true";
+    video.load();
+
+    const playPromise = video.play();
+    if (playPromise) {
+      playPromise.catch(() => {});
+    }
+  };
+
+  const scheduleLoad = () => {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadVideo, { timeout: 1800 });
+      return;
+    }
+
+    window.setTimeout(loadVideo, 1200);
+  };
+
+  if (document.readyState === "complete") {
+    scheduleLoad();
+  } else {
+    window.addEventListener("load", scheduleLoad, { once: true });
+  }
+}
+
 function initPracticePanel() {
   const panel = document.querySelector("[data-practice-panel]");
   if (!panel) return;
@@ -3481,6 +3532,7 @@ function render() {
   initFaqAccordions();
   initContactForm();
   initArticleFilters();
+  initHeroVideo();
   honorReducedMotion();
 }
 

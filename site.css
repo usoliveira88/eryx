@@ -281,6 +281,8 @@ button {
   isolation: isolate;
 }
 
+.hero-poster,
+.hero-poster img,
 .hero-video,
 .hero-overlay {
   position: absolute;
@@ -289,9 +291,23 @@ button {
   height: 100%;
 }
 
+.hero-poster {
+  z-index: -3;
+}
+
+.hero-poster img {
+  object-fit: cover;
+}
+
 .hero-video {
   object-fit: cover;
+  opacity: 0;
   z-index: -2;
+  transition: opacity 420ms ease;
+}
+
+.hero-video.is-ready {
+  opacity: 1;
 }
 
 .hero-overlay {

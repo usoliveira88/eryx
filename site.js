@@ -111,6 +111,50 @@ const articles = [
 
 const articleFilters = ["Todos", "Trabalhista", "Trabalhista Empresarial", "Condominial", "Família"];
 
+const optimizedImageVariants = new Map([
+  ["/home-reuniao-juridica.jpg", "/home-reuniao-juridica"],
+  ["/home-retrato-advogado.jpg", "/home-retrato-advogado"],
+  ["/home-atendimento-cliente.jpg", "/home-atendimento-cliente"],
+  ["/home-cta-advogado.jpg", "/home-cta-advogado"],
+  ["/home-detalhe-documentos.jpg", "/home-detalhe-documentos"],
+  ["/home-escritorio-ambiente.jpg", "/home-escritorio-ambiente"],
+  ["/artigos/artigo-trabalhista-rescisao.jpg", "/artigos/artigo-trabalhista-rescisao"],
+  ["/artigos/artigo-imobiliario.jpg", "/artigos/artigo-imobiliario"],
+  ["/artigos/artigo-familia-divorcio-guarda.jpg", "/artigos/artigo-familia-divorcio-guarda"]
+]);
+
+function optimizedPicture(src, alt, options = {}) {
+  const base = optimizedImageVariants.get(src);
+  const className = options.className ? ` ${options.className}` : "";
+  const loading = options.lazy === false ? "" : ' loading="lazy"';
+  const decoding = options.decoding === false ? "" : ' decoding="async"';
+  const priority = options.fetchPriority ? ` fetchpriority="${options.fetchPriority}"` : "";
+
+  if (!base) {
+    return `<img src="${src}" alt="${alt}"${loading}${decoding}${priority} />`;
+  }
+
+  return `
+    <picture class="optimized-picture${className}">
+      <source media="(max-width: 767px)" srcset="${base}-720.avif" type="image/avif" />
+      <source media="(max-width: 767px)" srcset="${base}-720.webp" type="image/webp" />
+      <source srcset="${base}-1200.avif" type="image/avif" />
+      <source srcset="${base}-1200.webp" type="image/webp" />
+      <img src="${base}-1200.webp" alt="${alt}"${loading}${decoding}${priority} />
+    </picture>
+  `;
+}
+
+function authorAvatarTemplate() {
+  return `
+    <picture class="optimized-picture article-author-avatar">
+      <source srcset="/home-retrato-advogado-avatar.avif" type="image/avif" />
+      <source srcset="/home-retrato-advogado-avatar.webp" type="image/webp" />
+      <img src="/home-retrato-advogado-avatar.jpg" alt="Dr. Eryx Fernandes" decoding="async" />
+    </picture>
+  `;
+}
+
 const integratedAreas = [
   ["Trabalhadores", "Relações de trabalho com leitura técnica dos direitos e das verbas envolvidas."],
   ["Empresas", "Prevenção, defesa e orientação trabalhista para decisões mais seguras."],
@@ -868,7 +912,7 @@ function homeTemplate() {
 
       <section class="intro-section">
         <div class="intro-media">
-          <img src="/home-retrato-advogado.jpg" alt="Advogado em ambiente institucional" />
+          ${optimizedPicture("/home-retrato-advogado.jpg", "Advogado em ambiente institucional")}
           <img class="intro-mark" src="/monograma-mf.png" alt="" aria-hidden="true" />
         </div>
         <div class="intro-copy">
@@ -914,7 +958,7 @@ function homeTemplate() {
           </div>
         </div>
         <div class="method-media">
-          <img src="/home-reuniao-juridica.jpg" alt="Reunião jurídica em ambiente profissional" />
+          ${optimizedPicture("/home-reuniao-juridica.jpg", "Reunião jurídica em ambiente profissional")}
         </div>
       </section>
 
@@ -966,7 +1010,7 @@ function finalCtaTemplate() {
   return `
     <section class="final-cta">
       <div class="final-cta-image">
-        <img src="/home-cta-advogado.jpg" alt="Advogado em atendimento" />
+        ${optimizedPicture("/home-cta-advogado.jpg", "Advogado em atendimento")}
       </div>
       <div class="final-cta-copy">
         <p class="eyebrow">Atendimento</p>
@@ -1025,7 +1069,7 @@ function aboutTemplate() {
           </div>
         </div>
         <div class="about-image-frame">
-          <img src="/home-atendimento-cliente.jpg" alt="Atendimento jurídico em ambiente profissional" />
+          ${optimizedPicture("/home-atendimento-cliente.jpg", "Atendimento jurídico em ambiente profissional")}
         </div>
       </section>
 
@@ -1054,7 +1098,7 @@ function aboutTemplate() {
 
       <section class="leadership-section reveal-block">
         <div class="leadership-media">
-          <img src="/home-retrato-advogado.jpg" alt="Dr. Eryx Fernandes" />
+          ${optimizedPicture("/home-retrato-advogado.jpg", "Dr. Eryx Fernandes")}
           <img class="leadership-mark" src="/monograma-mf.png" alt="" aria-hidden="true" />
         </div>
         <div class="leadership-copy">
@@ -1085,7 +1129,7 @@ function aboutTemplate() {
 
       <section class="location-section reveal-block">
         <div class="location-image">
-          <img src="/home-reuniao-juridica.jpg" alt="Atendimento jurídico presencial e digital" />
+          ${optimizedPicture("/home-reuniao-juridica.jpg", "Atendimento jurídico presencial e digital")}
         </div>
         <div class="location-copy">
           <p class="eyebrow">Sorocaba/SP</p>
@@ -1215,7 +1259,7 @@ function practiceOverviewTemplate() {
             .join("")}
         </div>
         <div class="demand-method-image">
-          <img src="/home-detalhe-documentos.jpg" alt="Documentos analisados em contexto jurídico" />
+          ${optimizedPicture("/home-detalhe-documentos.jpg", "Documentos analisados em contexto jurídico")}
         </div>
       </section>
 
@@ -1241,7 +1285,7 @@ function practiceOverviewTemplate() {
 
       <section class="practice-final-cta">
         <div class="practice-final-image">
-          <img src="/home-cta-advogado.jpg" alt="Atendimento jurídico" />
+          ${optimizedPicture("/home-cta-advogado.jpg", "Atendimento jurídico")}
         </div>
         <div class="practice-final-copy">
           <p class="eyebrow">Orientação jurídica</p>
@@ -1370,7 +1414,7 @@ function workerLaborTemplate() {
 
       <section class="worker-local-section reveal-block">
         <div class="worker-local-image">
-          <img src="/home-atendimento-cliente.jpg" alt="Atendimento trabalhista em Sorocaba" />
+          ${optimizedPicture("/home-atendimento-cliente.jpg", "Atendimento trabalhista em Sorocaba")}
         </div>
         <div class="worker-local-copy">
           <p class="eyebrow">Sorocaba/SP</p>
@@ -1431,7 +1475,7 @@ function workerLaborTemplate() {
 
       <section class="worker-final-cta">
         <div class="worker-final-image">
-          <img src="/home-cta-advogado.jpg" alt="Orientação sobre direitos trabalhistas" />
+          ${optimizedPicture("/home-cta-advogado.jpg", "Orientação sobre direitos trabalhistas")}
         </div>
         <div class="worker-final-copy">
           <p class="eyebrow">Orientação trabalhista para trabalhadores</p>
@@ -1599,7 +1643,7 @@ function companyLaborTemplate() {
 
       <section class="worker-local-section reveal-block">
         <div class="worker-local-image">
-          <img src="/home-reuniao-juridica.jpg" alt="Atendimento trabalhista empresarial em Sorocaba" />
+          ${optimizedPicture("/home-reuniao-juridica.jpg", "Atendimento trabalhista empresarial em Sorocaba")}
         </div>
         <div class="worker-local-copy">
           <p class="eyebrow">Sorocaba/SP</p>
@@ -1660,7 +1704,7 @@ function companyLaborTemplate() {
 
       <section class="worker-final-cta">
         <div class="worker-final-image">
-          <img src="/home-cta-advogado.jpg" alt="Orientação trabalhista para empresas" />
+          ${optimizedPicture("/home-cta-advogado.jpg", "Orientação trabalhista para empresas")}
         </div>
         <div class="worker-final-copy">
           <p class="eyebrow">Consultoria trabalhista para empresas</p>
@@ -1796,7 +1840,7 @@ function realEstateTemplate() {
 
       <section class="worker-local-section reveal-block">
         <div class="worker-local-image">
-          <img src="/home-escritorio-ambiente.jpg" alt="Atendimento em Direito Imobiliário em Sorocaba" />
+          ${optimizedPicture("/home-escritorio-ambiente.jpg", "Atendimento em Direito Imobiliário em Sorocaba")}
         </div>
         <div class="worker-local-copy">
           <p class="eyebrow">Sorocaba/SP</p>
@@ -1857,7 +1901,7 @@ function realEstateTemplate() {
 
       <section class="worker-final-cta">
         <div class="worker-final-image">
-          <img src="/home-cta-advogado.jpg" alt="Orientação em Direito Imobiliário" />
+          ${optimizedPicture("/home-cta-advogado.jpg", "Orientação em Direito Imobiliário")}
         </div>
         <div class="worker-final-copy">
           <p class="eyebrow">Contratos, imóveis e condomínios</p>
@@ -1996,7 +2040,7 @@ function familyLawTemplate() {
 
       <section class="worker-local-section family-local reveal-block">
         <div class="worker-local-image">
-          <img src="/home-atendimento-cliente.jpg" alt="Atendimento em Direito de Família em Sorocaba" />
+          ${optimizedPicture("/home-atendimento-cliente.jpg", "Atendimento em Direito de Família em Sorocaba")}
         </div>
         <div class="worker-local-copy">
           <p class="eyebrow">Sorocaba/SP</p>
@@ -2057,7 +2101,7 @@ function familyLawTemplate() {
 
       <section class="worker-final-cta family-final-cta">
         <div class="worker-final-image">
-          <img src="/home-cta-advogado.jpg" alt="Orientação sobre questão familiar" />
+          ${optimizedPicture("/home-cta-advogado.jpg", "Orientação sobre questão familiar")}
         </div>
         <div class="worker-final-copy">
           <p class="eyebrow">Orientação familiar</p>
@@ -2257,7 +2301,7 @@ function contactTemplate() {
 
       <section class="worker-final-cta contact-final-cta">
         <div class="worker-final-image">
-          <img src="/home-cta-advogado.jpg" alt="Atendimento jurídico em Sorocaba" />
+          ${optimizedPicture("/home-cta-advogado.jpg", "Atendimento jurídico em Sorocaba")}
         </div>
         <div class="worker-final-copy">
           <p class="eyebrow">Contato</p>
@@ -2278,7 +2322,7 @@ function articleListingCardTemplate(article) {
   return `
     <article class="editorial-article-card" data-article-card data-category="${article.filterCategory}">
       <a class="editorial-article-image" href="${article.href}" aria-label="Ler artigo: ${article.title}">
-        <img src="${article.image}" alt="${article.alt}" loading="lazy" />
+        ${optimizedPicture(article.image, article.alt)}
       </a>
       <div class="editorial-article-body">
         <span>${article.category}</span>
@@ -2418,7 +2462,7 @@ function laborRightsArticleTemplate() {
             <h1>${article.title}</h1>
             <p>${article.excerpt}</p>
             <div class="article-author">
-              <img src="/home-retrato-advogado.jpg" alt="Dr. Eryx Fernandes" />
+              ${authorAvatarTemplate()}
               <div>
                 <strong>${SITE_CONFIG.responsible}</strong>
                 <span>${SITE_CONFIG.oab}</span>
@@ -2430,7 +2474,7 @@ function laborRightsArticleTemplate() {
             </div>
           </div>
           <figure class="article-hero-image">
-            <img src="${article.image}" alt="${article.alt}" />
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
           </figure>
         </div>
       </section>
@@ -2625,7 +2669,7 @@ function realEstateContractsArticleTemplate() {
             <h1>${article.title}</h1>
             <p>${article.excerpt}</p>
             <div class="article-author">
-              <img src="/home-retrato-advogado.jpg" alt="Dr. Eryx Fernandes" />
+              ${authorAvatarTemplate()}
               <div>
                 <strong>${SITE_CONFIG.responsible}</strong>
                 <span>${SITE_CONFIG.oab}</span>
@@ -2637,7 +2681,7 @@ function realEstateContractsArticleTemplate() {
             </div>
           </div>
           <figure class="article-hero-image">
-            <img src="${article.image}" alt="${article.alt}" />
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
           </figure>
         </div>
       </section>
@@ -2830,7 +2874,7 @@ function familyDecisionsArticleTemplate() {
             <h1>${article.title}</h1>
             <p>${article.excerpt}</p>
             <div class="article-author">
-              <img src="/home-retrato-advogado.jpg" alt="Dr. Eryx Fernandes" />
+              ${authorAvatarTemplate()}
               <div>
                 <strong>${SITE_CONFIG.responsible}</strong>
                 <span>${SITE_CONFIG.oab}</span>
@@ -2842,7 +2886,7 @@ function familyDecisionsArticleTemplate() {
             </div>
           </div>
           <figure class="article-hero-image">
-            <img src="${article.image}" alt="${article.alt}" />
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
           </figure>
         </div>
       </section>

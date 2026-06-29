@@ -310,6 +310,25 @@ button {
   opacity: 1;
 }
 
+.optimized-picture,
+.optimized-picture img {
+  display: block;
+}
+
+.editorial-article-image .optimized-picture,
+.final-cta-image .optimized-picture,
+.practice-final-image .optimized-picture,
+.worker-final-image .optimized-picture {
+  width: 100%;
+  height: 100%;
+}
+
+.article-author-avatar {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+}
+
 .hero-overlay {
   z-index: -1;
   background:
@@ -716,7 +735,8 @@ button {
   position: relative;
 }
 
-.intro-media > img:first-child {
+.intro-media > img:first-child,
+.intro-media > picture:first-child img {
   width: 100%;
   min-height: 520px;
   object-fit: cover;
@@ -1307,6 +1327,7 @@ button {
 
 .about-image-frame img,
 .leadership-media > img:first-child,
+.leadership-media > picture:first-child img,
 .location-image img {
   width: 100%;
   height: 560px;
@@ -4238,9 +4259,11 @@ button {
   }
 
   .intro-media > img:first-child,
+  .intro-media > picture:first-child img,
   .method-media img,
   .about-image-frame img,
   .leadership-media > img:first-child,
+  .leadership-media > picture:first-child img,
   .location-image img {
     min-height: auto;
     height: 420px;

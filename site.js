@@ -1,5 +1,6 @@
 const SITE_CONFIG = {
   firmName: "Eryx Fernandes Advocacia",
+  siteUrl: "https://advmartinsfernandes.com.br",
   responsible: "Dr. Eryx Fernandes",
   oab: "OAB/SP nº 530.983",
   phone: "(15) 99687-4689",
@@ -68,6 +69,21 @@ const practiceItems = [
 ];
 
 const articles = [
+  {
+    category: "Trabalhista",
+    filterCategory: "Trabalhista",
+    homeCategory: "Trabalhista",
+    eyebrow: "ARTIGO | TRABALHISTA",
+    title: "Rescisão Indireta em Sorocaba: Guia Completo para o Trabalhador",
+    excerpt:
+      "Entenda o que é a Rescisão Indireta, quando ela pode ser aplicada e por que cada caso exige análise individual antes de qualquer decisão.",
+    image: "/artigos/artigo-trabalhista-rescisao.jpg",
+    alt: "Carteira de trabalho para artigo sobre Rescisão Indireta em Sorocaba",
+    href: "/artigos/rescisao-indireta-sorocaba",
+    readingTime: "9 min de leitura",
+    date: "Publicação semanal",
+    publishedAt: "2026-07-06"
+  },
   {
     category: "Trabalhista",
     filterCategory: "Trabalhista",
@@ -2436,9 +2452,328 @@ function articleInlineCtaTemplate(title, text, buttonText) {
   `;
 }
 
-function laborRightsArticleTemplate() {
+const rescisaoIndirectFaqItems = [
+  {
+    question: "O que é Rescisão Indireta no direito trabalhista?",
+    answer:
+      "É a possibilidade de o Trabalhador encerrar o contrato de trabalho quando a Empresa comete uma falta grave, prevista no artigo 483 da CLT, gerando, em regra, direitos semelhantes aos de uma demissão sem justa causa."
+  },
+  {
+    question: "Atraso de salário gera direito à Rescisão Indireta?",
+    answer:
+      "Não necessariamente. É preciso avaliar a frequência, a gravidade e o impacto do atraso na vida do Trabalhador, além de reunir provas. Cada caso deve ser analisado individualmente."
+  },
+  {
+    question: "A falta de depósito do FGTS pode justificar a Rescisão Indireta?",
+    answer:
+      "Pode ser um dos elementos considerados, especialmente quando há um padrão de descumprimento por parte da Empresa. A análise depende do conjunto de provas e das circunstâncias do caso."
+  },
+  {
+    question: "Posso parar de trabalhar assim que perceber a falta grave da Empresa?",
+    answer:
+      "Não é recomendado interromper o trabalho por conta própria sem orientação jurídica, pois isso pode ser interpretado como abandono de emprego. O ideal é buscar um Advogado antes de qualquer decisão."
+  },
+  {
+    question: "Quais documentos devo guardar se penso em pedir Rescisão Indireta?",
+    answer:
+      "Contracheques, extratos do FGTS, mensagens ou e-mails relacionados às irregularidades, além de identificar possíveis testemunhas, podem ser úteis na construção do caso."
+  },
+  {
+    question: "A Rescisão Indireta garante o recebimento de todos os direitos trabalhistas?",
+    answer:
+      "Não há garantia automática. O reconhecimento da Rescisão Indireta e a extensão dos direitos dependem da análise judicial do caso concreto, considerando provas e fundamentos jurídicos apresentados."
+  },
+  {
+    question: "Como um Advogado Trabalhista em Sorocaba pode ajudar nesse processo?",
+    answer:
+      "O advogado pode avaliar se a situação se enquadra nas hipóteses legais, orientar sobre a coleta de provas e indicar o melhor caminho jurídico, sempre com base nas particularidades do caso."
+  }
+];
+
+function siteAbsoluteUrl(path) {
+  return new URL(path, SITE_CONFIG.siteUrl).href;
+}
+
+function articleStructuredDataTemplate(article, faqItems, currentLabel) {
+  const pageUrl = siteAbsoluteUrl(article.href);
+  const blogPosting = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.excerpt,
+    image: siteAbsoluteUrl(article.image),
+    url: pageUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl
+    },
+    author: {
+      "@type": "Person",
+      name: SITE_CONFIG.responsible,
+      jobTitle: "Advogado Trabalhista",
+      identifier: "OAB/SP 530.983"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_CONFIG.firmName,
+      logo: {
+        "@type": "ImageObject",
+        url: siteAbsoluteUrl("/favicon-512.png")
+      }
+    },
+    articleSection: article.category,
+    inLanguage: "pt-BR",
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt
+  };
+  const faqPage = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
+  const breadcrumbList = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteAbsoluteUrl("/")
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Artigos",
+        item: siteAbsoluteUrl("/artigos")
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: currentLabel,
+        item: pageUrl
+      }
+    ]
+  };
+
+  return [blogPosting, faqPage, breadcrumbList]
+    .map((schema) => `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>`)
+    .join("");
+}
+
+function rescisaoIndirectArticleTemplate() {
   const article = articles[0];
-  const recommendations = [articles[1], articles[2]];
+  const recommendations = [articles[1], articles[2], articles[3]];
+
+  return `
+    ${headerTemplate("/artigos")}
+    <main id="conteudo" class="article-page">
+      <section class="article-hero">
+        <div class="editorial-hero-mark" aria-hidden="true">
+          <img src="/monograma-mf.png" alt="" />
+        </div>
+        <div class="editorial-hero-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="article-hero-inner">
+          <div class="article-hero-copy">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="/">Home</a>
+              <span>/</span>
+              <a href="/artigos">Artigos</a>
+              <span>/</span>
+              <span>Rescisão Indireta</span>
+            </nav>
+            <p class="article-type-label">Artigo jurídico</p>
+            <p class="eyebrow article-category-label">${article.eyebrow}</p>
+            <h1>Rescisão Indireta em Sorocaba:<br />Guia Completo para o Trabalhador</h1>
+            <p>${article.excerpt}</p>
+            <div class="article-author">
+              ${authorAvatarTemplate()}
+              <div>
+                <strong>${SITE_CONFIG.responsible}</strong>
+                <span>Advogado Trabalhista</span>
+                <span>OAB/SP 530.983</span>
+              </div>
+            </div>
+            <div class="article-hero-meta">
+              <span>${article.readingTime}</span>
+              <span>${article.date}</span>
+            </div>
+          </div>
+          <figure class="article-hero-image">
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
+          </figure>
+        </div>
+      </section>
+
+      <section class="article-shell">
+        <aside class="article-summary" aria-label="Sumário do artigo">
+          <span>Sumário</span>
+          <a href="#introducao">Introdução</a>
+          <a href="#o-que-e">O que é Rescisão Indireta?</a>
+          <a href="#diferenca">Diferenças entre as rescisões</a>
+          <a href="#artigo-483">Artigo 483 da CLT</a>
+          <a href="#situacoes">Situações comuns</a>
+          <a href="#direitos">Direitos envolvidos</a>
+          <a href="#provas">Provas importantes</a>
+          <a href="#abandono">Abandono de emprego</a>
+          <a href="#advogado">Advogado Trabalhista</a>
+          <a href="#atendimento">Atendimento em Sorocaba</a>
+          <a href="#conclusao">Conclusão</a>
+          <a href="#faq">FAQ</a>
+        </aside>
+
+        <article class="article-content">
+          <h2 id="introducao">Introdução</h2>
+          <p class="article-lead">Se você trabalha em Sorocaba ou em cidades da região, como Votorantim, Salto, Itu ou Iperó, e está enfrentando uma situação difícil no emprego, como atraso constante de salário, falta de depósito do FGTS, ausência de recolhimento do INSS, assédio moral ou assédio sexual, é natural pensar: “Eu não aguento mais essa empresa, mas se eu pedir demissão vou perder meus direitos.”</p>
+          <p>Essa preocupação faz sentido, mas existe um caminho que muita gente desconhece. A Rescisão Indireta, um instituto previsto na Consolidação das Leis do Trabalho (CLT), permite ao Trabalhador romper o contrato de trabalho quando a Empresa comete uma falta grave. Muitos Trabalhadores em Sorocaba já passaram por essa dúvida, mas poucos conhecem sobre este direito.</p>
+          <p>Neste artigo, vamos explicar de forma clara o que é a Rescisão Indireta, quando ela pode ser aplicada, quais direitos estão envolvidos e por que cada caso precisa de uma análise individual antes de qualquer decisão.</p>
+
+          ${articleInlineCtaTemplate(
+            "Está enfrentando problemas no trabalho?",
+            "Antes de pedir demissão ou abandonar o emprego, procure orientação jurídica para avaliar a possibilidade de Rescisão Indireta.",
+            "Falar pelo WhatsApp"
+          )}
+
+          <h2 id="o-que-e">O que é Rescisão Indireta?</h2>
+          <p>A Rescisão Indireta é, popularmente, conhecida como a "justa causa do empregador". Isso significa que, assim como a Empresa pode demitir o Trabalhador por justa causa quando ele comete uma falta grave, o Trabalhador também pode buscar o rompimento do contrato quando é a Empresa quem descumpre suas obrigações de forma grave.</p>
+          <p>Na prática, a Rescisão Indireta funciona como uma proteção legal: ela reconhece que a relação de emprego não pode continuar quando a Empresa deixa de cumprir deveres essenciais, como pagar salários em dia, depositar o FGTS ou garantir um ambiente de trabalho digno.</p>
+          <p>É importante destacar que a Rescisão Indireta não é automática. Ela normalmente depende de reconhecimento judicial, ou seja, é necessário que a Justiça do Trabalho analise a situação e confirme que houve, de fato, uma falta grave por parte da Empresa.</p>
+
+          <h2 id="diferenca">Pedido de demissão, justa causa e Rescisão Indireta: qual a diferença?</h2>
+          <p>Para entender melhor o tema, é fundamental compreender as três formas mais comuns de encerramento do contrato de trabalho:</p>
+          <ul>
+            <li><strong>Pedido de demissão:</strong> é quando o próprio Trabalhador decide encerrar o vínculo, sem que a Empresa tenha cometido nenhuma irregularidade. Nesse caso, o Trabalhador tem direitos reduzidos, como não ter acesso ao saque do FGTS nem ao seguro-desemprego.</li>
+            <li><strong>Justa causa:</strong> ocorre quando é a Empresa quem demite o Trabalhador em razão de uma falta grave cometida por ele (como insubordinação, abandono de emprego ou improbidade). Aqui, o Trabalhador perde a maior parte dos direitos rescisórios.</li>
+            <li><strong>Rescisão Indireta:</strong> é o caminho inverso da justa causa. É o Trabalhador quem solicita o encerramento do contrato porque a Empresa cometeu uma falta grave. Se reconhecida, a Rescisão Indireta gera, em regra, os mesmos direitos de uma demissão sem justa causa feita pela Empresa.</li>
+          </ul>
+          <p>Essa diferença é fundamental, porque o tipo de rescisão impacta diretamente nos valores e direitos que o Trabalhador pode receber ao final do contrato.</p>
+
+          <h2 id="artigo-483">O que diz o artigo 483 da CLT?</h2>
+          <p>O fundamento legal da Rescisão Indireta está no artigo 483 da CLT. Em linhas gerais, esse artigo lista situações em que o Trabalhador pode considerar o contrato rescindido por culpa da Empresa, entre elas:</p>
+          <ul>
+            <li>exigir do Trabalhador serviços superiores às suas forças, proibidos por lei, contrários aos bons costumes, ou alheios ao contrato;</li>
+            <li>tratar o Trabalhador com rigor excessivo;</li>
+            <li>expor o Trabalhador a perigo manifesto de mal considerável;</li>
+            <li>não cumprir as obrigações do contrato de trabalho;</li>
+            <li>praticar ato lesivo à honra e à boa fama do Trabalhador ou de pessoas de sua família;</li>
+            <li>ofender o Trabalhador fisicamente, salvo em caso de legítima defesa;</li>
+            <li>reduzir o trabalho do empregado sendo este por peça ou tarefa, de forma a afetar sensivelmente a importância dos salários.</li>
+          </ul>
+          <p>Em resumo: sempre que a Empresa falha em cumprir compromissos essenciais do contrato de trabalho, como pagar salários, depositar o FGTS ou preservar a dignidade do Trabalhador, pode haver espaço para discutir a Rescisão Indireta.</p>
+          <p>Mas é essencial reforçar: cada situação deve ser analisada individualmente, considerando provas, contexto e gravidade dos fatos.</p>
+
+          <h2 id="situacoes">Principais situações que podem justificar a Rescisão Indireta</h2>
+          <p>A seguir, listamos algumas das situações mais comuns que podem, dependendo do caso concreto, justificar um pedido de Rescisão Indireta:</p>
+          <ul>
+            <li><strong>Atraso de salário:</strong> quando a Empresa atrasa reiteradamente o pagamento do salário, compromete o sustento do Trabalhador e pode configurar descumprimento contratual grave.</li>
+            <li><strong>Ausência de depósito do FGTS:</strong> a falta de recolhimento do FGTS é uma das obrigações mais básicas da relação de emprego. A ausência recorrente desses depósitos pode ser um forte indício de falta grave da Empresa.</li>
+            <li><strong>Assédio moral:</strong> humilhações constantes, cobranças abusivas, exposição do Trabalhador a situações vexatórias diante de colegas ou clientes são exemplos de assédio moral que podem justificar o rompimento do contrato.</li>
+            <li><strong>Excesso de jornada:</strong> jornadas extenuantes, sem os devidos intervalos ou compensações, especialmente quando colocam em risco a saúde do Trabalhador, também podem ser consideradas.</li>
+            <li><strong>Cobrança abusiva de metas:</strong> metas inatingíveis, associadas a ameaças de demissão ou constrangimento público, ultrapassam o exercício regular do poder diretivo da Empresa.</li>
+            <li><strong>Desvio ou acúmulo de função:</strong> quando o Trabalhador passa a exercer atividades muito diferentes das combinadas no contrato, sem o devido ajuste salarial ou funcional.</li>
+            <li><strong>Rebaixamento de função:</strong> a alteração unilateral e prejudicial do cargo ou das atribuições do Trabalhador, sem justificativa legítima, pode configurar descumprimento contratual.</li>
+            <li><strong>Falta de condições mínimas de trabalho:</strong> ambientes insalubres, sem equipamentos de proteção adequados ou estrutura mínima para o exercício da função.</li>
+            <li><strong>Tratamento humilhante ou discriminatório:</strong> discriminação por gênero, raça, idade, orientação sexual ou qualquer outra condição pessoal é uma violação grave dos direitos do Trabalhador.</li>
+            <li><strong>Descumprimento grave do contrato:</strong> qualquer outra falha relevante da Empresa em cumprir cláusulas contratuais, como benefícios prometidos, condições de trabalho combinadas ou obrigações legais.</li>
+          </ul>
+          <p><strong>Importante:</strong> a existência de uma dessas situações não gera, automaticamente, o direito à Rescisão Indireta. É necessário avaliar a gravidade, a frequência dos fatos e as provas disponíveis em cada caso.</p>
+
+          ${articleInlineCtaTemplate(
+            "Cada caso exige uma análise individual.",
+            "A existência de atraso salarial, FGTS ou assédio não gera automaticamente o direito à Rescisão Indireta. A análise jurídica é fundamental.",
+            "Solicitar uma avaliação"
+          )}
+
+          <h2 id="direitos">Quais direitos o Trabalhador pode receber se a Rescisão Indireta for reconhecida?</h2>
+          <p>Se a Justiça do Trabalho reconhecer a Rescisão Indireta, o Trabalhador pode ter direito, em regra, às mesmas verbas de uma demissão sem justa causa, tais como:</p>
+          <ul>
+            <li>saldo de salário;</li>
+            <li>aviso prévio;</li>
+            <li>13º salário proporcional;</li>
+            <li>férias vencidas e proporcionais, acrescidas de 1/3;</li>
+            <li>saque do FGTS;</li>
+            <li>multa de 40% sobre o FGTS;</li>
+            <li>guias para requerimento do seguro-desemprego, quando aplicável.</li>
+          </ul>
+          <p>Vale reforçar que o reconhecimento e a extensão desses direitos dependem da análise judicial do caso concreto, não havendo garantia de resultado.</p>
+
+          <h2 id="provas">Quais provas podem ajudar o Trabalhador?</h2>
+          <p>A prova é um dos pontos mais importantes em uma ação de Rescisão Indireta. Alguns exemplos de elementos que podem ser úteis:</p>
+          <ul>
+            <li>Comprovantes de pagamento (contracheques, extratos bancários) que demonstrem atraso salarial;</li>
+            <li>Extrato do FGTS, mostrando ausência ou irregularidade nos depósitos;</li>
+            <li>Mensagens, e-mails ou áudios que evidenciem cobranças abusivas ou assédio moral;</li>
+            <li>Testemunhas, como colegas de trabalho que presenciaram os fatos;</li>
+            <li>Registros médicos ou psicológicos, quando há impacto na saúde do Trabalhador;</li>
+            <li>Documentos internos da Empresa, como comunicados sobre metas, mudança de função ou jornada.</li>
+          </ul>
+          <p>Reunir esse tipo de documentação com antecedência pode fazer diferença na análise do caso por um Advogado e, posteriormente, pela Justiça do Trabalho.</p>
+
+          <h2 id="abandono">Por que o Trabalhador não deve simplesmente abandonar o emprego</h2>
+          <p>Um erro comum é o Trabalhador, diante de uma situação insustentável, simplesmente parar de comparecer ao trabalho. Essa atitude pode ser interpretada pela Empresa como abandono de emprego, o que pode resultar em demissão por justa causa, justamente o cenário mais prejudicial para o Trabalhador.</p>
+          <p>O caminho juridicamente mais seguro é buscar orientação profissional de um <a href="/atuacao/direito-trabalhista-trabalhadores">Advogado Trabalhista em Sorocaba</a> antes de tomar qualquer decisão. Em muitos casos, é possível continuar prestando serviços enquanto se reúnem provas e se avalia a viabilidade de uma ação de Rescisão Indireta, ou, dependendo da gravidade da situação, requerer uma medida judicial específica para rescisão imediata com garantia de salários até o fim do processo.</p>
+
+          <h2 id="advogado">Quando procurar um Advogado Trabalhista em Sorocaba?</h2>
+          <p>Se você mora ou trabalha em Sorocaba e vive uma das situações descritas acima, o momento de buscar orientação jurídica é antes de tomar qualquer atitude drástica, como parar de ir ao trabalho ou pedir demissão por conta própria.</p>
+          <p>Um Advogado Trabalhista pode ajudar o Trabalhador a:</p>
+          <ul>
+            <li>entender se a situação vivida se enquadra nas hipóteses do artigo 483 da CLT;</li>
+            <li>organizar as provas necessárias;</li>
+            <li>avaliar os riscos e possibilidades do caso concreto;</li>
+            <li>orientar sobre a melhor estratégia, seja a Rescisão Indireta, uma reclamação trabalhista específica ou outra medida cabível.</li>
+          </ul>
+          <p>Buscar orientação em Sorocaba, com um profissional que conhece a realidade da região e das empresas locais, pode facilitar o acompanhamento presencial do caso, além de agilizar o diálogo em audiências na Justiça do Trabalho local.</p>
+
+          <h2 id="atendimento">Atendimento jurídico trabalhista em Sorocaba com o Dr. Eryx Fernandes</h2>
+          <p>O Dr. Eryx Fernandes, Advogado Trabalhista inscrito na OAB/SP nº 530.983, atua em Sorocaba e região atendendo Trabalhadores que enfrentam situações como atraso salarial, ausência de depósito do FGTS, assédio moral, excesso de jornada e outras condutas irregulares por parte da Empresa.</p>
+          <p>O atendimento é pautado pela análise cuidadosa de cada caso, sempre respeitando a individualidade das circunstâncias vividas pelo Trabalhador.</p>
+          <p>O compromisso é oferecer uma avaliação técnica, honesta e fundamentada na legislação trabalhista, ajudando o Trabalhador a entender seus direitos e as possibilidades legais diante da situação enfrentada.</p>
+
+          <h2 id="conclusao">Conclusão</h2>
+          <p>A Rescisão Indireta é um instrumento importante para proteger o Trabalhador quando a Empresa deixa de cumprir suas obrigações de forma grave. No entanto, cada caso tem particularidades que precisam ser avaliadas com cuidado, desde a gravidade dos fatos até a existência de provas suficientes.</p>
+          <p>Se você está em Sorocaba e enfrenta uma situação como atraso de salário, falta de FGTS, assédio moral ou qualquer outra irregularidade no ambiente de trabalho, o primeiro passo é buscar orientação jurídica especializada antes de tomar qualquer decisão.</p>
+          <p><a href="/contato">Entre em contato</a> com o Dr. Eryx Fernandes, Advogado Trabalhista em Sorocaba, OAB/SP nº 530.983, e agende uma orientação jurídica sobre o seu caso.</p>
+
+          <h2 id="faq">Perguntas Frequentes (FAQ)</h2>
+          <ul>
+            ${rescisaoIndirectFaqItems.map((item) => `<li><strong>${item.question}</strong> ${item.answer}</li>`).join("")}
+          </ul>
+
+          <aside class="article-final-cta">
+            <h2>Precisa analisar sua situação?</h2>
+            <p>Entre em contato com o Dr. Eryx Fernandes para uma avaliação técnica do seu caso.</p>
+            <div class="cta-actions">
+              <a class="button button-primary" href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+            </div>
+          </aside>
+        </article>
+      </section>
+
+      <section class="article-recommendations reveal-block">
+        <div class="section-heading">
+          <p>Leitura</p>
+          <h2>Outras leituras recomendadas</h2>
+        </div>
+        <div class="editorial-article-grid article-recommendations-grid">
+          ${recommendations.map(articleListingCardTemplate).join("")}
+        </div>
+      </section>
+    </main>
+    ${articleStructuredDataTemplate(article, rescisaoIndirectFaqItems, "Rescisão Indireta em Sorocaba")}
+    ${footerTemplate()}
+  `;
+}
+
+function laborRightsArticleTemplate() {
+  const article = articles[1];
+  const recommendations = [articles[2], articles[3]];
 
   return `
     ${headerTemplate("/artigos")}
@@ -2644,8 +2979,8 @@ function laborRightsArticleSchemaTemplate(article) {
 }
 
 function realEstateContractsArticleTemplate() {
-  const article = articles[1];
-  const recommendations = [articles[0], articles[2]];
+  const article = articles[2];
+  const recommendations = [articles[1], articles[3]];
 
   return `
     ${headerTemplate("/artigos")}
@@ -2849,8 +3184,8 @@ function realEstateContractsArticleTemplate() {
 }
 
 function familyDecisionsArticleTemplate() {
-  const article = articles[2];
-  const recommendations = [articles[0], articles[1]];
+  const article = articles[3];
+  const recommendations = [articles[1], articles[2]];
 
   return `
     ${headerTemplate("/artigos")}
@@ -3300,6 +3635,13 @@ function updateDocumentMeta(path) {
       "Artigos jurídicos do Eryx Fernandes Advocacia sobre Direito Trabalhista, Trabalhista Empresarial, Condominial e Direito de Família em Sorocaba/SP."
     );
   }
+  if (path === "/artigos/rescisao-indireta-sorocaba") {
+    document.title = "Rescisão Indireta em Sorocaba | Advogado Trabalhista";
+    description.setAttribute(
+      "content",
+      "Sofre atraso de salário, falta de FGTS ou assédio no trabalho em Sorocaba? Entenda a Rescisão Indireta e seus direitos. Fale com um advogado."
+    );
+  }
   if (path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica") {
     document.title = `Direitos trabalhistas: quando procurar orientação jurídica? | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
@@ -3542,23 +3884,25 @@ export function renderPageHtml(pathname) {
         ? practiceOverviewTemplate()
         : path === "/artigos"
           ? articlesTemplate()
-          : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
-            ? laborRightsArticleTemplate()
-            : path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"
-              ? realEstateContractsArticleTemplate()
-              : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"
-                ? familyDecisionsArticleTemplate()
-                : path === "/atuacao/direito-trabalhista-trabalhadores"
-                  ? workerLaborTemplate()
-                  : path === "/atuacao/direito-trabalhista-empresas"
-                    ? companyLaborTemplate()
-                    : path === "/atuacao/direito-imobiliario"
-                      ? realEstateTemplate()
-                      : path === "/atuacao/direito-de-familia"
-                        ? familyLawTemplate()
-                        : path === "/contato"
-                          ? contactTemplate()
-                          : internalTemplate(path);
+          : path === "/artigos/rescisao-indireta-sorocaba"
+            ? rescisaoIndirectArticleTemplate()
+            : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
+              ? laborRightsArticleTemplate()
+              : path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"
+                ? realEstateContractsArticleTemplate()
+                : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"
+                  ? familyDecisionsArticleTemplate()
+                  : path === "/atuacao/direito-trabalhista-trabalhadores"
+                    ? workerLaborTemplate()
+                    : path === "/atuacao/direito-trabalhista-empresas"
+                      ? companyLaborTemplate()
+                      : path === "/atuacao/direito-imobiliario"
+                        ? realEstateTemplate()
+                        : path === "/atuacao/direito-de-familia"
+                          ? familyLawTemplate()
+                          : path === "/contato"
+                            ? contactTemplate()
+                            : internalTemplate(path);
 }
 
 function render() {

@@ -15,6 +15,7 @@ const pageInputs = {
   realEstate: resolve("atuacao/direito-imobiliario/index.html"),
   familyLaw: resolve("atuacao/direito-de-familia/index.html"),
   articles: resolve("artigos/index.html"),
+  rescisaoIndirectArticle: resolve("artigos/rescisao-indireta-sorocaba/index.html"),
   laborArticle: resolve("artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica/index.html"),
   realEstateArticle: resolve("artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar/index.html"),
   familyArticle: resolve("artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca/index.html")
@@ -30,6 +31,7 @@ const pageRoutes = new Map([
   [pageInputs.realEstate, "/atuacao/direito-imobiliario"],
   [pageInputs.familyLaw, "/atuacao/direito-de-familia"],
   [pageInputs.articles, "/artigos"],
+  [pageInputs.rescisaoIndirectArticle, "/artigos/rescisao-indireta-sorocaba"],
   [pageInputs.laborArticle, "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"],
   [pageInputs.realEstateArticle, "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"],
   [pageInputs.familyArticle, "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"]
@@ -38,6 +40,7 @@ const pageRoutes = new Map([
 const routeImages = new Map([
   ["/quem-somos", "/home-retrato-advogado.jpg"],
   ["/contato", "/home-retrato-advogado.jpg"],
+  ["/artigos/rescisao-indireta-sorocaba", "/artigos/artigo-trabalhista-rescisao.jpg"],
   ["/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica", "/artigos/artigo-trabalhista-rescisao.jpg"],
   ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/artigo-imobiliario.jpg"],
   ["/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca", "/artigos/artigo-familia-divorcio-guarda.jpg"]

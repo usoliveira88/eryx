@@ -77,7 +77,7 @@ const articles = [
     title: "Rescisão Indireta em Sorocaba: Guia Completo para o Trabalhador",
     excerpt:
       "Entenda o que é a Rescisão Indireta, quando ela pode ser aplicada e por que cada caso exige análise individual antes de qualquer decisão.",
-    image: "/artigos/artigo-trabalhista-rescisao.jpg",
+    image: "/artigos/rescisao-indireta-sorocaba.jpg",
     alt: "Carteira de trabalho para artigo sobre Rescisão Indireta em Sorocaba",
     href: "/artigos/rescisao-indireta-sorocaba",
     readingTime: "9 min de leitura",
@@ -134,6 +134,7 @@ const optimizedImageVariants = new Map([
   ["/home-cta-advogado.jpg", "/home-cta-advogado"],
   ["/home-detalhe-documentos.jpg", "/home-detalhe-documentos"],
   ["/home-escritorio-ambiente.jpg", "/home-escritorio-ambiente"],
+  ["/artigos/rescisao-indireta-sorocaba.jpg", "/artigos/rescisao-indireta-sorocaba"],
   ["/artigos/artigo-trabalhista-rescisao.jpg", "/artigos/artigo-trabalhista-rescisao"],
   ["/artigos/artigo-imobiliario.jpg", "/artigos/artigo-imobiliario"],
   ["/artigos/artigo-familia-divorcio-guarda.jpg", "/artigos/artigo-familia-divorcio-guarda"]

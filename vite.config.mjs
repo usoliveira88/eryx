@@ -40,7 +40,7 @@ const pageRoutes = new Map([
 const routeImages = new Map([
   ["/quem-somos", "/home-retrato-advogado.jpg"],
   ["/contato", "/home-retrato-advogado.jpg"],
-  ["/artigos/rescisao-indireta-sorocaba", "/artigos/artigo-trabalhista-rescisao.jpg"],
+  ["/artigos/rescisao-indireta-sorocaba", "/artigos/rescisao-indireta-sorocaba.jpg"],
   ["/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica", "/artigos/artigo-trabalhista-rescisao.jpg"],
   ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/artigo-imobiliario.jpg"],
   ["/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca", "/artigos/artigo-familia-divorcio-guarda.jpg"]

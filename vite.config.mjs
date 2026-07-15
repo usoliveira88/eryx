@@ -15,6 +15,7 @@ const pageInputs = {
   realEstate: resolve("atuacao/direito-imobiliario/index.html"),
   familyLaw: resolve("atuacao/direito-de-familia/index.html"),
   articles: resolve("artigos/index.html"),
+  nr01CompaniesArticle: resolve("artigos/nr-01-novas-exigencias-empresas-sorocaba/index.html"),
   rescisaoIndirectArticle: resolve("artigos/rescisao-indireta-sorocaba/index.html"),
   laborArticle: resolve("artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica/index.html"),
   realEstateArticle: resolve("artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar/index.html"),
@@ -31,6 +32,7 @@ const pageRoutes = new Map([
   [pageInputs.realEstate, "/atuacao/direito-imobiliario"],
   [pageInputs.familyLaw, "/atuacao/direito-de-familia"],
   [pageInputs.articles, "/artigos"],
+  [pageInputs.nr01CompaniesArticle, "/artigos/nr-01-novas-exigencias-empresas-sorocaba"],
   [pageInputs.rescisaoIndirectArticle, "/artigos/rescisao-indireta-sorocaba"],
   [pageInputs.laborArticle, "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"],
   [pageInputs.realEstateArticle, "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"],
@@ -40,6 +42,7 @@ const pageRoutes = new Map([
 const routeImages = new Map([
   ["/quem-somos", "/home-retrato-advogado.jpg"],
   ["/contato", "/home-retrato-advogado.jpg"],
+  ["/artigos/nr-01-novas-exigencias-empresas-sorocaba", "/artigos/nr-01-sorocaba.jpg"],
   ["/artigos/rescisao-indireta-sorocaba", "/artigos/rescisao-indireta-sorocaba.jpg"],
   ["/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica", "/artigos/artigo-trabalhista-rescisao.jpg"],
   ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/artigo-imobiliario.jpg"],

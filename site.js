@@ -70,6 +70,25 @@ const practiceItems = [
 
 const articles = [
   {
+    category: "Trabalhista Empresarial",
+    filterCategory: "Trabalhista Empresarial",
+    homeCategory: "Trabalhista Empresarial",
+    eyebrow: "ARTIGO | TRABALHISTA EMPRESARIAL",
+    title: "NR-01 em 2026: quais são as novas exigências para as empresas?",
+    seoTitle: "NR-01 em 2026: novas exigências para empresas",
+    seoDescription:
+      "Entenda as novas exigências da NR-01, os riscos psicossociais e como as empresas de Sorocaba devem atualizar o PGR e suas práticas internas.",
+    excerpt:
+      "Entenda as novas exigências da NR-01, os riscos psicossociais e como as empresas de Sorocaba devem atualizar o PGR e suas práticas internas.",
+    image: "/artigos/nr-01-sorocaba.jpg",
+    alt: "Ilustração de equipamentos de segurança e placa NR-01 para artigo sobre novas exigências da norma",
+    href: "/artigos/nr-01-novas-exigencias-empresas-sorocaba",
+    readingTime: "13 min de leitura",
+    date: "Publicação semanal",
+    publishedAt: "2026-07-15",
+    authorRole: "Advogado Trabalhista Empresarial"
+  },
+  {
     category: "Trabalhista",
     filterCategory: "Trabalhista",
     homeCategory: "Trabalhista",
@@ -125,6 +144,10 @@ const articles = [
   }
 ];
 
+function articleByHref(href) {
+  return articles.find((article) => article.href === href);
+}
+
 const articleFilters = ["Todos", "Trabalhista", "Trabalhista Empresarial", "Condominial", "Família"];
 
 const optimizedImageVariants = new Map([
@@ -134,6 +157,7 @@ const optimizedImageVariants = new Map([
   ["/home-cta-advogado.jpg", "/home-cta-advogado"],
   ["/home-detalhe-documentos.jpg", "/home-detalhe-documentos"],
   ["/home-escritorio-ambiente.jpg", "/home-escritorio-ambiente"],
+  ["/artigos/nr-01-sorocaba.jpg", "/artigos/nr-01-sorocaba"],
   ["/artigos/rescisao-indireta-sorocaba.jpg", "/artigos/rescisao-indireta-sorocaba"],
   ["/artigos/artigo-trabalhista-rescisao.jpg", "/artigos/artigo-trabalhista-rescisao"],
   ["/artigos/artigo-imobiliario.jpg", "/artigos/artigo-imobiliario"],
@@ -2501,7 +2525,7 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: article.title,
-    description: article.excerpt,
+    description: article.seoDescription || article.excerpt,
     image: siteAbsoluteUrl(article.image),
     url: pageUrl,
     mainEntityOfPage: {
@@ -2511,7 +2535,7 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
     author: {
       "@type": "Person",
       name: SITE_CONFIG.responsible,
-      jobTitle: "Advogado Trabalhista",
+      jobTitle: article.authorRole || "Advogado Trabalhista",
       identifier: "OAB/SP 530.983"
     },
     publisher: {
@@ -2569,9 +2593,329 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
     .join("");
 }
 
+const nr01FaqItems = [
+  {
+    question: "O que mudou na NR-01 em 2026?",
+    answer:
+      "Desde 26 de maio de 2026, o capítulo 1.5 da NR-01 passou a mencionar expressamente os fatores de riscos psicossociais relacionados ao trabalho no Gerenciamento de Riscos Ocupacionais. As empresas devem identificar os perigos, avaliar os riscos, adotar medidas preventivas e acompanhar o processo."
+  },
+  {
+    question: "Toda empresa precisa avaliar os riscos psicossociais?",
+    answer:
+      "O MTE orienta que todas as empresas realizem ações de prevenção por meio da Avaliação Ergonômica Preliminar, conforme a NR-17, considerando os fatores psicossociais no contexto do GRO. As obrigações documentais podem variar conforme o porte, o grau de risco e as hipóteses de dispensa previstas na NR-01."
+  },
+  {
+    question: "Os riscos psicossociais precisam constar no PGR?",
+    answer:
+      "Quando a empresa está obrigada a elaborar PGR, os resultados aplicáveis devem ser incorporados ao inventário de riscos e ao plano de ação. A AEP também pode documentar o processo de gestão dos riscos ergonômicos, incluindo os fatores psicossociais relacionados ao trabalho."
+  },
+  {
+    question: "A empresa precisa contratar psicólogo para cumprir a NR-01?",
+    answer:
+      "A NR-01 e a NR-17 não estabelecem, de forma geral, uma categoria profissional exclusiva para conduzir a avaliação. A empresa deve designar pessoas com conhecimento técnico compatível com a natureza e a complexidade das condições avaliadas. Em casos específicos, uma equipe multidisciplinar pode ser necessária."
+  },
+  {
+    question: "Aplicar um questionário aos empregados é suficiente?",
+    answer:
+      "Não. O questionário pode ser uma ferramenta de levantamento, mas seus resultados precisam ser analisados tecnicamente e incorporados à AEP e/ou ao inventário de riscos. A empresa também deve definir medidas, responsáveis, prazos e formas de acompanhamento."
+  },
+  {
+    question: "O trabalho remoto e híbrido entram na avaliação?",
+    answer:
+      "Sim. A avaliação deve considerar as condições aplicáveis ao trabalho remoto, híbrido e ao teletrabalho, incluindo isolamento, comunicação, carga de trabalho, controle da jornada, conexão permanente e dificuldades de organização das pausas."
+  },
+  {
+    question: "A fiscalização analisará apenas documentos?",
+    answer:
+      "Não. A fiscalização pode combinar análise do inventário, plano de ação, AEP, metodologias e registros com inspeção das condições reais de trabalho, entrevistas e escuta dos trabalhadores. A coerência entre documentos e prática será um ponto relevante."
+  },
+  {
+    question: "Quais medidas a empresa pode adotar?",
+    answer:
+      "As medidas dependem dos riscos identificados e podem incluir revisão de metas, redistribuição de tarefas, mudanças na jornada, treinamento de gestores, melhoria dos canais de denúncia, prevenção ao assédio, revisão de políticas internas e acompanhamento de setores críticos."
+  },
+  {
+    question: "A empresa dispensada do PGR não precisa fazer nada?",
+    answer:
+      "Não. A dispensa de elaboração do PGR não elimina todas as obrigações preventivas. O MTE esclarece que ME e EPP dos graus de risco 1 e 2 dispensadas do PGR devem documentar a AEP para evidenciar a gestão dos riscos ergonômicos, incluindo os fatores psicossociais quando aplicáveis."
+  },
+  {
+    question: "Qual é o papel do advogado trabalhista empresarial na adequação?",
+    answer:
+      "O advogado pode revisar políticas, metas, jornadas, canais de denúncia, protocolos de investigação, procedimentos disciplinares e documentos trabalhistas. Também pode verificar a coerência jurídica entre as práticas internas, a AEP, o PGR e o plano de ação, atuando em conjunto com os profissionais de SST."
+  }
+];
+
+function nr01CompaniesArticleTemplate() {
+  const article = articleByHref("/artigos/nr-01-novas-exigencias-empresas-sorocaba");
+  const recommendations = [
+    articleByHref("/artigos/rescisao-indireta-sorocaba"),
+    articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"),
+    articleByHref("/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar")
+  ];
+
+  return `
+    ${headerTemplate("/artigos")}
+    <main id="conteudo" class="article-page">
+      <section class="article-hero">
+        <div class="editorial-hero-mark" aria-hidden="true">
+          <img src="/monograma-mf.png" alt="" />
+        </div>
+        <div class="editorial-hero-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="article-hero-inner">
+          <div class="article-hero-copy">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="/">Home</a>
+              <span>/</span>
+              <a href="/artigos">Artigos</a>
+              <span>/</span>
+              <span>NR-01</span>
+            </nav>
+            <p class="article-type-label">Artigo jurídico</p>
+            <p class="eyebrow article-category-label">${article.eyebrow}</p>
+            <h1>${article.title}</h1>
+            <p>${article.excerpt}</p>
+            <div class="article-author">
+              ${authorAvatarTemplate()}
+              <div>
+                <strong>${SITE_CONFIG.responsible}</strong>
+                <span>${article.authorRole}</span>
+                <span>OAB/SP 530.983</span>
+              </div>
+            </div>
+            <div class="article-hero-meta">
+              <span>${article.readingTime}</span>
+              <span>${article.date}</span>
+            </div>
+          </div>
+          <figure class="article-hero-image">
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
+          </figure>
+        </div>
+      </section>
+
+      <section class="article-shell">
+        <aside class="article-summary" aria-label="Sumário do artigo">
+          <span>Sumário</span>
+          <a href="#o-que-e">O que é a NR-01?</a>
+          <a href="#mudancas">O que mudou em 2026?</a>
+          <a href="#riscos-psicossociais">Riscos psicossociais</a>
+          <a href="#adequacao">Como se adequar</a>
+          <a href="#documentos">Documentos</a>
+          <a href="#fiscalizacao">Fiscalização</a>
+          <a href="#pgr">PGR</a>
+          <a href="#consultoria">Consultoria de SST</a>
+          <a href="#riscos">Riscos jurídicos</a>
+          <a href="#advogado">Advogado empresarial</a>
+          <a href="#sorocaba">Empresas de Sorocaba</a>
+          <a href="#faq">FAQ</a>
+        </aside>
+
+        <article class="article-content">
+          <p class="article-lead">Desde 26 de maio de 2026, a nova redação do capítulo 1.5 da NR-01 está em vigor. A mudança tornou expressa a obrigação de considerar os fatores de riscos psicossociais relacionados ao trabalho no Gerenciamento de Riscos Ocupacionais, o GRO.</p>
+          <p>Para as empresas, a adequação não se resume a inserir o termo “saúde mental” no Programa de Gerenciamento de Riscos. É necessário analisar a organização do trabalho, identificar perigos, avaliar os riscos, definir medidas preventivas, registrar as decisões e acompanhar os resultados.</p>
+          <p>Empresas de Sorocaba e região precisam tratar o tema de forma integrada. Diretoria, Recursos Humanos, lideranças, profissionais de Segurança e Saúde no Trabalho, CIPA e <a href="/atuacao/direito-trabalhista-empresas">assessoria jurídica trabalhista empresarial</a> devem atuar com critérios coerentes e documentação compatível com a realidade da organização.</p>
+
+          ${articleInlineCtaTemplate(
+            "Sua empresa já revisou o PGR e os procedimentos internos?",
+            "A adequação à nova NR-01 exige integração entre Segurança do Trabalho, Recursos Humanos e assessoria jurídica trabalhista empresarial.",
+            "Falar com o escritório"
+          )}
+
+          <h2 id="o-que-e">O que é a NR-01?</h2>
+          <p>A Norma Regulamentadora nº 1 estabelece disposições gerais aplicáveis às Normas Regulamentadoras e disciplina o Gerenciamento de Riscos Ocupacionais. O GRO é o processo pelo qual a organização identifica perigos, avalia riscos ocupacionais, adota medidas de prevenção e acompanha a execução dessas medidas.</p>
+          <p>Quando exigido, esse processo é materializado no Programa de Gerenciamento de Riscos, o PGR. Entre os documentos centrais estão o inventário de riscos ocupacionais, o plano de ação e o registro dos critérios utilizados para classificar os riscos e tomar decisões.</p>
+          <p>A redação atual do capítulo 1.5 foi aprovada pela Portaria MTE nº 1.419/2024 e passou a produzir efeitos em 26 de maio de 2026, após a prorrogação definida pela Portaria MTE nº 765/2025.</p>
+
+          <h2 id="mudancas">O que mudou na NR-01 em 2026?</h2>
+          <p>A principal mudança foi a inclusão expressa dos fatores de riscos psicossociais relacionados ao trabalho no GRO. Esses fatores devem ser analisados como parte dos riscos ergonômicos, em articulação com a NR-17.</p>
+          <p>Na prática, a empresa deve examinar a forma como o trabalho é concebido, distribuído, supervisionado, cobrado e executado. A análise precisa considerar os processos reais, e não apenas aquilo que está descrito nos regulamentos, manuais ou organogramas.</p>
+          <p>O foco não é investigar a personalidade ou a vida particular do empregado. A avaliação recai sobre as condições e a organização do trabalho que podem causar ou agravar danos à saúde física ou mental.</p>
+
+          <h2 id="riscos-psicossociais">O que são fatores de riscos psicossociais relacionados ao trabalho?</h2>
+          <p>São situações ligadas à concepção, à organização, à gestão e às relações de trabalho que podem aumentar a probabilidade de adoecimento ou de outros agravos à saúde. A análise deve observar a atividade, o setor, as funções exercidas, as formas de controle e o contexto de cada organização.</p>
+          <p>Entre os fatores que podem exigir atenção estão:</p>
+          <ul>
+            <li>sobrecarga de trabalho e volume de tarefas incompatível com o tempo disponível;</li>
+            <li>metas inalcançáveis, contraditórias ou impostas sem recursos adequados;</li>
+            <li>jornadas prolongadas, horas extras recorrentes e falta de períodos de recuperação;</li>
+            <li>assédio moral, assédio sexual, discriminação ou violência no trabalho;</li>
+            <li>baixa autonomia, ausência de apoio das lideranças e comunicação interna deficiente;</li>
+            <li>conflitos frequentes, indefinição de papéis e mudanças constantes sem orientação;</li>
+            <li>trabalho isolado, repetitivo ou com elevada carga emocional;</li>
+            <li>desequilíbrio entre esforço, reconhecimento e recompensa;</li>
+            <li>insegurança quanto à manutenção do emprego ou mudanças organizacionais mal conduzidas.</li>
+          </ul>
+          <p>A lista não é fechada. Uma indústria, um escritório, uma transportadora, uma clínica e uma empresa de tecnologia podem apresentar riscos distintos. Por isso, modelos genéricos devem ser usados com cautela.</p>
+
+          <h2 id="saude-mental">A empresa precisa avaliar a saúde mental individual dos empregados?</h2>
+          <p>Não. A avaliação prevista na NR-01 e na NR-17 não corresponde a um diagnóstico clínico individual e não pode ser substituída pelo exame médico periódico.</p>
+          <p>A empresa deve analisar as condições de trabalho, a organização das tarefas, as exigências cognitivas e emocionais, as relações profissionais, os sistemas de cobrança e outros elementos relacionados ao ambiente ocupacional. Informações médicas individuais permanecem sujeitas ao sigilo e possuem finalidade própria.</p>
+
+          <h2 id="adequacao">O que as empresas precisam fazer para se adequar à NR-01?</h2>
+          <p>A adequação deve ser estruturada como um processo contínuo. Uma palestra, uma campanha interna ou a aplicação isolada de um questionário não substituem as etapas exigidas pelo GRO.</p>
+
+          <h3>1. Planejar o processo e definir responsabilidades</h3>
+          <p>A organização deve estabelecer quem conduzirá cada etapa, quais áreas participarão e quais profissionais possuem conhecimento técnico compatível com a natureza e a complexidade dos riscos avaliados.</p>
+          <p>A NR-01 e a NR-17 não impõem, de forma geral, uma categoria profissional exclusiva para executar a identificação e a avaliação. A responsabilidade legal pelo processo, pelo PGR e pela Avaliação Ergonômica Preliminar permanece com a empresa.</p>
+
+          <h3>2. Realizar a Avaliação Ergonômica Preliminar</h3>
+          <p>As ações de prevenção devem ser desenvolvidas por meio da Avaliação Ergonômica Preliminar, a AEP, prevista na NR-17. Nessa etapa, a empresa precisa considerar os fatores psicossociais relacionados ao trabalho dentro do contexto do GRO.</p>
+          <p>Quando a AEP indicar a necessidade de aprofundamento ou quando estiverem presentes as hipóteses previstas na NR-17, poderá ser necessária a Análise Ergonômica do Trabalho, a AET.</p>
+
+          <h3>3. Identificar os perigos na realidade de cada setor</h3>
+          <p>A identificação deve abranger estabelecimentos, processos, atividades, setores, funções e grupos de trabalhadores. O levantamento pode considerar observação do trabalho, entrevistas, reuniões, oficinas, documentos internos, indicadores e instrumentos técnicos compatíveis com a realidade avaliada.</p>
+          <p>É recomendável analisar informações como afastamentos, rotatividade, horas extras, acidentes, queixas internas, denúncias, conflitos, produtividade, absenteísmo, mudanças de equipe e ações trabalhistas relacionadas a assédio, jornada ou adoecimento.</p>
+
+          <h3>4. Incluir trabalho remoto, híbrido e teletrabalho</h3>
+          <p>A identificação dos perigos e a avaliação dos riscos também devem abranger as atividades realizadas em regime remoto, híbrido ou de teletrabalho. A empresa precisa considerar aspectos como isolamento, excesso de conexão, comunicação deficiente, controle permanente, ausência de pausas e dificuldade de separação entre jornada e vida pessoal.</p>
+
+          <h3>5. Ouvir os trabalhadores e considerar sua percepção</h3>
+          <p>A participação dos trabalhadores integra o processo de gerenciamento. A escuta pode ocorrer por entrevistas, reuniões, grupos de discussão, pesquisas, formulários, manifestações da CIPA ou outros meios adequados.</p>
+          <p>O procedimento deve ser planejado para gerar informações confiáveis. Quando forem utilizados questionários, os resultados precisam ser analisados tecnicamente e incorporados à AEP e/ou ao inventário de riscos. O questionário, sozinho, não comprova a gestão dos riscos psicossociais.</p>
+
+          <h3>6. Avaliar e classificar os riscos</h3>
+          <p>Depois da identificação dos perigos, a organização deve avaliar a probabilidade de ocorrência de danos e a severidade das possíveis consequências. A metodologia escolhida precisa ser tecnicamente fundamentada, coerente com as condições avaliadas e compatível com a natureza dos riscos.</p>
+          <p>Não existe uma ferramenta única obrigatória. A fiscalização tende a examinar a consistência do processo, a capacidade de identificar os perigos e a relação entre os riscos encontrados e as medidas adotadas.</p>
+
+          <h3>7. Atualizar o inventário de riscos ocupacionais</h3>
+          <p>Os fatores identificados e os riscos avaliados devem constar no inventário de riscos, quando aplicável. O documento precisa retratar os ambientes, os processos, as atividades, os grupos expostos, os perigos, as possíveis consequências, as medidas existentes e a classificação dos riscos.</p>
+          <p>A empresa também deve documentar os critérios das gradações de severidade e probabilidade, os níveis de risco, os critérios de classificação e as regras utilizadas para tomar decisões preventivas.</p>
+
+          <h3>8. Elaborar um plano de ação com responsáveis e prazos</h3>
+          <p>Identificar o problema sem definir providências não atende à lógica do GRO. O plano de ação deve indicar as medidas que serão introduzidas, aprimoradas ou mantidas, com responsáveis, cronograma, formas de acompanhamento e critérios de verificação.</p>
+          <p>Dependendo dos riscos encontrados, as medidas podem envolver:</p>
+          <ul>
+            <li>revisão de metas e indicadores de desempenho;</li>
+            <li>redistribuição de tarefas e dimensionamento das equipes;</li>
+            <li>mudanças na jornada, nas pausas e nos sistemas de controle;</li>
+            <li>treinamento de lideranças e revisão das práticas de gestão;</li>
+            <li>criação ou aprimoramento de canais de denúncia;</li>
+            <li>protocolos para prevenção e apuração de assédio e discriminação;</li>
+            <li>revisão de regulamentos, políticas internas e procedimentos disciplinares;</li>
+            <li>melhoria da comunicação e da participação dos trabalhadores;</li>
+            <li>acompanhamento de setores com maior incidência de conflitos, afastamentos ou rotatividade.</li>
+          </ul>
+          <p>A prioridade deve ser a intervenção na origem organizacional do risco. Medidas individuais de apoio podem ter utilidade, mas não substituem a correção dos fatores existentes no trabalho.</p>
+
+          <h3>9. Implementar, acompanhar e revisar as medidas</h3>
+          <p>O gerenciamento não termina com a elaboração do documento. A empresa deve comprovar que as medidas foram implementadas, verificar se permanecem em funcionamento e revisar as ações quando os resultados forem insuficientes.</p>
+          <p>A avaliação de riscos deve ser revista nos prazos e nas situações previstas pela NR-01, como mudanças nos processos, acidentes, doenças relacionadas ao trabalho, falhas nas medidas de prevenção, alterações legais ou solicitação justificada de trabalhadores ou da CIPA.</p>
+
+          ${articleInlineCtaTemplate(
+            "A prevenção costuma custar menos que a correção de um passivo trabalhista.",
+            "Uma revisão preventiva pode identificar inconsistências antes de fiscalizações ou reclamações trabalhistas.",
+            "Solicitar orientação jurídica"
+          )}
+
+          <h2 id="documentos">Quais documentos podem demonstrar a adequação?</h2>
+          <p>A gestão não se resume à documentação, mas os registros são fundamentais para organizar o processo e produzir evidências. Entre os principais documentos estão:</p>
+          <ul>
+            <li>inventário de riscos ocupacionais;</li>
+            <li>plano de ação;</li>
+            <li>documento dos critérios adotados no GRO;</li>
+            <li>Avaliação Ergonômica Preliminar;</li>
+            <li>Análise Ergonômica do Trabalho, quando necessária;</li>
+            <li>registros das metodologias utilizadas;</li>
+            <li>resultados de entrevistas, oficinas ou questionários, com a análise técnica correspondente;</li>
+            <li>registros de participação dos trabalhadores e da CIPA;</li>
+            <li>comprovantes de implementação, acompanhamento e revisão das medidas;</li>
+            <li>políticas internas, treinamentos e protocolos relacionados aos riscos identificados.</li>
+          </ul>
+          <p>Os registros precisam guardar coerência entre si. Um documento que descreve metas moderadas, por exemplo, poderá perder credibilidade caso mensagens, relatórios e depoimentos revelem cobranças incompatíveis com a descrição formal.</p>
+
+          <h2 id="fiscalizacao">Como será a fiscalização da NR-01?</h2>
+          <p>A fiscalização pode combinar análise documental e verificação das condições reais de trabalho. O Auditor-Fiscal do Trabalho poderá examinar o inventário de riscos, o plano de ação, a AEP, os critérios e metodologias, os registros de acompanhamento e as revisões realizadas.</p>
+          <p>Também podem ser realizadas inspeções no local, entrevistas e escuta dos trabalhadores. O objetivo é verificar se a empresa estruturou e implementou o GRO de forma tecnicamente consistente e se as medidas preventivas correspondem aos perigos identificados.</p>
+          <p>A mera existência de um PGR formal não garante conformidade. A empresa deve demonstrar que analisou a organização do trabalho, envolveu os trabalhadores, estabeleceu medidas, atribuiu responsabilidades, definiu prazos e acompanhou os resultados.</p>
+
+          <h2 id="pgr">Todas as empresas precisam elaborar PGR?</h2>
+          <p>A aplicação das Normas Regulamentadoras alcança os empregadores abrangidos por seu campo de incidência. A NR-01 prevê tratamentos diferenciados para o Microempreendedor Individual, microempresas e empresas de pequeno porte.</p>
+          <p>O MEI possui dispensa da elaboração do PGR. Algumas microempresas e empresas de pequeno porte enquadradas nos graus de risco 1 e 2 também podem ser dispensadas, desde que cumpram os requisitos normativos.</p>
+          <p>A dispensa do PGR não significa dispensa geral das obrigações de prevenção. O documento oficial de perguntas e respostas do MTE esclarece que, para ME e EPP dos graus de risco 1 e 2 dispensadas do PGR, a AEP se torna documento obrigatório para evidenciar a gestão dos riscos ergonômicos, incluindo os fatores psicossociais quando aplicáveis.</p>
+
+          <h2 id="consultoria">A contratação de uma consultoria de Segurança do Trabalho resolve toda a obrigação?</h2>
+          <p>A participação de profissionais de Segurança e Saúde no Trabalho é indispensável em muitos casos, mas a responsabilidade legal continua sendo da organização. A empresa deve assegurar que o diagnóstico técnico corresponda às práticas efetivamente adotadas.</p>
+          <p>O tema possui reflexos jurídicos, trabalhistas e de governança. Metas, jornadas, sistemas de controle, procedimentos disciplinares, canais de denúncia, investigações internas, políticas contra assédio e condutas das lideranças podem influenciar o risco e a exposição da empresa.</p>
+          <p>Por isso, a adequação deve integrar o trabalho técnico de SST com a análise do Recursos Humanos, da administração, da CIPA, do compliance e da assessoria jurídica trabalhista empresarial.</p>
+
+          <h2 id="riscos">Quais são os riscos do descumprimento?</h2>
+          <p>O descumprimento das obrigações previstas na NR-01 e na NR-17 pode resultar em fiscalização, notificação, exigência de adequação e autuação administrativa, conforme as circunstâncias verificadas.</p>
+          <p>Falhas na gestão dos riscos também podem influenciar ações trabalhistas individuais ou coletivas, investigações, pedidos de indenização e discussões sobre doenças ocupacionais. Documentos incompletos ou incompatíveis com a rotina empresarial podem aumentar a dificuldade de defesa.</p>
+          <p>A NR-01 não cria responsabilidade automática por qualquer episódio de adoecimento. Cada situação depende da análise dos fatos, das condições de trabalho, do nexo causal, das medidas adotadas e das provas disponíveis. Contudo, a ausência de um processo consistente pode ampliar a exposição jurídica.</p>
+
+          <h2 id="advogado">Como o Advogado Trabalhista Empresarial pode auxiliar?</h2>
+          <p>O advogado trabalhista empresarial pode atuar em conjunto com os profissionais de SST para revisar a conformidade jurídica das medidas e reduzir contradições entre os documentos técnicos e as práticas internas.</p>
+          <p>A assessoria pode incluir:</p>
+          <ul>
+            <li>revisão de políticas internas e regulamentos empresariais;</li>
+            <li>análise de metas, cobranças, jornadas e sistemas de controle;</li>
+            <li>estruturação de canais de denúncia e fluxos de apuração;</li>
+            <li>elaboração de protocolos de prevenção ao assédio e à discriminação;</li>
+            <li>treinamento jurídico de gestores e lideranças;</li>
+            <li>orientação em investigações internas;</li>
+            <li>revisão da coerência entre AEP, PGR, plano de ação e documentos trabalhistas;</li>
+            <li>organização de evidências de implementação e acompanhamento;</li>
+            <li>análise preventiva de setores com afastamentos, conflitos ou rotatividade elevados;</li>
+            <li>apoio em fiscalizações e na gestão de passivos trabalhistas.</li>
+          </ul>
+          <p>Esse apoio não substitui a atuação técnica dos profissionais responsáveis pelas avaliações de SST. O objetivo é integrar as dimensões técnica, documental, trabalhista e de governança.</p>
+
+          <h2 id="sorocaba">Por que as empresas de Sorocaba devem agir agora?</h2>
+          <p>Sorocaba possui um ambiente empresarial diversificado, com indústrias, empresas de logística, comércio, serviços, tecnologia e estruturas administrativas de diferentes portes. Cada setor apresenta formas próprias de organização do trabalho e, consequentemente, riscos que exigem análise específica.</p>
+          <p>Como a nova redação da NR-01 já está em vigor, a empresa não deve aguardar uma fiscalização ou uma reclamação trabalhista para revisar seus procedimentos. A adequação preventiva permite identificar falhas, priorizar medidas e produzir registros coerentes com a realidade operacional.</p>
+          <p>A <a href="/quem-somos">Eryx Fernandes Advocacia</a> presta assessoria trabalhista empresarial em Sorocaba, com atuação voltada à prevenção de passivos, revisão de práticas internas e orientação jurídica para adequação das relações de trabalho.</p>
+
+          <h2 id="preparada">Sua empresa está preparada para a NR-01?</h2>
+          <p>A inclusão expressa dos fatores psicossociais no GRO exige uma mudança de postura. A organização precisa conhecer seus riscos, ouvir os trabalhadores, revisar práticas de gestão, estabelecer medidas concretas e acompanhar os resultados.</p>
+          <p>Um PGR padronizado e desconectado da rotina não oferece a segurança esperada. A conformidade depende da coerência entre documentos, decisões, práticas de liderança e condições reais de trabalho.</p>
+          <p>Empresas de Sorocaba e região podem buscar orientação de um advogado trabalhista empresarial para integrar a adequação técnica à prevenção jurídica, revisar políticas internas e estruturar evidências de conformidade. Para iniciar uma análise, <a href="/contato">fale com o escritório</a>.</p>
+
+          <h2 id="faq">Perguntas frequentes sobre a NR-01 e os riscos psicossociais</h2>
+          <ul>
+            ${nr01FaqItems.map((item) => `<li><strong>${item.question}</strong> ${item.answer}</li>`).join("")}
+          </ul>
+
+          <h2 id="fontes">Fontes oficiais consultadas</h2>
+          <ul>
+            <li>Ministério do Trabalho e Emprego — página oficial da NR-01 e textos vigentes</li>
+            <li>MTE — Perguntas e Respostas sobre o Capítulo 1.5 da NR-01 (GRO/PGR), maio de 2026</li>
+            <li>MTE — Manual de interpretação e aplicação do capítulo 1.5 da NR-01, 2026</li>
+            <li>MTE — Inclusão de fatores de risco psicossociais no GRO</li>
+          </ul>
+
+          <aside class="article-final-cta">
+            <h2>Sua empresa está preparada para as novas exigências da NR-01?</h2>
+            <p>A revisão preventiva das políticas internas, documentos e práticas de gestão pode reduzir riscos jurídicos e fortalecer a conformidade.</p>
+            <div class="cta-actions">
+              <a class="button button-primary" href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">Conversar com um advogado</a>
+            </div>
+          </aside>
+        </article>
+      </section>
+
+      <section class="article-recommendations reveal-block">
+        <div class="section-heading">
+          <p>Leitura</p>
+          <h2>Outras leituras recomendadas</h2>
+        </div>
+        <div class="editorial-article-grid article-recommendations-grid">
+          ${recommendations.map(articleListingCardTemplate).join("")}
+        </div>
+      </section>
+    </main>
+    ${articleStructuredDataTemplate(article, nr01FaqItems, "NR-01 em 2026")}
+    ${footerTemplate()}
+  `;
+}
+
 function rescisaoIndirectArticleTemplate() {
-  const article = articles[0];
-  const recommendations = [articles[1], articles[2], articles[3]];
+  const article = articleByHref("/artigos/rescisao-indireta-sorocaba");
+  const recommendations = [
+    articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"),
+    articleByHref("/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"),
+    articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca")
+  ];
 
   return `
     ${headerTemplate("/artigos")}
@@ -2773,8 +3117,12 @@ function rescisaoIndirectArticleTemplate() {
 }
 
 function laborRightsArticleTemplate() {
-  const article = articles[1];
-  const recommendations = [articles[2], articles[3]];
+  const article = articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica");
+  const recommendations = [
+    articleByHref("/artigos/rescisao-indireta-sorocaba"),
+    articleByHref("/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"),
+    articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca")
+  ];
 
   return `
     ${headerTemplate("/artigos")}
@@ -2980,8 +3328,12 @@ function laborRightsArticleSchemaTemplate(article) {
 }
 
 function realEstateContractsArticleTemplate() {
-  const article = articles[2];
-  const recommendations = [articles[1], articles[3]];
+  const article = articleByHref("/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar");
+  const recommendations = [
+    articleByHref("/artigos/rescisao-indireta-sorocaba"),
+    articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"),
+    articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca")
+  ];
 
   return `
     ${headerTemplate("/artigos")}
@@ -3185,8 +3537,12 @@ function realEstateContractsArticleTemplate() {
 }
 
 function familyDecisionsArticleTemplate() {
-  const article = articles[3];
-  const recommendations = [articles[1], articles[2]];
+  const article = articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca");
+  const recommendations = [
+    articleByHref("/artigos/rescisao-indireta-sorocaba"),
+    articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"),
+    articleByHref("/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar")
+  ];
 
   return `
     ${headerTemplate("/artigos")}
@@ -3636,6 +3992,13 @@ function updateDocumentMeta(path) {
       "Artigos jurídicos do Eryx Fernandes Advocacia sobre Direito Trabalhista, Trabalhista Empresarial, Condominial e Direito de Família em Sorocaba/SP."
     );
   }
+  if (path === "/artigos/nr-01-novas-exigencias-empresas-sorocaba") {
+    document.title = "NR-01 em 2026: novas exigências para empresas";
+    description.setAttribute(
+      "content",
+      "Entenda as novas exigências da NR-01, os riscos psicossociais e como as empresas de Sorocaba devem atualizar o PGR e suas práticas internas."
+    );
+  }
   if (path === "/artigos/rescisao-indireta-sorocaba") {
     document.title = "Rescisão Indireta em Sorocaba | Advogado Trabalhista";
     description.setAttribute(
@@ -3885,25 +4248,27 @@ export function renderPageHtml(pathname) {
         ? practiceOverviewTemplate()
         : path === "/artigos"
           ? articlesTemplate()
-          : path === "/artigos/rescisao-indireta-sorocaba"
-            ? rescisaoIndirectArticleTemplate()
-            : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
-              ? laborRightsArticleTemplate()
-              : path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"
-                ? realEstateContractsArticleTemplate()
-                : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"
-                  ? familyDecisionsArticleTemplate()
-                  : path === "/atuacao/direito-trabalhista-trabalhadores"
-                    ? workerLaborTemplate()
-                    : path === "/atuacao/direito-trabalhista-empresas"
-                      ? companyLaborTemplate()
-                      : path === "/atuacao/direito-imobiliario"
-                        ? realEstateTemplate()
-                        : path === "/atuacao/direito-de-familia"
-                          ? familyLawTemplate()
-                          : path === "/contato"
-                            ? contactTemplate()
-                            : internalTemplate(path);
+          : path === "/artigos/nr-01-novas-exigencias-empresas-sorocaba"
+            ? nr01CompaniesArticleTemplate()
+            : path === "/artigos/rescisao-indireta-sorocaba"
+              ? rescisaoIndirectArticleTemplate()
+              : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
+                ? laborRightsArticleTemplate()
+                : path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"
+                  ? realEstateContractsArticleTemplate()
+                  : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"
+                    ? familyDecisionsArticleTemplate()
+                    : path === "/atuacao/direito-trabalhista-trabalhadores"
+                      ? workerLaborTemplate()
+                      : path === "/atuacao/direito-trabalhista-empresas"
+                        ? companyLaborTemplate()
+                        : path === "/atuacao/direito-imobiliario"
+                          ? realEstateTemplate()
+                          : path === "/atuacao/direito-de-familia"
+                            ? familyLawTemplate()
+                            : path === "/contato"
+                              ? contactTemplate()
+                              : internalTemplate(path);
 }
 
 function render() {

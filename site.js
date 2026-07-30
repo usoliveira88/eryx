@@ -1408,7 +1408,7 @@ const laborLandingPages = {
     title: "Rescisão Indireta do Contrato de Trabalho",
     subtitle:
       "Entenda quando uma falta grave do empregador pode permitir o encerramento do contrato com direitos semelhantes aos da dispensa sem justa causa.",
-    seoTitle: "Rescisão Indireta em Sorocaba | Eryx Fernandes Advocacia",
+    seoTitle: "Rescisão Indireta | Advogado Trabalhista em Sorocaba",
     seoDescription:
       "Orientação sobre rescisão indireta para trabalhadores de Sorocaba: falta de FGTS, atraso salarial, assédio e outras faltas graves do empregador.",
     whatsapp: "Vim pela página de Rescisão Indireta e gostaria de analisar meu caso.",
@@ -1440,7 +1440,7 @@ const laborLandingPages = {
     title: "Verbas Rescisórias: conferência e cobrança",
     subtitle:
       "Análise dos valores pagos no desligamento para identificar diferenças, parcelas ausentes e possíveis irregularidades.",
-    seoTitle: "Verbas Rescisórias em Sorocaba | Advogado Trabalhista",
+    seoTitle: "Verbas Rescisórias | Advogado Trabalhista em Sorocaba",
     seoDescription:
       "Conferência de verbas rescisórias em Sorocaba: aviso-prévio, férias, 13º salário, FGTS, multa de 40% e diferenças no desligamento.",
     whatsapp: "Vim pela página de Verbas Rescisórias e gostaria de conferir meu desligamento.",
@@ -1471,7 +1471,7 @@ const laborLandingPages = {
     title: "FGTS não depositado pelo empregador",
     subtitle:
       "Verificação dos recolhimentos do contrato de trabalho e orientação sobre medidas possíveis quando existem períodos sem depósito.",
-    seoTitle: "FGTS Não Depositado em Sorocaba | Orientação Trabalhista",
+    seoTitle: "FGTS Não Depositado | Advogado Trabalhista em Sorocaba",
     seoDescription:
       "Descubra o que fazer quando a empresa não deposita o FGTS. Atendimento trabalhista em Sorocaba para análise de extratos e períodos em aberto.",
     whatsapp: "Vim pela página de FGTS Não Depositado e gostaria de verificar meu extrato.",
@@ -1502,7 +1502,7 @@ const laborLandingPages = {
     title: "Horas Extras e controle de jornada",
     subtitle:
       "Análise de horários, intervalos, banco de horas e registros para verificar diferenças na remuneração da jornada.",
-    seoTitle: "Horas Extras em Sorocaba | Advogado Trabalhista",
+    seoTitle: "Horas Extras | Advogado Trabalhista em Sorocaba",
     seoDescription:
       "Orientação sobre horas extras em Sorocaba: jornada sem registro, intervalo, banco de horas, trabalho externo e diferenças nos pagamentos.",
     whatsapp: "Vim pela página de Horas Extras e gostaria de analisar minha jornada de trabalho.",
@@ -1533,7 +1533,7 @@ const laborLandingPages = {
     title: "Assédio Moral no Trabalho",
     subtitle:
       "Orientação para identificar condutas abusivas, preservar provas e avaliar medidas jurídicas com cautela e confidencialidade.",
-    seoTitle: "Assédio Moral no Trabalho em Sorocaba | Orientação Jurídica",
+    seoTitle: "Assédio Moral no Trabalho | Advogado Trabalhista em Sorocaba",
     seoDescription:
       "Orientação sobre assédio moral no trabalho em Sorocaba: humilhações, ameaças, isolamento, cobranças abusivas, provas e medidas possíveis.",
     whatsapp: "Vim pela página de Assédio Moral no Trabalho e gostaria de relatar uma situação com confidencialidade.",
@@ -1564,7 +1564,7 @@ const laborLandingPages = {
     title: "Acidente de Trabalho e doença ocupacional",
     subtitle:
       "Orientação sobre afastamento, estabilidade, documentação e possíveis direitos após acidente ou adoecimento relacionado ao trabalho.",
-    seoTitle: "Acidente de Trabalho em Sorocaba | Advogado Trabalhista",
+    seoTitle: "Acidente de Trabalho | Advogado Trabalhista em Sorocaba",
     seoDescription:
       "Orientação em acidente de trabalho e doença ocupacional em Sorocaba: CAT, INSS, estabilidade, despesas, sequelas e documentação.",
     whatsapp: "Vim pela página de Acidente de Trabalho e gostaria de analisar minha situação.",
@@ -1657,7 +1657,7 @@ function laborLandingPageTemplate(path) {
         <div class="section-heading">
           <p>Sinais de atenção</p>
           <h2>Situações que podem exigir orientação</h2>
-          <span>Os exemplos abaixo não substituem a avaliação das circunstâncias e dos documentos do caso.</span>
+          <span>Os exemplos abaixo ajudam a reconhecer sinais de atenção, mas cada situação precisa ser compreendida individualmente.</span>
         </div>
         <div class="labor-lp-card-grid">
           ${page.situations.map(([title, text], index) => `
@@ -1673,12 +1673,8 @@ function laborLandingPageTemplate(path) {
         <div>
           <p class="eyebrow">Pontos da análise</p>
           <h2>${page.rightsTitle}</h2>
+          <p class="labor-lp-reassurance">Você não precisa reunir documentos antes de entrar em contato. A conversa pode começar pelo seu relato, e o escritório orientará os próximos passos conforme a situação.</p>
           <div class="labor-lp-list">${page.rights.map((item) => `<span>${item}</span>`).join("")}</div>
-        </div>
-        <div>
-          <p class="eyebrow">Documentos úteis</p>
-          <h2>O que pode ajudar na conversa inicial</h2>
-          <div class="labor-lp-list">${page.documents.map((item) => `<span>${item}</span>`).join("")}</div>
         </div>
       </section>
 
@@ -1689,7 +1685,7 @@ function laborLandingPageTemplate(path) {
         <div>
           <p class="eyebrow">Responsável pelo atendimento</p>
           <h2>Orientação direta com o Dr. Eryx Fernandes</h2>
-          <p>O atendimento é conduzido com escuta, análise dos documentos e explicação clara sobre riscos e caminhos possíveis, sem promessas de resultado.</p>
+          <p>O atendimento é conduzido com escuta, compreensão do contexto e explicação clara sobre riscos e caminhos possíveis, sem promessas de resultado.</p>
           <div class="labor-lp-credentials">
             <strong>Dr. Eryx Fernandes</strong>
             <span>${professionalRegistrationLink()}</span>

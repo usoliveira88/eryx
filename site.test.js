@@ -136,3 +136,22 @@ test("transforma a página trabalhista para trabalhadores em pilar das LPs", () 
     assert.match(html, new RegExp(`href="${route}"`), route);
   }
 });
+
+test("mantém todas as LPs sem barreira documental e com SEO comercial local", () => {
+  const expectedTitles = new Map([
+    ["/atuacao/rescisao-indireta", "Rescisão Indireta"],
+    ["/atuacao/verbas-rescisorias", "Verbas Rescisórias"],
+    ["/atuacao/fgts-nao-depositado", "FGTS Não Depositado"],
+    ["/atuacao/horas-extras", "Horas Extras"],
+    ["/atuacao/assedio-moral-no-trabalho", "Assédio Moral no Trabalho"],
+    ["/atuacao/acidente-de-trabalho", "Acidente de Trabalho"]
+  ]);
+
+  for (const [route, subject] of expectedTitles) {
+    const html = renderPageHtml(route);
+    assert.doesNotMatch(html, /Documentos úteis/i, route);
+    assert.match(html, /Você não precisa reunir documentos antes de entrar em contato/, route);
+    assert.match(html, /class="labor-lp-related-grid"/, route);
+    assert.match(html, /<h1>[^<]+<\/h1>/, `${route}: ${subject}`);
+  }
+});

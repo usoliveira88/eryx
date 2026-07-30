@@ -1401,6 +1401,346 @@ function pathwayDetailTemplate(area) {
   `;
 }
 
+const laborLandingPages = {
+  "/atuacao/rescisao-indireta": {
+    shortTitle: "Rescisão Indireta",
+    eyebrow: "Direito do trabalhador",
+    title: "Rescisão Indireta do Contrato de Trabalho",
+    subtitle:
+      "Entenda quando uma falta grave do empregador pode permitir o encerramento do contrato com direitos semelhantes aos da dispensa sem justa causa.",
+    seoTitle: "Rescisão Indireta em Sorocaba | Eryx Fernandes Advocacia",
+    seoDescription:
+      "Orientação sobre rescisão indireta para trabalhadores de Sorocaba: falta de FGTS, atraso salarial, assédio e outras faltas graves do empregador.",
+    whatsapp: "Vim pela página de Rescisão Indireta e gostaria de analisar meu caso.",
+    introTitle: "Quando continuar trabalhando deixa de ser uma decisão simples",
+    intro:
+      "A rescisão indireta pode ser discutida quando o empregador descumpre obrigações relevantes do contrato. Como a saída precipitada pode gerar consequências, cada situação precisa ser analisada antes de qualquer decisão.",
+    situations: [
+      ["Salário atrasado ou não pago", "Atrasos reiterados ou ausência de pagamento podem comprometer a continuidade do vínculo."],
+      ["FGTS sem depósitos", "A falta recorrente de recolhimentos pode representar descumprimento contratual relevante."],
+      ["Assédio ou tratamento abusivo", "Humilhações, ameaças e constrangimentos exigem avaliação dos fatos e das possíveis provas."],
+      ["Risco à saúde e à segurança", "Exposição indevida a perigo ou ausência de proteção pode demandar providências."],
+      ["Mudança prejudicial do contrato", "Redução indevida, alteração de função ou transferência abusiva podem afetar direitos."],
+      ["Descumprimentos reiterados", "O conjunto de irregularidades pode ser tão importante quanto um episódio isolado."]
+    ],
+    rightsTitle: "O que pode ser discutido em uma rescisão indireta",
+    rights: ["Saldo de salário", "Aviso-prévio", "Férias vencidas e proporcionais", "13º salário proporcional", "Liberação do FGTS e multa de 40%", "Seguro-desemprego, quando preenchidos os requisitos"],
+    documents: ["Carteira de trabalho e contrato", "Holerites e extratos bancários", "Extrato analítico do FGTS", "Mensagens, e-mails e comunicados", "Registros de jornada", "Atestados, laudos ou testemunhas"],
+    faq: [
+      ["Posso simplesmente parar de trabalhar?", "Essa decisão não deve ser tomada sem análise individual. O afastamento feito de forma inadequada pode gerar discussão sobre abandono ou pedido de demissão."],
+      ["FGTS não depositado pode justificar rescisão indireta?", "A ausência reiterada de depósitos pode ser relevante, mas o histórico do vínculo e as provas precisam ser avaliados."],
+      ["Quais direitos posso receber?", "Quando reconhecida, a rescisão indireta pode produzir efeitos semelhantes aos da dispensa sem justa causa, conforme o caso concreto."],
+      ["Preciso ter todos os documentos?", "Não. A conversa inicial pode começar com as informações disponíveis, e a documentação necessária é definida durante a análise."]
+    ],
+    article: ["/artigos/rescisao-indireta-sorocaba", "Leia também: guia completo sobre rescisão indireta"]
+  },
+  "/atuacao/verbas-rescisorias": {
+    shortTitle: "Verbas Rescisórias",
+    eyebrow: "Encerramento do contrato",
+    title: "Verbas Rescisórias: conferência e cobrança",
+    subtitle:
+      "Análise dos valores pagos no desligamento para identificar diferenças, parcelas ausentes e possíveis irregularidades.",
+    seoTitle: "Verbas Rescisórias em Sorocaba | Advogado Trabalhista",
+    seoDescription:
+      "Conferência de verbas rescisórias em Sorocaba: aviso-prévio, férias, 13º salário, FGTS, multa de 40% e diferenças no desligamento.",
+    whatsapp: "Vim pela página de Verbas Rescisórias e gostaria de conferir meu desligamento.",
+    introTitle: "O acerto rescisório precisa refletir a realidade do contrato",
+    intro:
+      "O tipo de desligamento, o salário, as médias, a jornada e o tempo de serviço interferem no cálculo. Uma conferência técnica ajuda a comparar o termo de rescisão com o que ocorreu durante o vínculo.",
+    situations: [
+      ["Valor menor que o esperado", "Diferenças podem decorrer de bases de cálculo, médias ou parcelas não consideradas."],
+      ["Pagamento fora do prazo", "O atraso na quitação pode produzir consequências que precisam ser verificadas."],
+      ["Aviso-prévio incorreto", "A modalidade e a proporcionalidade do aviso influenciam outras parcelas."],
+      ["Férias ou 13º ausentes", "Períodos vencidos e parcelas proporcionais devem ser conferidos."],
+      ["FGTS e multa de 40%", "Extratos e chave de saque ajudam a verificar depósitos e indenização."],
+      ["Descontos questionáveis", "Descontos no termo rescisório precisam ter fundamento e documentação."]
+    ],
+    rightsTitle: "Parcelas normalmente conferidas",
+    rights: ["Saldo de salário", "Aviso-prévio", "Férias + 1/3", "13º salário", "FGTS e multa rescisória", "Horas extras e outras médias"],
+    documents: ["Termo de rescisão", "Carteira de trabalho", "Holerites", "Extrato do FGTS", "Aviso de desligamento", "Comprovantes de pagamento"],
+    faq: [
+      ["Qual é o prazo para pagamento da rescisão?", "Em regra, a quitação deve observar o prazo legal contado do término do contrato. As datas e a modalidade de desligamento precisam ser confirmadas."],
+      ["Como saber se o cálculo está correto?", "É necessário confrontar o termo com salário, médias, jornada, férias, depósitos e forma de encerramento do vínculo."],
+      ["Assinei a rescisão. Ainda posso questionar?", "A assinatura, por si só, não impede necessariamente a análise de diferenças, mas os documentos e circunstâncias devem ser avaliados."],
+      ["Posso analisar apenas os documentos?", "Sim. O primeiro passo pode ser a conferência do termo de rescisão e dos comprovantes disponíveis."]
+    ]
+  },
+  "/atuacao/fgts-nao-depositado": {
+    shortTitle: "FGTS Não Depositado",
+    eyebrow: "Regularidade dos depósitos",
+    title: "FGTS não depositado pelo empregador",
+    subtitle:
+      "Verificação dos recolhimentos do contrato de trabalho e orientação sobre medidas possíveis quando existem períodos sem depósito.",
+    seoTitle: "FGTS Não Depositado em Sorocaba | Orientação Trabalhista",
+    seoDescription:
+      "Descubra o que fazer quando a empresa não deposita o FGTS. Atendimento trabalhista em Sorocaba para análise de extratos e períodos em aberto.",
+    whatsapp: "Vim pela página de FGTS Não Depositado e gostaria de verificar meu extrato.",
+    introTitle: "O saldo do aplicativo nem sempre conta toda a história",
+    intro:
+      "O empregador deve realizar os recolhimentos correspondentes ao vínculo. A análise do extrato analítico permite identificar competências ausentes, atrasos e divergências entre o contrato e os depósitos.",
+    situations: [
+      ["Meses sem recolhimento", "Lacunas no extrato podem indicar competências não depositadas."],
+      ["Depósitos feitos com atraso", "Recolhimentos posteriores precisam ser comparados com todo o período trabalhado."],
+      ["Valor abaixo do esperado", "Salário e parcelas remuneratórias podem influenciar a base de cálculo."],
+      ["Contrato não aparece corretamente", "Dados cadastrais ou ausência de registro podem afetar a visualização."],
+      ["Dificuldade para sacar", "Chave, modalidade de desligamento e regularidade dos depósitos devem ser conferidas."],
+      ["FGTS e rescisão indireta", "A ausência reiterada pode ter reflexos além da cobrança dos valores."]
+    ],
+    rightsTitle: "O que a análise pode verificar",
+    rights: ["Períodos sem depósito", "Diferenças de base de cálculo", "Recolhimentos em atraso", "Reflexos no desligamento", "Multa rescisória", "Relação com outras irregularidades"],
+    documents: ["Extrato analítico do FGTS", "Carteira de trabalho", "Holerites", "Termo de rescisão", "Comprovantes bancários", "Documentos do vínculo"],
+    faq: [
+      ["Como consultar se o FGTS foi depositado?", "O extrato analítico disponibilizado pelos canais da Caixa permite conferir os recolhimentos por competência."],
+      ["A empresa pode depositar tudo apenas na demissão?", "Os recolhimentos seguem periodicidade própria. Pagamentos posteriores não eliminam automaticamente a necessidade de conferir diferenças e consequências."],
+      ["FGTS atrasado dá direito à rescisão indireta?", "A irregularidade reiterada pode ser relevante, mas a medida exige análise do histórico e das provas antes de qualquer decisão."],
+      ["Posso cobrar depósitos de um emprego antigo?", "Pode haver possibilidade de cobrança, sujeita à análise dos períodos e dos prazos aplicáveis ao caso."]
+    ]
+  },
+  "/atuacao/horas-extras": {
+    shortTitle: "Horas Extras",
+    eyebrow: "Jornada de trabalho",
+    title: "Horas Extras e controle de jornada",
+    subtitle:
+      "Análise de horários, intervalos, banco de horas e registros para verificar diferenças na remuneração da jornada.",
+    seoTitle: "Horas Extras em Sorocaba | Advogado Trabalhista",
+    seoDescription:
+      "Orientação sobre horas extras em Sorocaba: jornada sem registro, intervalo, banco de horas, trabalho externo e diferenças nos pagamentos.",
+    whatsapp: "Vim pela página de Horas Extras e gostaria de analisar minha jornada de trabalho.",
+    introTitle: "A jornada real pode ser diferente daquela registrada",
+    intro:
+      "Horários antes ou depois do ponto, intervalos incompletos, mensagens fora do expediente e bancos de horas irregulares podem alterar o cálculo. A análise parte da rotina efetivamente cumprida.",
+    situations: [
+      ["Trabalho antes ou depois do ponto", "Atividades fora do horário registrado podem integrar a jornada."],
+      ["Intervalo reduzido", "A pausa efetivamente usufruída deve ser comparada com as regras aplicáveis."],
+      ["Banco de horas sem transparência", "Acordos, compensações e saldo precisam ser verificáveis."],
+      ["Mensagens fora do expediente", "Ordens e atividades remotas podem ajudar a demonstrar a rotina."],
+      ["Cargo de confiança questionável", "O nome do cargo não define sozinho o enquadramento da jornada."],
+      ["Trabalho externo ou remoto", "A possibilidade de controle deve ser analisada conforme a realidade da atividade."]
+    ],
+    rightsTitle: "Pontos avaliados no cálculo da jornada",
+    rights: ["Horários de entrada e saída", "Intervalos", "Adicionais aplicáveis", "Banco de horas", "Reflexos em férias, 13º e FGTS", "Registros e meios de prova"],
+    documents: ["Espelhos de ponto", "Holerites", "Escalas", "Mensagens e e-mails", "Registros de acesso ou localização", "Testemunhas da rotina"],
+    faq: [
+      ["Sem cartão de ponto posso provar horas extras?", "Outros elementos podem ajudar, como mensagens, escalas, registros de acesso e testemunhas, conforme o caso."],
+      ["Quem trabalha em casa tem direito?", "O trabalho remoto não exclui automaticamente o controle de jornada. A rotina e os meios de acompanhamento precisam ser verificados."],
+      ["Banco de horas pode substituir o pagamento?", "A validade da compensação depende da forma adotada, dos registros e do cumprimento das regras aplicáveis."],
+      ["Hora extra gera reflexos em outras verbas?", "Valores habituais podem repercutir em outras parcelas, conforme a natureza e o período analisado."]
+    ]
+  },
+  "/atuacao/assedio-moral-no-trabalho": {
+    shortTitle: "Assédio Moral",
+    eyebrow: "Ambiente de trabalho",
+    title: "Assédio Moral no Trabalho",
+    subtitle:
+      "Orientação para identificar condutas abusivas, preservar provas e avaliar medidas jurídicas com cautela e confidencialidade.",
+    seoTitle: "Assédio Moral no Trabalho em Sorocaba | Orientação Jurídica",
+    seoDescription:
+      "Orientação sobre assédio moral no trabalho em Sorocaba: humilhações, ameaças, isolamento, cobranças abusivas, provas e medidas possíveis.",
+    whatsapp: "Vim pela página de Assédio Moral no Trabalho e gostaria de relatar uma situação com confidencialidade.",
+    introTitle: "Cobrança profissional e violência psicológica não são a mesma coisa",
+    intro:
+      "Nem todo conflito caracteriza assédio, mas humilhações, perseguições e práticas abusivas recorrentes merecem atenção. O contexto, a frequência, as pessoas envolvidas e as provas disponíveis orientam a análise.",
+    situations: [
+      ["Humilhações públicas", "Exposição vexatória, insultos ou ridicularização podem ultrapassar o poder de direção."],
+      ["Ameaças e intimidação", "Pressões abusivas e medo constante precisam ser contextualizados e documentados."],
+      ["Metas com constrangimento", "A cobrança pode se tornar ilícita quando utiliza práticas ofensivas ou discriminatórias."],
+      ["Isolamento deliberado", "Retirada injustificada de tarefas ou exclusão podem integrar um quadro de perseguição."],
+      ["Punições repetidas", "Advertências e mudanças prejudiciais sem fundamento merecem verificação."],
+      ["Adoecimento relacionado", "Atestados e acompanhamento de saúde podem ser relevantes para compreender os impactos."]
+    ],
+    rightsTitle: "Como uma análise responsável é construída",
+    rights: ["Cronologia dos acontecimentos", "Identificação das pessoas envolvidas", "Frequência das condutas", "Comunicações e documentos", "Possíveis testemunhas", "Impactos profissionais e pessoais"],
+    documents: ["Mensagens e e-mails", "Comunicados e advertências", "Relatos com datas", "Atestados e prontuários", "Protocolos internos", "Nomes de possíveis testemunhas"],
+    faq: [
+      ["Toda cobrança de meta é assédio moral?", "Não. É preciso avaliar a forma, a frequência e o contexto da cobrança. Métodos humilhantes ou intimidatórios podem alterar essa conclusão."],
+      ["Posso gravar uma conversa da qual participo?", "A utilização de gravações depende das circunstâncias e da forma de obtenção. O material deve ser analisado antes de ser divulgado ou utilizado."],
+      ["Preciso denunciar internamente primeiro?", "Canais internos podem ser úteis, mas a melhor sequência depende do risco, das provas e da situação concreta."],
+      ["O assédio pode justificar indenização ou rescisão indireta?", "Conforme a gravidade e a prova, podem existir diferentes consequências jurídicas, que precisam ser avaliadas individualmente."]
+    ]
+  },
+  "/atuacao/acidente-de-trabalho": {
+    shortTitle: "Acidente de Trabalho",
+    eyebrow: "Saúde e segurança",
+    title: "Acidente de Trabalho e doença ocupacional",
+    subtitle:
+      "Orientação sobre afastamento, estabilidade, documentação e possíveis direitos após acidente ou adoecimento relacionado ao trabalho.",
+    seoTitle: "Acidente de Trabalho em Sorocaba | Advogado Trabalhista",
+    seoDescription:
+      "Orientação em acidente de trabalho e doença ocupacional em Sorocaba: CAT, INSS, estabilidade, despesas, sequelas e documentação.",
+    whatsapp: "Vim pela página de Acidente de Trabalho e gostaria de analisar minha situação.",
+    introTitle: "O cuidado com a saúde vem antes da discussão jurídica",
+    intro:
+      "Depois do atendimento médico, é importante organizar informações sobre o ocorrido, comunicação à empresa, afastamento e evolução clínica. Acidentes típicos e doenças relacionadas ao trabalho podem produzir efeitos distintos.",
+    situations: [
+      ["Acidente durante a atividade", "O local, a dinâmica e as medidas adotadas após o fato devem ser registrados."],
+      ["Acidente no trajeto", "As circunstâncias do deslocamento precisam ser compreendidas individualmente."],
+      ["Doença causada ou agravada pelo trabalho", "Nexo, atividades e histórico médico são pontos centrais da análise."],
+      ["CAT não emitida", "A ausência de comunicação pela empresa não encerra a possibilidade de orientação e providências."],
+      ["Retorno com limitações", "Restrições, readaptação e condições de retorno merecem acompanhamento."],
+      ["Dispensa após afastamento", "Espécie do benefício, datas e possível estabilidade precisam ser conferidas."]
+    ],
+    rightsTitle: "Questões que podem exigir verificação",
+    rights: ["Emissão da CAT", "Benefício previdenciário", "Estabilidade provisória", "Despesas e prejuízos", "Sequelas e redução da capacidade", "Condições de retorno ao trabalho"],
+    documents: ["Atestados e exames", "Prontuários e receitas", "CAT, se existente", "Comunicações com a empresa", "Documentos do INSS", "Fotos, vídeos e relatos do acidente"],
+    faq: [
+      ["A empresa não emitiu CAT. O que fazer?", "A falta de emissão deve ser analisada, mas não impede necessariamente outras providências. Preserve os documentos médicos e as informações do ocorrido."],
+      ["Doença ocupacional pode ser acidente de trabalho?", "Determinadas doenças causadas ou agravadas pelas condições laborais podem receber tratamento jurídico semelhante, conforme a prova do nexo."],
+      ["Existe estabilidade depois do afastamento?", "A existência e o período de estabilidade dependem do enquadramento, do benefício e das circunstâncias do caso."],
+      ["Fui dispensado depois do acidente. Ainda posso buscar orientação?", "Sim. Datas, documentos médicos, benefício e condições da dispensa podem ser analisados mesmo após o encerramento do vínculo."]
+    ]
+  }
+};
+
+const laborLandingRoutes = Object.keys(laborLandingPages);
+
+function laborLandingFaqSchemaTemplate(page) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        serviceType: page.shortTitle,
+        provider: { "@id": `${SITE_CONFIG.siteUrl}/#organization` },
+        areaServed: { "@type": "City", name: "Sorocaba" }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: page.faq.map(([question, answer]) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer }
+        }))
+      }
+    ]
+  };
+  return `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>`;
+}
+
+function laborLandingPageTemplate(path) {
+  const page = laborLandingPages[path];
+  const whatsappUrl = getWhatsAppUrl(page.whatsapp);
+  const relatedPages = laborLandingRoutes.filter((route) => route !== path).slice(0, 3);
+
+  return `
+    ${headerTemplate(path)}
+    <main id="conteudo" class="labor-landing-page">
+      <section class="labor-lp-hero">
+        <div class="labor-lp-hero-inner">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>/</span>
+            <a href="/atuacao">Atuação</a><span>/</span>
+            <a href="/atuacao/direito-trabalhista-trabalhadores">Trabalhadores</a><span>/</span>
+            <span>${page.shortTitle}</span>
+          </nav>
+          <p class="eyebrow">${page.eyebrow}</p>
+          <h1>${page.title}</h1>
+          <p class="labor-lp-lead">${page.subtitle}</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Conversar sobre meu caso</a>
+            <a class="button button-ghost" href="#entenda">Entender a situação</a>
+          </div>
+          <div class="labor-lp-trust" aria-label="Informações do atendimento">
+            <span>Atendimento em Sorocaba e região</span>
+            <span>${professionalRegistrationLink()}</span>
+            <span>Presencial e digital</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="labor-lp-intro reveal-block" id="entenda">
+        <p class="eyebrow">Análise individual</p>
+        <h2>${page.introTitle}</h2>
+        <p>${page.intro}</p>
+      </section>
+
+      <section class="labor-lp-situations reveal-block">
+        <div class="section-heading">
+          <p>Sinais de atenção</p>
+          <h2>Situações que podem exigir orientação</h2>
+          <span>Os exemplos abaixo não substituem a avaliação das circunstâncias e dos documentos do caso.</span>
+        </div>
+        <div class="labor-lp-card-grid">
+          ${page.situations.map(([title, text], index) => `
+            <article>
+              <span>${String(index + 1).padStart(2, "0")}</span>
+              <h3>${title}</h3>
+              <p>${text}</p>
+            </article>`).join("")}
+        </div>
+      </section>
+
+      <section class="labor-lp-checklist reveal-block">
+        <div>
+          <p class="eyebrow">Pontos da análise</p>
+          <h2>${page.rightsTitle}</h2>
+          <div class="labor-lp-list">${page.rights.map((item) => `<span>${item}</span>`).join("")}</div>
+        </div>
+        <div>
+          <p class="eyebrow">Documentos úteis</p>
+          <h2>O que pode ajudar na conversa inicial</h2>
+          <div class="labor-lp-list">${page.documents.map((item) => `<span>${item}</span>`).join("")}</div>
+        </div>
+      </section>
+
+      <section class="labor-lp-lawyer reveal-block">
+        <div class="labor-lp-lawyer-image">
+          ${optimizedPicture("/home-retrato-advogado.jpg", "Dr. Eryx Fernandes, advogado em Sorocaba")}
+        </div>
+        <div>
+          <p class="eyebrow">Responsável pelo atendimento</p>
+          <h2>Orientação direta com o Dr. Eryx Fernandes</h2>
+          <p>O atendimento é conduzido com escuta, análise dos documentos e explicação clara sobre riscos e caminhos possíveis, sem promessas de resultado.</p>
+          <div class="labor-lp-credentials">
+            <strong>Dr. Eryx Fernandes</strong>
+            <span>${professionalRegistrationLink()}</span>
+            <span>${SITE_CONFIG.address}</span>
+          </div>
+          <a class="button button-dark" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o escritório</a>
+        </div>
+      </section>
+
+      <section class="worker-faq-section labor-lp-faq reveal-block">
+        <div class="section-heading">
+          <p>FAQ</p>
+          <h2>Perguntas frequentes sobre ${page.shortTitle.toLowerCase()}</h2>
+        </div>
+        <div class="faq-list">
+          ${page.faq.map(([question, answer], index) => `
+            <article class="faq-item ${index === 0 ? "is-open" : ""}" data-faq-item>
+              <button type="button" data-faq-toggle aria-expanded="${index === 0 ? "true" : "false"}">
+                <span>${String(index + 1).padStart(2, "0")}</span>${question}
+              </button>
+              <div class="faq-answer"><p>${answer}</p></div>
+            </article>`).join("")}
+        </div>
+      </section>
+
+      <section class="labor-lp-related reveal-block">
+        <div class="section-heading">
+          <p>Direitos do trabalhador</p>
+          <h2>Outras situações trabalhistas</h2>
+        </div>
+        <div class="labor-lp-related-grid">
+          ${relatedPages.map((route) => `<a href="${route}"><strong>${laborLandingPages[route].shortTitle}</strong><span>Conhecer esta área de atuação</span></a>`).join("")}
+          <a href="/atuacao/direito-trabalhista-trabalhadores"><strong>Direito Trabalhista para Trabalhadores</strong><span>Ver todas as frentes de atuação</span></a>
+        </div>
+        ${page.article ? `<a class="labor-lp-article-link" href="${page.article[0]}">${page.article[1]} →</a>` : ""}
+      </section>
+
+      <section class="labor-lp-final">
+        <div>
+          <p class="eyebrow">Próximo passo</p>
+          <h2>Quer entender como essas informações se aplicam ao seu caso?</h2>
+          <p>Conte brevemente o que aconteceu. O primeiro contato serve para compreender o contexto e organizar os próximos passos.</p>
+          <a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Iniciar uma conversa</a>
+        </div>
+      </section>
+    </main>
+    ${laborLandingFaqSchemaTemplate(page)}
+    ${footerTemplate()}
+  `;
+}
+
 function workerLaborTemplate() {
   return `
     ${headerTemplate("/atuacao/direito-trabalhista-trabalhadores")}
@@ -1418,12 +1758,17 @@ function workerLaborTemplate() {
             <span>/</span>
             <span>Trabalhadores</span>
           </nav>
-          <h1 class="worker-hero-seo-title">Advogado Trabalhista em Sorocaba</h1>
-          <h2 class="worker-hero-display-title">Direito Trabalhista Para Trabalhadores</h2>
+          <p class="worker-hero-seo-title eyebrow">Direito Trabalhista para trabalhadores</p>
+          <h1 class="worker-hero-display-title">Advogado Trabalhista em Sorocaba para Trabalhadores</h1>
           <p>Atuação na defesa de trabalhadores em demandas envolvendo rescisão, verbas trabalhistas, horas extras, assédio, acidente de trabalho, FGTS, vínculo empregatício e demais conflitos da relação de trabalho.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com um advogado trabalhista</a>
-            <a class="button button-ghost" href="#analise-do-caso">Entender como funciona a análise</a>
+            <a class="button button-ghost" href="#servicos-trabalhistas">Encontrar meu problema</a>
+          </div>
+          <div class="worker-hero-trust" aria-label="Informações do atendimento">
+            <span>Atendimento em Sorocaba e região</span>
+            <span>${professionalRegistrationLink()}</span>
+            <span>Atendimento presencial e digital</span>
           </div>
         </div>
       </section>
@@ -1435,21 +1780,22 @@ function workerLaborTemplate() {
         </div>
       </section>
 
-      <section class="attention-section reveal-block">
+      <section class="attention-section reveal-block" id="servicos-trabalhistas">
         <div class="section-heading">
-          <p>Direitos trabalhistas em Sorocaba</p>
-          <h2>Situações que merecem atenção</h2>
-          <span>Alguns sinais indicam que a relação de trabalho pode exigir análise jurídica individualizada.</span>
+          <p>Serviços para trabalhadores</p>
+          <h2>Encontre orientação para o seu problema trabalhista</h2>
+          <span>Escolha a situação mais próxima da sua realidade para acessar informações e documentos específicos.</span>
         </div>
         <div class="attention-grid">
-          ${workerAttentionItems
+          ${laborLandingRoutes
             .map(
-              ([title, text], index) => `
-                <article>
+              (route, index) => `
+                <a class="worker-service-card" href="${route}">
                   <span>${String(index + 1).padStart(2, "0")}</span>
-                  <h3>${title}</h3>
-                  <p>${text}</p>
-                </article>
+                  <h3>${laborLandingPages[route].shortTitle}</h3>
+                  <p>${laborLandingPages[route].subtitle}</p>
+                  <strong>Ver orientação sobre este tema →</strong>
+                </a>
               `
             )
             .join("")}
@@ -1507,7 +1853,7 @@ function workerLaborTemplate() {
         <div class="worker-local-copy">
           <p class="eyebrow">Sorocaba/SP</p>
           <h2>Atendimento trabalhista em Sorocaba e região</h2>
-          <p>Com sede em Sorocaba/SP, o Eryx Fernandes Advocacia presta atendimento a trabalhadores da cidade e região, com suporte presencial e digital para análise de demandas trabalhistas.</p>
+          <p>Com sede em Sorocaba/SP, o atendimento é conduzido diretamente pelo Dr. Eryx Fernandes, ${professionalRegistrationLink()}, para trabalhadores da cidade e região, de forma presencial ou digital.</p>
           <address>${SITE_CONFIG.address}</address>
           <p class="worker-local-links">
             Veja também as <a href="/atuacao">áreas de atuação</a>, <a href="/quem-somos">conheça o escritório</a> ou <a href="/contato">fale com o escritório</a>.
@@ -3940,6 +4286,7 @@ function setCanonical(path) {
 function routeSocialImage(path) {
   const article = articles.find((item) => item.href === path);
   if (article) return article.image;
+  if (laborLandingPages[path]) return "/home-retrato-advogado.jpg";
   if (path === "/contato" || path === "/quem-somos") return "/home-retrato-advogado.jpg";
   return "/home-cta-advogado.jpg";
 }
@@ -4031,12 +4378,18 @@ function renderGlobalBusinessSchema() {
 
 function updateDocumentMeta(path) {
   const page = internalPages[path];
+  const laborLandingPage = laborLandingPages[path];
   const description = ensureMetaByName("description");
-  document.title = page ? `${page.label} | ${SITE_CONFIG.firmName}` : `Advogado em Sorocaba | ${SITE_CONFIG.firmName}`;
+  document.title = laborLandingPage
+    ? laborLandingPage.seoTitle
+    : page
+      ? `${page.label} | ${SITE_CONFIG.firmName}`
+      : `Advogado em Sorocaba | ${SITE_CONFIG.firmName}`;
   document.body.className = path === "/" ? "page-home" : "page-internal";
   description.setAttribute(
     "content",
-    "Advocacia em Sorocaba nas áreas trabalhista, imobiliária e de família, com atendimento próximo, orientação clara e atuação responsável."
+    laborLandingPage?.seoDescription ||
+      "Advocacia em Sorocaba nas áreas trabalhista, imobiliária e de família, com atendimento próximo, orientação clara e atuação responsável."
   );
   if (path === "/atuacao") {
     document.title = `Áreas de Atuação | ${SITE_CONFIG.firmName}`;
@@ -4335,6 +4688,8 @@ function initArticleFilters() {
 
 export function renderPageHtml(pathname) {
   const path = normalizePath(pathname);
+
+  if (laborLandingPages[path]) return laborLandingPageTemplate(path);
 
   return path === "/"
     ? homeTemplate()

@@ -7,6 +7,12 @@ const routes = [
   "/quem-somos",
   "/atuacao",
   "/atuacao/direito-trabalhista-trabalhadores",
+  "/atuacao/rescisao-indireta",
+  "/atuacao/verbas-rescisorias",
+  "/atuacao/fgts-nao-depositado",
+  "/atuacao/horas-extras",
+  "/atuacao/assedio-moral-no-trabalho",
+  "/atuacao/acidente-de-trabalho",
   "/atuacao/direito-trabalhista-empresas",
   "/atuacao/direito-imobiliario",
   "/atuacao/direito-de-familia",
@@ -99,4 +105,34 @@ test("preserva a cor do link da inscrição em todos os estados", async () => {
   assert.match(css, /\.professional-registration-link:active[\s\S]*?color:\s*inherit;/);
   assert.match(css, /\.professional-registration-link:focus[\s\S]*?color:\s*inherit;/);
   assert.match(css, /\.professional-registration-link:focus-visible[\s\S]*?outline:\s*2px solid currentColor;/);
+});
+
+test("mantém as recomendações de artigos totalmente opacas", async () => {
+  const css = await import("node:fs/promises").then((fs) => fs.readFile(new URL("./site.css", import.meta.url), "utf8"));
+  assert.match(css, /\.editorial-article-card\s*\{[\s\S]*?background:\s*var\(--white\);/);
+  assert.match(css, /\.article-recommendations\.reveal-block\s*\{[\s\S]*?animation:\s*none;[\s\S]*?opacity:\s*1;/);
+});
+
+test("renderiza LPs trabalhistas com conteúdo, conversão e dados estruturados próprios", () => {
+  const landingRoutes = routes.filter((route) =>
+    ["/atuacao/rescisao-indireta", "/atuacao/verbas-rescisorias", "/atuacao/fgts-nao-depositado", "/atuacao/horas-extras", "/atuacao/assedio-moral-no-trabalho", "/atuacao/acidente-de-trabalho"].includes(route)
+  );
+  for (const route of landingRoutes) {
+    const html = renderPageHtml(route);
+    assert.match(html, /class="labor-landing-page"/);
+    assert.match(html, /<h1>.+<\/h1>/);
+    assert.match(html, /"@type":"Service"/);
+    assert.match(html, /"@type":"FAQPage"/);
+    assert.match(html, /home-retrato-advogado/);
+    assert.match(html, /href="\/atuacao\/direito-trabalhista-trabalhadores"/);
+  }
+});
+
+test("transforma a página trabalhista para trabalhadores em pilar das LPs", () => {
+  const html = renderPageHtml("/atuacao/direito-trabalhista-trabalhadores");
+  assert.match(html, /<h1 class="worker-hero-display-title">Advogado Trabalhista em Sorocaba para Trabalhadores<\/h1>/);
+  assert.match(html, /class="worker-hero-trust"/);
+  for (const route of ["/atuacao/rescisao-indireta", "/atuacao/verbas-rescisorias", "/atuacao/fgts-nao-depositado", "/atuacao/horas-extras", "/atuacao/assedio-moral-no-trabalho", "/atuacao/acidente-de-trabalho"]) {
+    assert.match(html, new RegExp(`href="${route}"`), route);
+  }
 });

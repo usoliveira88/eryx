@@ -2797,7 +2797,7 @@ button {
   overflow: hidden;
   border: 1px solid rgba(16, 24, 32, 0.1);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.78);
+  background: var(--white);
   box-shadow: 0 18px 54px rgba(6, 30, 64, 0.055);
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
@@ -3255,6 +3255,12 @@ button {
   margin: 0 auto;
   padding: 112px 0;
   border-top: 1px solid rgba(16, 24, 32, 0.08);
+}
+
+.article-recommendations.reveal-block {
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
 
 .article-recommendations-grid {
@@ -4983,4 +4989,140 @@ button {
   .floating-whatsapp {
     transition: none;
   }
+}
+
+/* Landing pages trabalhistas */
+.labor-landing-page { background: var(--cream); }
+.labor-lp-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 164px 7vw 86px;
+  color: var(--white);
+  background: radial-gradient(circle at 82% 22%, rgba(188,151,92,.22), transparent 28%), linear-gradient(135deg,#112033 0%,#1d3550 62%,#243f5e 100%);
+}
+.labor-lp-hero::after {
+  position: absolute; right: -80px; bottom: -160px; width: 420px; height: 420px;
+  border: 1px solid rgba(255,255,255,.12); border-radius: 50%; content: "";
+}
+.labor-lp-hero-inner { position: relative; z-index: 1; width: min(900px,100%); }
+.labor-lp-hero .breadcrumb { margin-bottom: 38px; }
+.labor-lp-hero .eyebrow,.labor-lp-lawyer .eyebrow,.labor-lp-final .eyebrow { color: var(--gold); }
+.labor-lp-hero h1 {
+  max-width: 840px; margin: 12px 0 22px; font-family: var(--font-serif);
+  font-size: clamp(3rem,6.2vw,6.5rem); font-weight: 400; line-height: .98; letter-spacing: -.045em;
+}
+.labor-lp-lead { max-width: 760px; margin: 0; color: rgba(255,255,255,.8); font-size: 1.08rem; line-height: 1.75; }
+.labor-lp-trust {
+  display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 34px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.78);
+  font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
+}
+.labor-lp-intro {
+  display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; padding: 96px 7vw; background: var(--white);
+}
+.labor-lp-intro h2,.labor-lp-checklist h2,.labor-lp-lawyer h2,.labor-lp-final h2 {
+  margin: 12px 0 0; color: var(--navy); font-family: var(--font-serif);
+  font-size: clamp(2.1rem,4vw,4.2rem); font-weight: 400; line-height: 1.08; letter-spacing: -.035em;
+}
+.labor-lp-intro>p:last-child { align-self: end; max-width: 680px; margin: 0; color: var(--text-soft); font-size: 1.05rem; line-height: 1.9; }
+.labor-lp-situations,.labor-lp-related { padding: 96px 7vw; }
+.labor-lp-card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 48px; background: rgba(22,42,63,.12); }
+.labor-lp-card-grid article { min-height: 250px; padding: 34px; background: var(--white); }
+.labor-lp-card-grid article>span { color: var(--gold); font-size: .72rem; letter-spacing: .16em; }
+.labor-lp-card-grid h3 { margin: 40px 0 14px; color: var(--navy); font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; }
+.labor-lp-card-grid p { margin: 0; color: var(--text-soft); font-size: .92rem; line-height: 1.75; }
+.labor-lp-checklist { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; padding: 0 7vw 96px; }
+.labor-lp-checklist>div { padding: 52px; background: var(--navy); }
+.labor-lp-checklist>div+div { background: #1d3550; }
+.labor-lp-checklist h2 { color: var(--white); font-size: clamp(2rem,3vw,3.2rem); }
+.labor-lp-list { display: grid; margin-top: 36px; }
+.labor-lp-list span { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.78); }
+.labor-lp-list span::before { margin-right: 12px; color: var(--gold); content: "✓"; }
+.labor-lp-lawyer {
+  display: grid; grid-template-columns: minmax(300px,.85fr) 1.15fr; align-items: center; gap: 8vw; padding: 96px 7vw; background: var(--white);
+}
+.labor-lp-lawyer-image,.labor-lp-lawyer-image picture,.labor-lp-lawyer-image img { width: 100%; min-height: 580px; height: 100%; object-fit: cover; }
+.labor-lp-lawyer p:not(.eyebrow) { max-width: 650px; margin: 24px 0; color: var(--text-soft); line-height: 1.85; }
+.labor-lp-credentials { display: grid; gap: 8px; margin: 28px 0 32px; color: var(--navy); }
+.labor-lp-credentials strong { font-family: var(--font-serif); font-size: 1.3rem; }
+.labor-lp-faq { background: var(--cream); }
+.labor-lp-related { background: var(--white); }
+.labor-lp-related-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; margin-top: 42px; background: rgba(22,42,63,.12); }
+.labor-lp-related-grid a {
+  display: flex; min-height: 180px; padding: 28px; flex-direction: column; justify-content: space-between;
+  color: var(--navy); background: var(--cream); text-decoration: none; transition: background 180ms ease,color 180ms ease;
+}
+.labor-lp-related-grid a:hover { color: var(--white); background: var(--navy); }
+.labor-lp-related-grid strong { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; }
+.labor-lp-related-grid span { font-size: .76rem; letter-spacing: .05em; text-transform: uppercase; }
+.labor-lp-article-link { display: inline-block; margin-top: 30px; color: var(--navy); font-weight: 600; }
+.labor-lp-final {
+  padding: 96px 7vw; color: var(--white);
+  background: linear-gradient(90deg,rgba(16,31,48,.96),rgba(16,31,48,.82)),url("/home-detalhe-documentos.jpg") center/cover;
+}
+.labor-lp-final>div { max-width: 780px; }
+.labor-lp-final h2 { color: var(--white); }
+.labor-lp-final p:not(.eyebrow) { max-width: 650px; margin: 24px 0 32px; color: rgba(255,255,255,.76); line-height: 1.8; }
+@media (max-width:980px) {
+  .labor-lp-card-grid { grid-template-columns: repeat(2,1fr); }
+  .labor-lp-related-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width:720px) {
+  .labor-lp-hero { padding: 126px 22px 64px; }
+  .labor-lp-hero h1 { font-size: clamp(2.7rem,13vw,4.2rem); }
+  .labor-lp-intro,.labor-lp-checklist,.labor-lp-lawyer { grid-template-columns: 1fr; }
+  .labor-lp-intro,.labor-lp-situations,.labor-lp-related,.labor-lp-lawyer,.labor-lp-final { padding: 68px 22px; }
+  .labor-lp-checklist { padding: 0 22px 68px; }
+  .labor-lp-checklist>div { padding: 34px 26px; }
+  .labor-lp-card-grid,.labor-lp-related-grid { grid-template-columns: 1fr; }
+  .labor-lp-card-grid article { min-height: 0; }
+  .labor-lp-card-grid h3 { margin-top: 24px; }
+  .labor-lp-lawyer-image,.labor-lp-lawyer-image picture,.labor-lp-lawyer-image img { min-height: 420px; }
+}
+
+.worker-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 28px;
+  max-width: 920px;
+  margin: 30px auto 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.74);
+  font-size: .76rem;
+  font-weight: 650;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.attention-grid .worker-service-card {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  column-gap: 18px;
+  min-height: 220px;
+  border: 1px solid rgba(16,24,32,.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,.66);
+  padding: 26px;
+  text-decoration: none;
+  transition: transform 180ms ease,border-color 180ms ease,background 180ms ease,box-shadow 180ms ease;
+}
+
+.attention-grid .worker-service-card:hover,
+.attention-grid .worker-service-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(200,170,110,.48);
+  background: var(--white);
+  box-shadow: 0 20px 62px rgba(6,30,64,.09);
+}
+
+.worker-service-card > span { grid-row: 1 / span 3; }
+.worker-service-card strong {
+  align-self: end;
+  margin-top: 18px;
+  color: var(--blue);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
 }

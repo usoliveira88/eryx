@@ -72,31 +72,63 @@ function readDescription(html) {
   );
 }
 
-function legalServiceSchema() {
+function organizationGraph(route) {
+  const organizationId = absoluteUrl("/#organization");
+  const personId = absoluteUrl("/quem-somos#eryx-fernandes");
+  const graph = [
+    {
+      "@type": "LegalService",
+      "@id": organizationId,
+      name: "Eryx Fernandes Advocacia",
+      legalName: "Eryx Fernandes Advocacia",
+      url: siteOrigin,
+      logo: absoluteUrl("/favicon-512.png"),
+      image: absoluteUrl("/home-cta-advogado.jpg"),
+      telephone: "+55 15 99687-4689",
+      email: "eryx@advmartinsfernandes.com",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Rua Darcy Fruet, 284 - Wanel Ville 5",
+        addressLocality: "Sorocaba",
+        addressRegion: "SP",
+        postalCode: "18057-063",
+        addressCountry: "BR"
+      },
+      areaServed: {
+        "@type": "City",
+        name: "Sorocaba"
+      },
+      sameAs: ["https://www.instagram.com/adv.eryxfernandes/"],
+      availableLanguage: "pt-BR"
+    },
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: "Eryx Fernandes",
+      honorificPrefix: "Dr.",
+      jobTitle: "Advogado",
+      identifier: "OAB/SP nº 530.983",
+      url: absoluteUrl("/quem-somos"),
+      worksFor: { "@id": organizationId },
+      sameAs: ["https://www.instagram.com/adv.eryxfernandes/"]
+    }
+  ];
+
+  if (route === "/") {
+    graph.push({
+      "@type": "WebSite",
+      "@id": absoluteUrl("/#website"),
+      name: "Eryx Fernandes Advocacia",
+      alternateName: "Eryx Fernandes Advocacia",
+      url: siteOrigin,
+      publisher: { "@id": organizationId },
+      inLanguage: "pt-BR"
+    });
+  }
+
   return {
     "@context": "https://schema.org",
-    "@type": "LegalService",
-    name: "Eryx Fernandes Advocacia",
-    legalName: "Eryx Fernandes Advocacia",
-    url: siteOrigin,
-    logo: absoluteUrl("/favicon-512.png"),
-    image: absoluteUrl("/home-cta-advogado.jpg"),
-    telephone: "+55 15 99687-4689",
-    email: "eryx@advmartinsfernandes.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Rua Darcy Fruet, 284 - Wanel Ville 5",
-      addressLocality: "Sorocaba",
-      addressRegion: "SP",
-      postalCode: "18057-063",
-      addressCountry: "BR"
-    },
-    areaServed: {
-      "@type": "City",
-      name: "Sorocaba"
-    },
-    sameAs: ["https://www.instagram.com/adv.eryxfernandes/"],
-    availableLanguage: "pt-BR"
+    "@graph": graph
   };
 }
 
@@ -106,7 +138,7 @@ function staticSeoTags(route, html) {
   const type = route.startsWith("/artigos/") ? "article" : "website";
   const canonical = absoluteUrl(route);
   const image = absoluteUrl(routeImages.get(route) || "/home-cta-advogado.jpg");
-  const schemaJson = JSON.stringify(legalServiceSchema()).replace(/</g, "\\u003c");
+  const schemaJson = JSON.stringify(organizationGraph(route)).replace(/</g, "\\u003c");
 
   return [
     `<title>${escapeHtml(title)}</title>`,

@@ -37,6 +37,25 @@ async function exists(path) {
 createServer(async (req, res) => {
   try {
     const url = new URL(req.url || "/", `http://${req.headers.host}`);
+    const forwardedHost = String(req.headers["x-forwarded-host"] || req.headers.host || "").split(",")[0].trim();
+    const forwardedProtocol = String(req.headers["x-forwarded-proto"] || "http").split(",")[0].trim();
+
+    if (forwardedHost.toLowerCase() === "www.advmartinsfernandes.com.br") {
+      res.writeHead(301, {
+        location: `https://advmartinsfernandes.com.br${url.pathname}${url.search}`
+      });
+      res.end();
+      return;
+    }
+
+    if (forwardedHost.toLowerCase() === "advmartinsfernandes.com.br" && forwardedProtocol !== "https") {
+      res.writeHead(301, {
+        location: `https://advmartinsfernandes.com.br${url.pathname}${url.search}`
+      });
+      res.end();
+      return;
+    }
+
     let filePath = safeJoin(root, url.pathname);
     let info = await exists(filePath);
 

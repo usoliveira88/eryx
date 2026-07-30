@@ -868,6 +868,12 @@ button {
   font-weight: 800;
 }
 
+.article-card h3 .article-card-title-link {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 .center-action {
   display: flex;
   justify-content: center;
@@ -914,7 +920,7 @@ button {
 }
 
 .site-footer {
-  padding: 76px 0 32px;
+  padding: 76px 0 112px;
   background: #04152d;
   color: rgba(255, 255, 255, 0.78);
 }
@@ -4862,5 +4868,119 @@ button {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 1200;
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #25d366;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 22%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.floating-whatsapp svg {
+  width: 31px;
+  height: 31px;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 30%);
+}
+
+.floating-whatsapp:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.floating-whatsapp-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  width: max-content;
+  max-width: 220px;
+  padding: 8px 11px;
+  border-radius: 6px;
+  color: #fff;
+  background: #13221b;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 18%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(5px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.floating-whatsapp:hover .floating-whatsapp-tooltip,
+.floating-whatsapp:focus-visible .floating-whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.professional-registration-link,
+.professional-registration-link:visited,
+.professional-registration-link:hover,
+.professional-registration-link:active,
+.professional-registration-link:focus {
+  color: inherit;
+  opacity: 1;
+  text-decoration-color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.professional-registration-link {
+  cursor: pointer;
+}
+
+.site-footer a.professional-registration-link {
+  display: inline;
+}
+
+.professional-registration-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.professional-registration-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .site-footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+
+  .floating-whatsapp {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    width: 56px;
+    height: 56px;
+  }
+
+  .floating-whatsapp svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .floating-whatsapp-tooltip {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-whatsapp {
+    transition: none;
   }
 }

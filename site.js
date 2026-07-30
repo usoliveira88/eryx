@@ -1,17 +1,34 @@
-const SITE_CONFIG = {
+export const SITE_CONFIG = {
   firmName: "Eryx Fernandes Advocacia",
   siteUrl: "https://advmartinsfernandes.com.br",
+  authorName: "Eryx Fernandes",
   responsible: "Dr. Eryx Fernandes",
   oab: "OAB/SP nº 530.983",
+  oabConsultationUrl: "https://www2.oabsp.org.br/asp/consultainscritos/consulta01.asp",
   phone: "(15) 99687-4689",
-  whatsapp: "(15) 99687-4689",
-  whatsappUrl: "https://wa.me/5515996874689",
+  whatsappNumber: "5515996874689",
+  whatsappDisplay: "(15) 99687-4689",
+  whatsappMessage: "Vim pelo Google e quero mais informações.",
+  get whatsapp() {
+    return this.whatsappDisplay;
+  },
+  get whatsappUrl() {
+    return getWhatsAppUrl();
+  },
   email: "eryx@advmartinsfernandes.com",
   address: "Rua Darcy Fruet, 284 – Wanel Ville 5, Sorocaba/SP – CEP 18057-063",
   instagram: "@adv.eryxfernandes",
   instagramUrl: "https://www.instagram.com/adv.eryxfernandes/",
   city: "Sorocaba/SP"
 };
+
+export function getWhatsAppUrl(message = SITE_CONFIG.whatsappMessage) {
+  return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+export function professionalRegistrationLink() {
+  return `<a class="professional-registration-link" href="${SITE_CONFIG.oabConsultationUrl}" target="_blank" rel="noopener noreferrer" aria-label="Consultar inscrição ${SITE_CONFIG.oab} no site oficial da OAB São Paulo">${SITE_CONFIG.oab}</a>`;
+}
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -84,8 +101,9 @@ const articles = [
     alt: "Ilustração de equipamentos de segurança e placa NR-01 para artigo sobre novas exigências da norma",
     href: "/artigos/nr-01-novas-exigencias-empresas-sorocaba",
     readingTime: "13 min de leitura",
-    date: "Publicação semanal",
+    date: "15 de julho de 2026",
     publishedAt: "2026-07-15",
+    modifiedAt: "2026-07-15",
     authorRole: "Advogado Trabalhista Empresarial"
   },
   {
@@ -100,8 +118,10 @@ const articles = [
     alt: "Carteira de trabalho para artigo sobre Rescisão Indireta em Sorocaba",
     href: "/artigos/rescisao-indireta-sorocaba",
     readingTime: "9 min de leitura",
-    date: "Publicação semanal",
-    publishedAt: "2026-07-06"
+    date: "6 de julho de 2026",
+    publishedAt: "2026-07-06",
+    modifiedAt: "2026-07-06",
+    authorRole: "Advogado Trabalhista"
   },
   {
     category: "Trabalhista",
@@ -114,7 +134,10 @@ const articles = [
     alt: "Documentos trabalhistas sobre mesa para artigo sobre direitos trabalhistas",
     href: "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica",
     readingTime: "4 min de leitura",
-    date: "Publicação semanal"
+    date: "25 de junho de 2026",
+    publishedAt: "2026-06-25",
+    modifiedAt: "2026-06-25",
+    authorRole: "Advogado Trabalhista"
   },
   {
     category: "Condominial",
@@ -127,7 +150,10 @@ const articles = [
     alt: "Ambiente profissional para artigo sobre contratos imobiliários",
     href: "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar",
     readingTime: "5 min de leitura",
-    date: "Publicação semanal"
+    date: "25 de junho de 2026",
+    publishedAt: "2026-06-25",
+    modifiedAt: "2026-06-25",
+    authorRole: "Advogado Imobiliário"
   },
   {
     category: "Família",
@@ -140,7 +166,10 @@ const articles = [
     alt: "Cena familiar ao pôr do sol para artigo sobre divórcio guarda e partilha",
     href: "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca",
     readingTime: "5 min de leitura",
-    date: "Publicação semanal"
+    date: "25 de junho de 2026",
+    publishedAt: "2026-06-25",
+    modifiedAt: "2026-06-25",
+    authorRole: "Advogado de Família"
   }
 ];
 
@@ -698,7 +727,7 @@ const internalPages = {
     bodyTitle: "Antes de falar em processo, falamos em decisão.",
     body:
       "O Eryx Fernandes Advocacia atua com técnica, escuta e responsabilidade na condução de demandas jurídicas pessoais, empresariais e patrimoniais.",
-    points: [SITE_CONFIG.responsible, SITE_CONFIG.oab, SITE_CONFIG.city]
+    points: [SITE_CONFIG.responsible, professionalRegistrationLink(), SITE_CONFIG.city]
   },
   "/atuacao": {
     title: "Soluções jurídicas para pessoas, empresas e patrimônios.",
@@ -770,7 +799,7 @@ const internalPages = {
     bodyTitle: "Canais de atendimento",
     body:
       "Fale com o escritório para apresentar brevemente o seu caso. O atendimento pode ser presencial em Sorocaba/SP ou digital, com orientação clara sobre os próximos passos.",
-    points: [SITE_CONFIG.whatsapp, SITE_CONFIG.email, SITE_CONFIG.address, SITE_CONFIG.oab],
+    points: [SITE_CONFIG.whatsapp, SITE_CONFIG.email, SITE_CONFIG.address, professionalRegistrationLink()],
     isContact: true
   }
 };
@@ -838,7 +867,7 @@ function headerTemplate(currentPath) {
         <nav class="desktop-nav" aria-label="Navegação principal">
           ${desktopNav}
         </nav>
-        <a class="header-contact" href="/contato">Fale conosco</a>
+        <a class="header-contact" href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer">Fale conosco</a>
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
           <span></span>
           <span></span>
@@ -847,7 +876,7 @@ function headerTemplate(currentPath) {
       <div class="mobile-panel" data-mobile-panel>
         <nav aria-label="Menu mobile">
           ${mobileNav}
-          <a class="mobile-contact" href="/contato">Fale conosco</a>
+          <a class="mobile-contact" href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer">Fale conosco</a>
         </nav>
       </div>
     </header>
@@ -885,7 +914,7 @@ function footerTemplate() {
           <p>${SITE_CONFIG.address}</p>
           <a href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">WhatsApp: ${SITE_CONFIG.whatsapp}</a>
           <a href="mailto:${SITE_CONFIG.email}">${SITE_CONFIG.email}</a>
-          <p>${SITE_CONFIG.responsible} · ${SITE_CONFIG.oab}</p>
+          <p>${SITE_CONFIG.responsible} · ${professionalRegistrationLink()}</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -893,6 +922,24 @@ function footerTemplate() {
         <span>${SITE_CONFIG.city} · Atendimento presencial e digital.</span>
       </div>
     </footer>
+    ${floatingWhatsAppTemplate()}
+  `;
+}
+
+function floatingWhatsAppTemplate() {
+  return `
+    <a
+      class="floating-whatsapp"
+      href="${getWhatsAppUrl()}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Falar com o Dr. Eryx Fernandes pelo WhatsApp"
+      title="Falar pelo WhatsApp">
+      <span class="floating-whatsapp-tooltip" aria-hidden="true">Fale conosco pelo WhatsApp</span>
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M16.04 3A12.94 12.94 0 0 0 5 22.7L3 29l6.48-1.93A12.98 12.98 0 1 0 16.04 3Zm0 23.58c-2.1 0-4.15-.62-5.9-1.8l-.42-.27-3.84 1.14 1.17-3.73-.28-.44a10.58 10.58 0 1 1 9.27 5.1Zm5.8-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.31-.82 1.03-1 1.24-.19.21-.37.24-.69.08-.31-.16-1.33-.49-2.54-1.57a9.5 9.5 0 0 1-1.76-2.19c-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.15-.71-1.71-.97-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.31-1.1 1.07-1.1 2.62s1.13 3.04 1.28 3.25c.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.75.24 1.44.21 1.98.13.6-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.5-.08-.13-.29-.21-.61-.37Z"/>
+      </svg>
+    </a>
   `;
 }
 
@@ -928,7 +975,7 @@ function homeTemplate() {
             Advocacia estratégica em Direito Trabalhista, Imobiliário e de Família, com técnica, clareza e proximidade.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="/contato">Falar com o escritório</a>
+            <a class="button button-primary" href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer">Falar com o escritório</a>
             <a class="button button-ghost" href="/atuacao">Conhecer áreas de atuação</a>
           </div>
         </div>
@@ -1040,9 +1087,9 @@ function articleCardTemplate(article) {
   return `
     <article class="article-card">
       <span>${article.homeCategory || article.category}</span>
-      <h3>${article.title}</h3>
+      <h3><a class="article-card-title-link" href="${article.href}">${article.title}</a></h3>
       <p>${article.excerpt}</p>
-      <a href="/artigos">Ler artigo</a>
+      <a href="${article.href}">Ler artigo</a>
     </article>
   `;
 }
@@ -1060,7 +1107,7 @@ function finalCtaTemplate() {
           Fale com o escritório e conte brevemente o seu caso. A partir das informações iniciais, será possível indicar os próximos passos com clareza e responsabilidade.
         </p>
         <div class="cta-actions">
-          <a class="button button-primary" href="/contato">Entrar em contato</a>
+          <a class="button button-primary" href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer">Entrar em contato</a>
           <a class="button button-ghost" href="/atuacao">Ver áreas de atuação</a>
         </div>
       </div>
@@ -1149,7 +1196,7 @@ function aboutTemplate() {
           <p>Sua atuação reúne análise técnica, proximidade no atendimento e acompanhamento transparente das demandas, com suporte presencial em Sorocaba/SP e atendimento digital.</p>
           <div class="credentials-list">
             <span>Dr. Eryx Fernandes</span>
-            <span>OAB/SP nº 530.983</span>
+            <span>${professionalRegistrationLink()}</span>
             <span>Sorocaba/SP</span>
             <span>Atendimento presencial e digital</span>
           </div>
@@ -1177,7 +1224,7 @@ function aboutTemplate() {
           <h2>Presença em Sorocaba. Atendimento também digital.</h2>
           <p>Com sede em Sorocaba/SP, o escritório atende clientes da região e oferece suporte digital para acompanhamento de demandas, troca de documentos e comunicação sobre os próximos passos.</p>
           <address>${SITE_CONFIG.address}</address>
-          <a class="button button-dark" href="/contato">Entrar em contato</a>
+          <a class="button button-dark" href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer">Entrar em contato</a>
         </div>
       </section>
 
@@ -2534,13 +2581,18 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
     },
     author: {
       "@type": "Person",
-      name: SITE_CONFIG.responsible,
+      "@id": siteAbsoluteUrl("/quem-somos#eryx-fernandes"),
+      name: SITE_CONFIG.authorName,
+      honorificPrefix: "Dr.",
       jobTitle: article.authorRole || "Advogado Trabalhista",
-      identifier: "OAB/SP 530.983"
+      identifier: SITE_CONFIG.oab,
+      url: siteAbsoluteUrl("/quem-somos")
     },
     publisher: {
       "@type": "Organization",
+      "@id": siteAbsoluteUrl("/#organization"),
       name: SITE_CONFIG.firmName,
+      url: siteAbsoluteUrl("/"),
       logo: {
         "@type": "ImageObject",
         url: siteAbsoluteUrl("/favicon-512.png")
@@ -2549,7 +2601,7 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
     articleSection: article.category,
     inLanguage: "pt-BR",
     datePublished: article.publishedAt,
-    dateModified: article.publishedAt
+    dateModified: article.modifiedAt || article.publishedAt
   };
   const faqPage = {
     "@context": "https://schema.org",
@@ -3077,14 +3129,14 @@ function rescisaoIndirectArticleTemplate() {
           <p>Buscar orientação em Sorocaba, com um profissional que conhece a realidade da região e das empresas locais, pode facilitar o acompanhamento presencial do caso, além de agilizar o diálogo em audiências na Justiça do Trabalho local.</p>
 
           <h2 id="atendimento">Atendimento jurídico trabalhista em Sorocaba com o Dr. Eryx Fernandes</h2>
-          <p>O Dr. Eryx Fernandes, Advogado Trabalhista inscrito na OAB/SP nº 530.983, atua em Sorocaba e região atendendo Trabalhadores que enfrentam situações como atraso salarial, ausência de depósito do FGTS, assédio moral, excesso de jornada e outras condutas irregulares por parte da Empresa.</p>
+          <p>O Dr. Eryx Fernandes, Advogado Trabalhista inscrito na ${professionalRegistrationLink()}, atua em Sorocaba e região atendendo Trabalhadores que enfrentam situações como atraso salarial, ausência de depósito do FGTS, assédio moral, excesso de jornada e outras condutas irregulares por parte da Empresa.</p>
           <p>O atendimento é pautado pela análise cuidadosa de cada caso, sempre respeitando a individualidade das circunstâncias vividas pelo Trabalhador.</p>
           <p>O compromisso é oferecer uma avaliação técnica, honesta e fundamentada na legislação trabalhista, ajudando o Trabalhador a entender seus direitos e as possibilidades legais diante da situação enfrentada.</p>
 
           <h2 id="conclusao">Conclusão</h2>
           <p>A Rescisão Indireta é um instrumento importante para proteger o Trabalhador quando a Empresa deixa de cumprir suas obrigações de forma grave. No entanto, cada caso tem particularidades que precisam ser avaliadas com cuidado, desde a gravidade dos fatos até a existência de provas suficientes.</p>
           <p>Se você está em Sorocaba e enfrenta uma situação como atraso de salário, falta de FGTS, assédio moral ou qualquer outra irregularidade no ambiente de trabalho, o primeiro passo é buscar orientação jurídica especializada antes de tomar qualquer decisão.</p>
-          <p><a href="/contato">Entre em contato</a> com o Dr. Eryx Fernandes, Advogado Trabalhista em Sorocaba, OAB/SP nº 530.983, e agende uma orientação jurídica sobre o seu caso.</p>
+          <p><a href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer">Entre em contato</a> com o Dr. Eryx Fernandes, Advogado Trabalhista em Sorocaba, ${professionalRegistrationLink()}, e agende uma orientação jurídica sobre o seu caso.</p>
 
           <h2 id="faq">Perguntas Frequentes (FAQ)</h2>
           <ul>
@@ -3149,7 +3201,7 @@ function laborRightsArticleTemplate() {
               ${authorAvatarTemplate()}
               <div>
                 <strong>${SITE_CONFIG.responsible}</strong>
-                <span>${SITE_CONFIG.oab}</span>
+                <span>${professionalRegistrationLink()}</span>
               </div>
             </div>
             <div class="article-hero-meta">
@@ -3309,18 +3361,34 @@ function laborRightsArticleSchemaTemplate(article) {
     "@type": "BlogPosting",
     headline: article.title,
     description: article.excerpt,
+    url: siteAbsoluteUrl(article.href),
+    datePublished: article.publishedAt,
+    dateModified: article.modifiedAt || article.publishedAt,
+    articleSection: article.category,
+    inLanguage: "pt-BR",
     author: {
       "@type": "Person",
-      name: SITE_CONFIG.responsible
+      "@id": siteAbsoluteUrl("/quem-somos#eryx-fernandes"),
+      name: SITE_CONFIG.authorName,
+      honorificPrefix: "Dr.",
+      jobTitle: article.authorRole,
+      identifier: SITE_CONFIG.oab,
+      url: siteAbsoluteUrl("/quem-somos")
     },
     publisher: {
       "@type": "Organization",
-      name: SITE_CONFIG.firmName
+      "@id": siteAbsoluteUrl("/#organization"),
+      name: SITE_CONFIG.firmName,
+      url: siteAbsoluteUrl("/"),
+      logo: {
+        "@type": "ImageObject",
+        url: siteAbsoluteUrl("/favicon-512.png")
+      }
     },
-    image: article.image,
+    image: siteAbsoluteUrl(article.image),
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": article.href
+      "@id": siteAbsoluteUrl(article.href)
     }
   };
 
@@ -3360,7 +3428,7 @@ function realEstateContractsArticleTemplate() {
               ${authorAvatarTemplate()}
               <div>
                 <strong>${SITE_CONFIG.responsible}</strong>
-                <span>${SITE_CONFIG.oab}</span>
+                <span>${professionalRegistrationLink()}</span>
               </div>
             </div>
             <div class="article-hero-meta">
@@ -3569,7 +3637,7 @@ function familyDecisionsArticleTemplate() {
               ${authorAvatarTemplate()}
               <div>
                 <strong>${SITE_CONFIG.responsible}</strong>
-                <span>${SITE_CONFIG.oab}</span>
+                <span>${professionalRegistrationLink()}</span>
               </div>
             </div>
             <div class="article-hero-meta">
@@ -3798,7 +3866,7 @@ function internalTemplate(path) {
                   <a href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">WhatsApp: ${SITE_CONFIG.whatsapp}</a>
                   <a href="tel:+5515996874689">${SITE_CONFIG.phone}</a>
                   <span>${SITE_CONFIG.address}</span>
-                  <span>${SITE_CONFIG.responsible} · ${SITE_CONFIG.oab}</span>
+                  <span>${SITE_CONFIG.responsible} · ${professionalRegistrationLink()}</span>
                 </div>`
               : ""
           }
@@ -3899,12 +3967,13 @@ function updateSocialMeta(path) {
 }
 
 function renderGlobalBusinessSchema() {
-  const schema = {
+  const legalService = {
     "@context": "https://schema.org",
     "@type": "LegalService",
+    "@id": `${SITE_CONFIG.siteUrl}/#organization`,
     name: SITE_CONFIG.firmName,
     legalName: SITE_CONFIG.firmName,
-    url: window.location.origin,
+    url: SITE_CONFIG.siteUrl,
     logo: absoluteUrl("/favicon-512.png"),
     image: absoluteUrl("/home-cta-advogado.jpg"),
     telephone: "+55 15 99687-4689",
@@ -3924,6 +3993,32 @@ function renderGlobalBusinessSchema() {
     sameAs: [SITE_CONFIG.instagramUrl],
     availableLanguage: "pt-BR"
   };
+  const person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_CONFIG.siteUrl}/quem-somos#eryx-fernandes`,
+    name: SITE_CONFIG.authorName,
+    honorificPrefix: "Dr.",
+    jobTitle: "Advogado",
+    identifier: SITE_CONFIG.oab,
+    url: `${SITE_CONFIG.siteUrl}/quem-somos`,
+    worksFor: { "@id": `${SITE_CONFIG.siteUrl}/#organization` },
+    sameAs: [SITE_CONFIG.instagramUrl]
+  };
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_CONFIG.siteUrl}/#website`,
+    name: SITE_CONFIG.firmName,
+    alternateName: "Eryx Fernandes Advocacia",
+    url: SITE_CONFIG.siteUrl,
+    publisher: { "@id": `${SITE_CONFIG.siteUrl}/#organization` },
+    inLanguage: "pt-BR"
+  };
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [legalService, person, ...(normalizePath(window.location.pathname) === "/" ? [website] : [])]
+  };
   let script = document.head.querySelector("#legal-service-schema");
   if (!script) {
     script = document.createElement("script");
@@ -3937,100 +4032,101 @@ function renderGlobalBusinessSchema() {
 function updateDocumentMeta(path) {
   const page = internalPages[path];
   const description = ensureMetaByName("description");
-  document.title = page ? `${page.label} | ${SITE_CONFIG.firmName}` : `${SITE_CONFIG.firmName} | Advogado em Sorocaba/SP`;
+  document.title = page ? `${page.label} | ${SITE_CONFIG.firmName}` : `Advogado em Sorocaba | ${SITE_CONFIG.firmName}`;
   document.body.className = path === "/" ? "page-home" : "page-internal";
   description.setAttribute(
     "content",
-    "Advocacia estratégica em Sorocaba/SP nas áreas trabalhista, imobiliária, família e empresarial, com atendimento próximo, comunicação clara e condução responsável."
+    "Advocacia em Sorocaba nas áreas trabalhista, imobiliária e de família, com atendimento próximo, orientação clara e atuação responsável."
   );
   if (path === "/atuacao") {
     document.title = `Áreas de Atuação | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
       "content",
-      "Conheça as áreas de atuação do Eryx Fernandes Advocacia em Sorocaba/SP: Direito Trabalhista para trabalhadores e empresas, Direito Imobiliário e Direito de Família."
+      "Conheça a atuação do escritório em Direito Trabalhista, Imobiliário e de Família, com atendimento presencial em Sorocaba e também digital."
     );
   }
   if (path === "/atuacao/direito-trabalhista-trabalhadores") {
     document.title = `Advogado Trabalhista em Sorocaba | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
       "content",
-      "Advogado trabalhista em Sorocaba. Atuação na defesa de trabalhadores em rescisões, horas extras, assédio, acidente de trabalho, FGTS e demais direitos trabalhistas."
+      "Orientação trabalhista em Sorocaba para trabalhadores em casos de rescisão, horas extras, assédio, acidente de trabalho, FGTS e outros direitos."
     );
   }
   if (path === "/atuacao/direito-trabalhista-empresas") {
-    document.title = `Advogado Trabalhista Empresarial em Sorocaba | ${SITE_CONFIG.firmName}`;
+    document.title = "Advogado Trabalhista para Empresas em Sorocaba | Eryx Fernandes";
     description.setAttribute(
       "content",
-      "Advogado trabalhista empresarial em Sorocaba. Consultoria preventiva, análise de riscos, documentos internos, desligamentos e defesa em reclamações trabalhistas para empresas."
+      "Assessoria trabalhista para empresas em Sorocaba: prevenção de riscos, documentos internos, desligamentos e defesa em reclamações trabalhistas."
     );
   }
   if (path === "/atuacao/direito-imobiliario") {
     document.title = `Advogado Imobiliário em Sorocaba | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
       "content",
-      "Advogado imobiliário em Sorocaba. Atuação em contratos imobiliários, compra e venda, locação, regularização, cobranças, notificações e conflitos condominiais."
+      "Atuação imobiliária em Sorocaba em contratos, compra e venda, locação, regularização, cobranças, notificações e conflitos condominiais."
     );
   }
   if (path === "/atuacao/direito-de-familia") {
     document.title = `Advogado de Família em Sorocaba | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
       "content",
-      "Advogado de família em Sorocaba. Atuação em divórcio, guarda, alimentos, partilha de bens, união estável e demandas familiares sensíveis."
+      "Orientação em Direito de Família em Sorocaba para divórcio, guarda, alimentos, partilha de bens, união estável e outras questões familiares."
     );
   }
   if (path === "/contato") {
     document.title = `Contato | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
       "content",
-      "Entre em contato com o Eryx Fernandes Advocacia em Sorocaba/SP. Atendimento jurídico presencial e digital nas áreas trabalhista, imobiliária e de família."
+      "Fale com o Eryx Fernandes Advocacia em Sorocaba. Atendimento presencial e digital nas áreas trabalhista, imobiliária e de família."
     );
   }
   if (path === "/artigos") {
     document.title = `Artigos Jurídicos | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
       "content",
-      "Artigos jurídicos do Eryx Fernandes Advocacia sobre Direito Trabalhista, Trabalhista Empresarial, Condominial e Direito de Família em Sorocaba/SP."
+      "Artigos sobre Direito Trabalhista, Empresarial, Imobiliário e de Família para compreender riscos, documentos e caminhos jurídicos."
     );
   }
   if (path === "/artigos/nr-01-novas-exigencias-empresas-sorocaba") {
-    document.title = "NR-01 em 2026: novas exigências para empresas";
+    document.title = "NR-01 em 2026: exigências para empresas | Eryx Fernandes";
     description.setAttribute(
       "content",
-      "Entenda as novas exigências da NR-01, os riscos psicossociais e como as empresas de Sorocaba devem atualizar o PGR e suas práticas internas."
+      "Entenda as exigências da NR-01 sobre riscos psicossociais e como empresas de Sorocaba devem revisar o PGR e suas práticas internas."
     );
   }
   if (path === "/artigos/rescisao-indireta-sorocaba") {
-    document.title = "Rescisão Indireta em Sorocaba | Advogado Trabalhista";
+    document.title = "Rescisão indireta em Sorocaba: guia do trabalhador";
     description.setAttribute(
       "content",
-      "Sofre atraso de salário, falta de FGTS ou assédio no trabalho em Sorocaba? Entenda a Rescisão Indireta e seus direitos. Fale com um advogado."
+      "Entenda quando atraso salarial, falta de FGTS, assédio e outras faltas do empregador podem justificar a rescisão indireta em Sorocaba."
     );
   }
   if (path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica") {
-    document.title = `Direitos trabalhistas: quando procurar orientação jurídica? | ${SITE_CONFIG.firmName}`;
+    document.title = "Direitos trabalhistas: quando buscar orientação jurídica?";
     description.setAttribute(
       "content",
-      "Entenda quando procurar orientação jurídica trabalhista em Sorocaba, quais sinais merecem atenção e quais documentos podem ajudar na análise do caso."
+      "Saiba quais problemas trabalhistas exigem atenção, quando buscar orientação e quais documentos podem ajudar na análise do caso."
     );
   }
   if (path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar") {
-    document.title = `Contratos imobiliários: pontos de atenção antes de assinar | ${SITE_CONFIG.firmName}`;
+    document.title = "Contratos imobiliários: cuidados antes de assinar";
     description.setAttribute(
       "content",
-      "Entenda quais pontos merecem atenção antes de assinar contratos imobiliários, contratos de locação, compra e venda, distratos e documentos envolvendo imóveis."
+      "Veja quais cláusulas, garantias, prazos e documentos analisar antes de assinar contratos de locação, compra e venda ou distratos."
     );
   }
   if (path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca") {
-    document.title = `Divórcio, guarda e partilha: como tomar decisões com segurança | ${SITE_CONFIG.firmName}`;
+    document.title = "Divórcio, guarda e partilha: decisões com segurança";
     description.setAttribute(
       "content",
-      "Entenda pontos importantes sobre divórcio, guarda, pensão alimentícia e partilha de bens, com orientação jurídica familiar em Sorocaba/SP."
+      "Entenda aspectos importantes sobre divórcio, guarda, pensão alimentícia e partilha de bens antes de tomar decisões familiares."
     );
   }
   if (path === "/quem-somos") {
+    document.title = `Sobre o escritório | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
       "content",
-      "Conheça o Eryx Fernandes Advocacia, escritório em Sorocaba/SP com atuação estratégica, atendimento próximo e acompanhamento transparente em demandas trabalhistas, imobiliárias e familiares."
+      "Conheça o Eryx Fernandes Advocacia, escritório em Sorocaba com atendimento próximo e atuação trabalhista, imobiliária e familiar."
     );
   }
   updateSocialMeta(path);
@@ -4204,7 +4300,7 @@ function initContactForm() {
     ].join("\n");
 
     // TODO: substituir o envio via WhatsApp por integração de backend, se o projeto adotar envio de formulário.
-    window.open(`${SITE_CONFIG.whatsappUrl}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    window.open(getWhatsAppUrl(message), "_blank", "noopener,noreferrer");
   });
 }
 

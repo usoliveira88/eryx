@@ -57,7 +57,7 @@ const routeImages = new Map([
   ["/quem-somos", "/home-retrato-advogado.jpg"],
   ["/contato", "/home-retrato-advogado.jpg"],
   ["/artigos/nr-01-novas-exigencias-empresas-sorocaba", "/artigos/nr-01-sorocaba.jpg"],
-  ["/artigos/fgts-nao-depositado-como-conferir", "/artigos/artigo-trabalhista-rescisao.jpg"],
+  ["/artigos/fgts-nao-depositado-como-conferir", "/artigos/fgts-nao-depositado.jpg"],
   ["/artigos/rescisao-indireta-sorocaba", "/artigos/rescisao-indireta-sorocaba.jpg"],
   ["/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica", "/artigos/artigo-trabalhista-rescisao.jpg"],
   ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/artigo-imobiliario.jpg"],

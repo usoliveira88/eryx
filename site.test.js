@@ -160,6 +160,8 @@ test("mantém todas as LPs sem barreira documental e com SEO comercial local", (
 test("publica o artigo de FGTS com fontes oficiais e linkagem interna", () => {
   const html = renderPageHtml("/artigos/fgts-nao-depositado-como-conferir");
   assert.match(html, /FGTS não depositado: como conferir e o que o trabalhador pode fazer\?/);
+  assert.match(html, /\/artigos\/fgts-nao-depositado\.jpg/);
+  assert.match(html, /Trabalhadora consultando o aplicativo FGTS no celular/);
   assert.match(html, /https:\/\/www\.tst\.jus\.br\/documents\/10157\/0\/IRR070/);
   assert.match(html, /https:\/\/www\.planalto\.gov\.br\/ccivil_03\/leis\/l8036compilada\.htm/);
   assert.match(html, /https:\/\/www\.caixa\.gov\.br\/atendimento\/aplicativos\/fgts/);

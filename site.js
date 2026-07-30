@@ -97,8 +97,8 @@ const articles = [
       "Saiba como consultar o extrato do FGTS, identificar depósitos ausentes e entender quais providências o trabalhador pode avaliar.",
     excerpt:
       "Veja como conferir os depósitos do FGTS, o que fazer ao encontrar meses em aberto e quando a irregularidade merece orientação trabalhista.",
-    image: "/artigos/artigo-trabalhista-rescisao.jpg",
-    alt: "Documentos trabalhistas para conferência de depósitos do FGTS",
+    image: "/artigos/fgts-nao-depositado.jpg",
+    alt: "Trabalhadora consultando o aplicativo FGTS no celular",
     href: "/artigos/fgts-nao-depositado-como-conferir",
     readingTime: "8 min de leitura",
     date: "30 de julho de 2026",
@@ -208,6 +208,7 @@ const optimizedImageVariants = new Map([
   ["/home-escritorio-ambiente.jpg", "/home-escritorio-ambiente"],
   ["/artigos/nr-01-sorocaba.jpg", "/artigos/nr-01-sorocaba"],
   ["/artigos/rescisao-indireta-sorocaba.jpg", "/artigos/rescisao-indireta-sorocaba"],
+  ["/artigos/fgts-nao-depositado.jpg", "/artigos/fgts-nao-depositado"],
   ["/artigos/artigo-trabalhista-rescisao.jpg", "/artigos/artigo-trabalhista-rescisao"],
   ["/artigos/artigo-imobiliario.jpg", "/artigos/artigo-imobiliario"],
   ["/artigos/artigo-familia-divorcio-guarda.jpg", "/artigos/artigo-familia-divorcio-guarda"]

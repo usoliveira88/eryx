@@ -87,6 +87,26 @@ const practiceItems = [
 
 const articles = [
   {
+    category: "Trabalhista",
+    filterCategory: "Trabalhista",
+    homeCategory: "Trabalhista",
+    eyebrow: "ARTIGO | TRABALHISTA",
+    title: "FGTS não depositado: como conferir e o que o trabalhador pode fazer?",
+    seoTitle: "FGTS não depositado: como conferir e o que fazer",
+    seoDescription:
+      "Saiba como consultar o extrato do FGTS, identificar depósitos ausentes e entender quais providências o trabalhador pode avaliar.",
+    excerpt:
+      "Veja como conferir os depósitos do FGTS, o que fazer ao encontrar meses em aberto e quando a irregularidade merece orientação trabalhista.",
+    image: "/artigos/artigo-trabalhista-rescisao.jpg",
+    alt: "Documentos trabalhistas para conferência de depósitos do FGTS",
+    href: "/artigos/fgts-nao-depositado-como-conferir",
+    readingTime: "8 min de leitura",
+    date: "30 de julho de 2026",
+    publishedAt: "2026-07-30",
+    modifiedAt: "2026-07-30",
+    authorRole: "Advogado Trabalhista"
+  },
+  {
     category: "Trabalhista Empresarial",
     filterCategory: "Trabalhista Empresarial",
     homeCategory: "Trabalhista Empresarial",
@@ -3510,6 +3530,189 @@ function rescisaoIndirectArticleTemplate() {
   `;
 }
 
+const missingFgtsArticleFaqItems = [
+  {
+    question: "Como saber se a empresa está depositando o FGTS?",
+    answer:
+      "O trabalhador pode acompanhar os lançamentos pelo Aplicativo FGTS e consultar o extrato de cada conta vinculada. É importante comparar os meses do vínculo com os depósitos apresentados."
+  },
+  {
+    question: "Qual é o valor mensal do FGTS?",
+    answer:
+      "Para a maioria dos contratos regidos pela CLT, a Lei nº 8.036/1990 estabelece depósito correspondente a 8% da remuneração paga ou devida no mês anterior. Situações específicas podem ter regras diferentes."
+  },
+  {
+    question: "O que fazer quando aparecem meses sem depósito?",
+    answer:
+      "Primeiro, confira se existe outra conta vinculada ao mesmo contrato e se os dados estão corretos. Confirmada a ausência, é possível buscar esclarecimento da empresa, registrar denúncia trabalhista e avaliar orientação jurídica."
+  },
+  {
+    question: "FGTS não depositado pode gerar rescisão indireta?",
+    answer:
+      "O TST firmou entendimento de que a ausência ou irregularidade dos depósitos caracteriza descumprimento contratual suficiente para configurar rescisão indireta. Ainda assim, a forma de agir e os efeitos no caso concreto devem ser analisados antes de qualquer afastamento."
+  },
+  {
+    question: "A empresa pode regularizar os depósitos atrasados?",
+    answer:
+      "A empresa pode recolher valores em atraso com os encargos aplicáveis. A regularização precisa aparecer na conta vinculada, e seus efeitos sobre outras medidas dependem do histórico e do momento do caso."
+  },
+  {
+    question: "Preciso ter todos os documentos para pedir orientação?",
+    answer:
+      "Não. A conversa pode começar pelo relato e pelas informações disponíveis. O escritório pode orientar quais consultas ou registros serão úteis conforme a situação."
+  }
+];
+
+function missingFgtsArticleTemplate() {
+  const article = articleByHref("/artigos/fgts-nao-depositado-como-conferir");
+  const recommendations = [
+    articleByHref("/artigos/rescisao-indireta-sorocaba"),
+    articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"),
+    articleByHref("/artigos/nr-01-novas-exigencias-empresas-sorocaba")
+  ];
+  const whatsappUrl = getWhatsAppUrl("Vim pelo artigo sobre FGTS não depositado e gostaria de entender minha situação.");
+
+  return `
+    ${headerTemplate("/artigos")}
+    <main id="conteudo" class="article-page">
+      <section class="article-hero">
+        <div class="editorial-hero-mark" aria-hidden="true">
+          <img src="/monograma-mf.png" alt="" />
+        </div>
+        <div class="editorial-hero-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="article-hero-inner">
+          <div class="article-hero-copy">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="/">Home</a><span>/</span>
+              <a href="/artigos">Artigos</a><span>/</span>
+              <span>FGTS não depositado</span>
+            </nav>
+            <p class="article-type-label">Artigo jurídico</p>
+            <p class="eyebrow article-category-label">${article.category}</p>
+            <h1>${article.title}</h1>
+            <p>${article.excerpt}</p>
+            <div class="article-author">
+              ${authorAvatarTemplate()}
+              <div>
+                <strong>${SITE_CONFIG.responsible}</strong>
+                <span>${professionalRegistrationLink()}</span>
+              </div>
+            </div>
+            <div class="article-hero-meta">
+              <span>${article.readingTime}</span>
+              <span>${article.date}</span>
+            </div>
+          </div>
+          <figure class="article-hero-image">
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
+          </figure>
+        </div>
+      </section>
+
+      <section class="article-shell">
+        <aside class="article-summary" aria-label="Sumário do artigo">
+          <span>Sumário</span>
+          <a href="#obrigacao">Obrigação da empresa</a>
+          <a href="#consultar">Como consultar</a>
+          <a href="#faltando">Meses sem depósito</a>
+          <a href="#providencias">O que fazer</a>
+          <a href="#rescisao-indireta">Rescisão indireta</a>
+          <a href="#regularizacao">Regularização</a>
+          <a href="#orientacao">Quando buscar orientação</a>
+          <a href="#faq">Perguntas frequentes</a>
+        </aside>
+
+        <article class="article-content">
+          <p class="article-lead">O FGTS não é descontado do salário do trabalhador: o recolhimento é uma obrigação do empregador.</p>
+          <p>Mesmo assim, meses sem lançamento, depósitos feitos com atraso ou valores aparentemente menores podem passar despercebidos por bastante tempo. A consulta periódica do extrato ajuda o trabalhador a identificar diferenças enquanto ainda consegue reconstruir com mais facilidade o histórico do contrato.</p>
+          <p>Encontrar uma lacuna no aplicativo não significa que o trabalhador deva abandonar o emprego ou tomar uma decisão imediata. O primeiro passo é confirmar as informações e compreender o conjunto da situação.</p>
+
+          <h2 id="obrigacao">Qual é a obrigação da empresa em relação ao FGTS?</h2>
+          <p>O artigo 15 da <a href="https://www.planalto.gov.br/ccivil_03/leis/l8036compilada.htm" target="_blank" rel="noopener noreferrer">Lei nº 8.036/1990</a> determina, para a maioria dos contratos regidos pela CLT, que o empregador deposite até o dia 20 de cada mês o equivalente a 8% da remuneração paga ou devida no mês anterior.</p>
+          <p>Esse valor não deve ser retirado do salário. Ele é depositado em uma conta vinculada ao contrato de trabalho e pode ser movimentado nas hipóteses previstas em lei.</p>
+          <p>Existem relações de trabalho com regras próprias, como o contrato de aprendizagem. Por isso, uma diferença de valor deve ser analisada considerando o tipo de contrato, a remuneração e as parcelas que compõem a base de cálculo.</p>
+
+          <h2 id="consultar">Como conferir se os depósitos estão sendo feitos?</h2>
+          <p>A forma mais direta é consultar o extrato pelo <a href="https://www.caixa.gov.br/atendimento/aplicativos/fgts/paginas/default.aspx" target="_blank" rel="noopener noreferrer">Aplicativo FGTS da Caixa</a>. O serviço permite visualizar saldo e movimentações das contas vinculadas.</p>
+          <p>Ao conferir, observe:</p>
+          <ul>
+            <li>se o contrato correto aparece no aplicativo;</li>
+            <li>se há depósito correspondente a cada mês trabalhado;</li>
+            <li>se existem lançamentos posteriores referentes a competências antigas;</li>
+            <li>se o salário e outras parcelas remuneratórias parecem compatíveis com a base utilizada;</li>
+            <li>se há mais de uma conta vinculada relacionada ao mesmo vínculo.</li>
+          </ul>
+          <p>A própria <a href="https://www.caixa.gov.br/beneficios-trabalhador/fgts/extrato-fgts/Paginas/default.aspx" target="_blank" rel="noopener noreferrer">Caixa disponibiliza orientações sobre o extrato do FGTS</a> e permite acompanhar os lançamentos pelo aplicativo.</p>
+
+          ${articleInlineCtaTemplate(
+            "Encontrou períodos sem depósito no extrato?",
+            "A análise pode começar pelo seu relato. Você não precisa reunir todos os documentos antes do primeiro contato.",
+            "Conversar sobre o FGTS"
+          )}
+
+          <h2 id="faltando">Por que podem aparecer meses sem depósito?</h2>
+          <p>A ausência de lançamento pode decorrer de falta de recolhimento, atraso, inconsistência cadastral, existência de outra conta vinculada ou necessidade de processamento de uma regularização.</p>
+          <p>Por isso, é prudente verificar se o aplicativo apresenta todas as contas ligadas ao contrato. O Ministério do Trabalho orienta que o trabalhador confira a existência de outras contas vinculadas na Caixa antes de concluir que o recolhimento não ocorreu.</p>
+          <p>Se a ausência for confirmada, a responsabilidade pela regularização é do empregador.</p>
+
+          <h2 id="providencias">O que o trabalhador pode fazer ao encontrar diferenças?</h2>
+          <p>As providências dependem do momento do contrato, do número de meses em aberto e de outras irregularidades existentes. Entre os caminhos possíveis estão:</p>
+          <ol>
+            <li>guardar o extrato ou registrar as competências que aparecem sem depósito;</li>
+            <li>verificar se há outra conta vinculada ao mesmo contrato;</li>
+            <li>pedir esclarecimento à empresa por um canal que permita registrar a resposta;</li>
+            <li>acompanhar se uma regularização prometida efetivamente entrou na conta;</li>
+            <li>utilizar o serviço oficial para <a href="https://www.gov.br/pt-br/servicos/realizar-denuncia-trabalhista" target="_blank" rel="noopener noreferrer">registrar denúncia trabalhista</a>, quando adequado;</li>
+            <li>buscar orientação para avaliar cobrança, prazos e possíveis reflexos no contrato.</li>
+          </ol>
+          <p>O canal de denúncia e uma eventual medida judicial têm funções diferentes. A denúncia permite comunicar a irregularidade à fiscalização; já a cobrança de valores e a discussão sobre consequências contratuais dependem da análise jurídica do caso.</p>
+
+          <h2 id="rescisao-indireta">FGTS não depositado pode justificar rescisão indireta?</h2>
+          <p>Pode. Em 2025, o Tribunal Superior do Trabalho firmou no <a href="https://www.tst.jus.br/documents/10157/0/IRR070%2B%282%29.pdf/072c0e8c-14a3-e7bd-11f1-6129709de35e?t=1741873916739" target="_blank" rel="noopener noreferrer">Tema Repetitivo 70</a> a tese de que a ausência ou irregularidade no recolhimento do FGTS caracteriza descumprimento de obrigação contratual suficiente para configurar a rescisão indireta, sem exigir imediatidade.</p>
+          <p>Isso não significa que o trabalhador deva simplesmente parar de comparecer ao trabalho. A estratégia, o momento do afastamento e os pedidos envolvidos precisam ser avaliados com cuidado, porque uma saída conduzida de forma inadequada pode gerar discussão sobre pedido de demissão ou abandono.</p>
+          <p>Para compreender essa modalidade de encerramento do contrato, consulte também a página sobre <a href="/atuacao/rescisao-indireta">rescisão indireta</a> e o <a href="/artigos/rescisao-indireta-sorocaba">guia completo para o trabalhador</a>.</p>
+
+          <h2 id="regularizacao">A empresa pode depositar o FGTS atrasado depois?</h2>
+          <p>Sim. O empregador pode regularizar recolhimentos em atraso, com os encargos aplicáveis. Para o trabalhador, o ponto central é confirmar se os valores efetivamente apareceram na conta vinculada e se todas as competências foram abrangidas.</p>
+          <p>A regularização posterior pode resolver o débito, mas seus efeitos sobre outras discussões dependem do histórico, da duração da irregularidade e do momento em que ocorreu. Não existe uma resposta única para todos os contratos.</p>
+
+          <h2 id="orientacao">Quando procurar orientação trabalhista?</h2>
+          <p>A orientação pode ser especialmente útil quando existem vários meses sem depósito, a empresa não esclarece a situação, a regularização prometida não aparece, o contrato já terminou ou o trabalhador avalia uma rescisão indireta.</p>
+          <p>Não é necessário ter todos os documentos para iniciar a conversa. O relato, o período aproximado do vínculo e o que aparece no aplicativo já permitem organizar as primeiras perguntas.</p>
+          <p>Conheça a atuação do escritório em <a href="/atuacao/fgts-nao-depositado">FGTS não depositado</a> ou veja outras situações atendidas na página de <a href="/atuacao/direito-trabalhista-trabalhadores">Direito Trabalhista para trabalhadores</a>.</p>
+
+          <h2 id="faq">Perguntas frequentes</h2>
+          ${missingFgtsArticleFaqItems.map((item) => `
+            <h3>${item.question}</h3>
+            <p>${item.answer}</p>
+          `).join("")}
+
+          <aside class="article-final-cta">
+            <h2>Identificou meses sem depósito do FGTS?</h2>
+            <p>Conte brevemente o que aparece no aplicativo. A conversa inicial serve para compreender o contexto e indicar quais verificações podem ser úteis.</p>
+            <div class="cta-actions">
+              <a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+              <a class="button button-ghost" href="/atuacao/fgts-nao-depositado">Ver atuação em FGTS</a>
+            </div>
+          </aside>
+        </article>
+      </section>
+
+      <section class="article-recommendations reveal-block">
+        <div class="section-heading">
+          <p>Leitura</p>
+          <h2>Outras leituras recomendadas</h2>
+        </div>
+        <div class="editorial-article-grid article-recommendations-grid">
+          ${recommendations.map(articleListingCardTemplate).join("")}
+        </div>
+      </section>
+    </main>
+    ${articleStructuredDataTemplate(article, missingFgtsArticleFaqItems, "FGTS não depositado")}
+    ${footerTemplate()}
+  `;
+}
+
 function laborRightsArticleTemplate() {
   const article = articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica");
   const recommendations = [
@@ -4450,6 +4653,13 @@ function updateDocumentMeta(path) {
       "Entenda quando atraso salarial, falta de FGTS, assédio e outras faltas do empregador podem justificar a rescisão indireta em Sorocaba."
     );
   }
+  if (path === "/artigos/fgts-nao-depositado-como-conferir") {
+    document.title = "FGTS não depositado: como conferir e o que fazer";
+    description.setAttribute(
+      "content",
+      "Saiba como consultar o extrato do FGTS, identificar depósitos ausentes e entender quais providências o trabalhador pode avaliar."
+    );
+  }
   if (path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica") {
     document.title = "Direitos trabalhistas: quando buscar orientação jurídica?";
     description.setAttribute(
@@ -4697,10 +4907,12 @@ export function renderPageHtml(pathname) {
           ? articlesTemplate()
           : path === "/artigos/nr-01-novas-exigencias-empresas-sorocaba"
             ? nr01CompaniesArticleTemplate()
+            : path === "/artigos/fgts-nao-depositado-como-conferir"
+              ? missingFgtsArticleTemplate()
             : path === "/artigos/rescisao-indireta-sorocaba"
-              ? rescisaoIndirectArticleTemplate()
-              : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
-                ? laborRightsArticleTemplate()
+                ? rescisaoIndirectArticleTemplate()
+                : path === "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"
+                  ? laborRightsArticleTemplate()
                 : path === "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"
                   ? realEstateContractsArticleTemplate()
                   : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"

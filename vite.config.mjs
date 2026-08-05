@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import { renderPageHtml } from "./site.js";
 
-const siteOrigin = process.env.VITE_SITE_URL || "https://advmartinsfernandes.com.br";
+const siteOrigin = process.env.VITE_SITE_URL || "https://www.advmartinsfernandes.com.br";
 
 const pageInputs = {
   main: resolve("index.html"),
@@ -62,6 +62,38 @@ const routeImages = new Map([
   ["/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica", "/artigos/artigo-trabalhista-rescisao.jpg"],
   ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/artigo-imobiliario.jpg"],
   ["/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca", "/artigos/artigo-familia-divorcio-guarda.jpg"]
+]);
+
+const seoByRoute = new Map([
+  ["/", {
+    title: "Escritório de Advocacia em Sorocaba | Eryx Fernandes",
+    description: "Escritório de advocacia em Sorocaba com atuação em Direito Trabalhista, Trabalhista Empresarial, Direito de Família e Direito Imobiliário. Fale conosco."
+  }],
+  ["/quem-somos", {
+    title: "Eryx Fernandes Advocacia em Sorocaba | Quem Somos",
+    description: "Conheça Eryx Fernandes Advocacia, escritório em Sorocaba com atendimento jurídico claro, próximo e direcionado às necessidades de cada cliente."
+  }],
+  ["/atuacao/direito-trabalhista-trabalhadores", {
+    title: "Advogado Trabalhista em Sorocaba | Eryx Fernandes",
+    description: "Advogado trabalhista em Sorocaba para rescisão indireta, justa causa, FGTS, horas extras, assédio, acidente de trabalho e verbas rescisórias."
+  }],
+  ["/atuacao/direito-trabalhista-empresas", {
+    title: "Advogado Trabalhista Empresarial em Sorocaba | Eryx",
+    description: "Advogado trabalhista empresarial em Sorocaba para defesa em reclamações, consultoria preventiva, contratos, jornada, demissões e redução de riscos."
+  }],
+  ["/atuacao/direito-de-familia", {
+    title: "Advogado de Família em Sorocaba | Eryx Fernandes",
+    description: "Advogado de família em Sorocaba para divórcio, pensão alimentícia, guarda, convivência, partilha de bens e reconhecimento de união estável."
+  }],
+  ["/atuacao/direito-imobiliario", {
+    title: "Advogado Imobiliário em Sorocaba | Eryx Fernandes",
+    description: "Advogado imobiliário em Sorocaba para contratos, compra e venda, locações, despejo, regularização de imóveis e conflitos condominiais."
+  }],
+  ["/artigos", { title: "Artigos Jurídicos | Eryx Fernandes Advocacia" }],
+  ["/contato", {
+    title: "Contato | Escritório de Advocacia em Sorocaba",
+    description: "Fale com Eryx Fernandes Advocacia, escritório de advocacia em Sorocaba. Atendimento pelo WhatsApp, telefone, e-mail ou formulário."
+  }]
 ]);
 
 function absoluteUrl(path) {
@@ -148,8 +180,9 @@ function organizationGraph(route) {
 }
 
 function staticSeoTags(route, html) {
-  const title = readTitle(html);
-  const description = readDescription(html);
+  const configuredSeo = seoByRoute.get(route);
+  const title = configuredSeo?.title || readTitle(html);
+  const description = configuredSeo?.description || readDescription(html);
   const type = route.startsWith("/artigos/") ? "article" : "website";
   const canonical = absoluteUrl(route);
   const image = absoluteUrl(routeImages.get(route) || "/home-cta-advogado.jpg");
@@ -175,6 +208,38 @@ function staticSeoTags(route, html) {
   ].join("\n    ");
 }
 
+function commercialHomeHtml(html) {
+  const commercialBlock = `
+      <section class="home-commercial-intro" aria-labelledby="home-commercial-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <h2 id="home-commercial-title">Escritório de Advocacia em Sorocaba com atuação em diferentes áreas do Direito</h2>
+            <p>Eryx Fernandes Advocacia oferece atendimento jurídico em Sorocaba para trabalhadores, empresas, famílias, proprietários, compradores, vendedores e condomínios. O escritório atua em Direito Trabalhista, Trabalhista Empresarial, Direito de Família e Direito Imobiliário, com orientação individualizada e análise responsável de cada situação.</p>
+          </div>
+        </div>
+      </section>`;
+
+  return html
+    .replace(/<p class="hero-kicker">[\s\S]*?<\/p>/, '<p class="hero-kicker">ESCRITÓRIO DE ADVOCACIA EM SOROCABA</p>')
+    .replace(
+      /(<h1>[\s\S]*?<\/h1>\s*)<p>[\s\S]*?<\/p>/,
+      "$1<p>Advocacia estratégica em Direito Trabalhista, Trabalhista Empresarial, Direito de Família e Direito Imobiliário, com técnica, clareza e proximidade.</p>"
+    )
+    .replace('</section>\n\n      <section class="practice-section"', `</section>${commercialBlock}\n\n      <section class="practice-section"`);
+}
+
+const commercialH1ByRoute = new Map([
+  ["/quem-somos", "Eryx Fernandes Advocacia em Sorocaba"],
+  ["/contato", "Fale com um Escritório de Advocacia em Sorocaba"],
+  ["/atuacao/direito-trabalhista-trabalhadores", "Advogado Trabalhista em Sorocaba"]
+]);
+
+function commercialRouteHtml(route, html) {
+  const h1 = commercialH1ByRoute.get(route);
+  if (!h1) return html;
+  return html.replace(/<h1([^>]*)>[\s\S]*?<\/h1>/, `<h1$1>${h1}</h1>`);
+}
+
 function prerenderPages() {
   return {
     name: "prerender-static-html",
@@ -185,7 +250,8 @@ function prerenderPages() {
         if (!route) return html;
 
         const bodyClass = route === "/" ? "page-home" : "page-internal";
-        const staticHtml = renderPageHtml(route).trim();
+        const renderedHtml = renderPageHtml(route).trim();
+        const staticHtml = commercialRouteHtml(route, route === "/" ? commercialHomeHtml(renderedHtml) : renderedHtml);
 
         return html
           .replace(/<title>[\s\S]*?<\/title>\s*/i, "")

@@ -477,6 +477,22 @@ button {
   margin: 0 auto;
 }
 
+.home-commercial-intro {
+  padding: 88px 0 34px;
+  background: var(--white);
+}
+
+.home-commercial-intro .section-heading {
+  margin-bottom: 0;
+}
+
+.home-commercial-intro .section-heading p {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
 .practice-section {
   position: relative;
   overflow: hidden;

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://advmartinsfernandes.com.br/sitemap.xml
+Sitemap: https://www.advmartinsfernandes.com.br/sitemap.xml

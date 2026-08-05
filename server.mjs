@@ -40,17 +40,9 @@ createServer(async (req, res) => {
     const forwardedHost = String(req.headers["x-forwarded-host"] || req.headers.host || "").split(",")[0].trim();
     const forwardedProtocol = String(req.headers["x-forwarded-proto"] || "http").split(",")[0].trim();
 
-    if (forwardedHost.toLowerCase() === "www.advmartinsfernandes.com.br") {
+    if (forwardedHost.toLowerCase() === "advmartinsfernandes.com.br") {
       res.writeHead(301, {
-        location: `https://advmartinsfernandes.com.br${url.pathname}${url.search}`
-      });
-      res.end();
-      return;
-    }
-
-    if (forwardedHost.toLowerCase() === "advmartinsfernandes.com.br" && forwardedProtocol !== "https") {
-      res.writeHead(301, {
-        location: `https://advmartinsfernandes.com.br${url.pathname}${url.search}`
+        location: `https://www.advmartinsfernandes.com.br${url.pathname}${url.search}`
       });
       res.end();
       return;

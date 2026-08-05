@@ -4577,9 +4577,31 @@ function renderGlobalBusinessSchema() {
 }
 
 function updateDocumentMeta(path) {
+  const commercialSeo = {
+    "/": {
+      title: "Escritório de Advocacia em Sorocaba | Eryx Fernandes",
+      description: "Escritório de advocacia em Sorocaba com atuação em Direito Trabalhista, Trabalhista Empresarial, Direito de Família e Direito Imobiliário. Fale conosco."
+    },
+    "/quem-somos": {
+      title: "Eryx Fernandes Advocacia em Sorocaba | Quem Somos",
+      description: "Conheça Eryx Fernandes Advocacia, escritório em Sorocaba com atendimento jurídico claro, próximo e direcionado às necessidades de cada cliente."
+    },
+    "/atuacao/direito-trabalhista-empresas": {
+      title: "Advogado Trabalhista Empresarial em Sorocaba | Eryx",
+      description: "Advogado trabalhista empresarial em Sorocaba para defesa em reclamações, consultoria preventiva, contratos, jornada, demissões e redução de riscos."
+    },
+    "/contato": {
+      title: "Contato | Escritório de Advocacia em Sorocaba",
+      description: "Fale com Eryx Fernandes Advocacia, escritório de advocacia em Sorocaba. Atendimento pelo WhatsApp, telefone, e-mail ou formulário."
+    }
+  };
   const page = internalPages[path];
   const laborLandingPage = laborLandingPages[path];
   const description = ensureMetaByName("description");
+  if (commercialSeo[path]) {
+    document.title = commercialSeo[path].title;
+    description.setAttribute("content", commercialSeo[path].description);
+  }
   document.title = laborLandingPage
     ? laborLandingPage.seoTitle
     : page
@@ -4688,6 +4710,10 @@ function updateDocumentMeta(path) {
       "content",
       "Conheça o Eryx Fernandes Advocacia, escritório em Sorocaba com atendimento próximo e atuação trabalhista, imobiliária e familiar."
     );
+  }
+  if (commercialSeo[path]) {
+    document.title = commercialSeo[path].title;
+    description.setAttribute("content", commercialSeo[path].description);
   }
   updateSocialMeta(path);
   renderGlobalBusinessSchema();

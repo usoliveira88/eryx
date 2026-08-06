@@ -16,6 +16,7 @@ const routes = [
   "/atuacao/direito-trabalhista-empresas",
   "/atuacao/direito-imobiliario",
   "/atuacao/direito-de-familia",
+  "/atuacao/pensao-alimenticia",
   "/artigos",
   "/artigos/fgts-nao-depositado-como-conferir",
   "/artigos/nr-01-novas-exigencias-empresas-sorocaba",
@@ -23,6 +24,7 @@ const routes = [
   "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica",
   "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar",
   "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca",
+  "/artigos/pensao-alimenticia-atrasada-como-cobrar",
   "/contato"
 ];
 
@@ -65,7 +67,7 @@ test("liga cada card da Home ao artigo correspondente", () => {
   const home = renderPageHtml("/");
   assert.doesNotMatch(home, /href="\/artigos">Ler artigo<\/a>/);
 
-  for (const route of routes.filter((route) => route.startsWith("/artigos/"))) {
+  for (const route of routes.filter((route) => route.startsWith("/artigos/") && route !== "/artigos/pensao-alimenticia-atrasada-como-cobrar")) {
     assert.match(home, new RegExp(`href="${route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), route);
   }
 });
@@ -138,6 +140,18 @@ test("transforma a página trabalhista para trabalhadores em pilar das LPs", () 
   }
 });
 
+test("renderiza a landing page de pensão alimentícia com SEO, CTA e conteúdo visível", () => {
+  const html = renderPageHtml("/atuacao/pensao-alimenticia");
+  assert.equal((html.match(/<h1>/g) || []).length, 1);
+  assert.match(html, /Advogado para Pensão Alimentícia em Sorocaba/);
+  assert.match(html, /text=Vim%20pelo%20Google%20e%20quero%20informa%C3%A7%C3%B5es%20sobre%20pens%C3%A3o%20aliment%C3%ADcia\./);
+  assert.match(html, /"@type":"BreadcrumbList"/);
+  assert.match(html, /"@type":"FAQPage"/);
+  assert.match(html, /Dr\. Eryx Fernandes, advogado em Sorocaba/);
+  assert.match(html, /href="\/atuacao\/direito-de-familia"/);
+  assert.doesNotMatch(html, /especialista em pensão alimentícia/i);
+});
+
 test("mantém todas as LPs sem barreira documental e com SEO comercial local", () => {
   const expectedTitles = new Map([
     ["/atuacao/rescisao-indireta", "Rescisão Indireta"],
@@ -169,6 +183,16 @@ test("publica o artigo de FGTS com fontes oficiais e linkagem interna", () => {
   assert.match(html, /href="\/atuacao\/fgts-nao-depositado"/);
   assert.match(html, /href="\/atuacao\/rescisao-indireta"/);
   assert.match(html, /href="\/atuacao\/direito-trabalhista-trabalhadores"/);
+  assert.match(html, /"@type":"BlogPosting"/);
+  assert.match(html, /"@type":"FAQPage"/);
+});
+
+test("publica artigo de pensão atrasada com imagem, links e schema", () => {
+  const html = renderPageHtml("/artigos/pensao-alimenticia-atrasada-como-cobrar");
+  assert.match(html, /Pens\u00e3o aliment\u00edcia atrasada: como cobrar e quais medidas podem ser tomadas\?/i);
+  assert.match(html, /\/artigos\/pensao-alimenticia-atrasada\.webp/);
+  assert.match(html, /href="\/atuacao\/pensao-alimenticia"/);
+  assert.match(html, /href="\/atuacao\/direito-de-familia"/);
   assert.match(html, /"@type":"BlogPosting"/);
   assert.match(html, /"@type":"FAQPage"/);
 });

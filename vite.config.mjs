@@ -20,13 +20,15 @@ const pageInputs = {
   companyLabor: resolve("atuacao/direito-trabalhista-empresas/index.html"),
   realEstate: resolve("atuacao/direito-imobiliario/index.html"),
   familyLaw: resolve("atuacao/direito-de-familia/index.html"),
+  alimony: resolve("atuacao/pensao-alimenticia/index.html"),
   articles: resolve("artigos/index.html"),
   nr01CompaniesArticle: resolve("artigos/nr-01-novas-exigencias-empresas-sorocaba/index.html"),
   missingFgtsArticle: resolve("artigos/fgts-nao-depositado-como-conferir/index.html"),
   rescisaoIndirectArticle: resolve("artigos/rescisao-indireta-sorocaba/index.html"),
   laborArticle: resolve("artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica/index.html"),
   realEstateArticle: resolve("artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar/index.html"),
-  familyArticle: resolve("artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca/index.html")
+  familyArticle: resolve("artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca/index.html"),
+  alimonyLateArticle: resolve("artigos/pensao-alimenticia-atrasada-como-cobrar/index.html")
 };
 
 const pageRoutes = new Map([
@@ -44,13 +46,15 @@ const pageRoutes = new Map([
   [pageInputs.companyLabor, "/atuacao/direito-trabalhista-empresas"],
   [pageInputs.realEstate, "/atuacao/direito-imobiliario"],
   [pageInputs.familyLaw, "/atuacao/direito-de-familia"],
+  [pageInputs.alimony, "/atuacao/pensao-alimenticia"],
   [pageInputs.articles, "/artigos"],
   [pageInputs.nr01CompaniesArticle, "/artigos/nr-01-novas-exigencias-empresas-sorocaba"],
   [pageInputs.missingFgtsArticle, "/artigos/fgts-nao-depositado-como-conferir"],
   [pageInputs.rescisaoIndirectArticle, "/artigos/rescisao-indireta-sorocaba"],
   [pageInputs.laborArticle, "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"],
   [pageInputs.realEstateArticle, "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"],
-  [pageInputs.familyArticle, "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"]
+  [pageInputs.familyArticle, "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"],
+  [pageInputs.alimonyLateArticle, "/artigos/pensao-alimenticia-atrasada-como-cobrar"]
 ]);
 
 const routeImages = new Map([
@@ -62,6 +66,7 @@ const routeImages = new Map([
   ["/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica", "/artigos/artigo-trabalhista-rescisao.jpg"],
   ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/artigo-imobiliario.jpg"],
   ["/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca", "/artigos/artigo-familia-divorcio-guarda.jpg"]
+  ,["/artigos/pensao-alimenticia-atrasada-como-cobrar", "/artigos/pensao-alimenticia-atrasada.webp"]
 ]);
 
 const seoByRoute = new Map([
@@ -85,11 +90,16 @@ const seoByRoute = new Map([
     title: "Advogado de Família em Sorocaba | Eryx Fernandes",
     description: "Advogado de família em Sorocaba para divórcio, pensão alimentícia, guarda, convivência, partilha de bens e reconhecimento de união estável."
   }],
+  ["/atuacao/pensao-alimenticia", {
+    title: "Advogado para Pensão Alimentícia em Sorocaba | Eryx",
+    description: "Advogado para pensão alimentícia em Sorocaba em casos de pedido, cobrança, atraso, revisão, exoneração e descumprimento de acordo. Fale com o escritório."
+  }],
   ["/atuacao/direito-imobiliario", {
     title: "Advogado Imobiliário em Sorocaba | Eryx Fernandes",
     description: "Advogado imobiliário em Sorocaba para contratos, compra e venda, locações, despejo, regularização de imóveis e conflitos condominiais."
   }],
   ["/artigos", { title: "Artigos Jurídicos | Eryx Fernandes Advocacia" }],
+  ["/artigos/pensao-alimenticia-atrasada-como-cobrar", { title: "Pensão Alimentícia Atrasada: Como Cobrar? | Eryx Fernandes", description: "A pensão alimentícia está atrasada ou sendo paga parcialmente? Entenda como funciona a cobrança, quais documentos reunir e quando procurar orientação jurídica." }],
   ["/contato", {
     title: "Contato | Escritório de Advocacia em Sorocaba",
     description: "Fale com Eryx Fernandes Advocacia, escritório de advocacia em Sorocaba. Atendimento pelo WhatsApp, telefone, e-mail ou formulário."
@@ -184,7 +194,7 @@ function staticSeoTags(route, html) {
   const title = configuredSeo?.title || readTitle(html);
   const description = configuredSeo?.description || readDescription(html);
   const type = route.startsWith("/artigos/") ? "article" : "website";
-  const canonical = absoluteUrl(route);
+  const canonical = absoluteUrl(["/atuacao/pensao-alimenticia", "/artigos/pensao-alimenticia-atrasada-como-cobrar"].includes(route) ? `${route}/` : route);
   const image = absoluteUrl(routeImages.get(route) || "/home-cta-advogado.jpg");
   const schemaJson = JSON.stringify(organizationGraph(route)).replace(/</g, "\\u003c");
 

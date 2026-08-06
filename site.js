@@ -179,6 +179,24 @@ const articles = [
     category: "Família",
     filterCategory: "Família",
     homeCategory: "Família",
+    eyebrow: "ARTIGO | DIREITO DE FAMÍLIA",
+    title: "Pensão alimentícia atrasada: como cobrar e quais medidas podem ser tomadas?",
+    seoTitle: "Pensão Alimentícia Atrasada: Como Cobrar? | Eryx Fernandes",
+    seoDescription: "A pensão alimentícia está atrasada ou sendo paga parcialmente? Entenda como funciona a cobrança, quais documentos reunir e quando procurar orientação jurídica.",
+    excerpt: "Entenda o que pode ser considerado atraso, como organizar os comprovantes e quais caminhos podem ser avaliados para cobrar a pensão.",
+    image: "/artigos/pensao-alimenticia-atrasada.webp",
+    alt: "Orientação jurídica sobre pensão alimentícia atrasada",
+    href: "/artigos/pensao-alimenticia-atrasada-como-cobrar",
+    readingTime: "8 min de leitura",
+    date: "6 de agosto de 2026",
+    publishedAt: "2026-08-06",
+    modifiedAt: "2026-08-06",
+    authorRole: "Advogado de Família"
+  },
+  {
+    category: "Família",
+    filterCategory: "Família",
+    homeCategory: "Família",
     title: "Divórcio, guarda e partilha: como tomar decisões com segurança?",
     excerpt:
       "Aspectos jurídicos e humanos que merecem atenção em processos familiares sensíveis.",
@@ -1078,7 +1096,7 @@ function homeTemplate() {
           <span>Artigos semanais sobre Direito Trabalhista, Imobiliário, Família, Empresas e Condomínios.</span>
         </div>
         <div class="article-grid">
-          ${articles.map(articleCardTemplate).join("")}
+          ${articles.filter((article) => article.href !== "/artigos/pensao-alimenticia-atrasada-como-cobrar").map(articleCardTemplate).join("")}
         </div>
         <div class="center-action">
           <a class="button button-dark" href="/artigos">Ver todos os artigos</a>
@@ -2501,6 +2519,7 @@ function familyLawTemplate() {
           <p class="worker-local-links">
             Para entender a forma de condução, <a href="/quem-somos">conheça o escritório</a> ou <a href="/contato">fale com o escritório</a>.
           </p>
+          <p class="worker-local-links">Em questões de alimentos, conheça a <a href="/atuacao/pensao-alimenticia">atuação em casos de pensão alimentícia</a>.</p>
         </div>
       </section>
 
@@ -4150,6 +4169,17 @@ function realEstateContractsArticleTemplate() {
   `;
 }
 
+function alimonyLateArticleTemplate() {
+  const article = articleByHref("/artigos/pensao-alimenticia-atrasada-como-cobrar");
+  const whatsappUrl = getWhatsAppUrl("Vim pelo Google e quero informações sobre pensão alimentícia atrasada.");
+  const faq = [["Um mês de pensão atrasada já pode ser cobrado?","O atraso pode ser analisado desde o descumprimento da obrigação, considerando o acordo ou decisão e as circunstâncias do caso."],["Pagamento parcial conta como atraso?","Pode deixar um saldo em aberto. Guardar os comprovantes ajuda a identificar o que foi pago e o que ainda é devido."],["É possível cobrar pensão sem acordo judicial?","Acordos verbais podem trazer dificuldade de prova, mas mensagens, transferências e outros registros podem ser relevantes."],["A pensão atrasada pode gerar prisão?","A prisão civil não é automática. Existem requisitos específicos, e a via adequada depende das parcelas e da análise do caso."],["O valor pode ser reduzido por conta própria?","Não. Uma alteração relevante pode justificar revisão, mas a obrigação vigente não deve ser modificada unilateralmente."],["Quando procurar um advogado?","Quando há atraso, pagamento incompleto, acordo descumprido ou dúvida sobre o caminho adequado para cobrar ou regularizar a situação."]];
+  const faqSchema = {"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map(([name,text])=>({"@type":"Question",name,acceptedAnswer:{"@type":"Answer",text}}))};
+  const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:`${SITE_CONFIG.siteUrl}/`},{"@type":"ListItem",position:2,name:"Artigos",item:`${SITE_CONFIG.siteUrl}/artigos`},{"@type":"ListItem",position:3,name:"Direito de Família",item:`${SITE_CONFIG.siteUrl}/atuacao/direito-de-familia`},{"@type":"ListItem",position:4,name:"Pensão alimentícia atrasada",item:`${SITE_CONFIG.siteUrl}${article.href}/`} ]};
+  return `${headerTemplate("/artigos")}
+    <main id="conteudo" class="article-page"><section class="article-hero"><div class="editorial-hero-mark" aria-hidden="true"><img src="/monograma-mf.png" alt="" /></div><div class="article-hero-inner"><div class="article-hero-copy"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/artigos">Artigos</a><span>/</span><a href="/atuacao/direito-de-familia">Direito de Família</a><span>/</span><span>Pensão alimentícia atrasada</span></nav><p class="article-type-label">Artigo jurídico</p><p class="eyebrow article-category-label">Direito de Família</p><h1>${article.title}</h1><p>${article.excerpt}</p><div class="article-author">${authorAvatarTemplate()}<div><strong>${SITE_CONFIG.responsible}</strong><span>${professionalRegistrationLink()}</span></div></div><div class="article-hero-meta"><span>${article.readingTime}</span><span>${article.date}</span></div></div><figure class="article-hero-image"><img src="${article.image}" alt="${article.alt}" width="1200" height="628" fetchpriority="high" decoding="async" /></figure></div></section>
+      <section class="article-shell"><aside class="article-summary" aria-label="Sumário do artigo"><span>Sumário</span><a href="#atraso">O que é atraso</a><a href="#acordo">Acordo verbal</a><a href="#documentos">Documentos</a><a href="#cobranca">Cobrança judicial</a><a href="#prisao">Prisão e patrimônio</a><a href="#revisao">Revisão</a><a href="#sorocaba">Atendimento</a><a href="#faq">Perguntas frequentes</a></aside><article class="article-content"><p class="article-lead">A pensão não foi paga no dia combinado, veio menor do que deveria ou está acumulando mês após mês?</p><p>Essas situações podem gerar uma dívida e precisam ser vistas com atenção. A cobrança depende do acordo ou da decisão existente, do período em aberto e dos comprovantes disponíveis. Deixar as parcelas acumularem costuma tornar tudo mais difícil. Neste artigo, explicamos as principais medidas que podem ser avaliadas e quais informações ajudam a entender o problema.</p><h2 id="atraso">O que é considerado atraso da pensão alimentícia?</h2><p>Há atraso quando o pagamento não acontece no prazo e na forma definidos. Isso pode ser falta total de pagamento, valor menor, pagamento depois do vencimento ou despesas previstas que não foram cumpridas. Nem toda diferença leva à mesma medida, por isso é preciso conferir o que foi acordado ou decidido.</p><h2>Pagamento parcial também pode gerar dívida?</h2><p>Sim. Pagar apenas uma parte não significa que a obrigação foi quitada. O saldo deve ser calculado e os comprovantes guardados, principalmente quando as diferenças se repetem.</p><h2 id="acordo">É possível cobrar pensão definida apenas por acordo verbal?</h2><p>Um acordo de boca não é automaticamente ignorado, mas pode ser mais difícil de provar e cobrar. Conversas, transferências, recibos e mensagens podem ajudar a mostrar o compromisso. A formalização jurídica traz mais segurança para todos.</p><h2 id="documentos">Quais documentos reunir antes de cobrar?</h2><p>Normalmente são analisados documento de identificação, certidão de nascimento, acordo ou decisão, comprovantes bancários, extratos, planilha das parcelas, mensagens, comprovantes de despesas, dados do devedor e registros de pagamentos parciais. A documentação varia conforme o caso.</p><h2 id="cobranca">Como funciona a cobrança judicial?</h2><p>A cobrança pode seguir caminhos diferentes conforme as parcelas, o período da dívida, o título existente e a situação de inadimplemento. Um advogado pode avaliar qual medida faz sentido e explicar os próximos passos sem tratar todos os casos da mesma forma.</p>${articleInlineCtaTemplate("A pensão não está sendo paga corretamente?","Organize os comprovantes, o acordo ou a decisão existente e apresente a situação ao escritório para compreender quais medidas podem ser avaliadas.","Falar com o escritório")}<h2 id="prisao">Qual é a diferença entre prisão e cobrança patrimonial?</h2><p>A prisão civil não é consequência automática de qualquer dívida de pensão: há requisitos específicos. Em outras situações, podem ser avaliadas medidas patrimoniais. Bloqueio, penhora e outras providências dependem de decisão e análise do processo.</p><h2>Quantas parcelas atrasadas podem ser cobradas?</h2><p>Parcelas recentes e antigas podem receber tratamentos diferentes. A extensão da cobrança deve ser avaliada com o acordo, a decisão e a data de cada parcela.</p><h2>O que acontece se o devedor paga apenas parte?</h2><p>O saldo não desaparece. Registrar cada pagamento e organizar a diferença ajuda a evitar confusão e permite uma avaliação mais correta.</p><h2 id="revisao">E se a pessoa diz que não pode mais pagar?</h2><p>Perda de emprego, redução de renda, doença ou novas despesas podem justificar uma análise de revisão. Ainda assim, a pensão não deve ser reduzida ou interrompida por decisão unilateral.</p><h2>Quando procurar um advogado?</h2><p>Procure orientação quando houver atraso, pagamento parcial, descumprimento de acordo ou dúvidas sobre cobrança. Para conhecer o serviço, veja a <a href="/atuacao/pensao-alimenticia">atuação em casos de pensão alimentícia</a> e fale com um <a href="/atuacao/pensao-alimenticia">advogado para pensão alimentícia em Sorocaba</a>.</p><h2 id="sorocaba">Atendimento para pensão alimentícia em Sorocaba</h2><p>O escritório atende casos de pedido, cobrança, revisão, exoneração, defesa e descumprimento de acordo em Sorocaba e região. Conheça também a <a href="/atuacao/direito-de-familia">atuação em Direito de Família</a>.</p><h2 id="faq">Perguntas frequentes</h2><div class="faq-list">${faq.map(([q,a],i)=>`<article class="faq-item ${i===0?"is-open":""}" data-faq-item><button type="button" data-faq-toggle aria-expanded="${i===0}"><span>${String(i+1).padStart(2,"0")}</span>${q}</button><div class="faq-answer"><p>${a}</p></div></article>`).join("")}</div><aside class="article-final-cta"><h2>Precisa cobrar pensão alimentícia atrasada?</h2><p>A medida adequada depende do acordo ou decisão existente, das parcelas em atraso, dos comprovantes e das circunstâncias de cada família. Fale com o escritório para compreender os próximos passos possíveis.</p><div class="cta-actions"><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar sobre pensão alimentícia</a><a class="button button-ghost" href="/atuacao/pensao-alimenticia">Conhecer a atuação em pensão alimentícia</a></div></aside></article></section><section class="article-recommendations reveal-block"><div class="section-heading"><p>Leituras relacionadas</p><h2>Outros conteúdos de Direito de Família</h2></div><div class="editorial-article-grid article-recommendations-grid">${[articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca")].map(articleListingCardTemplate).join("")}</div></section></main>${laborRightsArticleSchemaTemplate(article)}<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@graph":[breadcrumbSchema,faqSchema]}).replace(/</g,"\\u003c")}</script>${footerTemplate()}`;
+}
+
 function familyDecisionsArticleTemplate() {
   const article = articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca");
   const recommendations = [
@@ -4480,13 +4510,14 @@ function setCanonical(path) {
     canonical.setAttribute("rel", "canonical");
     document.head.appendChild(canonical);
   }
-  canonical.setAttribute("href", absoluteUrl(path));
+  canonical.setAttribute("href", absoluteUrl(["/atuacao/pensao-alimenticia", "/artigos/pensao-alimenticia-atrasada-como-cobrar"].includes(path) ? `${path}/` : path));
 }
 
 function routeSocialImage(path) {
   const article = articles.find((item) => item.href === path);
   if (article) return article.image;
   if (laborLandingPages[path]) return "/home-retrato-advogado.jpg";
+  if (path === "/atuacao/pensao-alimenticia") return "/home-retrato-advogado.jpg";
   if (path === "/contato" || path === "/quem-somos") return "/home-retrato-advogado.jpg";
   return "/home-cta-advogado.jpg";
 }
@@ -4494,7 +4525,7 @@ function routeSocialImage(path) {
 function updateSocialMeta(path) {
   const description = ensureMetaByName("description").getAttribute("content") || "";
   const title = document.title;
-  const canonicalUrl = absoluteUrl(path);
+  const canonicalUrl = absoluteUrl(["/atuacao/pensao-alimenticia", "/artigos/pensao-alimenticia-atrasada-como-cobrar"].includes(path) ? `${path}/` : path);
   const imageUrl = absoluteUrl(routeSocialImage(path));
   const type = path.startsWith("/artigos/") ? "article" : "website";
 
@@ -4648,6 +4679,13 @@ function updateDocumentMeta(path) {
       "Orientação em Direito de Família em Sorocaba para divórcio, guarda, alimentos, partilha de bens, união estável e outras questões familiares."
     );
   }
+  if (path === "/atuacao/pensao-alimenticia") {
+    document.title = "Advogado para Pensão Alimentícia em Sorocaba | Eryx";
+    description.setAttribute(
+      "content",
+      "Advogado para pensão alimentícia em Sorocaba em casos de pedido, cobrança, atraso, revisão, exoneração e descumprimento de acordo. Fale com o escritório."
+    );
+  }
   if (path === "/contato") {
     document.title = `Contato | ${SITE_CONFIG.firmName}`;
     description.setAttribute(
@@ -4703,6 +4741,10 @@ function updateDocumentMeta(path) {
       "content",
       "Entenda aspectos importantes sobre divórcio, guarda, pensão alimentícia e partilha de bens antes de tomar decisões familiares."
     );
+  }
+  if (path === "/artigos/pensao-alimenticia-atrasada-como-cobrar") {
+    document.title = "Pensão Alimentícia Atrasada: Como Cobrar? | Eryx Fernandes";
+    description.setAttribute("content", "A pensão alimentícia está atrasada ou sendo paga parcialmente? Entenda como funciona a cobrança, quais documentos reunir e quando procurar orientação jurídica.");
   }
   if (path === "/quem-somos") {
     document.title = `Sobre o escritório | ${SITE_CONFIG.firmName}`;
@@ -4919,10 +4961,68 @@ function initArticleFilters() {
   });
 }
 
+function alimonyLandingTemplate() {
+  const path = "/atuacao/pensao-alimenticia";
+  const whatsappUrl = getWhatsAppUrl("Vim pelo Google e quero informações sobre pensão alimentícia.");
+  const situations = [
+    ["Pedido e fixação", "Pedido de alimentos, definição provisória ou definitiva e formalização de acordos, conforme as necessidades e possibilidades demonstradas."],
+    ["Parcelas em atraso", "Cobrança de pensão atrasada, pagamento parcial ou irregular e análise da decisão ou acordo já existente."],
+    ["Revisão do valor", "Avaliação de pedido de aumento ou redução quando houver alteração relevante nas circunstâncias e provas disponíveis."],
+    ["Exoneração", "Análise da continuidade da obrigação e dos documentos necessários, sem interrupções unilaterais."],
+    ["Acordos não cumpridos", "Orientação sobre formalização, descumprimento e os caminhos juridicamente adequados para cada situação."],
+    ["Outras situações familiares", "Alimentos durante a gravidez, entre ex-cônjuges ou familiares e defesa em execução, quando presentes os requisitos." ]
+  ];
+  const faq = [
+    ["Como pedir pensão alimentícia?", "O pedido depende da situação familiar, das necessidades de quem recebe e das possibilidades de quem paga. A formalização e os documentos ajudam a definir o caminho adequado."],
+    ["Existe percentual fixo para pensão?", "Não há percentual obrigatório aplicável a todos os casos. O valor é analisado de acordo com as circunstâncias concretas e as provas disponíveis."],
+    ["É possível cobrar pensão atrasada?", "Pode haver medidas de cobrança, mas é preciso verificar as parcelas, o acordo ou decisão existente e a forma de execução adequada ao caso."],
+    ["O que fazer quando o pagamento é parcial?", "É importante organizar os comprovantes e avaliar o que foi ajustado ou decidido antes de tomar qualquer providência."],
+    ["Posso pedir aumento ou redução?", "A revisão pode ser avaliada quando houver mudança relevante nas circunstâncias. Alterar o valor por conta própria pode gerar dificuldades."],
+    ["A pensão termina automaticamente aos 18 anos?", "A maioridade não encerra a obrigação automaticamente em todas as situações; é necessária análise jurídica das circunstâncias."],
+    ["Acordo verbal de pensão tem validade?", "Acordos informais podem gerar dúvidas de prova e execução. A situação deve ser examinada antes de definir os próximos passos."],
+    ["Quais documentos devo separar?", "A lista varia conforme o caso, mas comprovantes de renda, despesas, pagamentos, acordos e decisões normalmente são relevantes."],
+    ["Quando procurar um advogado?", "Quando houver dúvida sobre pedido, atraso, revisão, exoneração, acordo ou cobrança judicial, a análise pode esclarecer os riscos e possibilidades."],
+    ["O escritório atende casos em Sorocaba?", "Sim. O escritório atende casos de pensão alimentícia em Sorocaba e região, de forma presencial e digital."],
+    ["O atendimento pode começar pelo WhatsApp?", "Sim. O primeiro contato pode começar pelo WhatsApp para apresentar brevemente a situação e compreender os próximos passos possíveis."]
+  ];
+  const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":faq.map(([name,text]) => ({"@type":"Question",name,acceptedAnswer:{"@type":"Answer",text}}))};
+  const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[
+    {"@type":"ListItem",position:1,name:"Home",item:`${SITE_CONFIG.siteUrl}/`},
+    {"@type":"ListItem",position:2,name:"Atuação",item:`${SITE_CONFIG.siteUrl}/atuacao`},
+    {"@type":"ListItem",position:3,name:"Direito de Família",item:`${SITE_CONFIG.siteUrl}/atuacao/direito-de-familia`},
+    {"@type":"ListItem",position:4,name:"Pensão Alimentícia",item:`${SITE_CONFIG.siteUrl}/atuacao/pensao-alimenticia/`}
+  ]};
+  return `
+    ${headerTemplate(path)}
+    <main id="conteudo" class="labor-landing-page alimony-landing-page">
+      <section class="labor-lp-hero">
+        <div class="labor-lp-hero-inner">
+          <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/atuacao">Atuação</a><span>/</span><a href="/atuacao/direito-de-familia">Direito de Família</a><span>/</span><span>Pensão Alimentícia</span></nav>
+          <p class="eyebrow">DIREITO DE FAMÍLIA EM SOROCABA</p>
+          <h1>Advogado para Pensão Alimentícia em Sorocaba</h1>
+          <p class="labor-lp-lead">Se a pensão não está sendo paga, o valor não é suficiente ou você precisa regularizar a situação, o escritório pode orientar você com clareza e responsabilidade.</p>
+          <div class="hero-actions"><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar sobre pensão alimentícia</a><a class="button button-ghost" href="#como-funciona">Entender como funciona</a></div>
+          <div class="labor-lp-trust"><span>Atendimento em Sorocaba e região</span><span>${professionalRegistrationLink()}</span><span>Presencial e digital</span></div>
+        </div>
+      </section>
+      <section class="labor-lp-intro reveal-block" id="como-funciona"><p class="eyebrow">Você não precisa lidar com isso sozinho</p><h2>Quando a pensão vira um problema, é importante buscar orientação.</h2><p>Falta de pagamento, valor insuficiente, pagamentos incompletos ou dúvidas sobre um acordo podem trazer preocupação para toda a família. Cada caso tem uma história: o valor da pensão depende das necessidades de quem recebe e da condição de quem paga. Não existe um número igual para todos. Antes de tomar decisões ou aceitar um acordo sem segurança, vale conversar com um advogado. Em Sorocaba e região, o escritório oferece atendimento claro e respeitoso para entender sua situação e mostrar os próximos passos possíveis.</p></section>
+      <section class="labor-lp-situations reveal-block"><div class="section-heading"><p>Situações atendidas</p><h2>Em quais situações o escritório pode atuar?</h2><span>A medida adequada pode ser analisada conforme o caso, os documentos e os requisitos jurídicos aplicáveis.</span></div><div class="labor-lp-card-grid">${situations.map(([title,text], i) => `<article><span>${String(i+1).padStart(2,"0")}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
+      <section class="labor-lp-checklist reveal-block"><div><p class="eyebrow">Acordo de boca</p><h2>O pagamento da pensão está acordado “de boca”?</h2><p>Quando não há nada formalizado, qualquer mudança pode virar discussão. Não espere o problema crescer: fale com um advogado para entender como proteger o que foi combinado e buscar uma solução mais segura para a sua família.</p><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Conversar sobre meu caso</a></div></section>
+      <section class="labor-lp-checklist reveal-block"><div><p class="eyebrow">Cobrança</p><h2>A pensão está atrasada ou vem incompleta?</h2><p>Quando o pagamento falha, a rotina de quem depende desse dinheiro fica ainda mais difícil. O escritório pode analisar o que foi combinado ou decidido e explicar, de forma simples, quais caminhos podem ser avaliados para cobrar as parcelas em aberto.</p><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o escritório</a></div></section>
+      <section class="labor-lp-checklist reveal-block"><div><p class="eyebrow">Revisão da pensão</p><h2>O valor da pensão não acompanha mais a sua realidade?</h2><p>Se as despesas aumentaram, se a renda mudou ou se a pensão ficou pesada demais para quem paga, não é preciso tentar resolver isso sozinho. O escritório pode analisar a situação e orientar sobre a possibilidade de pedir a revisão do valor.</p><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar sobre revisão da pensão</a></div></section>
+      <section class="worker-analysis-section reveal-block"><div class="worker-analysis-copy"><p class="eyebrow">Atendimento</p><h2>Como funciona o atendimento?</h2><p>Você conta o que está acontecendo. Depois, o escritório explica de forma simples quais podem ser os próximos passos.</p><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Solicitar análise do caso</a></div><div class="worker-analysis-steps">${[["01","Relato inicial","Você explica a situação como ela está hoje."],["02","Entendimento do caso","O escritório confere as informações importantes."],["03","Caminho possível","Você entende o que pode ser feito."],["04","Próximos passos","Recebe orientação clara para decidir com segurança."]].map(([n,t,d])=>`<article><span>${n}</span><h3>${t}</h3><p>${d}</p></article>`).join("")}</div></section>
+      <section class="labor-lp-lawyer reveal-block"><div class="labor-lp-lawyer-image">${optimizedPicture("/home-retrato-advogado.jpg", "Dr. Eryx Fernandes, advogado em Sorocaba")}</div><div><p class="eyebrow">Atendimento profissional</p><h2>Converse com quem vai olhar para a sua situação com atenção.</h2><p>Dr. Eryx Fernandes atende casos de pensão alimentícia com escuta, explicações sem linguagem complicada e respeito pela história de cada família. Você pode começar a conversa pelo WhatsApp e entender o que pode ser feito antes de tomar qualquer decisão.</p><div class="labor-lp-credentials"><strong>Dr. Eryx Fernandes</strong><span>${professionalRegistrationLink()}</span><span>${SITE_CONFIG.address}</span></div><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o escritório</a></div></section>
+      <section class="worker-faq-section labor-lp-faq reveal-block"><div class="section-heading"><p>FAQ</p><h2>Perguntas frequentes sobre pensão alimentícia</h2></div><div class="faq-list">${faq.map(([q,a],i)=>`<article class="faq-item ${i===0?"is-open":""}" data-faq-item><button type="button" data-faq-toggle aria-expanded="${i===0}"><span>${String(i+1).padStart(2,"0")}</span>${q}</button><div class="faq-answer"><p>${a}</p></div></article>`).join("")}</div></section>
+      <section class="labor-lp-related reveal-block"><div class="section-heading"><p>Conteúdos relacionados</p><h2>Saiba mais sobre Direito de Família</h2></div><div class="labor-lp-related-grid"><a href="/atuacao/direito-de-familia"><strong>Direito de Família</strong><span>Conhecer a área de atuação</span></a><a href="/artigos/pensao-alimenticia-atrasada-como-cobrar"><strong>Pensão alimentícia atrasada</strong><span>Entender como funciona a cobrança</span></a><a href="/contato"><strong>Contato</strong><span>Fale com o escritório</span></a></div></section>
+      <section class="labor-lp-final"><div><p class="eyebrow">Próximo passo</p><h2>Precisa de orientação sobre pensão alimentícia?</h2><p>Pedido, cobrança, revisão e exoneração exigem análise das circunstâncias e dos documentos. Fale com o escritório para apresentar sua situação e compreender os próximos passos possíveis.</p><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o escritório pelo WhatsApp</a></div></section>
+    </main><script type="application/ld+json" id="alimony-schema">${JSON.stringify({"@context":"https://schema.org","@graph":[breadcrumbSchema,faqSchema]}).replace(/</g,"\\u003c")}</script>${footerTemplate()}`;
+}
+
 export function renderPageHtml(pathname) {
   const path = normalizePath(pathname);
 
   if (laborLandingPages[path]) return laborLandingPageTemplate(path);
+  if (path === "/atuacao/pensao-alimenticia") return alimonyLandingTemplate();
 
   return path === "/"
     ? homeTemplate()
@@ -4934,6 +5034,8 @@ export function renderPageHtml(pathname) {
           ? articlesTemplate()
           : path === "/artigos/nr-01-novas-exigencias-empresas-sorocaba"
             ? nr01CompaniesArticleTemplate()
+            : path === "/artigos/pensao-alimenticia-atrasada-como-cobrar"
+              ? alimonyLateArticleTemplate()
             : path === "/artigos/fgts-nao-depositado-como-conferir"
               ? missingFgtsArticleTemplate()
             : path === "/artigos/rescisao-indireta-sorocaba"
@@ -4952,6 +5054,8 @@ export function renderPageHtml(pathname) {
                           ? realEstateTemplate()
                           : path === "/atuacao/direito-de-familia"
                             ? familyLawTemplate()
+                            : path === "/atuacao/pensao-alimenticia"
+                              ? alimonyLandingTemplate()
                             : path === "/contato"
                               ? contactTemplate()
                               : internalTemplate(path);

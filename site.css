@@ -5051,6 +5051,8 @@ button {
 .labor-lp-checklist { width: min(1180px,calc(100% - 48px)); margin: 0 auto 96px; padding: 0; }
 .labor-lp-checklist>div { padding: 56px; border-radius: 8px; background: var(--blue); }
 .labor-lp-checklist h2 { color: var(--white); font-size: clamp(2rem,3vw,3.2rem); }
+.labor-lp-checklist p:not(.eyebrow) { max-width: 760px; margin: 24px 0 0; color: rgba(255,255,255,.86); font-size: 1.02rem; line-height: 1.8; }
+.labor-lp-checklist .button { margin-top: 30px; }
 .labor-lp-list { display: grid; margin-top: 36px; }
 .labor-lp-list span { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.78); }
 .labor-lp-list span::before { margin-right: 12px; color: var(--champagne); content: "✓"; }
@@ -5066,6 +5068,8 @@ button {
 .labor-lp-related { background: var(--white); }
 .labor-lp-related .section-heading { max-width: 760px; margin-left: 0; text-align: left; }
 .labor-lp-related-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 42px; background: transparent; }
+.alimony-landing-page .labor-lp-related-grid { grid-template-columns: repeat(3, 1fr); }
+.alimony-landing-page .worker-analysis-copy .button { margin-top: 30px; }
 .labor-lp-related-grid a {
   display: flex; min-height: 180px; padding: 28px; flex-direction: column; justify-content: space-between;
   border: 1px solid var(--line); border-radius: 8px; color: var(--blue); background: var(--off-white); text-decoration: none; transition: transform 180ms ease,background 180ms ease,color 180ms ease;
@@ -5093,6 +5097,7 @@ button {
   .labor-lp-checklist { width: calc(100% - 44px); margin-bottom: 68px; padding: 0; }
   .labor-lp-checklist>div { padding: 34px 26px; }
   .labor-lp-card-grid,.labor-lp-related-grid { grid-template-columns: 1fr; }
+  .alimony-landing-page .labor-lp-related-grid { grid-template-columns: 1fr; }
   .labor-lp-card-grid article { min-height: 0; }
   .labor-lp-card-grid h3 { margin-top: 24px; }
   .labor-lp-lawyer-image,.labor-lp-lawyer-image picture,.labor-lp-lawyer-image img { min-height: 420px; }

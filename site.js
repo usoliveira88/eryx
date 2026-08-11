@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   firmName: "Eryx Fernandes Advocacia",
-  siteUrl: "https://advmartinsfernandes.com.br",
+  siteUrl: "https://www.advmartinsfernandes.com.br",
   authorName: "Eryx Fernandes",
   responsible: "Dr. Eryx Fernandes",
   oab: "OAB/SP nº 530.983",

@@ -37,6 +37,14 @@ test("gera a URL centralizada com número e mensagem corretos", () => {
   assert.equal(getWhatsAppUrl(), expectedUrl);
 });
 
+test("mantém o domínio canônico com www nos dados institucionais", () => {
+  assert.equal(SITE_CONFIG.siteUrl, "https://www.advmartinsfernandes.com.br");
+  for (const route of routes) {
+    const html = renderPageHtml(route);
+    assert.doesNotMatch(html, /https:\/\/advmartinsfernandes\.com\.br/);
+  }
+});
+
 test("exibe exatamente um botão flutuante acessível em cada página pública", () => {
   for (const route of routes) {
     const html = renderPageHtml(route);
@@ -78,7 +86,7 @@ test("inclui autoria e datas completas nos dados estruturados dos artigos", () =
     assert.match(html, /"datePublished":"2026-/);
     assert.match(html, /"dateModified":"2026-/);
     assert.match(html, /"name":"Eryx Fernandes"/);
-    assert.match(html, /"url":"https:\/\/advmartinsfernandes\.com\.br\/quem-somos"/);
+    assert.match(html, /"url":"https:\/\/www\.advmartinsfernandes\.com\.br\/quem-somos"/);
   }
 });
 

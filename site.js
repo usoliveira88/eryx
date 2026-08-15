@@ -91,6 +91,66 @@ const articles = [
     filterCategory: "Trabalhista",
     homeCategory: "Trabalhista",
     eyebrow: "ARTIGO | TRABALHISTA",
+    title: "Horas extras não pagas: como comprovar e cobrar os valores?",
+    seoTitle: "Horas Extras Não Pagas: Como Comprovar e Cobrar? | Eryx Fernandes",
+    seoDescription:
+      "Entenda como comprovar horas extras não pagas, quais provas podem ser utilizadas e quais cuidados o trabalhador deve tomar para buscar seus direitos.",
+    excerpt:
+      "Entenda quando pode existir direito a horas extras, quais registros ajudam a demonstrar a jornada e por que cada caso exige análise individual.",
+    image: "/artigos/hora-extra-qual-valor-sorocaba.jpg",
+    alt: "Relógio analógico representando o controle da jornada de trabalho",
+    href: "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
+    readingTime: "8 min de leitura",
+    date: "15 de agosto de 2026",
+    publishedAt: "2026-08-15",
+    modifiedAt: "2026-08-15",
+    authorRole: "Advogado Trabalhista"
+  },
+  {
+    category: "Trabalhista",
+    filterCategory: "Trabalhista",
+    homeCategory: "Trabalhista",
+    eyebrow: "ARTIGO | TRABALHISTA",
+    title: "Assédio moral no trabalho: como identificar e o que fazer?",
+    seoTitle: "Assédio Moral no Trabalho: Como Identificar? | Eryx Fernandes",
+    seoDescription:
+      "Saiba quais situações podem caracterizar assédio moral no trabalho, como reunir provas e quando buscar orientação jurídica.",
+    excerpt:
+      "Veja como diferenciar uma cobrança profissional de condutas abusivas, preservar registros e avaliar quando procurar orientação.",
+    image: "/artigos/assedio-moral-trabalho-sorocaba.webp",
+    alt: "Trabalhadora preocupada diante de colegas em um ambiente de escritório",
+    href: "/artigos/assedio-moral-no-trabalho-como-identificar",
+    readingTime: "8 min de leitura",
+    date: "15 de agosto de 2026",
+    publishedAt: "2026-08-15",
+    modifiedAt: "2026-08-15",
+    authorRole: "Advogado Trabalhista"
+  },
+  {
+    category: "Trabalhista",
+    filterCategory: "Trabalhista",
+    homeCategory: "Trabalhista",
+    eyebrow: "ARTIGO | TRABALHISTA",
+    title: "Acidente de trabalho: quais são os direitos do trabalhador?",
+    seoTitle: "Acidente de Trabalho: Quais São os Direitos? | Eryx Fernandes",
+    seoDescription:
+      "Entenda quais direitos podem existir após um acidente de trabalho, a importância da CAT, documentos, afastamento e análise jurídica do caso.",
+    excerpt:
+      "Saiba por que registrar o ocorrido, reunir documentos médicos e analisar os requisitos legais é importante após um acidente de trabalho.",
+    image: "/artigos/acidente-trabalho-sorocaba.webp",
+    alt: "Trabalhador recebendo atendimento após ferimento no joelho",
+    href: "/artigos/acidente-de-trabalho-direitos-do-trabalhador",
+    readingTime: "8 min de leitura",
+    date: "15 de agosto de 2026",
+    publishedAt: "2026-08-15",
+    modifiedAt: "2026-08-15",
+    authorRole: "Advogado Trabalhista"
+  },
+  {
+    category: "Trabalhista",
+    filterCategory: "Trabalhista",
+    homeCategory: "Trabalhista",
+    eyebrow: "ARTIGO | TRABALHISTA",
     title: "FGTS não depositado: como conferir e o que o trabalhador pode fazer?",
     seoTitle: "FGTS não depositado: como conferir e o que fazer",
     seoDescription:
@@ -229,7 +289,10 @@ const optimizedImageVariants = new Map([
   ["/artigos/fgts-nao-depositado.jpg", "/artigos/fgts-nao-depositado"],
   ["/artigos/artigo-trabalhista-rescisao.jpg", "/artigos/artigo-trabalhista-rescisao"],
   ["/artigos/artigo-imobiliario.jpg", "/artigos/artigo-imobiliario"],
-  ["/artigos/artigo-familia-divorcio-guarda.jpg", "/artigos/artigo-familia-divorcio-guarda"]
+  ["/artigos/artigo-familia-divorcio-guarda.jpg", "/artigos/artigo-familia-divorcio-guarda"],
+  ["/artigos/hora-extra-qual-valor-sorocaba.jpg", "/artigos/hora-extra-qual-valor-sorocaba"],
+  ["/artigos/assedio-moral-trabalho-sorocaba.webp", "/artigos/assedio-moral-trabalho-sorocaba"],
+  ["/artigos/acidente-trabalho-sorocaba.webp", "/artigos/acidente-trabalho-sorocaba"]
 ]);
 
 function optimizedPicture(src, alt, options = {}) {
@@ -238,9 +301,10 @@ function optimizedPicture(src, alt, options = {}) {
   const loading = options.lazy === false ? "" : ' loading="lazy"';
   const decoding = options.decoding === false ? "" : ' decoding="async"';
   const priority = options.fetchPriority ? ` fetchpriority="${options.fetchPriority}"` : "";
+  const dimensions = options.width && options.height ? ` width="${options.width}" height="${options.height}"` : "";
 
   if (!base) {
-    return `<img src="${src}" alt="${alt}"${loading}${decoding}${priority} />`;
+    return `<img src="${src}" alt="${alt}"${dimensions}${loading}${decoding}${priority} />`;
   }
 
   return `
@@ -249,7 +313,7 @@ function optimizedPicture(src, alt, options = {}) {
       <source media="(max-width: 767px)" srcset="${base}-720.webp" type="image/webp" />
       <source srcset="${base}-1200.avif" type="image/avif" />
       <source srcset="${base}-1200.webp" type="image/webp" />
-      <img src="${base}-1200.webp" alt="${alt}"${loading}${decoding}${priority} />
+      <img src="${base}-1200.webp" alt="${alt}"${dimensions}${loading}${decoding}${priority} />
     </picture>
   `;
 }
@@ -3346,9 +3410,9 @@ function nr01CompaniesArticleTemplate() {
 function rescisaoIndirectArticleTemplate() {
   const article = articleByHref("/artigos/rescisao-indireta-sorocaba");
   const recommendations = [
+    articleByHref("/artigos/assedio-moral-no-trabalho-como-identificar"),
     articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"),
-    articleByHref("/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"),
-    articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca")
+    articleByHref("/artigos/fgts-nao-depositado-como-conferir")
   ];
 
   return `
@@ -3736,9 +3800,9 @@ function missingFgtsArticleTemplate() {
 function laborRightsArticleTemplate() {
   const article = articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica");
   const recommendations = [
+    articleByHref("/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar"),
+    articleByHref("/artigos/acidente-de-trabalho-direitos-do-trabalhador"),
     articleByHref("/artigos/rescisao-indireta-sorocaba"),
-    articleByHref("/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"),
-    articleByHref("/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca")
   ];
 
   return `
@@ -4167,6 +4231,187 @@ function realEstateContractsArticleTemplate() {
     ${laborRightsArticleSchemaTemplate(article)}
     ${footerTemplate()}
   `;
+}
+
+const overtimeArticleFaqItems = [
+  { question: "Como provar que eu fazia horas extras?", answer: "Cartões de ponto, mensagens, e-mails, escalas, registros de acesso, comprovantes de atividades e testemunhas podem ajudar. A utilidade de cada elemento depende da rotina e das circunstâncias do caso." },
+  { question: "A empresa pode não registrar todas as horas no ponto?", answer: "O registro deve refletir a jornada efetivamente cumprida. Se houver divergência entre o ponto e a rotina real, outros documentos e depoimentos podem ser avaliados." },
+  { question: "Testemunha pode ajudar a comprovar a jornada?", answer: "Pode. Uma pessoa que tenha acompanhado a rotina pode contribuir para esclarecer horários e atividades, mas a prova é analisada em conjunto com os demais elementos." },
+  { question: "Banco de horas elimina o direito a horas extras?", answer: "Não automaticamente. É necessário verificar a forma de instituição, os registros, as compensações realizadas e o cumprimento das regras legais e coletivas aplicáveis." }
+];
+
+const harassmentArticleFaqItems = [
+  { question: "Toda cobrança no trabalho é assédio moral?", answer: "Não. Cobranças profissionais, metas razoáveis e avaliações podem fazer parte da gestão. O método utilizado, a repetição, o contexto e a existência de humilhação ou abuso precisam ser avaliados." },
+  { question: "Como provar assédio moral?", answer: "Mensagens, e-mails, comunicados, registros de ocorrências, documentos médicos e testemunhas podem ajudar a reconstruir o contexto. A análise considera o conjunto dos fatos." },
+  { question: "Mensagens podem ser usadas como prova?", answer: "Podem ser relevantes quando preservadas de forma íntegra e contextualizada. Antes de divulgar ou editar o material, é prudente buscar orientação sobre a forma adequada de conservação." },
+  { question: "O que fazer diante de humilhações recorrentes?", answer: "Registre datas, locais, pessoas presentes e o que ocorreu; preserve comunicações e avalie os canais internos disponíveis. A melhor providência depende do risco e do caso concreto." }
+];
+
+const workplaceAccidentArticleFaqItems = [
+  { question: "O que é considerado acidente de trabalho?", answer: "Em termos gerais, é o evento relacionado ao trabalho que provoca lesão ou alteração funcional com perda ou redução, temporária ou permanente, da capacidade. A lei também prevê situações equiparadas." },
+  { question: "A empresa precisa emitir CAT?", answer: "A empresa deve comunicar o acidente nos prazos legais. Se ela não fizer a comunicação, outras pessoas e entidades previstas em lei podem formalizá-la, sem que isso substitua a análise do caso." },
+  { question: "Acidente de trabalho sempre gera estabilidade?", answer: "Não. A estabilidade depende dos requisitos legais e das circunstâncias do afastamento e do benefício. Existem situações específicas reconhecidas pela legislação e pela jurisprudência." },
+  { question: "Quais documentos devem ser guardados?", answer: "Atestados, exames, prontuários, receitas, CAT, documentos do INSS, fotos, mensagens, comunicações com a empresa e dados de testemunhas podem ser relevantes." }
+];
+
+function laborTopicArticleTemplate({ articleHref, breadcrumbLabel, summary, body, faqItems, recommendations, whatsappMessage, finalTitle, finalText, lpHref, lpLabel, imageWidth, imageHeight }) {
+  const article = articleByHref(articleHref);
+  const whatsappUrl = getWhatsAppUrl(whatsappMessage);
+
+  return `
+    ${headerTemplate("/artigos")}
+    <main id="conteudo" class="article-page">
+      <section class="article-hero">
+        <div class="editorial-hero-mark" aria-hidden="true"><img src="/monograma-mf.png" alt="" /></div>
+        <div class="editorial-hero-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="article-hero-inner">
+          <div class="article-hero-copy">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/artigos">Artigos</a><span>/</span><span>${breadcrumbLabel}</span></nav>
+            <p class="article-type-label">Artigo jurídico</p>
+            <p class="eyebrow article-category-label">${article.category}</p>
+            <h1>${article.title}</h1>
+            <p>${article.excerpt}</p>
+            <div class="article-author">${authorAvatarTemplate()}<div><strong>${SITE_CONFIG.responsible}</strong><span>${professionalRegistrationLink()}</span></div></div>
+            <div class="article-hero-meta"><span>${article.readingTime}</span><span>${article.date}</span></div>
+          </div>
+          <figure class="article-hero-image">${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high", width: imageWidth, height: imageHeight })}</figure>
+        </div>
+      </section>
+      <section class="article-shell">
+        <aside class="article-summary" aria-label="Sumário do artigo"><span>Sumário</span>${summary.map(([id, label]) => `<a href="#${id}">${label}</a>`).join("")}</aside>
+        <article class="article-content">
+          ${body}
+          <h2 id="faq">Perguntas frequentes</h2>
+          <div class="faq-list">${faqItems.map((item, index) => `<article class="faq-item ${index === 0 ? "is-open" : ""}" data-faq-item><button type="button" data-faq-toggle aria-expanded="${index === 0}"><span>${String(index + 1).padStart(2, "0")}</span>${item.question}</button><div class="faq-answer"><p>${item.answer}</p></div></article>`).join("")}</div>
+          <aside class="article-final-cta"><h2>${finalTitle}</h2><p>${finalText}</p><div class="cta-actions"><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a><a class="button button-ghost" href="${lpHref}">${lpLabel}</a></div></aside>
+        </article>
+      </section>
+      <section class="article-recommendations reveal-block"><div class="section-heading"><p>Leitura</p><h2>Outras leituras recomendadas</h2></div><div class="editorial-article-grid article-recommendations-grid">${recommendations.map(articleListingCardTemplate).join("")}</div></section>
+    </main>
+    ${articleStructuredDataTemplate(article, faqItems, breadcrumbLabel)}
+    ${footerTemplate()}
+  `;
+}
+
+function overtimeUnpaidArticleTemplate() {
+  return laborTopicArticleTemplate({
+    articleHref: "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
+    breadcrumbLabel: "Horas extras não pagas",
+    summary: [["direito", "Quando existe direito"], ["controle", "Controle de jornada"], ["provas", "Provas da jornada"], ["banco", "Banco de horas"], ["calculo", "Cálculo e reflexos"], ["orientacao", "Quando buscar orientação"], ["faq", "Perguntas frequentes"]],
+    body: `
+      <p class="article-lead">Horas extras podem ser devidas quando o trabalhador permanece à disposição da empresa além da jornada aplicável e esse tempo não é corretamente compensado ou pago.</p>
+      <p>A conclusão depende do contrato, da categoria profissional, dos horários efetivamente cumpridos e das regras de compensação. O primeiro passo não é estimar um valor isolado, mas reconstruir a rotina e comparar os registros com o trabalho realizado.</p>
+      <h2 id="direito">Quando pode existir direito a horas extras?</h2>
+      <p>A <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" target="_blank" rel="noopener noreferrer">CLT</a> estabelece limites gerais para a jornada e permite serviço extraordinário dentro das condições legais. Podem merecer análise atividades antes da marcação de entrada, tarefas depois da saída, intervalos não usufruídos adequadamente, reuniões fora do horário e ordens executadas por mensagens ou sistemas remotos.</p>
+      <p>Nem todo contato fora do expediente representa automaticamente tempo de trabalho. É necessário entender se havia efetiva atividade, disponibilidade exigida, frequência e possibilidade de controle.</p>
+      ${articleInlineCtaTemplate("Sua jornada registrada não corresponde à rotina real?", "Organize os horários aproximados e os registros disponíveis. A análise individual ajuda a identificar quais informações são relevantes.", "Solicitar uma análise")}
+      <h2 id="controle">Como funciona o controle de jornada?</h2>
+      <p>O controle pode ocorrer por cartão manual, relógio eletrônico, aplicativo, sistema de acesso ou outro meio adotado pela empresa. O ponto deve representar os horários efetivamente praticados, inclusive as variações de entrada, saída e intervalos.</p>
+      <p>Registros invariáveis, alterações sem explicação, marcações feitas por terceiros ou orientação para registrar um horário e continuar trabalhando são circunstâncias que precisam ser examinadas junto com as demais provas.</p>
+      <h2 id="provas">Quais documentos e provas podem demonstrar a jornada?</h2>
+      <p>Cartões de ponto e holerites são importantes, mas não são os únicos elementos possíveis. Mensagens, e-mails, escalas, agendas, registros de acesso ao prédio ou a sistemas, relatórios de atividade, localização e testemunhas podem ajudar a reconstruir a rotina.</p>
+      <p>O material deve ser preservado com contexto, datas e identificação de origem. Capturas isoladas ou arquivos editados podem dificultar a compreensão. Também é útil registrar, de forma organizada, os dias da semana, os horários aproximados e as tarefas realizadas.</p>
+      <h2 id="banco">Banco de horas elimina o pagamento?</h2>
+      <p>Não necessariamente. É preciso verificar como o banco foi instituído, quais regras coletivas se aplicam, se o trabalhador conseguia acompanhar o saldo e se as horas foram compensadas dentro do período válido.</p>
+      <p>Créditos que desaparecem, compensações que não ocorreram ou diferenças entre o sistema e a jornada real podem justificar uma conferência. A existência de um banco de horas, por si só, não resolve todas as divergências.</p>
+      <h2 id="calculo">Como são calculadas as horas extras e seus reflexos?</h2>
+      <p>O cálculo considera salário, divisor aplicável, adicional legal ou previsto em norma coletiva, quantidade de horas e período discutido. Quando habituais e juridicamente reconhecidas, horas extras podem repercutir em outras parcelas, conforme a natureza de cada verba e o caso concreto.</p>
+      <p>Por isso, uma estimativa sem os registros e sem conhecer a categoria pode ser imprecisa. Diferenças também podem aparecer nas <a href="/atuacao/verbas-rescisorias">verbas rescisórias</a> quando a jornada não foi corretamente considerada durante o vínculo.</p>
+      <h2 id="orientacao">Quando buscar orientação jurídica?</h2>
+      <p>Vale buscar orientação quando o ponto não reflete a rotina, existem tarefas frequentes fora do horário, o banco de horas não é transparente ou os pagamentos não correspondem aos registros. Conheça a <a href="/atuacao/horas-extras">atuação em casos de horas extras</a> e veja também a página de <a href="/atuacao/direito-trabalhista-trabalhadores">Direito Trabalhista para Trabalhadores</a>.</p>
+    `,
+    faqItems: overtimeArticleFaqItems,
+    recommendations: [articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"), articleByHref("/artigos/fgts-nao-depositado-como-conferir")],
+    whatsappMessage: "Vim pelo artigo sobre horas extras não pagas e gostaria de analisar minha jornada.",
+    finalTitle: "Precisa conferir horas extras não pagas?",
+    finalText: "A análise considera a jornada real, os registros, as regras de compensação e as provas disponíveis, sem promessas de resultado.",
+    lpHref: "/atuacao/horas-extras",
+    lpLabel: "Ver atuação em horas extras",
+    imageWidth: 1200,
+    imageHeight: 620
+  });
+}
+
+function workplaceHarassmentArticleTemplate() {
+  return laborTopicArticleTemplate({
+    articleHref: "/artigos/assedio-moral-no-trabalho-como-identificar",
+    breadcrumbLabel: "Assédio moral no trabalho",
+    summary: [["conceito", "Como identificar"], ["cobranca", "Cobrança ou abuso"], ["exemplos", "Condutas de atenção"], ["contexto", "Repetição e contexto"], ["provas", "Como preservar provas"], ["orientacao", "O que fazer"], ["faq", "Perguntas frequentes"]],
+    body: `
+      <p class="article-lead">Assédio moral no trabalho não é qualquer conflito ou cobrança: a análise considera a forma da conduta, seu contexto, sua repetição e o impacto sobre a dignidade do trabalhador.</p>
+      <p>Humilhações, perseguições, ameaças, isolamento deliberado e exposição pública podem formar um quadro abusivo. Uma situação desconfortável isolada, porém, não deve ser classificada automaticamente sem compreender os fatos e as provas.</p>
+      <h2 id="conceito">O que pode caracterizar assédio moral no trabalho?</h2>
+      <p>O assédio pode ocorrer por comportamentos abusivos que degradam o ambiente de trabalho, desqualificam a pessoa ou criam pressão por meio de medo, constrangimento ou exclusão. Pode partir de superiores, colegas, subordinados ou até estar relacionado a práticas organizacionais.</p>
+      <p>O <a href="https://www.tst.jus.br/pt/materiais-educativos" target="_blank" rel="noopener noreferrer">Tribunal Superior do Trabalho</a> disponibiliza materiais que ajudam a diferenciar práticas de gestão de situações de violência, assédio e discriminação.</p>
+      <h2 id="cobranca">Qual é a diferença entre cobrança profissional e conduta abusiva?</h2>
+      <p>A empresa pode distribuir tarefas, avaliar desempenho, cobrar prazos e estabelecer metas razoáveis. Essas medidas não constituem assédio por si mesmas. O problema pode surgir quando a cobrança utiliza insultos, ameaças, exposição vexatória, comparações humilhantes ou critérios discriminatórios.</p>
+      <p>É necessário avaliar não apenas o conteúdo da cobrança, mas o modo como ela ocorre, sua frequência, as pessoas atingidas e se existe finalidade de punir, desqualificar ou excluir.</p>
+      ${articleInlineCtaTemplate("O ambiente de trabalho se tornou hostil?", "Preserve os registros e organize uma cronologia antes de tomar uma decisão. Cada situação precisa ser analisada com cuidado e confidencialidade.", "Conversar com o escritório")}
+      <h2 id="exemplos">Quais condutas merecem atenção?</h2>
+      <p>Humilhações diante de colegas, apelidos ofensivos, ameaças reiteradas, divulgação pública de resultados para constranger, retirada injustificada de tarefas, isolamento, boatos e punições sem fundamento podem ser relevantes.</p>
+      <p>Também merecem análise mensagens enviadas para intimidar, cobranças reiteradas em tom ofensivo e exigências usadas para perseguir uma pessoa específica. A presença de um exemplo não determina, sozinha, a conclusão jurídica.</p>
+      <h2 id="contexto">Por que repetição e contexto são importantes?</h2>
+      <p>O assédio moral costuma ser compreendido a partir de um processo, e não apenas de uma frase retirada do contexto. Datas, frequência, duração, hierarquia, testemunhas e consequências profissionais ou pessoais ajudam a formar o quadro.</p>
+      <p>Um episódio grave também pode produzir outras consequências jurídicas, mesmo quando não se encaixa no padrão reiterado normalmente associado ao assédio moral. A qualificação depende do caso concreto.</p>
+      <h2 id="provas">Como preservar mensagens, documentos e testemunhas?</h2>
+      <p>Guarde mensagens e e-mails completos, comunicados, advertências, avaliações e protocolos internos. Registre uma cronologia com datas, locais, pessoas presentes e descrição objetiva dos fatos. Documentos médicos podem ser relevantes quando houver impacto na saúde.</p>
+      <p>Evite editar arquivos ou divulgar acusações publicamente. Identificar colegas que presenciaram os acontecimentos também pode ajudar, mas não se deve pressionar testemunhas nem produzir versões combinadas.</p>
+      <h2 id="orientacao">O que fazer e quando buscar orientação?</h2>
+      <p>Dependendo do risco, canais internos, sindicato e autoridades competentes podem ser considerados. Antes de pedir demissão, abandonar o emprego ou expor o material, é prudente compreender as consequências de cada caminho.</p>
+      <p>Conheça a <a href="/atuacao/assedio-moral-no-trabalho">orientação em casos de assédio moral</a> e a atuação mais ampla em <a href="/atuacao/direito-trabalhista-trabalhadores">Direito Trabalhista para Trabalhadores</a>. Quando as condutas tornam inviável a continuidade do vínculo, também pode ser útil entender, sem presumir seu cabimento, como funciona a <a href="/artigos/rescisao-indireta-sorocaba">rescisão indireta</a>.</p>
+    `,
+    faqItems: harassmentArticleFaqItems,
+    recommendations: [articleByHref("/artigos/rescisao-indireta-sorocaba"), articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica")],
+    whatsappMessage: "Vim pelo artigo sobre assédio moral no trabalho e gostaria de relatar minha situação.",
+    finalTitle: "Precisa avaliar uma situação de assédio moral?",
+    finalText: "A orientação parte do contexto, da repetição das condutas e das provas disponíveis. O atendimento é individual e confidencial.",
+    lpHref: "/atuacao/assedio-moral-no-trabalho",
+    lpLabel: "Ver atuação em assédio moral",
+    imageWidth: 1012,
+    imageHeight: 675
+  });
+}
+
+function workplaceAccidentRightsArticleTemplate() {
+  return laborTopicArticleTemplate({
+    articleHref: "/artigos/acidente-de-trabalho-direitos-do-trabalhador",
+    breadcrumbLabel: "Acidente de trabalho",
+    summary: [["conceito", "O que é acidente"], ["registro", "Registro do ocorrido"], ["cat", "CAT"], ["afastamento", "Afastamento e INSS"], ["direitos", "Possíveis direitos"], ["documentos", "Documentos e provas"], ["orientacao", "Quando buscar orientação"], ["faq", "Perguntas frequentes"]],
+    body: `
+      <p class="article-lead">Após um acidente de trabalho, a prioridade é o atendimento de saúde. Em seguida, registrar o ocorrido e preservar documentos ajuda a esclarecer as repercussões trabalhistas e previdenciárias.</p>
+      <p>Nem todo acidente produz os mesmos direitos. A relação com o trabalho, a gravidade da lesão, o afastamento, o benefício concedido e as consequências para a capacidade profissional precisam ser avaliados individualmente.</p>
+      <h2 id="conceito">O que é considerado acidente de trabalho?</h2>
+      <p>A <a href="https://www.planalto.gov.br/ccivil_03/leis/l8213compilado.htm" target="_blank" rel="noopener noreferrer">Lei nº 8.213/1991</a> define, em termos gerais, o acidente ocorrido pelo exercício do trabalho que provoca lesão corporal ou alteração funcional capaz de causar morte ou perda ou redução, temporária ou permanente, da capacidade.</p>
+      <p>A legislação também contempla doenças profissionais ou relacionadas às condições de trabalho e algumas situações equiparadas, como determinados eventos durante serviço externo, viagem a trabalho ou percurso. O enquadramento exige verificar o nexo e as circunstâncias concretas.</p>
+      <h2 id="registro">Por que registrar o ocorrido?</h2>
+      <p>Informar a empresa, identificar testemunhas, guardar fotos do local e anotar a dinâmica do acidente contribuem para preservar a memória dos fatos. Quando houver atendimento médico, relate com precisão como o evento aconteceu e quais atividades eram realizadas.</p>
+      <p>Registros feitos próximos ao ocorrido costumam ser mais úteis do que uma reconstrução tardia. Isso não significa divulgar imagens sensíveis, mas conservar o material de forma segura.</p>
+      <h2 id="cat">O que é a CAT e quem pode emitir?</h2>
+      <p>A Comunicação de Acidente de Trabalho registra o evento perante a Previdência Social. A empresa tem dever legal de comunicar, mas a lei prevê que, na falta dessa providência, o próprio acidentado, dependentes, sindicato, médico ou autoridade pública também possam formalizar a comunicação.</p>
+      <p>A emissão da CAT é importante, mas não determina sozinha todos os direitos nem substitui a avaliação médica, previdenciária e jurídica.</p>
+      ${articleInlineCtaTemplate("Sofreu um acidente relacionado ao trabalho?", "Cuide da saúde, preserve os documentos e organize as informações do ocorrido. A análise jurídica pode começar com o material disponível.", "Solicitar orientação")}
+      <h2 id="afastamento">Como funciona o afastamento e a análise do INSS?</h2>
+      <p>Atestados, duração da incapacidade e categoria do segurado influenciam o caminho previdenciário. Quando o afastamento ultrapassa o período de responsabilidade do empregador, pode haver necessidade de requerimento e avaliação pelo INSS.</p>
+      <p>A espécie do benefício reconhecido pode produzir efeitos trabalhistas diferentes. Por isso, cartas de concessão, decisões, laudos e comunicações do INSS devem ser guardados.</p>
+      <h2 id="direitos">Quais direitos podem existir após o acidente?</h2>
+      <p>Conforme os requisitos, podem ser discutidos benefício previdenciário, manutenção de depósitos de FGTS durante afastamento acidentário, estabilidade após a cessação do benefício, retorno compatível com limitações e eventuais reparações quando houver fundamento jurídico.</p>
+      <p>Estabilidade, indenização e benefício não são automáticos em todo acidente. A Lei nº 8.213/1991 prevê garantia de manutenção do contrato em condições específicas, e outras situações dependem da prova do nexo, do dano e das circunstâncias.</p>
+      <h2 id="documentos">Quais documentos e provas devem ser preservados?</h2>
+      <p>Guarde atestados, exames, prontuários, receitas, relatórios, CAT, documentos do INSS, holerites e carteira de trabalho. Fotos, vídeos, comunicações com a empresa, ordens de serviço, registros de treinamento e nomes de testemunhas também podem ser relevantes.</p>
+      <p>Se houver sequelas ou limitações no retorno, conserve as recomendações médicas e os registros das atividades atribuídas. A evolução clínica ao longo do tempo pode ser tão importante quanto o atendimento inicial.</p>
+      <h2 id="orientacao">Quando buscar orientação jurídica?</h2>
+      <p>A orientação pode ser útil quando a CAT não foi emitida, há dúvida sobre o benefício, ocorreu dispensa após o afastamento, existem limitações no retorno ou o acidente deixou prejuízos relevantes. Conheça a <a href="/atuacao/acidente-de-trabalho">atuação em casos de acidente de trabalho</a> e veja também <a href="/atuacao/direito-trabalhista-trabalhadores">Direito Trabalhista para Trabalhadores</a>.</p>
+    `,
+    faqItems: workplaceAccidentArticleFaqItems,
+    recommendations: [articleByHref("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"), articleByHref("/artigos/nr-01-novas-exigencias-empresas-sorocaba")],
+    whatsappMessage: "Vim pelo artigo sobre acidente de trabalho e gostaria de analisar minha situação.",
+    finalTitle: "Precisa entender os efeitos de um acidente de trabalho?",
+    finalText: "Documentos médicos, registros do ocorrido, afastamento e benefício precisam ser examinados conforme as circunstâncias individuais.",
+    lpHref: "/atuacao/acidente-de-trabalho",
+    lpLabel: "Ver atuação em acidente de trabalho",
+    imageWidth: 1200,
+    imageHeight: 632
+  });
 }
 
 function alimonyLateArticleTemplate() {
@@ -4753,6 +4998,11 @@ function updateDocumentMeta(path) {
       "Conheça o Eryx Fernandes Advocacia, escritório em Sorocaba com atendimento próximo e atuação trabalhista, imobiliária e familiar."
     );
   }
+  const articlePage = articleByHref(path);
+  if (articlePage?.seoTitle) {
+    document.title = articlePage.seoTitle;
+    description.setAttribute("content", articlePage.seoDescription || articlePage.excerpt);
+  }
   if (commercialSeo[path]) {
     document.title = commercialSeo[path].title;
     description.setAttribute("content", commercialSeo[path].description);
@@ -5032,6 +5282,12 @@ export function renderPageHtml(pathname) {
         ? practiceOverviewTemplate()
         : path === "/artigos"
           ? articlesTemplate()
+          : path === "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar"
+            ? overtimeUnpaidArticleTemplate()
+            : path === "/artigos/assedio-moral-no-trabalho-como-identificar"
+              ? workplaceHarassmentArticleTemplate()
+              : path === "/artigos/acidente-de-trabalho-direitos-do-trabalhador"
+                ? workplaceAccidentRightsArticleTemplate()
           : path === "/artigos/nr-01-novas-exigencias-empresas-sorocaba"
             ? nr01CompaniesArticleTemplate()
             : path === "/artigos/pensao-alimenticia-atrasada-como-cobrar"

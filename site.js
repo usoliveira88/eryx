@@ -1632,6 +1632,24 @@ const laborLandingPages = {
 
 const laborLandingRoutes = Object.keys(laborLandingPages);
 
+const relatedLaborLandingPages = {
+  "/atuacao/rescisao-indireta": [
+    "/atuacao/assedio-moral-no-trabalho",
+    "/atuacao/fgts-nao-depositado"
+  ],
+  "/atuacao/verbas-rescisorias": [
+    "/atuacao/fgts-nao-depositado",
+    "/atuacao/horas-extras"
+  ],
+  "/atuacao/fgts-nao-depositado": [
+    "/atuacao/verbas-rescisorias",
+    "/atuacao/rescisao-indireta"
+  ],
+  "/atuacao/horas-extras": ["/atuacao/verbas-rescisorias"],
+  "/atuacao/assedio-moral-no-trabalho": ["/atuacao/rescisao-indireta"],
+  "/atuacao/acidente-de-trabalho": []
+};
+
 function laborLandingFaqSchemaTemplate(page) {
   const schema = {
     "@context": "https://schema.org",
@@ -1658,7 +1676,7 @@ function laborLandingFaqSchemaTemplate(page) {
 function laborLandingPageTemplate(path) {
   const page = laborLandingPages[path];
   const whatsappUrl = getWhatsAppUrl(page.whatsapp);
-  const relatedPages = laborLandingRoutes.filter((route) => route !== path).slice(0, 3);
+  const relatedPages = relatedLaborLandingPages[path];
 
   return `
     ${headerTemplate(path)}
@@ -3497,7 +3515,7 @@ function rescisaoIndirectArticleTemplate() {
 
           <h2 id="abandono">Por que o Trabalhador não deve simplesmente abandonar o emprego</h2>
           <p>Um erro comum é o Trabalhador, diante de uma situação insustentável, simplesmente parar de comparecer ao trabalho. Essa atitude pode ser interpretada pela Empresa como abandono de emprego, o que pode resultar em demissão por justa causa, justamente o cenário mais prejudicial para o Trabalhador.</p>
-          <p>O caminho juridicamente mais seguro é buscar orientação profissional de um <a href="/atuacao/direito-trabalhista-trabalhadores">Advogado Trabalhista em Sorocaba</a> antes de tomar qualquer decisão. Em muitos casos, é possível continuar prestando serviços enquanto se reúnem provas e se avalia a viabilidade de uma ação de Rescisão Indireta, ou, dependendo da gravidade da situação, requerer uma medida judicial específica para rescisão imediata com garantia de salários até o fim do processo.</p>
+          <p>O caminho juridicamente mais seguro é buscar orientação profissional de um <a href="/atuacao/rescisao-indireta">advogado para rescisão indireta em Sorocaba</a> antes de tomar qualquer decisão. Em muitos casos, é possível continuar prestando serviços enquanto se reúnem provas e se avalia a viabilidade de uma ação de Rescisão Indireta, ou, dependendo da gravidade da situação, requerer uma medida judicial específica para rescisão imediata com garantia de salários até o fim do processo.</p>
 
           <h2 id="advogado">Quando procurar um Advogado Trabalhista em Sorocaba?</h2>
           <p>Se você mora ou trabalha em Sorocaba e vive uma das situações descritas acima, o momento de buscar orientação jurídica é antes de tomar qualquer atitude drástica, como parar de ir ao trabalho ou pedir demissão por conta própria.</p>
@@ -3807,7 +3825,7 @@ function laborRightsArticleTemplate() {
 
           <h2 id="rescisao">Quando a rescisão merece atenção?</h2>
           <p>A rescisão é um dos momentos em que mais surgem dúvidas trabalhistas.</p>
-          <p>É comum que o trabalhador tenha dificuldade para conferir se todos os valores foram pagos corretamente, especialmente quando há aviso prévio, férias vencidas ou proporcionais, 13º salário, saldo de salário, multa do FGTS, descontos e prazos envolvidos.</p>
+          <p>É comum que o trabalhador tenha dificuldade para conferir se todos os valores foram pagos corretamente, especialmente quando há aviso prévio, férias vencidas ou proporcionais, 13º salário, saldo de salário, multa do FGTS, descontos e prazos envolvidos. A página sobre <a href="/atuacao/verbas-rescisorias">verbas rescisórias</a> reúne os principais pontos dessa conferência.</p>
           <p>Alguns sinais merecem atenção:</p>
           <ul>
             <li>pagamento realizado fora do prazo;</li>
@@ -3832,13 +3850,13 @@ function laborRightsArticleTemplate() {
             <li>rotina real de trabalho;</li>
             <li>formas de controle da empresa.</li>
           </ul>
-          <p>Nem toda diferença de horário gera automaticamente direito a pagamento, mas inconsistências entre a rotina real e a documentação formal merecem atenção.</p>
+          <p>Nem toda diferença de horário gera automaticamente direito a pagamento, mas inconsistências entre a rotina real e a documentação formal podem justificar orientação sobre a <a href="/atuacao/horas-extras">atuação em casos de horas extras</a>.</p>
 
           <h2 id="assedio">Assédio moral e ambiente de trabalho</h2>
           <p>Situações de pressão abusiva, humilhações, exposição pública, cobranças desproporcionais ou constrangimentos recorrentes podem indicar um ambiente de trabalho juridicamente sensível.</p>
           <p>O assédio moral exige análise cuidadosa.</p>
           <p>Não basta o desconforto isolado. É necessário compreender a repetição das condutas, o contexto, as provas possíveis e os impactos na relação de trabalho.</p>
-          <p>Registros de mensagens, testemunhas, comunicados internos e documentos podem ajudar na avaliação.</p>
+          <p>Registros de mensagens, testemunhas, comunicados internos e documentos podem ajudar na avaliação de situações de <a href="/atuacao/assedio-moral-no-trabalho">assédio moral no trabalho</a>.</p>
 
           ${articleInlineCtaTemplate(
             "O ambiente de trabalho se tornou insustentável?",
@@ -3859,10 +3877,10 @@ function laborRightsArticleTemplate() {
             <li>redução da capacidade;</li>
             <li>possível indenização, conforme o caso.</li>
           </ul>
-          <p>A documentação médica e os registros do vínculo de trabalho são especialmente importantes nessa análise.</p>
+          <p>A documentação médica e os registros do vínculo de trabalho são especialmente importantes na análise de um <a href="/atuacao/acidente-de-trabalho">acidente de trabalho</a> ou de uma doença ocupacional.</p>
 
           <h2 id="fgts">FGTS, vínculo empregatício e outros pontos de atenção</h2>
-          <p>A ausência de depósitos de FGTS, diferenças salariais, pagamento por fora, contratação sem registro ou prestação de serviços com características de emprego também podem gerar dúvidas relevantes.</p>
+          <p>A ausência de depósitos de FGTS, diferenças salariais, pagamento por fora, contratação sem registro ou prestação de serviços com características de emprego também podem gerar dúvidas relevantes. Quando há lacunas no extrato, pode ser útil buscar <a href="/atuacao/fgts-nao-depositado">orientação sobre FGTS não depositado</a>.</p>
           <p>Em situações de possível vínculo empregatício, a análise considera elementos como habitualidade, subordinação, pessoalidade e remuneração.</p>
           <p>Por isso, antes de concluir que há ou não direito envolvido, é importante organizar as informações e compreender a realidade da relação de trabalho.</p>
 

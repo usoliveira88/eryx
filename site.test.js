@@ -148,6 +148,37 @@ test("transforma a página trabalhista para trabalhadores em pilar das LPs", () 
   }
 });
 
+test("mantém a linkagem cruzada das LPs restrita a relações temáticas", () => {
+  const expectedRelatedRoutes = new Map([
+    ["/atuacao/rescisao-indireta", ["/atuacao/assedio-moral-no-trabalho", "/atuacao/fgts-nao-depositado"]],
+    ["/atuacao/verbas-rescisorias", ["/atuacao/fgts-nao-depositado", "/atuacao/horas-extras"]],
+    ["/atuacao/fgts-nao-depositado", ["/atuacao/verbas-rescisorias", "/atuacao/rescisao-indireta"]],
+    ["/atuacao/horas-extras", ["/atuacao/verbas-rescisorias"]],
+    ["/atuacao/assedio-moral-no-trabalho", ["/atuacao/rescisao-indireta"]],
+    ["/atuacao/acidente-de-trabalho", []]
+  ]);
+
+  for (const [route, relatedRoutes] of expectedRelatedRoutes) {
+    const html = renderPageHtml(route);
+    for (const candidateRoute of expectedRelatedRoutes.keys()) {
+      if (candidateRoute === route) continue;
+      const relatedLink = new RegExp(`<a href="${candidateRoute}"><strong>`);
+      if (relatedRoutes.includes(candidateRoute)) assert.match(html, relatedLink);
+      else assert.doesNotMatch(html, relatedLink);
+    }
+  }
+});
+
+test("liga artigos trabalhistas às LPs mencionadas em contexto", () => {
+  const rescisaoHtml = renderPageHtml("/artigos/rescisao-indireta-sorocaba");
+  assert.match(rescisaoHtml, /href="\/atuacao\/rescisao-indireta">advogado para rescisão indireta em Sorocaba<\/a>/);
+
+  const laborHtml = renderPageHtml("/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica");
+  for (const route of ["/atuacao/verbas-rescisorias", "/atuacao/horas-extras", "/atuacao/assedio-moral-no-trabalho", "/atuacao/acidente-de-trabalho", "/atuacao/fgts-nao-depositado"]) {
+    assert.match(laborHtml, new RegExp(`href="${route}"`), route);
+  }
+});
+
 test("renderiza a landing page de pensão alimentícia com SEO, CTA e conteúdo visível", () => {
   const html = renderPageHtml("/atuacao/pensao-alimenticia");
   assert.equal((html.match(/<h1>/g) || []).length, 1);

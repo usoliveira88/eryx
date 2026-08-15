@@ -18,6 +18,9 @@ const routes = [
   "/atuacao/direito-de-familia",
   "/atuacao/pensao-alimenticia",
   "/artigos",
+  "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
+  "/artigos/assedio-moral-no-trabalho-como-identificar",
+  "/artigos/acidente-de-trabalho-direitos-do-trabalhador",
   "/artigos/fgts-nao-depositado-como-conferir",
   "/artigos/nr-01-novas-exigencias-empresas-sorocaba",
   "/artigos/rescisao-indireta-sorocaba",
@@ -193,6 +196,53 @@ test("publica o artigo de FGTS com fontes oficiais e linkagem interna", () => {
   assert.match(html, /href="\/atuacao\/direito-trabalhista-trabalhadores"/);
   assert.match(html, /"@type":"BlogPosting"/);
   assert.match(html, /"@type":"FAQPage"/);
+});
+
+test("publica os três novos artigos trabalhistas no padrão editorial existente", () => {
+  const expected = [
+    {
+      route: "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
+      h1: "Horas extras não pagas: como comprovar e cobrar os valores?",
+      image: "/artigos/hora-extra-qual-valor-sorocaba",
+      lp: "/atuacao/horas-extras"
+    },
+    {
+      route: "/artigos/assedio-moral-no-trabalho-como-identificar",
+      h1: "Assédio moral no trabalho: como identificar e o que fazer?",
+      image: "/artigos/assedio-moral-trabalho-sorocaba",
+      lp: "/atuacao/assedio-moral-no-trabalho"
+    },
+    {
+      route: "/artigos/acidente-de-trabalho-direitos-do-trabalhador",
+      h1: "Acidente de trabalho: quais são os direitos do trabalhador?",
+      image: "/artigos/acidente-trabalho-sorocaba",
+      lp: "/atuacao/acidente-de-trabalho"
+    }
+  ];
+
+  for (const item of expected) {
+    const html = renderPageHtml(item.route);
+    assert.equal((html.match(/<h1>/g) || []).length, 1, item.route);
+    assert.match(html, new RegExp(`<h1>${item.h1.replace(/[?]/g, "\\?")}</h1>`));
+    assert.match(html, new RegExp(`${item.image}-1200\\.avif`));
+    assert.match(html, new RegExp(`href="${item.lp}"`));
+    assert.match(html, /href="\/atuacao\/direito-trabalhista-trabalhadores"/);
+    assert.match(html, /"@type":"BlogPosting"/);
+    assert.match(html, /"@type":"FAQPage"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(html, /OAB\/SP nº 530\.983/);
+  }
+});
+
+test("lista os três novos artigos com cards rastreáveis", () => {
+  const html = renderPageHtml("/artigos");
+  for (const route of [
+    "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
+    "/artigos/assedio-moral-no-trabalho-como-identificar",
+    "/artigos/acidente-de-trabalho-direitos-do-trabalhador"
+  ]) {
+    assert.match(html, new RegExp(`href="${route}"`));
+  }
 });
 
 test("publica artigo de pensão atrasada com imagem, links e schema", () => {

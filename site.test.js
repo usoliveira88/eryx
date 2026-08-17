@@ -51,14 +51,11 @@ test("mantém o domínio canônico com www nos dados institucionais", () => {
 
 test("declara a política global de URLs sem barra final", () => {
   const vercelConfig = JSON.parse(readFileSync(new URL("./vercel.json", import.meta.url), "utf8"));
-  assert.deepEqual(vercelConfig.redirects[1], {
+  assert.deepEqual(vercelConfig.redirects[0], {
     source: "/:path+/",
     destination: "/:path+",
     permanent: true
   });
-  assert.equal(vercelConfig.redirects[0].source, "/(.*)/");
-  assert.equal(vercelConfig.redirects[0].has[0].value, "advmartinsfernandes.com.br");
-  assert.equal(vercelConfig.redirects[0].destination, "https://www.advmartinsfernandes.com.br/$1");
 });
 
 test("mantém sitemap e links internos na variante sem barra final", () => {

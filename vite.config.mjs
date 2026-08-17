@@ -206,7 +206,7 @@ function staticSeoTags(route, html) {
   const title = configuredSeo?.title || readTitle(html);
   const description = configuredSeo?.description || readDescription(html);
   const type = route.startsWith("/artigos/") ? "article" : "website";
-  const canonical = absoluteUrl(["/atuacao/pensao-alimenticia", "/artigos/pensao-alimenticia-atrasada-como-cobrar"].includes(route) ? `${route}/` : route);
+  const canonical = absoluteUrl(route);
   const image = absoluteUrl(routeImages.get(route) || "/home-cta-advogado.jpg");
   const schemaJson = JSON.stringify(organizationGraph(route)).replace(/</g, "\\u003c");
 

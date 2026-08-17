@@ -1,6 +1,22 @@
 {
   "redirects": [
     {
+      "source": "/:path+/",
+      "has": [
+        {
+          "type": "host",
+          "value": "advmartinsfernandes.com.br"
+        }
+      ],
+      "destination": "https://www.advmartinsfernandes.com.br/:path+",
+      "permanent": true
+    },
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {

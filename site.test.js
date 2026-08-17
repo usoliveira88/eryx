@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { getWhatsAppUrl, professionalRegistrationLink, renderPageHtml, SITE_CONFIG } from "./site.js";
 
@@ -45,6 +46,36 @@ test("mantém o domínio canônico com www nos dados institucionais", () => {
   for (const route of routes) {
     const html = renderPageHtml(route);
     assert.doesNotMatch(html, /https:\/\/advmartinsfernandes\.com\.br/);
+  }
+});
+
+test("declara a política global de URLs sem barra final", () => {
+  const vercelConfig = JSON.parse(readFileSync(new URL("./vercel.json", import.meta.url), "utf8"));
+  assert.deepEqual(vercelConfig.redirects[1], {
+    source: "/:path+/",
+    destination: "/:path+",
+    permanent: true
+  });
+  assert.equal(vercelConfig.redirects[0].source, "/:path+/");
+  assert.equal(vercelConfig.redirects[0].has[0].value, "advmartinsfernandes.com.br");
+  assert.equal(vercelConfig.redirects[0].destination, "https://www.advmartinsfernandes.com.br/:path+");
+});
+
+test("mantém sitemap e links internos na variante sem barra final", () => {
+  const sitemap = readFileSync(new URL("./sitemap.xml", import.meta.url), "utf8");
+  const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+
+  for (const url of sitemapUrls) {
+    const pathname = new URL(url).pathname;
+    assert.ok(pathname === "/" || !pathname.endsWith("/"), url);
+  }
+
+  for (const route of routes) {
+    const html = renderPageHtml(route);
+    const internalLinks = [...html.matchAll(/href="(\/[^"?#]*)(?:[?#][^"]*)?"/g)].map((match) => match[1]);
+    for (const href of internalLinks) {
+      assert.ok(href === "/" || !href.endsWith("/"), `${route}: ${href}`);
+    }
   }
 });
 

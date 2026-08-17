@@ -4755,7 +4755,7 @@ function setCanonical(path) {
     canonical.setAttribute("rel", "canonical");
     document.head.appendChild(canonical);
   }
-  canonical.setAttribute("href", absoluteUrl(["/atuacao/pensao-alimenticia", "/artigos/pensao-alimenticia-atrasada-como-cobrar"].includes(path) ? `${path}/` : path));
+  canonical.setAttribute("href", absoluteUrl(path));
 }
 
 function routeSocialImage(path) {
@@ -4770,7 +4770,7 @@ function routeSocialImage(path) {
 function updateSocialMeta(path) {
   const description = ensureMetaByName("description").getAttribute("content") || "";
   const title = document.title;
-  const canonicalUrl = absoluteUrl(["/atuacao/pensao-alimenticia", "/artigos/pensao-alimenticia-atrasada-como-cobrar"].includes(path) ? `${path}/` : path);
+  const canonicalUrl = absoluteUrl(path);
   const imageUrl = absoluteUrl(routeSocialImage(path));
   const type = path.startsWith("/artigos/") ? "article" : "website";
 

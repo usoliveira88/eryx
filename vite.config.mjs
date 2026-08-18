@@ -20,6 +20,27 @@ function googleAdsTag(html) {
     </script>`;
 }
 
+function googleAdsConversionTag(html) {
+  if (html.includes("AW-17500415588/GkJ8CPCG8OMcEOTM7JhB")) return "";
+
+  return `<!-- Event snippet for Clique no Whatsapp (1) conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17500415588/GkJ8CPCG8OMcEOTM7JhB',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>`;
+}
+
 const pageInputs = {
   main: resolve("index.html"),
   about: resolve("quem-somos/index.html"),
@@ -290,11 +311,12 @@ function prerenderPages() {
         const renderedHtml = renderPageHtml(route).trim();
         const staticHtml = commercialRouteHtml(route, route === "/" ? commercialHomeHtml(renderedHtml) : renderedHtml);
         const trackingTag = googleAdsTag(html);
+        const conversionTag = googleAdsConversionTag(html);
 
         return html
           .replace(/<title>[\s\S]*?<\/title>\s*/i, "")
           .replace(/<meta\s+name=["']description["'][\s\S]*?\/>\s*/i, "")
-          .replace("</head>", `    ${staticSeoTags(route, html)}\n    ${trackingTag}\n  </head>`)
+          .replace("</head>", `    ${staticSeoTags(route, html)}\n    ${trackingTag}\n    ${conversionTag}\n  </head>`)
           .replace("<body>", `<body class="${bodyClass}">`)
           .replace('<div id="app"></div>', `<div id="app" data-static-rendered="true">\n${staticHtml}\n    </div>`);
       }

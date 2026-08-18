@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { getWhatsAppUrl, professionalRegistrationLink, renderPageHtml, SITE_CONFIG } from "./site.js";
+import { getWhatsAppUrl, isWhatsAppUrl, professionalRegistrationLink, renderPageHtml, SITE_CONFIG } from "./site.js";
 
 const routes = [
   "/",
@@ -39,6 +39,33 @@ test("gera a URL centralizada com número e mensagem corretos", () => {
   assert.equal(SITE_CONFIG.whatsappNumber, "5515996874689");
   assert.equal(SITE_CONFIG.whatsappMessage, "Vim pelo Google e quero mais informações.");
   assert.equal(getWhatsAppUrl(), expectedUrl);
+});
+
+test("identifica todas as variantes de URL do WhatsApp", () => {
+  assert.equal(isWhatsAppUrl("https://wa.me/5515996874689"), true);
+  assert.equal(isWhatsAppUrl("https://api.whatsapp.com/send?phone=5515996874689"), true);
+  assert.equal(isWhatsAppUrl("https://web.whatsapp.com/send?phone=5515996874689"), true);
+  assert.equal(isWhatsAppUrl("https://example.com/whatsapp"), false);
+});
+
+test("mantém todos os links de WhatsApp cobertos pelo rastreamento global", () => {
+  const siteSource = readFileSync(new URL("./site.js", import.meta.url), "utf8");
+  const viteConfig = readFileSync(new URL("./vite.config.mjs", import.meta.url), "utf8");
+  let whatsappLinkCount = 0;
+
+  for (const route of routes) {
+    const html = renderPageHtml(route);
+    const hrefs = [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+    whatsappLinkCount += hrefs.filter(isWhatsAppUrl).length;
+  }
+
+  assert.equal(whatsappLinkCount, 181);
+  assert.match(siteSource, /document\.addEventListener\("click"/);
+  assert.match(siteSource, /event\.isTrusted/);
+  assert.match(siteSource, /window\.gtag_report_conversion\(link\.href\)/);
+  assert.match(siteSource, /window\.gtag_report_conversion\(whatsappUrl\)/);
+  assert.match(siteSource, /window\.open\(whatsappUrl, "_blank", "noopener,noreferrer"\)/);
+  assert.match(viteConfig, /'send_to': 'AW-17500415588\/GkJ8CPCG8OMcEOTM7JhB'/);
 });
 
 test("mantém o domínio canônico com www nos dados institucionais", () => {

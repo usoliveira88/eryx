@@ -26,6 +26,15 @@ export function getWhatsAppUrl(message = SITE_CONFIG.whatsappMessage) {
   return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+export function isWhatsAppUrl(value) {
+  try {
+    const hostname = new URL(value, SITE_CONFIG.siteUrl).hostname.toLowerCase();
+    return hostname === "wa.me" || hostname === "whatsapp.com" || hostname.endsWith(".whatsapp.com");
+  } catch {
+    return false;
+  }
+}
+
 export function professionalRegistrationLink() {
   return `<a class="professional-registration-link" href="${SITE_CONFIG.oabConsultationUrl}" target="_blank" rel="noopener noreferrer" aria-label="Consultar inscrição ${SITE_CONFIG.oab} no site oficial da OAB São Paulo">${SITE_CONFIG.oab}</a>`;
 }
@@ -5177,9 +5186,32 @@ function initContactForm() {
       `Mensagem: ${data.get("message")}`
     ].join("\n");
 
+    const whatsappUrl = getWhatsAppUrl(message);
+
     // TODO: substituir o envio via WhatsApp por integração de backend, se o projeto adotar envio de formulário.
-    window.open(getWhatsAppUrl(message), "_blank", "noopener,noreferrer");
+    if (event.isTrusted && typeof window.gtag === "function" && typeof window.gtag_report_conversion === "function") {
+      window.gtag_report_conversion(whatsappUrl);
+      return;
+    }
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   });
+}
+
+function initWhatsAppConversionTracking() {
+  document.addEventListener("click", (event) => {
+    if (!event.isTrusted || event.defaultPrevented || event.button !== 0) return;
+
+    const link = event.target.closest("a[href]");
+    if (!link || !isWhatsAppUrl(link.href)) return;
+
+    if (typeof window.gtag !== "function" || typeof window.gtag_report_conversion !== "function") {
+      return;
+    }
+
+    event.preventDefault();
+    window.gtag_report_conversion(link.href);
+  }, { capture: true });
 }
 
 function initArticleFilters() {
@@ -5327,6 +5359,7 @@ function render() {
   }
 
   initHeader();
+  initWhatsAppConversionTracking();
   initRotatingWord();
   initPracticePanel();
   initFaqAccordions();

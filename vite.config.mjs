@@ -4,6 +4,21 @@ import { defineConfig } from "vite";
 import { renderPageHtml } from "./site.js";
 
 const siteOrigin = process.env.VITE_SITE_URL || "https://www.advmartinsfernandes.com.br";
+const googleAdsId = "AW-17500415588";
+
+function googleAdsTag(html) {
+  if (html.includes(googleAdsId)) return "";
+
+  return `<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${googleAdsId}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '${googleAdsId}');
+    </script>`;
+}
 
 const pageInputs = {
   main: resolve("index.html"),
@@ -274,11 +289,12 @@ function prerenderPages() {
         const bodyClass = route === "/" ? "page-home" : "page-internal";
         const renderedHtml = renderPageHtml(route).trim();
         const staticHtml = commercialRouteHtml(route, route === "/" ? commercialHomeHtml(renderedHtml) : renderedHtml);
+        const trackingTag = googleAdsTag(html);
 
         return html
           .replace(/<title>[\s\S]*?<\/title>\s*/i, "")
           .replace(/<meta\s+name=["']description["'][\s\S]*?\/>\s*/i, "")
-          .replace("</head>", `    ${staticSeoTags(route, html)}\n  </head>`)
+          .replace("</head>", `    ${staticSeoTags(route, html)}\n    ${trackingTag}\n  </head>`)
           .replace("<body>", `<body class="${bodyClass}">`)
           .replace('<div id="app"></div>', `<div id="app" data-static-rendered="true">\n${staticHtml}\n    </div>`);
       }

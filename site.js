@@ -1014,6 +1014,7 @@ function footerTemplate() {
           <a href="/">Home</a>
           <a href="/quem-somos">Quem Somos</a>
           <a href="/atuacao">Atuação</a>
+          <a href="/cidades-atendidas">Cidades Atendidas</a>
           <a href="/artigos">Artigos</a>
           <a href="/contato">Contato</a>
         </div>
@@ -4862,6 +4863,10 @@ function updateDocumentMeta(path) {
     "/contato": {
       title: "Contato | Escritório de Advocacia em Sorocaba",
       description: "Fale com Eryx Fernandes Advocacia, escritório de advocacia em Sorocaba. Atendimento pelo WhatsApp, telefone, e-mail ou formulário."
+    },
+    "/cidades-atendidas": {
+      title: "Cidades Atendidas | Advogado Trabalhista | Dr. Eryx Fernandes",
+      description: "Confira as cidades atendidas pelo Dr. Eryx Fernandes em Direito Trabalhista. Atendimento a trabalhadores em Sorocaba, Votorantim, Itu, Jundiaí e outras cidades de São Paulo."
     }
   };
   const page = internalPages[path];
@@ -5321,6 +5326,7 @@ function localLaborCityTemplate(city) {
           <p>${localText}</p>
           <p class="local-city-source">População: <a href="https://www.ibge.gov.br/cidades-e-estados/sp/${city.slug}.html" target="_blank" rel="noopener noreferrer">IBGE — Censo 2022</a>.</p>
           <p class="local-city-source">Conheça também a página central de <a href="/atuacao/direito-trabalhista-trabalhadores">Direito Trabalhista para trabalhadores</a>.</p>
+          <p class="local-city-hub-link"><a href="/cidades-atendidas">Ver outras cidades atendidas →</a></p>
           <a class="button button-dark" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o Dr. Eryx</a>
         </div>
         <div class="local-city-media">
@@ -5337,10 +5343,84 @@ function localLaborCityTemplate(city) {
     );
 }
 
+function servedCitiesTemplate() {
+  const path = "/cidades-atendidas";
+  const whatsappUrl = getWhatsAppUrl("Olá, Dr. Eryx. Vim pelo site e gostaria de saber se há atendimento trabalhista para minha cidade.");
+  const descriptions = [
+    "Defesa dos direitos de trabalhadores de Votorantim em rescisões, jornada, FGTS e outras questões do trabalho.",
+    "Orientação trabalhista para quem trabalha em Itu e precisa compreender riscos, provas e medidas jurídicas possíveis.",
+    "Atuação para trabalhadores de Tatuí em conflitos envolvendo salários, demissão, assédio e direitos contratuais.",
+    "Análise individual de problemas trabalhistas vividos por profissionais de Porto Feliz.",
+    "Atendimento a trabalhadores de Salto de Pirapora diante de irregularidades na relação de emprego.",
+    "Orientação clara para trabalhadores de Araçoiaba da Serra em situações que exigem análise jurídica.",
+    "Defesa trabalhista para profissionais de Iperó em questões de jornada, rescisão e ambiente de trabalho.",
+    "Atendimento para trabalhadores de Boituva que precisam avaliar direitos e próximos passos.",
+    "Atuação trabalhista em favor de profissionais de Salto diante de possíveis violações de direitos.",
+    "Orientação para trabalhadores de São Roque sobre FGTS, horas extras, demissões e outras situações.",
+    "Análise responsável de demandas trabalhistas apresentadas por profissionais de Mairinque.",
+    "Atendimento jurídico para trabalhadores de Piedade em conflitos surgidos durante ou após o emprego.",
+    "Defesa de direitos trabalhistas para quem mora ou trabalha em Cerquilho.",
+    "Orientação individual para profissionais de Tietê sobre rescisões, jornada e verbas não pagas.",
+    "Atuação para trabalhadores de Itapetininga em diferentes conflitos da relação de trabalho.",
+    "Atendimento trabalhista para profissionais de Indaiatuba em questões de jornada, FGTS, assédio e rescisão.",
+    "Análise de direitos para trabalhadores de Cabreúva que enfrentam problemas no emprego.",
+    "Orientação trabalhista para profissionais de Itupeva com atendimento direto e individualizado.",
+    "Atuação para trabalhadores de Jundiaí em situações envolvendo jornada, rescisão, FGTS, assédio e outros direitos.",
+    "Defesa trabalhista para profissionais de Campo Limpo Paulista diante de irregularidades no vínculo de emprego.",
+    "Atendimento para trabalhadores de Vargem Grande Paulista que precisam avaliar uma questão trabalhista.",
+    "Orientação a profissionais de Cotia sobre direitos desrespeitados durante ou após a relação de trabalho.",
+    "Análise jurídica para trabalhadores de Ibiúna em casos de demissão, jornada, FGTS e assédio."
+  ];
+  const cards = [
+    {
+      name: "Sorocaba",
+      route: "/atuacao/direito-trabalhista-trabalhadores",
+      image: "/home-hero-fallback-desktop.webp",
+      alt: "Vista urbana de Sorocaba SP",
+      description: "Atendimento trabalhista na cidade onde está localizado o escritório do Dr. Eryx Fernandes."
+    },
+    ...LOCAL_LABOR_CITIES.map((city, index) => ({
+      ...city,
+      alt: `Vista de ${city.name} SP`,
+      description: descriptions[index]
+    }))
+  ];
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_CONFIG.siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "Cidades Atendidas", item: `${SITE_CONFIG.siteUrl}${path}` }
+    ]
+  };
+
+  return `
+    ${headerTemplate(path)}
+    <main id="conteudo" class="served-cities-page">
+      <section class="served-cities-hero">
+        <div class="served-cities-hero-inner">
+          <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Cidades Atendidas</span></nav>
+          <p class="eyebrow">ATENDIMENTO REGIONAL · CIDADES ATENDIDAS</p>
+          <h1>Advogado Trabalhista nas cidades da região</h1>
+          <p>O Dr. Eryx Fernandes atende trabalhadores de Sorocaba e de diferentes cidades do interior de São Paulo, com atuação em questões como horas extras, FGTS, verbas rescisórias, assédio, acidente de trabalho e outras violações de direitos trabalhistas.</p>
+          <div class="hero-actions"><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o Dr. Eryx</a><a class="button button-ghost" href="#grade-de-cidades">Encontrar minha cidade</a></div>
+        </div>
+      </section>
+      <section class="served-cities-intro reveal-block"><p class="eyebrow">Atuação regional</p><h2>Atendimento trabalhista com presença regional</h2><p>O atendimento jurídico não precisa estar limitado ao município onde o escritório está localizado. Trabalhadores de diferentes cidades podem conversar diretamente com o Dr. Eryx Fernandes para apresentar sua situação e verificar quais medidas jurídicas podem ser avaliadas.</p><p>As páginas abaixo reúnem informações específicas sobre o atendimento trabalhista em cada município.</p></section>
+      <section class="served-cities-directory reveal-block" id="grade-de-cidades">
+        <div class="section-heading"><p>Cidades atendidas</p><h2>Encontre atendimento na sua cidade</h2><span>Selecione sua cidade para acessar informações sobre atendimento trabalhista e falar diretamente com o Dr. Eryx Fernandes.</span></div>
+        <div class="served-cities-grid">${cards.map((city, index) => `<article class="served-city-card"><a class="served-city-image" href="${city.route}" aria-label="Advogado Trabalhista em ${city.name}"><img src="${city.image}" alt="${city.alt}" width="1200" height="800" loading="lazy" decoding="async" /></a><div><p class="eyebrow">Direito Trabalhista</p><h3>${city.name}</h3><p>${city.description}</p><a class="served-city-link" href="${city.route}">Advogado Trabalhista em ${city.name} →</a></div></article>`).join("")}</div>
+      </section>
+      <section class="served-cities-missing reveal-block"><div><p class="eyebrow">Outras localidades</p><h2>Não encontrou sua cidade?</h2><p>O Dr. Eryx Fernandes também pode atender trabalhadores de outras localidades. Entre em contato e informe onde você mora ou trabalha.</p></div><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Consultar atendimento na minha cidade</a></section>
+      <section class="served-cities-final"><div><p class="eyebrow">Orientação trabalhista</p><h2>Está enfrentando um problema no trabalho?</h2><p>Se seus direitos trabalhistas podem ter sido desrespeitados, conte ao Dr. Eryx o que aconteceu. Cada situação é analisada individualmente antes da definição das medidas jurídicas possíveis.</p><a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar agora com o Dr. Eryx</a></div></section>
+    </main><script type="application/ld+json" id="served-cities-schema">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>${footerTemplate()}`;
+}
+
 export function renderPageHtml(pathname) {
   const path = normalizePath(pathname);
 
   if (LOCAL_LABOR_CITY_BY_ROUTE.has(path)) return localLaborCityTemplate(LOCAL_LABOR_CITY_BY_ROUTE.get(path));
+  if (path === "/cidades-atendidas") return servedCitiesTemplate();
   if (laborLandingPages[path]) return laborLandingPageTemplate(path);
   if (path === "/atuacao/pensao-alimenticia") return alimonyLandingTemplate();
 
@@ -5411,4 +5491,4 @@ if (typeof window !== "undefined" && typeof document !== "undefined") {
   render();
 }
 
-import { LOCAL_LABOR_CITY_BY_ROUTE } from "./local-cities.js";
+import { LOCAL_LABOR_CITIES, LOCAL_LABOR_CITY_BY_ROUTE } from "./local-cities.js";

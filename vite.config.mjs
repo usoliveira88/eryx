@@ -71,6 +71,8 @@ const pageInputs = {
   alimonyLateArticle: resolve("artigos/pensao-alimenticia-atrasada-como-cobrar/index.html")
 };
 
+pageInputs.servedCities = resolve("cidades-atendidas/index.html");
+
 for (const city of LOCAL_LABOR_CITIES) {
   pageInputs[`localLabor_${city.slug.replaceAll("-", "_")}`] = resolve(`advogado-trabalhista/${city.slug}/index.html`);
 }
@@ -104,11 +106,14 @@ const pageRoutes = new Map([
   [pageInputs.alimonyLateArticle, "/artigos/pensao-alimenticia-atrasada-como-cobrar"]
 ]);
 
+pageRoutes.set(pageInputs.servedCities, "/cidades-atendidas");
+
 for (const city of LOCAL_LABOR_CITIES) {
   pageRoutes.set(pageInputs[`localLabor_${city.slug.replaceAll("-", "_")}`], city.route);
 }
 
 const routeImages = new Map([
+  ["/cidades-atendidas", "/home-hero-fallback-desktop.webp"],
   ["/quem-somos", "/home-retrato-advogado.jpg"],
   ["/contato", "/home-retrato-advogado.jpg"],
   ["/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar", "/artigos/hora-extra-qual-valor-sorocaba.jpg"],
@@ -124,6 +129,10 @@ const routeImages = new Map([
 ]);
 
 const seoByRoute = new Map([
+  ["/cidades-atendidas", {
+    title: "Cidades Atendidas | Advogado Trabalhista | Dr. Eryx Fernandes",
+    description: "Confira as cidades atendidas pelo Dr. Eryx Fernandes em Direito Trabalhista. Atendimento a trabalhadores em Sorocaba, Votorantim, Itu, Jundiaí e outras cidades de São Paulo."
+  }],
   ["/", {
     title: "Escritório de Advocacia em Sorocaba | Eryx Fernandes",
     description: "Escritório de advocacia em Sorocaba com atuação em Direito Trabalhista, Trabalhista Empresarial, Direito de Família e Direito Imobiliário. Fale conosco."

@@ -31,6 +31,7 @@ const routes = [
   "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca",
   "/artigos/pensao-alimenticia-atrasada-como-cobrar",
   "/contato",
+  "/cidades-atendidas",
   ...LOCAL_LABOR_CITIES.map((city) => city.route)
 ];
 
@@ -241,6 +242,26 @@ test("publica as 23 páginas locais trabalhistas com SEO local completo", () => 
     assert.match(html, /"@type":"Service"/);
     assert.match(html, /"@type":"BreadcrumbList"/);
     assert.ok(sitemap.includes(`${SITE_CONFIG.siteUrl}${city.route}`), city.route);
+  }
+});
+
+test("publica o hub de cidades com 24 cards e links rastreáveis", () => {
+  const html = renderPageHtml("/cidades-atendidas");
+  assert.match(html, /<h1>Advogado Trabalhista nas cidades da região<\/h1>/);
+  assert.equal((html.match(/class="served-city-card"/g) || []).length, 24);
+  assert.match(html, /href="\/atuacao\/direito-trabalhista-trabalhadores"/);
+  for (const city of LOCAL_LABOR_CITIES) {
+    assert.match(html, new RegExp(`href="${city.route}"`), city.route);
+    assert.match(html, new RegExp(`src="${city.image.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), city.image);
+  }
+  assert.match(html, /Ol%C3%A1%2C%20Dr\.%20Eryx\.%20Vim%20pelo%20site/);
+  assert.match(html, /"@type":"BreadcrumbList"/);
+  assert.match(html, /href="\/cidades-atendidas">Cidades Atendidas<\/a>/);
+});
+
+test("liga as páginas municipais de volta ao hub de cidades", () => {
+  for (const city of LOCAL_LABOR_CITIES) {
+    assert.match(renderPageHtml(city.route), /href="\/cidades-atendidas">Ver outras cidades atendidas →<\/a>/, city.route);
   }
 });
 

@@ -228,6 +228,27 @@ test("concentra a conversão da página trabalhista para trabalhadores no WhatsA
   assert.match(html, /class="worker-local-benefits"/);
 });
 
+test("apresenta análise trabalhista firme em quatro etapas e remove o bloco de dúvida", () => {
+  const affectedRoutes = [
+    "/atuacao/direito-trabalhista-trabalhadores",
+    ...LOCAL_LABOR_CITIES.map((city) => city.route)
+  ];
+  const expectedSteps = [
+    "Entender quais direitos foram violados",
+    "Preparar as provas",
+    "Organizar o processo",
+    "Defender seus direitos"
+  ];
+
+  for (const route of affectedRoutes) {
+    const html = renderPageHtml(route);
+    assert.doesNotMatch(html, /Nem todo conflito trabalhista começa no processo/, route);
+    assert.match(html, /buscar a responsabilização da empresa e proteger os direitos do trabalhador/, route);
+    assert.equal((html.match(/class="worker-analysis-steps"/g) || []).length, 1, route);
+    for (const step of expectedSteps) assert.match(html, new RegExp(step), `${route}: ${step}`);
+  }
+});
+
 test("publica as 23 páginas locais trabalhistas com SEO local completo", () => {
   const sitemap = readFileSync(new URL("./sitemap.xml", import.meta.url), "utf8");
   assert.equal(LOCAL_LABOR_CITIES.length, 23);

@@ -451,18 +451,26 @@ const workerAttentionItems = [
 ];
 
 const workerAnalysisSteps = [
-  ["01", "Escuta inicial", "Compreensão do que ocorreu, do tipo de vínculo e dos principais pontos de dúvida."],
+  [
+    "01",
+    "Entender quais direitos foram violados",
+    "Análise objetiva dos fatos para identificar irregularidades na jornada, nos pagamentos, na rescisão ou nas condições de trabalho."
+  ],
   [
     "02",
-    "Análise do caso",
-    "Avaliação dos fatos, documentos disponíveis, mensagens, registros e demais informações relevantes para compreender a situação."
+    "Preparar as provas",
+    "Reunião e organização de documentos, mensagens, registros e testemunhas que possam demonstrar o que aconteceu."
   ],
   [
     "03",
-    "Leitura de riscos e possibilidades",
-    "Identificação dos direitos envolvidos, dos prazos, das provas necessárias e dos caminhos possíveis."
+    "Organizar o processo",
+    "Definição da estratégia, dos pedidos e das medidas jurídicas adequadas para apresentar o caso com clareza e consistência."
   ],
-  ["04", "Definição dos próximos passos", "Orientação sobre medidas extrajudiciais ou judiciais, conforme o caso concreto."]
+  [
+    "04",
+    "Defender seus direitos",
+    "Atuação firme para buscar a responsabilização da empresa e proteger os direitos do trabalhador durante cada etapa do caso."
+  ]
 ];
 
 const workerDocuments = [
@@ -1900,13 +1908,6 @@ function workerLaborTemplate() {
         </div>
       </section>
 
-      <section class="worker-manifest reveal-block">
-        <div>
-          <h2>Nem todo conflito trabalhista começa no processo. Muitas vezes, começa na dúvida.</h2>
-          <p>Quando há insegurança sobre verbas, jornada, ambiente de trabalho ou forma de desligamento, a análise jurídica ajuda a entender riscos, direitos e próximos passos.</p>
-        </div>
-      </section>
-
       <section class="attention-section reveal-block" id="servicos-trabalhistas">
         <div class="section-heading">
           <p>Serviços para trabalhadores</p>
@@ -1940,7 +1941,7 @@ function workerLaborTemplate() {
         <div class="worker-analysis-copy">
           <p class="eyebrow">Análise do caso</p>
           <h2>Como funciona a análise do caso</h2>
-          <p>A orientação trabalhista começa pela compreensão dos fatos, das informações disponíveis e do histórico da relação de trabalho.</p>
+          <p>Uma defesa trabalhista consistente exige identificar as violações, reunir provas e estruturar a estratégia adequada. O caso é preparado para buscar a responsabilização da empresa e proteger os direitos do trabalhador com firmeza, agilidade e atuação prática.</p>
         </div>
         <div class="worker-analysis-steps">
           ${workerAnalysisSteps

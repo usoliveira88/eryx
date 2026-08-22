@@ -451,18 +451,26 @@ const workerAttentionItems = [
 ];
 
 const workerAnalysisSteps = [
-  ["01", "Escuta inicial", "Compreensão do que ocorreu, do tipo de vínculo e dos principais pontos de dúvida."],
+  [
+    "01",
+    "Entender quais direitos foram violados",
+    "Análise objetiva do que aconteceu para identificar irregularidades, verbas devidas e descumprimentos praticados pelo empregador."
+  ],
   [
     "02",
-    "Análise do caso",
-    "Avaliação dos fatos, documentos disponíveis, mensagens, registros e demais informações relevantes para compreender a situação."
+    "Preparar as provas",
+    "Organização de documentos, mensagens, registros, extratos e demais elementos que fortaleçam a defesa do trabalhador."
   ],
   [
     "03",
-    "Leitura de riscos e possibilidades",
-    "Identificação dos direitos envolvidos, dos prazos, das provas necessárias e dos caminhos possíveis."
+    "Organizar o processo",
+    "Definição da estratégia do caso, dos pedidos possíveis e dos próximos passos para conduzir a cobrança dos seus direitos com clareza e firmeza."
   ],
-  ["04", "Definição dos próximos passos", "Orientação sobre medidas extrajudiciais ou judiciais, conforme o caso concreto."]
+  [
+    "04",
+    "Defender seus direitos",
+    "Atuação extrajudicial ou judicial para enfrentar a empresa e buscar o reconhecimento dos direitos trabalhistas devidos no caso concreto."
+  ]
 ];
 
 const workerDocuments = [
@@ -1900,11 +1908,13 @@ function workerLaborTemplate() {
         </div>
       </section>
 
-      <section class="worker-manifest reveal-block">
+      <section class="worker-inline-cta worker-positioning-cta reveal-block">
         <div>
-          <h2>Nem todo conflito trabalhista começa no processo. Muitas vezes, começa na dúvida.</h2>
-          <p>Quando há insegurança sobre verbas, jornada, ambiente de trabalho ou forma de desligamento, a análise jurídica ajuda a entender riscos, direitos e próximos passos.</p>
+          <p class="eyebrow">ATUAÇÃO TRABALHISTA</p>
+          <h2>O advogado que você precisa quando seus direitos trabalhistas são violados.</h2>
+          <p>Se a empresa deixou de pagar horas extras, não depositou FGTS, praticou assédio, causou prejuízos na rescisão ou desrespeitou seus direitos, o momento é de agir com estratégia e defesa firme.</p>
         </div>
+        <a class="button button-primary" href="${workerWhatsappUrl}" target="_blank" rel="noopener noreferrer">FALE AGORA COM O DR. ERYX</a>
       </section>
 
       <section class="attention-section reveal-block" id="servicos-trabalhistas">
@@ -1940,7 +1950,7 @@ function workerLaborTemplate() {
         <div class="worker-analysis-copy">
           <p class="eyebrow">Análise do caso</p>
           <h2>Como funciona a análise do caso</h2>
-          <p>A orientação trabalhista começa pela compreensão dos fatos, das informações disponíveis e do histórico da relação de trabalho.</p>
+          <p>Antes de agir, é preciso identificar o que a empresa fez de errado, reunir provas e definir a melhor estratégia para cobrar seus direitos.</p>
         </div>
         <div class="worker-analysis-steps">
           ${workerAnalysisSteps

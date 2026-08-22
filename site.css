@@ -3453,6 +3453,21 @@ button {
   line-height: 1.68;
 }
 
+.worker-positioning-cta {
+  margin-top: 72px;
+  margin-bottom: 0;
+}
+
+.worker-positioning-cta .eyebrow {
+  margin: 0 0 14px;
+  color: var(--champagne);
+}
+
+.worker-positioning-cta .button {
+  text-align: center;
+  white-space: nowrap;
+}
+
 .worker-analysis-section,
 .worker-documents-section,
 .worker-local-section,

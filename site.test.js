@@ -259,6 +259,29 @@ test("publica o hub de cidades com 24 cards e links rastreáveis", () => {
   assert.match(html, /href="\/cidades-atendidas">Cidades Atendidas<\/a>/);
 });
 
+test("padroniza a copy comercial nas 24 landing pages trabalhistas locais", () => {
+  const localLaborRoutes = [
+    "/atuacao/direito-trabalhista-trabalhadores",
+    ...LOCAL_LABOR_CITIES.map((city) => city.route)
+  ];
+  const requiredCopy = [
+    "Entender quais direitos foram violados",
+    "Preparar as provas",
+    "Organizar o processo",
+    "Defender seus direitos",
+    "O advogado que você precisa quando seus direitos trabalhistas são violados."
+  ];
+
+  assert.equal(localLaborRoutes.length, 24);
+  for (const route of localLaborRoutes) {
+    const html = renderPageHtml(route);
+    for (const copy of requiredCopy) assert.ok(html.includes(copy), `${route}: ${copy}`);
+    assert.doesNotMatch(html, /Nem todo conflito trabalhista começa no processo/i, route);
+    assert.match(html, />FALE AGORA COM O DR\. ERYX<\/a>/, route);
+    assert.match(html, new RegExp(`href="${getWhatsAppUrl().replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), route);
+  }
+});
+
 test("liga as páginas municipais de volta ao hub de cidades", () => {
   for (const city of LOCAL_LABOR_CITIES) {
     assert.match(renderPageHtml(city.route), /href="\/cidades-atendidas">Ver outras cidades atendidas →<\/a>/, city.route);

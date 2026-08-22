@@ -2,6 +2,7 @@ import { copyFile, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import { renderPageHtml } from "./site.js";
+import { LOCAL_LABOR_CITIES, LOCAL_LABOR_CITY_BY_ROUTE } from "./local-cities.js";
 
 const siteOrigin = process.env.VITE_SITE_URL || "https://www.advmartinsfernandes.com.br";
 const googleAdsId = "AW-17500415588";
@@ -70,6 +71,10 @@ const pageInputs = {
   alimonyLateArticle: resolve("artigos/pensao-alimenticia-atrasada-como-cobrar/index.html")
 };
 
+for (const city of LOCAL_LABOR_CITIES) {
+  pageInputs[`localLabor_${city.slug.replaceAll("-", "_")}`] = resolve(`advogado-trabalhista/${city.slug}/index.html`);
+}
+
 const pageRoutes = new Map([
   [pageInputs.main, "/"],
   [pageInputs.about, "/quem-somos"],
@@ -98,6 +103,10 @@ const pageRoutes = new Map([
   [pageInputs.familyArticle, "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"],
   [pageInputs.alimonyLateArticle, "/artigos/pensao-alimenticia-atrasada-como-cobrar"]
 ]);
+
+for (const city of LOCAL_LABOR_CITIES) {
+  pageRoutes.set(pageInputs[`localLabor_${city.slug.replaceAll("-", "_")}`], city.route);
+}
 
 const routeImages = new Map([
   ["/quem-somos", "/home-retrato-advogado.jpg"],
@@ -238,12 +247,16 @@ function organizationGraph(route) {
 }
 
 function staticSeoTags(route, html) {
-  const configuredSeo = seoByRoute.get(route);
+  const city = LOCAL_LABOR_CITY_BY_ROUTE.get(route);
+  const configuredSeo = city ? {
+    title: `Advogado Trabalhista em ${city.name} | Dr. Eryx Fernandes`,
+    description: `Advogado Trabalhista em ${city.name} especializado em Horas Extras, Demissão por Justa Causa, Demissão sem Justa Causa, Assédio Moral, Assédio Sexual, FGTS e outros direitos do trabalhador. Fale com o Dr. Eryx Fernandes.`
+  } : seoByRoute.get(route);
   const title = configuredSeo?.title || readTitle(html);
   const description = configuredSeo?.description || readDescription(html);
   const type = route.startsWith("/artigos/") ? "article" : "website";
   const canonical = absoluteUrl(route);
-  const image = absoluteUrl(routeImages.get(route) || "/home-cta-advogado.jpg");
+  const image = absoluteUrl(city?.image || routeImages.get(route) || "/home-cta-advogado.jpg");
   const schemaJson = JSON.stringify(organizationGraph(route)).replace(/</g, "\\u003c");
 
   return [

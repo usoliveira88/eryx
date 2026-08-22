@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { getWhatsAppUrl, isWhatsAppUrl, professionalRegistrationLink, renderPageHtml, SITE_CONFIG } from "./site.js";
+import { LOCAL_LABOR_CITIES } from "./local-cities.js";
 
 const routes = [
   "/",
@@ -29,7 +30,8 @@ const routes = [
   "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar",
   "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca",
   "/artigos/pensao-alimenticia-atrasada-como-cobrar",
-  "/contato"
+  "/contato",
+  ...LOCAL_LABOR_CITIES.map((city) => city.route)
 ];
 
 const expectedUrl =
@@ -59,7 +61,7 @@ test("mantém todos os links de WhatsApp cobertos pelo rastreamento global", () 
     whatsappLinkCount += hrefs.filter(isWhatsAppUrl).length;
   }
 
-  assert.equal(whatsappLinkCount, 181);
+  assert.ok(whatsappLinkCount >= 187);
   assert.match(siteSource, /document\.addEventListener\("click"/);
   assert.match(siteSource, /event\.isTrusted/);
   assert.match(siteSource, /window\.gtag_report_conversion\(link\.href\)/);
@@ -197,12 +199,48 @@ test("renderiza LPs trabalhistas com conteúdo, conversão e dados estruturados 
   }
 });
 
-test("transforma a página trabalhista para trabalhadores em pilar das LPs", () => {
+test("concentra a conversão da página trabalhista para trabalhadores no WhatsApp", () => {
   const html = renderPageHtml("/atuacao/direito-trabalhista-trabalhadores");
-  assert.match(html, /<h1 class="worker-hero-display-title">Advogado Trabalhista em Sorocaba para Trabalhadores<\/h1>/);
+  assert.match(html, /<h1 class="worker-hero-display-title">Advogado Trabalhista em Sorocaba<\/h1>/);
   assert.match(html, /class="worker-hero-trust"/);
   for (const route of ["/atuacao/rescisao-indireta", "/atuacao/verbas-rescisorias", "/atuacao/fgts-nao-depositado", "/atuacao/horas-extras", "/atuacao/assedio-moral-no-trabalho", "/atuacao/acidente-de-trabalho"]) {
-    assert.match(html, new RegExp(`href="${route}"`), route);
+    assert.doesNotMatch(html, new RegExp(`href="${route}"`), route);
+  }
+  assert.equal((html.match(/class="worker-service-card"/g) || []).length, 6);
+  for (const text of [
+    "Defesa dos seus direitos quando a empresa comete uma falta grave e a continuidade do vínculo de trabalho se torna insustentável.",
+    "Atuação para cobrar diferenças, parcelas não pagas e valores que possam ter sido deixados de fora da sua rescisão.",
+    "Defesa do trabalhador quando a empresa deixa de realizar corretamente os depósitos de FGTS durante o contrato.",
+    "Atuação para buscar o pagamento de horas trabalhadas além da jornada e outras diferenças relacionadas ao controle de horário.",
+    "Defesa firme diante de humilhações, constrangimentos, perseguições e outras práticas abusivas no ambiente de trabalho.",
+    "Atuação na defesa dos direitos do trabalhador após acidente ou adoecimento relacionado ao trabalho."
+  ]) {
+    assert.match(html, new RegExp(text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+  assert.equal((html.match(/Falar com o Dr\. Eryx →/g) || []).length, 6);
+  assert.doesNotMatch(html, /Documentos que podem ajudar na análise trabalhista/);
+  assert.doesNotMatch(html, /Não sabe se tem todos os documentos/);
+  assert.doesNotMatch(html, /Ir para contato/);
+  assert.doesNotMatch(html, /Veja também as/);
+  assert.match(html, /home-retrato-advogado/);
+  assert.match(html, /Atendimento direto com o Dr\. Eryx Fernandes/);
+  assert.match(html, /class="worker-local-benefits"/);
+});
+
+test("publica as 23 páginas locais trabalhistas com SEO local completo", () => {
+  const sitemap = readFileSync(new URL("./sitemap.xml", import.meta.url), "utf8");
+  assert.equal(LOCAL_LABOR_CITIES.length, 23);
+
+  for (const city of LOCAL_LABOR_CITIES) {
+    const html = renderPageHtml(city.route);
+    assert.match(html, new RegExp(`<h1 class="worker-hero-display-title">Advogado Trabalhista em ${city.name}</h1>`));
+    assert.match(html, new RegExp(`Atendimento trabalhista em ${city.name}`));
+    assert.match(html, new RegExp(`Vista de ${city.name} SP para página de advogado trabalhista`));
+    assert.match(html, new RegExp(`src="${city.image.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+    assert.match(html, new RegExp(`Mapa de ${city.name}`));
+    assert.match(html, /"@type":"Service"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.ok(sitemap.includes(`${SITE_CONFIG.siteUrl}${city.route}`), city.route);
   }
 });
 

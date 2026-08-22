@@ -454,8 +454,8 @@ const workerAnalysisSteps = [
   ["01", "Escuta inicial", "Compreensão do que ocorreu, do tipo de vínculo e dos principais pontos de dúvida."],
   [
     "02",
-    "Análise de documentos",
-    "Avaliação de contrato, holerites, extratos, mensagens, controles de jornada, termo de rescisão e demais documentos disponíveis."
+    "Análise do caso",
+    "Avaliação dos fatos, documentos disponíveis, mensagens, registros e demais informações relevantes para compreender a situação."
   ],
   [
     "03",
@@ -485,7 +485,7 @@ const workerFaqItems = [
   ],
   [
     "Preciso ter todos os documentos para iniciar a análise?",
-    "Não necessariamente. Documentos ajudam, mas a análise pode começar pelo relato dos fatos. Depois, o escritório orienta quais informações podem ser reunidas."
+    "Não. A conversa pode começar pelo relato do trabalhador, e o advogado orientará posteriormente quais documentos e informações são necessários."
   ],
   [
     "O que pode ser analisado em uma rescisão trabalhista?",
@@ -1850,6 +1850,24 @@ function laborLandingPageTemplate(path) {
 }
 
 function workerLaborTemplate() {
+  const workerWhatsappUrl = getWhatsAppUrl("Olá, Dr. Eryx. Vim pelo site e gostaria de conversar sobre um problema trabalhista.");
+  const workerTopicMessages = {
+    "/atuacao/rescisao-indireta": "Olá, Dr. Eryx. Vim pelo site e gostaria de conversar sobre um possível caso de rescisão indireta.",
+    "/atuacao/verbas-rescisorias": "Olá, Dr. Eryx. Vim pelo site e gostaria de conversar sobre minhas verbas rescisórias.",
+    "/atuacao/fgts-nao-depositado": "Olá, Dr. Eryx. Vim pelo site e gostaria de conversar sobre depósitos de FGTS.",
+    "/atuacao/horas-extras": "Olá, Dr. Eryx. Vim pelo site e gostaria de conversar sobre horas extras que acredito não terem sido pagas corretamente.",
+    "/atuacao/assedio-moral-no-trabalho": "Olá, Dr. Eryx. Vim pelo site e gostaria de conversar sobre uma situação de assédio moral no trabalho.",
+    "/atuacao/acidente-de-trabalho": "Olá, Dr. Eryx. Vim pelo site e gostaria de conversar sobre um acidente de trabalho."
+  };
+  const workerCardCopy = {
+    "/atuacao/rescisao-indireta": "Defesa dos seus direitos quando a empresa comete uma falta grave e a continuidade do vínculo de trabalho se torna insustentável.",
+    "/atuacao/verbas-rescisorias": "Atuação para cobrar diferenças, parcelas não pagas e valores que possam ter sido deixados de fora da sua rescisão.",
+    "/atuacao/fgts-nao-depositado": "Defesa do trabalhador quando a empresa deixa de realizar corretamente os depósitos de FGTS durante o contrato.",
+    "/atuacao/horas-extras": "Atuação para buscar o pagamento de horas trabalhadas além da jornada e outras diferenças relacionadas ao controle de horário.",
+    "/atuacao/assedio-moral-no-trabalho": "Defesa firme diante de humilhações, constrangimentos, perseguições e outras práticas abusivas no ambiente de trabalho.",
+    "/atuacao/acidente-de-trabalho": "Atuação na defesa dos direitos do trabalhador após acidente ou adoecimento relacionado ao trabalho."
+  };
+
   return `
     ${headerTemplate("/atuacao/direito-trabalhista-trabalhadores")}
     <main id="conteudo" class="worker-labor-page">
@@ -1867,10 +1885,10 @@ function workerLaborTemplate() {
             <span>Trabalhadores</span>
           </nav>
           <p class="worker-hero-seo-title eyebrow">Direito Trabalhista para trabalhadores</p>
-          <h1 class="worker-hero-display-title">Advogado Trabalhista em Sorocaba para Trabalhadores</h1>
+          <h1 class="worker-hero-display-title">Advogado Trabalhista em Sorocaba</h1>
           <p>Atuação na defesa de trabalhadores em demandas envolvendo rescisão, verbas trabalhistas, horas extras, assédio, acidente de trabalho, FGTS, vínculo empregatício e demais conflitos da relação de trabalho.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com um advogado trabalhista</a>
+            <a class="button button-primary" href="${workerWhatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o Dr. Eryx</a>
             <a class="button button-ghost" href="#servicos-trabalhistas">Encontrar meu problema</a>
           </div>
           <div class="worker-hero-trust" aria-label="Informações do atendimento">
@@ -1891,18 +1909,18 @@ function workerLaborTemplate() {
       <section class="attention-section reveal-block" id="servicos-trabalhistas">
         <div class="section-heading">
           <p>Serviços para trabalhadores</p>
-          <h2>Encontre orientação para o seu problema trabalhista</h2>
-          <span>Escolha a situação mais próxima da sua realidade para acessar informações e documentos específicos.</span>
+          <h2>Encontre solução para o seu problema trabalhista</h2>
+          <span>Escolha a situação mais próxima da sua realidade e converse diretamente com o Dr. Eryx.</span>
         </div>
         <div class="attention-grid">
           ${laborLandingRoutes
             .map(
               (route, index) => `
-                <a class="worker-service-card" href="${route}">
+                <a class="worker-service-card" href="${getWhatsAppUrl(workerTopicMessages[route])}" target="_blank" rel="noopener noreferrer">
                   <span>${String(index + 1).padStart(2, "0")}</span>
                   <h3>${laborLandingPages[route].shortTitle}</h3>
-                  <p>${laborLandingPages[route].subtitle}</p>
-                  <strong>Ver orientação sobre este tema →</strong>
+                  <p>${workerCardCopy[route]}</p>
+                  <strong>Falar com o Dr. Eryx →</strong>
                 </a>
               `
             )
@@ -1911,16 +1929,17 @@ function workerLaborTemplate() {
       </section>
 
       ${workerInlineCtaTemplate(
-        "Tem dúvida sobre seus direitos trabalhistas?",
-        "Conte brevemente o que aconteceu. A análise inicial ajuda a entender se há pontos que merecem atenção jurídica.",
-        "Falar pelo WhatsApp"
+        "Seu problema trabalhista merece ser analisado com atenção.",
+        "Conte ao Dr. Eryx o que aconteceu. Uma conversa inicial permite compreender a situação e identificar quais caminhos jurídicos podem ser avaliados.",
+        "Fale agora com o Dr. Eryx",
+        workerWhatsappUrl
       )}
 
       <section class="worker-analysis-section reveal-block" id="analise-do-caso">
         <div class="worker-analysis-copy">
           <p class="eyebrow">Análise do caso</p>
           <h2>Como funciona a análise do caso</h2>
-          <p>A orientação trabalhista começa pela compreensão dos fatos, dos documentos e do histórico da relação de trabalho.</p>
+          <p>A orientação trabalhista começa pela compreensão dos fatos, das informações disponíveis e do histórico da relação de trabalho.</p>
         </div>
         <div class="worker-analysis-steps">
           ${workerAnalysisSteps
@@ -1937,35 +1956,23 @@ function workerLaborTemplate() {
         </div>
       </section>
 
-      <section class="worker-documents-section reveal-block">
-        <div class="worker-documents-copy">
-          <p class="eyebrow">Documentos</p>
-          <h2>Documentos que podem ajudar na análise trabalhista</h2>
-          <p>A ausência de algum documento não impede a análise inicial, mas reunir informações facilita a compreensão do caso.</p>
-        </div>
-        <div class="worker-documents-list">
-          ${workerDocuments.map((documentName) => `<span>${documentName}</span>`).join("")}
-        </div>
-      </section>
-
-      ${workerInlineCtaTemplate(
-        "Não sabe se tem todos os documentos?",
-        "Mesmo com informações incompletas, é possível iniciar uma conversa para entender o contexto e orientar os próximos passos.",
-        "Enviar mensagem ao escritório"
-      )}
-
       <section class="worker-local-section reveal-block">
         <div class="worker-local-image">
-          ${optimizedPicture("/home-atendimento-cliente.jpg", "Atendimento trabalhista em Sorocaba")}
+          ${optimizedPicture("/home-retrato-advogado.jpg", "Dr. Eryx Fernandes, advogado em Sorocaba")}
         </div>
         <div class="worker-local-copy">
           <p class="eyebrow">Sorocaba/SP</p>
-          <h2>Atendimento trabalhista em Sorocaba e região</h2>
-          <p>Com sede em Sorocaba/SP, o atendimento é conduzido diretamente pelo Dr. Eryx Fernandes, ${professionalRegistrationLink()}, para trabalhadores da cidade e região, de forma presencial ou digital.</p>
+          <h2>Atendimento direto com o Dr. Eryx Fernandes</h2>
+          <p>O atendimento é conduzido diretamente pelo Dr. Eryx Fernandes, ${professionalRegistrationLink()}, com análise individual de cada situação e comunicação direta com o cliente, de forma presencial em Sorocaba ou digital.</p>
+          <ul class="worker-local-benefits">
+            <li>Rapidez no atendimento</li>
+            <li>Contato direto com o advogado</li>
+            <li>Defesa firme dos direitos do trabalhador</li>
+            <li>Busca pela solução jurídica mais adequada ao caso</li>
+            <li>Clareza sobre riscos e próximos passos</li>
+          </ul>
           <address>${SITE_CONFIG.address}</address>
-          <p class="worker-local-links">
-            Veja também as <a href="/atuacao">áreas de atuação</a>, <a href="/quem-somos">conheça o escritório</a> ou <a href="/contato">fale com o escritório</a>.
-          </p>
+          <a class="button button-dark" href="${workerWhatsappUrl}" target="_blank" rel="noopener noreferrer">Fale agora com o Dr. Eryx</a>
         </div>
       </section>
 
@@ -1993,39 +2000,16 @@ function workerLaborTemplate() {
         </div>
       </section>
 
-      <section class="related-practices-section reveal-block">
-        <div class="section-heading">
-          <p>Linkagem interna</p>
-          <h2>Outras áreas de atuação</h2>
-          <span>Conheça outras frentes jurídicas do escritório.</span>
-        </div>
-        <div class="related-practices-grid">
-          <a href="/atuacao/direito-trabalhista-empresas">
-            <strong>Direito Trabalhista para Empresas</strong>
-            <span>Consultoria preventiva, documentos internos, desligamentos e defesa em reclamações trabalhistas.</span>
-          </a>
-          <a href="/atuacao/direito-imobiliario">
-            <strong>Direito Imobiliário</strong>
-            <span>Contratos, locações, regularização, cobranças e conflitos envolvendo imóveis e condomínios.</span>
-          </a>
-          <a href="/atuacao/direito-de-familia">
-            <strong>Direito de Família</strong>
-            <span>Divórcio, guarda, alimentos, partilha de bens e demandas familiares sensíveis.</span>
-          </a>
-        </div>
-      </section>
-
       <section class="worker-final-cta">
         <div class="worker-final-image">
           ${optimizedPicture("/home-cta-advogado.jpg", "Orientação sobre direitos trabalhistas")}
         </div>
         <div class="worker-final-copy">
           <p class="eyebrow">Orientação trabalhista para trabalhadores</p>
-          <h2>Precisa de orientação sobre direitos trabalhistas?</h2>
-          <p>Fale com o Eryx Fernandes Advocacia e conte brevemente o seu caso. A orientação adequada começa pela escuta e pela análise do contexto.</p>
+          <h2>Precisa falar com um advogado trabalhista?</h2>
+          <p>Conte ao Dr. Eryx o que aconteceu e receba orientação sobre os próximos passos possíveis para o seu caso.</p>
           <div class="cta-actions">
-            <a class="button button-primary" href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
-            <a class="button button-ghost" href="/contato">Ir para contato</a>
+            <a class="button button-primary" href="${workerWhatsappUrl}" target="_blank" rel="noopener noreferrer">Fale agora com o Dr. Eryx</a>
           </div>
         </div>
       </section>
@@ -2035,14 +2019,14 @@ function workerLaborTemplate() {
   `;
 }
 
-function workerInlineCtaTemplate(title, text, buttonText) {
+function workerInlineCtaTemplate(title, text, buttonText, whatsappUrl = SITE_CONFIG.whatsappUrl) {
   return `
     <section class="worker-inline-cta reveal-block">
       <div>
         <h2>${title}</h2>
         <p>${text}</p>
       </div>
-      <a class="button button-primary" href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">${buttonText}</a>
+      <a class="button button-primary" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">${buttonText}</a>
     </section>
   `;
 }
@@ -5300,9 +5284,63 @@ function alimonyLandingTemplate() {
     </main><script type="application/ld+json" id="alimony-schema">${JSON.stringify({"@context":"https://schema.org","@graph":[breadcrumbSchema,faqSchema]}).replace(/</g,"\\u003c")}</script>${footerTemplate()}`;
 }
 
+function localLaborCityTemplate(city) {
+  const path = city.route;
+  const whatsappUrl = getWhatsAppUrl(`Olá, Dr. Eryx. Procuro um advogado trabalhista em ${city.name} e gostaria de conversar sobre meu caso.`);
+  const title = `Atendimento trabalhista em ${city.name}`;
+  const localText = `${city.name} é um município do interior de São Paulo com cerca de ${city.population} habitantes, conforme o Censo 2022 do IBGE. A dinâmica econômica local, marcada por ${city.economy}, reúne diferentes relações de emprego e situações que podem exigir orientação jurídica. Horas extras não pagas, demissão injusta, FGTS não depositado, assédio, acidente de trabalho e diferenças nas verbas rescisórias estão entre os problemas que merecem análise individual. Se você procura um Advogado Trabalhista em ${city.name}, o Dr. Eryx Fernandes pode ouvir seu relato, avaliar as informações disponíveis e orientar os próximos passos.`;
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_CONFIG.siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "Direito Trabalhista", item: `${SITE_CONFIG.siteUrl}/atuacao/direito-trabalhista-trabalhadores` },
+      { "@type": "ListItem", position: 3, name: `Advogado Trabalhista em ${city.name}`, item: `${SITE_CONFIG.siteUrl}${path}` }
+    ]
+  };
+  const serviceSchema = {
+    "@type": "Service",
+    name: `Advogado Trabalhista em ${city.name}`,
+    serviceType: "Advocacia trabalhista para trabalhadores",
+    provider: { "@id": `${SITE_CONFIG.siteUrl}/#organization` },
+    areaServed: { "@type": "City", name: city.name, containedInPlace: { "@type": "State", name: "São Paulo" } },
+    url: `${SITE_CONFIG.siteUrl}${path}`
+  };
+
+  return workerLaborTemplate()
+    .replaceAll("/atuacao/direito-trabalhista-trabalhadores", path)
+    .replaceAll("Advogado Trabalhista em Sorocaba", `Advogado Trabalhista em ${city.name}`)
+    .replace("Direito Trabalhista para trabalhadores", `Direito Trabalhista em ${city.name}`)
+    .replace("Atuação na defesa de trabalhadores em demandas", `Atendimento a trabalhadores de ${city.name} em demandas`)
+    .replace("<span>Trabalhadores</span>", `<span>${city.name}</span>`)
+    .replace(
+      '<section class="worker-faq-section reveal-block">',
+      `<section class="local-city-section reveal-block" aria-labelledby="local-city-title">
+        <div class="local-city-copy">
+          <p class="eyebrow">${city.name}/SP</p>
+          <h2 id="local-city-title">${title}</h2>
+          <p>${localText}</p>
+          <p class="local-city-source">População: <a href="https://www.ibge.gov.br/cidades-e-estados/sp/${city.slug}.html" target="_blank" rel="noopener noreferrer">IBGE — Censo 2022</a>.</p>
+          <p class="local-city-source">Conheça também a página central de <a href="/atuacao/direito-trabalhista-trabalhadores">Direito Trabalhista para trabalhadores</a>.</p>
+          <a class="button button-dark" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o Dr. Eryx</a>
+        </div>
+        <div class="local-city-media">
+          <img src="${city.image}" alt="Vista de ${city.name} SP para página de advogado trabalhista" width="1200" height="800" loading="lazy" decoding="async" />
+          <iframe title="Mapa de ${city.name}, São Paulo" src="https://www.google.com/maps?q=${encodeURIComponent(`${city.name}, São Paulo`)}&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section class="worker-faq-section reveal-block">`
+    )
+    .replace(
+      "</main>",
+      `</main><script type="application/ld+json" id="local-labor-schema">${JSON.stringify({ "@context": "https://schema.org", "@graph": [breadcrumbSchema, serviceSchema] }).replace(/</g, "\\u003c")}</script>`
+    );
+}
+
 export function renderPageHtml(pathname) {
   const path = normalizePath(pathname);
 
+  if (LOCAL_LABOR_CITY_BY_ROUTE.has(path)) return localLaborCityTemplate(LOCAL_LABOR_CITY_BY_ROUTE.get(path));
   if (laborLandingPages[path]) return laborLandingPageTemplate(path);
   if (path === "/atuacao/pensao-alimenticia") return alimonyLandingTemplate();
 
@@ -5373,3 +5411,4 @@ if (typeof window !== "undefined" && typeof document !== "undefined") {
   render();
 }
 
+import { LOCAL_LABOR_CITY_BY_ROUTE } from "./local-cities.js";

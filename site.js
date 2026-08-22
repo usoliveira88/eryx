@@ -4846,6 +4846,14 @@ function renderGlobalBusinessSchema() {
   script.textContent = JSON.stringify(schema).replace(/</g, "\\u003c");
 }
 
+export function restoreLocalDocumentMeta(path, initialTitle, initialDescription) {
+  if (!LOCAL_LABOR_CITY_BY_ROUTE.has(path)) return false;
+
+  document.title = initialTitle;
+  ensureMetaByName("description").setAttribute("content", initialDescription);
+  return true;
+}
+
 function updateDocumentMeta(path) {
   const commercialSeo = {
     "/": {
@@ -4872,6 +4880,8 @@ function updateDocumentMeta(path) {
   const page = internalPages[path];
   const laborLandingPage = laborLandingPages[path];
   const description = ensureMetaByName("description");
+  const initialTitle = document.title;
+  const initialDescription = description.getAttribute("content") || "";
   if (commercialSeo[path]) {
     document.title = commercialSeo[path].title;
     description.setAttribute("content", commercialSeo[path].description);
@@ -5005,6 +5015,7 @@ function updateDocumentMeta(path) {
     document.title = commercialSeo[path].title;
     description.setAttribute("content", commercialSeo[path].description);
   }
+  restoreLocalDocumentMeta(path, initialTitle, initialDescription);
   updateSocialMeta(path);
   renderGlobalBusinessSchema();
 }

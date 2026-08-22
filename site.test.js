@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { getWhatsAppUrl, isWhatsAppUrl, professionalRegistrationLink, renderPageHtml, SITE_CONFIG } from "./site.js";
+import { getWhatsAppUrl, isWhatsAppUrl, professionalRegistrationLink, renderPageHtml, restoreLocalDocumentMeta, SITE_CONFIG } from "./site.js";
 import { LOCAL_LABOR_CITIES } from "./local-cities.js";
 
 const routes = [
@@ -242,6 +242,51 @@ test("publica as 23 páginas locais trabalhistas com SEO local completo", () => 
     assert.match(html, /"@type":"Service"/);
     assert.match(html, /"@type":"BreadcrumbList"/);
     assert.ok(sitemap.includes(`${SITE_CONFIG.siteUrl}${city.route}`), city.route);
+  }
+});
+
+test("preserva no DOM os metadados estáticos das 23 páginas municipais", () => {
+  const viteConfig = readFileSync(new URL("./vite.config.mjs", import.meta.url), "utf8");
+  assert.match(viteConfig, /title: `Advogado Trabalhista em \$\{city\.name\} \| Dr\. Eryx Fernandes`/);
+  assert.match(viteConfig, /description: `Advogado Trabalhista em \$\{city\.name\} especializado em Horas Extras/);
+
+  const originalDocument = globalThis.document;
+  const descriptionMeta = {
+    content: "",
+    getAttribute(name) {
+      return name === "content" ? this.content : null;
+    },
+    setAttribute(name, value) {
+      if (name === "content") this.content = value;
+    }
+  };
+
+  try {
+    globalThis.document = {
+      title: "",
+      head: { querySelector: () => descriptionMeta }
+    };
+
+    for (const city of LOCAL_LABOR_CITIES) {
+      const initialTitle = `Advogado Trabalhista em ${city.name} | Dr. Eryx Fernandes`;
+      const initialDescription = `Advogado Trabalhista em ${city.name} especializado em Horas Extras, Demissão por Justa Causa, Demissão sem Justa Causa, Assédio Moral, Assédio Sexual, FGTS e outros direitos do trabalhador. Fale com o Dr. Eryx Fernandes.`;
+      document.title = "Advogado em Sorocaba | Eryx Fernandes Advocacia";
+      descriptionMeta.content = "Advocacia em Sorocaba";
+
+      assert.equal(restoreLocalDocumentMeta(city.route, initialTitle, initialDescription), true, city.route);
+      assert.equal(document.title, initialTitle, city.route);
+      assert.equal(descriptionMeta.content, initialDescription, city.route);
+    }
+
+    const sorocabaTitle = "Advogado Trabalhista em Sorocaba | Eryx Fernandes Advocacia";
+    const sorocabaDescription = "Orientação trabalhista em Sorocaba para trabalhadores em casos de rescisão, horas extras, assédio, acidente de trabalho, FGTS e outros direitos.";
+    document.title = sorocabaTitle;
+    descriptionMeta.content = sorocabaDescription;
+    assert.equal(restoreLocalDocumentMeta("/atuacao/direito-trabalhista-trabalhadores", sorocabaTitle, sorocabaDescription), false);
+    assert.equal(document.title, sorocabaTitle);
+    assert.equal(descriptionMeta.content, sorocabaDescription);
+  } finally {
+    globalThis.document = originalDocument;
   }
 });
 

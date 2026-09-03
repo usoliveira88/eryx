@@ -211,10 +211,10 @@ function organizationGraph(route) {
       email: "eryx@advmartinsfernandes.com",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Rua Darcy Fruet, 284 - Wanel Ville 5",
+        streetAddress: "Av. Américo de Carvalho, 65 - Sala 1",
         addressLocality: "Sorocaba",
         addressRegion: "SP",
-        postalCode: "18057-063",
+        postalCode: "18045-000",
         addressCountry: "BR"
       },
       areaServed: {

@@ -16,7 +16,7 @@ export const SITE_CONFIG = {
     return getWhatsAppUrl();
   },
   email: "eryx@advmartinsfernandes.com",
-  address: "Rua Darcy Fruet, 284 – Wanel Ville 5, Sorocaba/SP – CEP 18057-063",
+  address: "Av. Américo de Carvalho, 65 - Sala 1 - Jardim Europa, Sorocaba - SP, 18045-000",
   instagram: "@adv.eryxfernandes",
   instagramUrl: "https://www.instagram.com/adv.eryxfernandes/",
   city: "Sorocaba/SP"
@@ -2678,9 +2678,9 @@ function contactIconTemplate(name) {
 
 function contactTemplate() {
   const mapsEmbed =
-    "https://www.google.com/maps?q=Rua%20Darcy%20Fruet%2C%20284%20-%20Wanel%20Ville%205%2C%20Sorocaba%20-%20SP%2C%2018057-063&output=embed";
+    "https://www.google.com/maps?q=Av.%20Am%C3%A9rico%20de%20Carvalho%2C%2065%20-%20Sala%201%20-%20Jardim%20Europa%2C%20Sorocaba%20-%20SP%2C%2018045-000&output=embed";
   const mapsSearch =
-    "https://www.google.com/maps/search/?api=1&query=Rua%20Darcy%20Fruet%2C%20284%20-%20Wanel%20Ville%205%2C%20Sorocaba%20-%20SP%2C%2018057-063";
+    "https://www.google.com/maps/search/?api=1&query=Av.%20Am%C3%A9rico%20de%20Carvalho%2C%2065%20-%20Sala%201%20-%20Jardim%20Europa%2C%20Sorocaba%20-%20SP%2C%2018045-000";
   const channels = [
     ["whatsapp", "WhatsApp", SITE_CONFIG.whatsapp, SITE_CONFIG.whatsappUrl, true],
     ["email", "E-mail", SITE_CONFIG.email, `mailto:${SITE_CONFIG.email}`, false],
@@ -4798,10 +4798,10 @@ function renderGlobalBusinessSchema() {
     email: SITE_CONFIG.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Rua Darcy Fruet, 284 - Wanel Ville 5",
+      streetAddress: "Av. Américo de Carvalho, 65 - Sala 1",
       addressLocality: "Sorocaba",
       addressRegion: "SP",
-      postalCode: "18057-063",
+      postalCode: "18045-000",
       addressCountry: "BR"
     },
     areaServed: {

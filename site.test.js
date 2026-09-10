@@ -20,6 +20,10 @@ const routes = [
   "/atuacao/direito-de-familia",
   "/atuacao/pensao-alimenticia",
   "/artigos",
+  "/artigos/contrato-compra-venda-imovel-cuidados",
+  "/artigos/usucapiao-regularizacao-imovel",
+  "/artigos/demissao-por-justa-causa-empresa",
+  "/artigos/empresa-pode-proibir-celular-trabalho",
   "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
   "/artigos/assedio-moral-no-trabalho-como-identificar",
   "/artigos/acidente-de-trabalho-direitos-do-trabalhador",
@@ -257,6 +261,17 @@ test("publica as 23 páginas locais trabalhistas com SEO local completo", () => 
     const html = renderPageHtml(city.route);
     assert.match(html, new RegExp(`<h1 class="worker-hero-display-title">Advogado Trabalhista em ${city.name}</h1>`));
     assert.match(html, new RegExp(`Atendimento trabalhista em ${city.name}`));
+    assert.match(html, new RegExp(`Pontos de atenção para trabalhadores de ${city.name}`));
+    assert.match(html, new RegExp(`Cidades próximas de ${city.name}`));
+    assert.ok(city.workContext.length > 100, `${city.route}: contexto laboral próprio`);
+    assert.ok(city.practicalContext.length > 80, `${city.route}: contexto de atendimento próprio`);
+    assert.equal(city.related.length, 3, `${city.route}: três conexões regionais`);
+    for (const relatedSlug of city.related) {
+      const relatedRoute = relatedSlug === "sorocaba"
+        ? "/atuacao/direito-trabalhista-trabalhadores"
+        : `/advogado-trabalhista/${relatedSlug}`;
+      assert.match(html, new RegExp(`href="${relatedRoute}"`), `${city.route} -> ${relatedRoute}`);
+    }
     assert.match(html, new RegExp(`Vista de ${city.name} SP para página de advogado trabalhista`));
     assert.match(html, new RegExp(`src="${city.image.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
     assert.match(html, new RegExp(`Mapa de ${city.name}`));
@@ -303,7 +318,7 @@ test("preserva no DOM os metadados estáticos das 23 páginas municipais", () =>
     const sorocabaDescription = "Orientação trabalhista em Sorocaba para trabalhadores em casos de rescisão, horas extras, assédio, acidente de trabalho, FGTS e outros direitos.";
     document.title = sorocabaTitle;
     descriptionMeta.content = sorocabaDescription;
-    assert.equal(restoreLocalDocumentMeta("/atuacao/direito-trabalhista-trabalhadores", sorocabaTitle, sorocabaDescription), false);
+    assert.equal(restoreLocalDocumentMeta("/atuacao/direito-trabalhista-trabalhadores", sorocabaTitle, sorocabaDescription), true);
     assert.equal(document.title, sorocabaTitle);
     assert.equal(descriptionMeta.content, sorocabaDescription);
   } finally {
@@ -422,6 +437,53 @@ test("lista os três novos artigos com cards rastreáveis", () => {
     "/artigos/acidente-de-trabalho-direitos-do-trabalhador"
   ]) {
     assert.match(html, new RegExp(`href="${route}"`));
+  }
+});
+
+test("publica os quatro novos artigos SEO com linkagem interna e schema", () => {
+  const expected = [
+    {
+      route: "/artigos/contrato-compra-venda-imovel-cuidados",
+      h1: "Contrato de Compra e Venda de Imóvel: o que verificar antes de assinar?",
+      image: "/artigos/artigo-imobiliario",
+      links: ["/atuacao/direito-imobiliario", "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/usucapiao-regularizacao-imovel", "/quem-somos"]
+    },
+    {
+      route: "/artigos/usucapiao-regularizacao-imovel",
+      h1: "Usucapião: quando é possível regularizar um imóvel pela posse?",
+      image: "/artigos/artigo-imobiliario",
+      links: ["/atuacao/direito-imobiliario", "/artigos/contrato-compra-venda-imovel-cuidados", "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"]
+    },
+    {
+      route: "/artigos/demissao-por-justa-causa-empresa",
+      h1: "Demissão por Justa Causa: quando a empresa pode aplicar?",
+      image: "/home-detalhe-documentos",
+      links: ["/atuacao/direito-trabalhista-empresas", "/artigos/empresa-pode-proibir-celular-trabalho", "/artigos/nr-01-novas-exigencias-empresas-sorocaba", "/quem-somos"]
+    },
+    {
+      route: "/artigos/empresa-pode-proibir-celular-trabalho",
+      h1: "Empresa pode proibir o uso de celular no trabalho?",
+      image: "/home-detalhe-documentos",
+      links: ["/atuacao/direito-trabalhista-empresas", "/artigos/demissao-por-justa-causa-empresa", "/artigos/nr-01-novas-exigencias-empresas-sorocaba"]
+    }
+  ];
+
+  const listing = renderPageHtml("/artigos");
+
+  for (const item of expected) {
+    const html = renderPageHtml(item.route);
+    assert.equal((html.match(/<h1>/g) || []).length, 1, item.route);
+    assert.match(html, new RegExp(`<h1>${item.h1.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}</h1>`));
+    assert.match(html, new RegExp(`${item.image.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}-1200\\.avif`));
+    for (const link of item.links) {
+      assert.match(html, new RegExp(`href="${link.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), `${item.route} -> ${link}`);
+    }
+    assert.match(html, /Falar com o Dr\. Eryx/);
+    assert.match(html, /"@type":"BlogPosting"/);
+    assert.match(html, /"@type":"FAQPage"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(html, /OAB\/SP nº 530\.983/);
+    assert.match(listing, new RegExp(`href="${item.route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
   }
 });
 

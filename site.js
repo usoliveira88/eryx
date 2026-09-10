@@ -96,6 +96,86 @@ const practiceItems = [
 
 const articles = [
   {
+    category: "Imobiliário",
+    filterCategory: "Imobiliário",
+    homeCategory: "Imobiliário",
+    eyebrow: "ARTIGO | DIREITO IMOBILIÁRIO",
+    title: "Contrato de Compra e Venda de Imóvel: o que verificar antes de assinar?",
+    seoTitle: "Contrato de Compra e Venda de Imóvel: Cuidados Antes de Assinar",
+    seoDescription:
+      "Saiba o que deve ser verificado antes de assinar um contrato de compra e venda de imóvel e como evitar riscos jurídicos na negociação.",
+    excerpt:
+      "Veja como conferir matrícula, proprietário, ônus, pagamento, arras, posse e escritura antes de assumir uma compra imobiliária.",
+    image: "/artigos/artigo-imobiliario.jpg",
+    alt: "Mesa de reunião com documentos para análise de contrato de compra e venda de imóvel",
+    href: "/artigos/contrato-compra-venda-imovel-cuidados",
+    readingTime: "12 min de leitura",
+    date: "10 de setembro de 2026",
+    publishedAt: "2026-09-10",
+    modifiedAt: "2026-09-10",
+    authorRole: "Advogado Imobiliário"
+  },
+  {
+    category: "Imobiliário",
+    filterCategory: "Imobiliário",
+    homeCategory: "Imobiliário",
+    eyebrow: "ARTIGO | DIREITO IMOBILIÁRIO",
+    title: "Usucapião: quando é possível regularizar um imóvel pela posse?",
+    seoTitle: "Usucapião: Quando é Possível Regularizar um Imóvel pela Posse?",
+    seoDescription:
+      "Entenda quando a usucapião pode ser utilizada para regularizar um imóvel, quais são os principais requisitos e como funciona o procedimento.",
+    excerpt:
+      "Entenda os requisitos da posse, as modalidades mais comuns, os documentos e os cuidados antes de tentar regularizar um imóvel.",
+    image: "/artigos/artigo-imobiliario.jpg",
+    alt: "Documentos imobiliários sobre mesa para orientação sobre usucapião e regularização de imóvel",
+    href: "/artigos/usucapiao-regularizacao-imovel",
+    readingTime: "12 min de leitura",
+    date: "10 de setembro de 2026",
+    publishedAt: "2026-09-10",
+    modifiedAt: "2026-09-10",
+    authorRole: "Advogado Imobiliário"
+  },
+  {
+    category: "Trabalhista Empresarial",
+    filterCategory: "Trabalhista Empresarial",
+    homeCategory: "Trabalhista Empresarial",
+    eyebrow: "ARTIGO | TRABALHISTA EMPRESARIAL",
+    title: "Demissão por Justa Causa: quando a empresa pode aplicar?",
+    seoTitle: "Demissão por Justa Causa: Quando a Empresa Pode Aplicar?",
+    seoDescription:
+      "Entenda quando a empresa pode aplicar a demissão por justa causa, quais cuidados devem ser adotados e quais erros podem gerar passivo trabalhista.",
+    excerpt:
+      "Um guia para empresas avaliarem falta grave, prova, imediatidade, proporcionalidade e documentação antes de aplicar justa causa.",
+    image: "/home-detalhe-documentos.jpg",
+    alt: "Documentos empresariais revisados antes de decisão trabalhista disciplinar",
+    href: "/artigos/demissao-por-justa-causa-empresa",
+    readingTime: "13 min de leitura",
+    date: "10 de setembro de 2026",
+    publishedAt: "2026-09-10",
+    modifiedAt: "2026-09-10",
+    authorRole: "Advogado Trabalhista Empresarial"
+  },
+  {
+    category: "Trabalhista Empresarial",
+    filterCategory: "Trabalhista Empresarial",
+    homeCategory: "Trabalhista Empresarial",
+    eyebrow: "ARTIGO | TRABALHISTA EMPRESARIAL",
+    title: "Empresa pode proibir o uso de celular no trabalho?",
+    seoTitle: "Empresa Pode Proibir o Uso de Celular no Trabalho?",
+    seoDescription:
+      "Entenda quando a empresa pode restringir o uso de celular no trabalho, como criar regras internas e quais cuidados evitar problemas trabalhistas.",
+    excerpt:
+      "Veja como estruturar regras internas sobre celular com clareza, proporcionalidade, exceções, documentação e redução de risco trabalhista.",
+    image: "/home-detalhe-documentos.jpg",
+    alt: "Regulamento interno e documentos de RH para política de uso de celular no trabalho",
+    href: "/artigos/empresa-pode-proibir-celular-trabalho",
+    readingTime: "12 min de leitura",
+    date: "10 de setembro de 2026",
+    publishedAt: "2026-09-10",
+    modifiedAt: "2026-09-10",
+    authorRole: "Advogado Trabalhista Empresarial"
+  },
+  {
     category: "Trabalhista",
     filterCategory: "Trabalhista",
     homeCategory: "Trabalhista",
@@ -200,7 +280,7 @@ const articles = [
     filterCategory: "Trabalhista",
     homeCategory: "Trabalhista",
     eyebrow: "ARTIGO | TRABALHISTA",
-    title: "Rescisão Indireta em Sorocaba: Guia Completo para o Trabalhador",
+    title: "Rescisão indireta: quando o trabalhador pode pedir?",
     excerpt:
       "Entenda o que é a Rescisão Indireta, quando ela pode ser aplicada e por que cada caso exige análise individual antes de qualquer decisão.",
     image: "/artigos/rescisao-indireta-sorocaba.jpg",
@@ -284,7 +364,7 @@ function articleByHref(href) {
   return articles.find((article) => article.href === href);
 }
 
-const articleFilters = ["Todos", "Trabalhista", "Trabalhista Empresarial", "Condominial", "Família"];
+const articleFilters = ["Todos", "Trabalhista", "Trabalhista Empresarial", "Imobiliário", "Condominial", "Família"];
 
 const optimizedImageVariants = new Map([
   ["/home-reuniao-juridica.jpg", "/home-reuniao-juridica"],
@@ -3029,16 +3109,7 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
       identifier: SITE_CONFIG.oab,
       url: siteAbsoluteUrl("/quem-somos")
     },
-    publisher: {
-      "@type": "Organization",
-      "@id": siteAbsoluteUrl("/#organization"),
-      name: SITE_CONFIG.firmName,
-      url: siteAbsoluteUrl("/"),
-      logo: {
-        "@type": "ImageObject",
-        url: siteAbsoluteUrl("/favicon-512.png")
-      }
-    },
+    publisher: { "@id": siteAbsoluteUrl("/#organization") },
     articleSection: article.category,
     inLanguage: "pt-BR",
     datePublished: article.publishedAt,
@@ -3084,6 +3155,345 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
   return [blogPosting, faqPage, breadcrumbList]
     .map((schema) => `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>`)
     .join("");
+}
+
+const newSeoArticleContent = {
+  "/artigos/contrato-compra-venda-imovel-cuidados": {
+    breadcrumb: "Contrato de compra e venda",
+    summary: [["#atencao", "Por que exige atenção"], ["#imovel", "Identificação do imóvel"], ["#proprietario", "Proprietário e ônus"], ["#certidoes", "Certidões"], ["#pagamento", "Pagamento e arras"], ["#posse", "Posse e despesas"], ["#financiamento", "Financiamento"], ["#escritura", "Escritura"], ["#advogado", "Advogado imobiliário"], ["#faq", "FAQ"]],
+    cta: ["Precisa analisar um contrato ou regularizar um imóvel?", "Antes de assinar, vale conferir matrícula, documentos das partes, forma de pagamento, multas, posse e riscos da operação.", "Falar com o Dr. Eryx"],
+    recommendations: ["/artigos/usucapiao-regularizacao-imovel", "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"],
+    recommendationTitle: "Outros conteúdos de Direito Imobiliário",
+    faq: [
+      { question: "Contrato particular de compra e venda é seguro?", answer: "Pode ser útil em algumas negociações, mas precisa ser analisado com cautela. O contrato particular não substitui automaticamente escritura, registro e conferência da situação do imóvel." },
+      { question: "O que conferir na matrícula do imóvel?", answer: "É preciso observar proprietários, descrição do imóvel, averbações, ônus, penhoras, indisponibilidades, usufruto, hipoteca, alienação fiduciária e outras restrições que possam afetar a compra." },
+      { question: "Sinal e arras são a mesma coisa?", answer: "Na prática, o sinal costuma ser tratado como arras, mas os efeitos dependem da redação contratual. A cláusula deve indicar valor, finalidade e consequências da desistência." },
+      { question: "Quando procurar advogado imobiliário?", answer: "O ideal é buscar orientação antes da assinatura, especialmente quando há financiamento, imóvel ocupado, herdeiros, procuração, promessa antiga, pendências ou cláusulas de multa." }
+    ],
+    body: `
+      <p class="article-lead">O contrato de compra e venda de imóvel costuma aparecer no momento em que as partes já estão emocionalmente comprometidas com a negociação.</p>
+      <p>É justamente por isso que ele precisa ser lido com calma. A compra de um imóvel envolve patrimônio relevante, prazos, documentos, tributos, responsabilidades e riscos que nem sempre aparecem na conversa inicial com vendedor, corretor ou imobiliária.</p>
+      <p>Este artigo tem foco específico na aquisição de imóvel. O conteúdo já existente sobre <a href="/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar">contratos imobiliários</a> continua útil para uma visão ampla sobre locação, distratos e documentos, enquanto este guia aprofunda os cuidados próprios da compra e venda.</p>
+      <p>Em caso de dúvida, a análise de um <a href="/atuacao/direito-imobiliario">advogado imobiliário em Sorocaba</a> pode ajudar a identificar riscos antes que o comprador assuma obrigações difíceis de desfazer.</p>
+      <h2 id="atencao">Por que o contrato de compra e venda exige atenção?</h2>
+      <p>O contrato organiza preço, prazo, pagamento, entrega da posse, responsabilidades, multas, documentação e etapas até a transferência definitiva. Uma cláusula vaga pode gerar discussão sobre quem paga determinada despesa, quando as chaves serão entregues ou o que acontece se o financiamento não for aprovado.</p>
+      <p>Também é comum que o contrato seja apresentado como formulário pronto. Mesmo quando o modelo parece simples, ele deve refletir o negócio real: imóvel urbano ou rural, unidade em condomínio, terreno, imóvel financiado, imóvel em inventário, compra com sinal, parcelamento direto ou quitação à vista.</p>
+      <h2 id="imovel">Identificação correta do imóvel</h2>
+      <p>A descrição do imóvel precisa corresponder à matrícula e aos documentos complementares. Endereço comercial, número de cadastro municipal ou descrição informal não bastam quando há divergência de área, vaga de garagem, fração ideal, lote, confrontações ou benfeitorias não averbadas.</p>
+      <p>Em apartamentos e salas comerciais, é importante verificar se garagem, depósito e áreas acessórias constam na matrícula ou em matrícula própria. Em terrenos, a área real, os limites e o zoneamento podem influenciar o uso pretendido.</p>
+      <h2 id="proprietario">Quem é o verdadeiro proprietário e qual é a situação registral?</h2>
+      <p>A matrícula atualizada do Cartório de Registro de Imóveis é o principal documento para verificar quem aparece como proprietário. Quem vende deve ter legitimidade para transferir. Se o vendedor é casado, se há herdeiros, procuração, empresa, espólio ou coproprietários, a assinatura de todas as pessoas necessárias deve ser conferida.</p>
+      <p>Também é preciso observar ônus, penhoras, indisponibilidades, hipoteca, alienação fiduciária, usufruto, cláusulas restritivas, ações averbadas e outros registros. A existência de restrição não impede toda negociação, mas muda a análise de risco e pode exigir providências antes do pagamento.</p>
+      <h2 id="certidoes">Certidões importantes</h2>
+      <p>Além da matrícula, podem ser solicitadas certidões dos vendedores, do imóvel e, quando aplicável, da empresa vendedora. A finalidade é identificar dívidas, ações e situações que possam afetar a segurança do negócio.</p>
+      <p>Em linhas gerais, a análise pode envolver certidões cíveis, fiscais, trabalhistas, protestos, débitos municipais, condomínio, foro ou laudêmio quando aplicável. A lista varia conforme o perfil das partes e do imóvel.</p>
+      <h2 id="pagamento">Valor, forma de pagamento, sinal e arras</h2>
+      <p>O contrato deve indicar preço total, datas, contas, condições para liberação de valores e consequências do atraso. Pagamentos em dinheiro, transferências para terceiros ou parcelas sem recibo aumentam risco probatório.</p>
+      <p>O sinal deve ser descrito com precisão. Se for tratado como arras, a cláusula precisa explicar se há direito de arrependimento, retenção, devolução em dobro ou abatimento no preço. A falta de clareza costuma transformar a desistência em conflito.</p>
+      <p>Também é importante verificar se o contrato condiciona etapas futuras ao pagamento integral ou se permite transferência antes da quitação. Em parcelamentos diretos com o vendedor, a garantia da operação, a forma de correção, o vencimento antecipado e a consequência do atraso precisam ser compatíveis com a realidade financeira das partes.</p>
+      <h2 id="desistencia">Cláusulas de desistência e multas contratuais</h2>
+      <p>A desistência não deve ser tratada apenas em uma frase genérica. O contrato precisa explicar se existe arrependimento permitido, qual prazo para exercê-lo, como o valor pago será devolvido ou retido e quais despesas serão abatidas.</p>
+      <p>Multas muito vagas, percentuais contraditórios ou penalidades diferentes para comprador e vendedor podem gerar discussão. Também é preciso verificar se a multa incide sobre o preço total, sobre o saldo em aberto ou apenas sobre valores pagos. Essa diferença muda bastante o impacto econômico da cláusula.</p>
+      <p>Em negócios com imobiliária ou corretagem, convém separar o que é preço do imóvel, comissão, sinal, taxa administrativa e eventual despesa cartorária. Quando tudo aparece misturado, fica mais difícil compreender quem deve pagar cada valor se o negócio não avançar.</p>
+      <h2 id="posse">Posse, entrega das chaves, IPTU e condomínio</h2>
+      <p>A entrega da posse não deve ficar subentendida. O contrato precisa indicar se as chaves serão entregues na assinatura, na quitação, na aprovação do financiamento, na escritura ou em outra etapa.</p>
+      <p>Também é importante definir quem responde por IPTU, condomínio, taxas, água, energia, reformas, danos e multas condominiais antes e depois da posse. Débitos antigos devem ser identificados e tratados expressamente.</p>
+      <p>Se o imóvel estiver ocupado, a análise deve ser ainda mais cuidadosa. É diferente comprar imóvel ocupado pelo próprio vendedor, por locatário, por familiar, por possuidor sem contrato ou por terceiro em litígio. O contrato deve deixar claro quem será responsável pela desocupação, em qual prazo e o que acontece se a entrega não ocorrer.</p>
+      <h2 id="financiamento">Financiamento imobiliário</h2>
+      <p>Quando a compra depende de financiamento, o contrato deve prever o que acontece se o crédito for negado, aprovado em valor menor ou demorar além do esperado. O comprador não deve assumir multa automática sem considerar a condição de aprovação bancária.</p>
+      <p>Também é preciso alinhar avaliação do banco, prazo para assinatura, uso de FGTS, liberação do valor ao vendedor e eventual necessidade de complementação. Cada etapa deve conversar com o contrato particular.</p>
+      <p>Outro cuidado é não confundir aprovação preliminar com contratação efetiva. Simulações e pré-aprovações não significam liberação definitiva de crédito. O banco ainda pode analisar renda, documentação do imóvel, avaliação, certidões e exigências internas. Se o contrato ignora essa etapa, comprador e vendedor podem discordar sobre culpa pelo atraso.</p>
+      <h2 id="escritura">Promessa de compra e venda, escritura e registro</h2>
+      <p>A promessa ou o compromisso de compra e venda organiza a obrigação entre as partes, mas a propriedade imobiliária se consolida com o registro do título adequado no Cartório de Registro de Imóveis. Por isso, o contrato deve indicar prazo e responsabilidade para lavratura de escritura e registro.</p>
+      <p>Em alguns casos, como financiamento com alienação fiduciária, o instrumento bancário cumpre papel específico. Em outros, a escritura pública será necessária. O ponto central é não confundir posse, pagamento e transferência registral.</p>
+      <p>Também é recomendável verificar quem arcará com ITBI, emolumentos, certidões, escritura, registro e eventuais despesas de regularização. O comprador costuma planejar o preço principal, mas custos acessórios podem impactar a viabilidade da operação.</p>
+      <h2 id="particulares">Riscos de contratos particulares sem revisão</h2>
+      <p>Contratos particulares não são necessariamente inválidos, mas podem esconder riscos quando usados como substituto de uma análise completa. Um modelo retirado da internet dificilmente considera matrícula, estado civil das partes, regime de bens, financiamento, posse, débitos, condomínio, restrições urbanísticas e pendências documentais.</p>
+      <p>O risco aumenta quando há pressa para assinar, promessa de oportunidade imperdível ou pressão para pagar sinal antes da conferência documental. Em compra de imóvel, prevenção não significa travar o negócio; significa saber exatamente quais riscos estão sendo assumidos.</p>
+      <h2 id="checklist">Checklist antes de assinar</h2>
+      <p>Antes da assinatura, vale confirmar pelo menos: matrícula atualizada, documentos dos proprietários, estado civil e poderes de assinatura, certidões relevantes, débitos de IPTU e condomínio, situação de posse, forma de pagamento, cláusula de financiamento, arras, multas, prazo de escritura, responsabilidade por despesas e condições para entrega das chaves.</p>
+      <p>Esse checklist não substitui orientação jurídica, mas ajuda comprador e vendedor a perceber se o contrato está maduro para assinatura ou se ainda depende de ajustes. Quanto mais clara a operação, menor a chance de conflito depois.</p>
+      <p>Também vale registrar por escrito qualquer promessa feita durante a negociação. Reforma antes da entrega, retirada de móveis, quitação de débito, regularização de construção, baixa de hipoteca, prazo para mudança ou responsabilidade por conserto não devem ficar apenas em mensagens dispersas. Se a promessa influenciou o preço ou a decisão de comprar, ela precisa aparecer no contrato.</p>
+      <p>Outro ponto sensível é a assinatura por procuração. A procuração deve ser conferida quanto a poderes, validade, identificação do imóvel e possibilidade de receber valores. Em negócios de alto valor, uma procuração genérica ou antiga pode exigir cautela adicional.</p>
+      <p>Quando o imóvel pertence a empresa, espólio ou coproprietários, a análise documental muda. Pode ser necessário verificar contrato social, poderes de administradores, autorização judicial, formal de partilha, anuência de cônjuges ou assinatura de todos os titulares. Esses detalhes costumam ser invisíveis em uma negociação apressada.</p>
+      <h2 id="advogado">Quando procurar um advogado imobiliário?</h2>
+      <p>A orientação jurídica é recomendável antes da assinatura, principalmente quando há imóvel ocupado, financiamento, vendedor pessoa jurídica, inventário, procuração, construção não averbada, contrato antigo, parcelamento direto, restrição na matrícula ou urgência para pagar sinal.</p>
+      <p>O <a href="/quem-somos">Eryx Fernandes Advocacia</a> atua em <a href="/atuacao/direito-imobiliario">Direito Imobiliário</a> com análise de contratos, compra e venda, locação, regularização, cobranças, notificações e conflitos envolvendo imóveis. A prevenção costuma ser mais eficiente do que discutir o contrato depois da assinatura.</p>
+    `
+  },
+  "/artigos/usucapiao-regularizacao-imovel": {
+    breadcrumb: "Usucapião",
+    summary: [["#conceito", "O que é"], ["#requisitos", "Requisitos"], ["#modalidades", "Modalidades"], ["#documentos", "Documentos"], ["#procedimento", "Cartório ou Justiça"], ["#nao-cabe", "Quando não cabe"], ["#advogado", "Advogado"], ["#faq", "FAQ"]],
+    cta: ["Precisa avaliar a regularização de um imóvel?", "A usucapião depende de posse, prazo, documentos, planta, histórico do imóvel e análise da modalidade adequada.", "Falar com o Dr. Eryx"],
+    recommendations: ["/artigos/contrato-compra-venda-imovel-cuidados", "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"],
+    recommendationTitle: "Leituras relacionadas a regularização imobiliária",
+    faq: [
+      { question: "Usucapião serve para qualquer imóvel?", answer: "Não. É preciso verificar natureza do imóvel, origem da posse, prazo, oposição, documentos e impedimentos. Bens públicos, por exemplo, não são adquiridos por usucapião." },
+      { question: "Preciso morar no imóvel para pedir usucapião?", answer: "Nem sempre. Algumas modalidades exigem moradia, outras podem considerar posse com finalidade produtiva ou outros requisitos legais." },
+      { question: "Usucapião pode ser feita em cartório?", answer: "Pode haver usucapião extrajudicial quando os requisitos e documentos permitem. Se houver impugnação ou complexidade relevante, a via judicial pode ser necessária." },
+      { question: "Contrato de compra e venda antigo ajuda?", answer: "Pode ajudar a demonstrar origem da posse, justo título ou boa-fé em algumas modalidades, mas precisa ser analisado junto com o histórico completo." }
+    ],
+    body: `
+      <p class="article-lead">A usucapião é uma forma de regularização que pode permitir o reconhecimento da propriedade pela posse prolongada, desde que os requisitos legais estejam presentes.</p>
+      <p>Ela não deve ser vista como solução automática para todo imóvel sem escritura. O ponto central é analisar a posse: como começou, há quanto tempo existe, se houve oposição, qual a finalidade de uso, quais documentos existem e qual modalidade pode ser discutida.</p>
+      <p>Na prática imobiliária, a usucapião pode ser relevante para imóveis comprados apenas por contrato particular, áreas ocupadas há muitos anos, imóveis recebidos informalmente pela família ou situações em que a cadeia documental ficou incompleta. A análise de <a href="/atuacao/direito-imobiliario">Direito Imobiliário</a> ajuda a separar casos viáveis de tentativas arriscadas.</p>
+      <h2 id="conceito">O que é usucapião e por que ela existe?</h2>
+      <p>Usucapião é modo originário de aquisição da propriedade ou de outros direitos reais pela posse qualificada durante determinado período. Ela existe para dar consequência jurídica a situações consolidadas, quando a pessoa age como dona, utiliza o bem e preenche os requisitos previstos em lei.</p>
+      <p>Como a aquisição é originária, a análise não se limita ao contrato anterior. Ainda assim, documentos antigos, comprovantes e histórico da posse são importantes para demonstrar a realidade do caso.</p>
+      <h2 id="requisitos">Principais requisitos: posse contínua, sem oposição e com intenção de dono</h2>
+      <p>A posse deve ser contínua, ou seja, exercida sem interrupções relevantes durante o prazo exigido. Também precisa ser sem oposição: disputas, notificações, ações possessórias ou contestações do proprietário podem alterar a análise.</p>
+      <p>Outro ponto essencial é a intenção de dono, chamada de animus domini. Quem ocupa o imóvel como locatário, comodatário, caseiro, empregado ou por mera permissão geralmente não demonstra posse com intenção de propriedade enquanto essa relação permanece.</p>
+      <p>O prazo varia conforme a modalidade. Também podem ser considerados justo título, boa-fé, moradia, obras, uso produtivo, dimensão do imóvel e inexistência de outro bem, conforme o caso.</p>
+      <h2 id="modalidades">Modalidades mais comuns de usucapião</h2>
+      <p>A usucapião extraordinária costuma exigir posse por prazo mais longo e, em linhas gerais, não depende de justo título ou boa-fé. O prazo pode ser reduzido quando houver moradia habitual ou obras e serviços de caráter produtivo.</p>
+      <p>A usucapião ordinária normalmente envolve justo título e boa-fé, com prazo menor. Ela pode ser considerada em situações em que houve negócio jurídico, contrato ou registro posteriormente problemático.</p>
+      <p>A usucapião especial urbana é voltada a área urbana de até 250 m² utilizada para moradia própria ou da família, desde que presentes os demais requisitos. A especial rural envolve área rural, moradia e produtividade. A usucapião familiar pode ser analisada em situações específicas de abandono do lar, com requisitos próprios e muita cautela.</p>
+      <p>A escolha da modalidade não é estética. Ela define prazo, documentos, tese jurídica e riscos do procedimento.</p>
+      <h2 id="prazo">Como o prazo deve ser analisado?</h2>
+      <p>O prazo não deve ser contado apenas pela memória dos ocupantes. É preciso reconstruir a linha do tempo com documentos, contas, recibos, contratos, fotos, declarações, cadastros públicos e histórico familiar ou negocial. Em alguns casos, a posse de antecessores pode ser somada, desde que exista continuidade e transmissão demonstrável.</p>
+      <p>Também é necessário verificar se houve interrupção, contestação, acordo de desocupação, notificação ou processo. Uma oposição formal do proprietário pode alterar a estratégia e exigir análise sobre os efeitos concretos daquele ato.</p>
+      <h2 id="origem">A origem da posse importa?</h2>
+      <p>Importa muito. Posse decorrente de compra informal, cessão, herança de fato, ocupação antiga ou acordo familiar recebe tratamento diferente de posse decorrente de aluguel, comodato ou trabalho. Quem reconhece que ocupa em nome de outra pessoa pode ter dificuldade para demonstrar intenção de dono.</p>
+      <p>Por isso, contratos antigos, recibos e mensagens não servem apenas para mostrar pagamento. Eles ajudam a explicar por que a pessoa entrou no imóvel e em que momento passou a se comportar como proprietária.</p>
+      <h2 id="documentos">Documentos importantes, planta e testemunhas</h2>
+      <p>Normalmente são úteis documentos pessoais, comprovantes de residência, contas de consumo, IPTU ou ITR, recibos, contratos, declarações, fotos, registros de obras, correspondências, comprovantes de pagamento, certidão de matrícula ou transcrição e certidões relacionadas ao imóvel.</p>
+      <p>A planta e o memorial descritivo são documentos centrais, especialmente na via extrajudicial. Eles identificam área, confrontações, medidas e responsabilidade técnica. Dependendo do caso, anuência de confrontantes e titulares de direitos registrados pode ser necessária.</p>
+      <p>Testemunhas também podem ajudar a demonstrar tempo, continuidade e forma da posse. Elas não substituem documentos, mas podem complementar o conjunto probatório.</p>
+      <p>A ata notarial, quando utilizada, registra a constatação feita pelo tabelião a partir de documentos, declarações e elementos apresentados. Ela não decide o direito por si só, mas pode ser uma peça importante na via extrajudicial.</p>
+      <h2 id="procedimento">Usucapião em cartório ou processo judicial</h2>
+      <p>A usucapião extrajudicial tramita no Cartório de Registro de Imóveis, com ata notarial, documentos técnicos, notificações e análise registral. Pode ser uma via eficiente quando a documentação está organizada e não há resistência relevante.</p>
+      <p>Quando há impugnação, controvérsia intensa, dificuldade documental ou necessidade de produção de prova judicial, o processo judicial pode ser o caminho adequado. A melhor via depende do caso, dos documentos e da postura dos envolvidos.</p>
+      <p>Na via extrajudicial, a preparação costuma ser determinante. Documentos incompletos, planta inconsistente, ausência de qualificação dos confrontantes ou divergência de área podem gerar exigências e alongar o procedimento. Na via judicial, o tempo também depende da necessidade de citações, perícia, manifestação de interessados e análise das provas.</p>
+      <h2 id="regularizacao">Usucapião não é a única forma de regularizar</h2>
+      <p>Em muitos atendimentos, a pessoa chega perguntando sobre usucapião, mas o caso pode apontar para outro caminho. Quando existe contrato de compra e venda quitado e vendedor identificado, por exemplo, pode ser necessário avaliar adjudicação compulsória. Quando há falecimento de proprietário, inventário ou sobrepartilha podem ser relevantes. Quando a matrícula descreve área diferente, pode haver necessidade de retificação.</p>
+      <p>Escolher o caminho errado pode consumir tempo e recursos sem resolver a matrícula. A análise inicial deve comparar custo, prazo, prova disponível, resistência dos envolvidos e objetivo prático do cliente.</p>
+      <h2 id="nao-cabe">Quando não cabe usucapião?</h2>
+      <p>Não cabe usucapião de bem público. Também há grande risco quando a posse é precária, clandestina, violenta, recente, exercida por permissão do proprietário ou decorrente de relação que reconhece domínio alheio, como locação ou comodato.</p>
+      <p>Outra situação comum é tentar usar usucapião para resolver problemas que podem exigir inventário, adjudicação compulsória, retificação de área ou regularização registral específica. Por isso, a estratégia não deve ser definida apenas pelo nome do instituto.</p>
+      <p>Também é preciso cuidado com imóveis em condomínio, áreas comuns, servidões, áreas ambientais, parcelamentos irregulares e imóveis rurais com exigências próprias. A viabilidade jurídica pode depender de normas urbanísticas, ambientais, registrais e documentais além do Código Civil.</p>
+      <h2 id="riscos">Riscos de tentar regularizar sem análise jurídica</h2>
+      <p>Uma tentativa mal instruída pode expor conflitos familiares, chamar proprietários ou confrontantes para uma discussão ainda imatura, gerar impugnação e dificultar uma composição. Também pode revelar que a posse não preenche os requisitos ou que há caminho mais simples para resolver a situação.</p>
+      <p>Por outro lado, esperar indefinidamente também pode ser ruim. Imóvel sem regularização dificulta venda, financiamento, inventário, garantia, planejamento familiar e segurança patrimonial. O equilíbrio está em agir com documentação e estratégia.</p>
+      <p>Em imóveis familiares, é comum que todos reconheçam informalmente quem mora no local, mas a matrícula continue em nome de pais, avós, parentes falecidos ou antigos vendedores. A conversa familiar pode ser pacífica hoje e se tornar difícil depois de falecimentos, separações, venda pretendida ou valorização do imóvel.</p>
+      <p>Em imóveis urbanos, a regularização também pode depender da compatibilidade entre ocupação real e cadastro municipal. Área construída não averbada, desdobro não registrado, loteamento irregular, numeração divergente ou inscrição fiscal em nome de terceiro não impedem toda análise, mas indicam que a estratégia deve envolver documentos registrais e administrativos.</p>
+      <p>Para quem pretende vender, financiar ou deixar o imóvel organizado para herdeiros, a usucapião pode ser parte de um planejamento patrimonial. O objetivo não é apenas obter uma decisão ou registro, mas transformar uma posse antiga em situação juridicamente compreensível para bancos, compradores, familiares e cartórios.</p>
+      <p>Também é útil avaliar a situação dos confrontantes desde o início. Vizinhos, condomínios, titulares registrados e eventuais interessados podem ser chamados a se manifestar. Quando a relação já é conflituosa, preparar prova técnica e documental antes de qualquer notificação ajuda a reduzir surpresas.</p>
+      <p>Se há contrato particular antigo, a regularização deve conversar com a análise contratual. O contrato pode indicar preço, data de entrada na posse, vendedor, testemunhas e continuidade da ocupação, mas pode também revelar pendências que recomendem outro caminho jurídico.</p>
+      <h2 id="advogado">Quando procurar advogado para usucapião?</h2>
+      <p>Procure orientação quando o imóvel não tem escritura, há contrato antigo, a matrícula está em nome de terceiro, existem herdeiros, confrontantes discordam, a área real diverge do registro ou a família ocupa o bem há muitos anos sem regularização.</p>
+      <p>O escritório pode avaliar se a usucapião faz sentido ou se outro caminho de regularização é mais adequado. Conheça também os cuidados antes de assinar um <a href="/artigos/contrato-compra-venda-imovel-cuidados">contrato de compra e venda de imóvel</a>, porque muitos problemas de regularização começam em negociações mal documentadas.</p>
+    `
+  },
+  "/artigos/demissao-por-justa-causa-empresa": {
+    breadcrumb: "Demissão por justa causa",
+    summary: [["#conceito", "O que é"], ["#hipoteses", "Hipóteses da CLT"], ["#criterios", "Critérios"], ["#provas", "Provas"], ["#reversao", "Riscos de reversão"], ["#rh", "RH e gestores"], ["#advogado", "Assessoria empresarial"], ["#faq", "FAQ"]],
+    cta: ["Sua empresa precisa tomar uma decisão trabalhista com mais segurança?", "Antes de aplicar justa causa, é importante avaliar enquadramento legal, prova, imediatidade, proporcionalidade e histórico disciplinar.", "Falar com o Dr. Eryx"],
+    recommendations: ["/artigos/empresa-pode-proibir-celular-trabalho", "/artigos/nr-01-novas-exigencias-empresas-sorocaba", "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"],
+    recommendationTitle: "Conteúdos para gestão trabalhista empresarial",
+    faq: [
+      { question: "A empresa pode aplicar justa causa sem advertência anterior?", answer: "Depende da gravidade. Faltas extremamente graves podem justificar medida imediata, mas muitos casos exigem proporcionalidade, histórico e gradação." },
+      { question: "Quais provas a empresa deve reunir?", answer: "Documentos, mensagens, registros de sistema, imagens lícitas, relatórios, testemunhas, políticas internas e comunicações podem ser relevantes conforme o fato." },
+      { question: "Demora para aplicar justa causa gera risco?", answer: "Sim. A falta de imediatidade pode ser interpretada como perdão tácito, especialmente quando a empresa conhece o fato e demora sem justificativa." },
+      { question: "Justa causa por uso de celular é possível?", answer: "Pode ser discutida em situações graves ou reincidentes, mas depende de regra clara, ciência do empregado, proporcionalidade, prova e contexto da atividade." }
+    ],
+    body: `
+      <p class="article-lead">A demissão por justa causa é a medida disciplinar mais severa que a empresa pode aplicar ao empregado.</p>
+      <p>Por retirar verbas típicas da dispensa sem justa causa e gerar impacto relevante na vida do trabalhador, ela exige cautela técnica. Para a empresa, uma justa causa mal aplicada pode ser revertida judicialmente e transformar uma tentativa de correção disciplinar em passivo trabalhista.</p>
+      <p>Este conteúdo é voltado a empresários, RH e gestores. A análise preventiva de <a href="/atuacao/direito-trabalhista-empresas">Direito Trabalhista Empresarial</a> ajuda a decidir com documentação, coerência e redução de risco.</p>
+      <h2 id="conceito">O que é justa causa?</h2>
+      <p>Justa causa é a ruptura do contrato de trabalho por falta grave praticada pelo empregado, quando a conduta torna inviável a continuidade da relação. Não basta a empresa estar insatisfeita com desempenho, comportamento ou clima interno. É preciso enquadrar o fato em hipótese legal e demonstrar gravidade suficiente.</p>
+      <p>A decisão deve ser analisada antes da comunicação. Depois de aplicada, a empresa terá de sustentar o motivo apresentado, a prova existente e a proporcionalidade da penalidade.</p>
+      <h2 id="hipoteses">Hipóteses do artigo 482 da CLT</h2>
+      <p>O artigo 482 da CLT prevê hipóteses de rescisão por justa causa, como ato de improbidade, incontinência de conduta ou mau procedimento, negociação habitual sem permissão, condenação criminal quando não houver suspensão da pena, desídia, embriaguez em serviço, violação de segredo da empresa, indisciplina, insubordinação, abandono de emprego, ato lesivo à honra ou boa fama, ofensas físicas e prática constante de jogos de azar, entre outras previsões legais.</p>
+      <p>Improbidade envolve desonestidade grave, como fraude, furto, adulteração de documento ou apropriação indevida. Insubordinação costuma estar ligada ao descumprimento de ordem direta e legítima. Indisciplina se relaciona ao descumprimento de regra geral da empresa. Desídia pode aparecer pela repetição de atrasos, faltas injustificadas, baixa diligência e erros reiterados, mas exige histórico bem documentado.</p>
+      <p>Abandono de emprego demanda cuidado com ausência prolongada e intenção de abandonar. A empresa deve documentar tentativas de contato e evitar conclusões precipitadas. Embriaguez e dependência química exigem análise sensível, especialmente quando há possível questão de saúde.</p>
+      <h2 id="criterios">Imediatidade, proporcionalidade e gradação de penalidades</h2>
+      <p>A empresa precisa agir com imediatidade quando toma conhecimento da falta. Demora injustificada pode sugerir perdão tácito. Isso não impede apuração interna, mas o procedimento deve ter prazo razoável e registros claros.</p>
+      <p>A proporcionalidade exige compatibilidade entre fato e punição. Nem toda falha autoriza justa causa. Em muitos casos, advertência e suspensão são medidas adequadas antes de uma ruptura máxima, principalmente quando a conduta é corrigível e não gerou dano grave.</p>
+      <p>A gradação de penalidades mostra coerência disciplinar. Advertências, suspensões e conversas formais devem ter descrição objetiva do fato, data, regra violada e ciência do empregado.</p>
+      <h2 id="politicas">Regras internas e treinamento de liderança</h2>
+      <p>A justa causa fica mais difícil de sustentar quando a empresa não possui regra clara ou quando a regra existe apenas no papel. Regulamento interno, código de conduta, política de segurança, política de confidencialidade, normas de uso de sistemas e orientações de jornada precisam ser conhecidos pelos empregados.</p>
+      <p>Lideranças também devem receber orientação. Muitas disputas começam quando gestores prometem punição, expõem o empregado, recolhem provas de modo inadequado ou aplicam tratamento diferente para fatos semelhantes. A empresa precisa padronizar o fluxo: identificar o fato, preservar evidências, comunicar o RH, avaliar a medida e registrar a decisão.</p>
+      <h2 id="apuracao">Apuração interna antes da decisão</h2>
+      <p>Quando o fato não é simples, uma apuração interna pode evitar erros. O procedimento deve delimitar o que aconteceu, quando aconteceu, quem participou, quais normas foram violadas e quais documentos sustentam a conclusão. A escuta de envolvidos e testemunhas deve ser objetiva, sem constrangimento desnecessário.</p>
+      <p>A empresa não precisa transformar toda falta em investigação complexa, mas precisa ter segurança mínima antes de romper o contrato por justa causa. Em situações de fraude, agressão, vazamento de informações, assédio, acidente ou descumprimento de norma de segurança, a documentação do processo decisório costuma ser decisiva.</p>
+      <h2 id="provas">Necessidade de prova e documentação interna</h2>
+      <p>Em eventual reclamação trabalhista, a empresa deverá provar a falta grave. Por isso, decisões baseadas apenas em impressão, comentário informal ou irritação de gestor são frágeis.</p>
+      <p>Podem ser relevantes relatórios, registros de ponto, logs de sistema, e-mails, mensagens corporativas, imagens obtidas licitamente, documentos assinados, política interna, regulamento, depoimentos e histórico disciplinar. O material deve ser preservado sem adulteração e com cuidado quanto à privacidade e proteção de dados.</p>
+      <p>Quando houver investigação interna, o ideal é delimitar fato, ouvir envolvidos, registrar datas, preservar evidências e evitar exposição desnecessária do empregado.</p>
+      <p>Provas digitais merecem atenção especial. Conversas, prints, gravações, imagens de câmera e logs de acesso devem ser avaliados quanto à origem, integridade, contexto e licitude. Um print isolado pode não mostrar a conversa completa; uma câmera pode não captar áudio; um relatório de sistema pode exigir explicação técnica.</p>
+      <h2 id="estabilidade">Empregado afastado, doente ou com estabilidade</h2>
+      <p>Antes de aplicar justa causa, a empresa deve conferir se há afastamento previdenciário, acidente de trabalho, estabilidade gestante, membro da CIPA, dirigente sindical ou outra condição que torne a decisão mais sensível. A estabilidade não autoriza falta grave, mas altera o risco e pode exigir formalidades ou análise mais cuidadosa.</p>
+      <p>Também é preciso atenção quando a conduta se relaciona a possível adoecimento, dependência química, conflito interpessoal, assédio ou ambiente de trabalho. A decisão disciplinar não deve ignorar fatos que a própria empresa já conhecia e que podem mudar a leitura jurídica do caso.</p>
+      <h2 id="reversao">Riscos de reversão judicial e consequências financeiras</h2>
+      <p>Se a justa causa for revertida, a empresa pode ser condenada a pagar verbas da dispensa sem justa causa, como aviso prévio, férias proporcionais, 13º salário proporcional, multa do FGTS e liberação de guias, conforme o caso. Também pode haver discussão sobre dano moral quando a forma de aplicação foi abusiva ou expôs indevidamente o trabalhador.</p>
+      <p>O risco aumenta quando falta prova, a punição é desproporcional, a empresa tolerou condutas semelhantes, a regra interna não era clara ou a comunicação foi feita de forma precipitada.</p>
+      <p>Além do impacto financeiro, uma reversão pode afetar a autoridade interna da empresa. Quando empregados percebem decisões inconsistentes, o procedimento disciplinar perde força preventiva. Por isso, o objetivo não é aplicar justa causa a qualquer custo, mas tomar uma decisão sustentável.</p>
+      <h2 id="rh">Como RH e gestores devem agir?</h2>
+      <p>Gestores devem comunicar fatos ao RH com objetividade, sem prometer punições no calor do conflito. O RH deve conferir regra aplicável, histórico, documentos, testemunhas, datas e eventuais circunstâncias atenuantes.</p>
+      <p>Políticas internas ajudam, mas precisam ser conhecidas pelos empregados e aplicadas com coerência. O artigo sobre <a href="/artigos/empresa-pode-proibir-celular-trabalho">uso de celular no trabalho</a> mostra como regras claras podem sustentar medidas disciplinares progressivas.</p>
+      <p>A prevenção também conversa com temas de gestão organizacional. O artigo da <a href="/artigos/nr-01-novas-exigencias-empresas-sorocaba">NR-01 para empresas</a> reforça a importância de políticas internas, documentação e liderança treinada para reduzir passivos.</p>
+      <p>Um roteiro prático para o RH inclui: confirmar a data em que a empresa soube do fato, separar documentos, ouvir o gestor, verificar histórico disciplinar, analisar regra interna, avaliar proporcionalidade, preservar provas, preparar comunicação objetiva e registrar a entrega. Esse roteiro reduz improviso e ajuda a demonstrar boa-fé empresarial.</p>
+      <p>A comunicação da justa causa deve ser objetiva. A empresa deve evitar acusações amplas, linguagem ofensiva ou exposição pública. O documento deve indicar o motivo de forma suficiente para compreensão do empregado, sem transformar a comunicação em peça acusatória exagerada.</p>
+      <p>Também convém avaliar se há verbas incontroversas a pagar, quais documentos rescisórios serão entregues, como registrar a baixa contratual e como preservar evidências depois do desligamento. A discussão judicial, se ocorrer, muitas vezes acontece meses depois, quando gestores mudaram de função e documentos já se perderam.</p>
+      <p>Empresas com matriz e filiais devem ter cuidado adicional com padronização. A mesma conduta não pode receber punição máxima em uma unidade e ser tolerada em outra sem justificativa. Coerência interna é parte da defesa preventiva.</p>
+      <p>Outro cuidado é separar desempenho insuficiente de falta grave. Baixa produtividade, erro operacional ou dificuldade de adaptação podem exigir treinamento, feedback, advertência ou dispensa sem justa causa, mas não necessariamente autorizam justa causa. A classificação errada do problema aumenta o risco de reversão.</p>
+      <p>Quando a empresa pretende usar imagens, mensagens ou registros eletrônicos, é recomendável conferir se a coleta respeitou regras internas e limites de privacidade. A prova precisa ajudar a empresa, não abrir nova discussão sobre abuso de fiscalização.</p>
+      <p>Por isso, a decisão deve ser pensada como ato jurídico e também como ato de gestão. A empresa protege melhor sua operação quando consegue explicar o fato, a regra violada, a gravidade, a prova e o motivo pelo qual uma medida mais leve não seria suficiente.</p>
+      <h2 id="advogado">Quando consultar advogado trabalhista empresarial?</h2>
+      <p>Consulte antes de aplicar justa causa quando o fato é grave, há dúvida sobre enquadramento, a prova é sensível, existe estabilidade, o empregado está afastado, há alegação de assédio, discriminação, doença, acidente ou conflito entre versões.</p>
+      <p>A <a href="/atuacao/direito-trabalhista-empresas">assessoria trabalhista empresarial</a> pode revisar documentos, orientar a apuração, avaliar riscos de reversão e apoiar RH e gestores na tomada de decisão. Para conhecer o escritório, acesse <a href="/quem-somos">quem somos</a>.</p>
+    `
+  },
+  "/artigos/empresa-pode-proibir-celular-trabalho": {
+    breadcrumb: "Uso de celular no trabalho",
+    summary: [["#poder-diretivo", "Poder diretivo"], ["#limites", "Proibição ou restrição"], ["#riscos", "Risco e produtividade"], ["#politica", "Política interna"], ["#penalidades", "Advertência e suspensão"], ["#justa-causa", "Justa causa"], ["#erros", "Erros comuns"], ["#assessoria", "Assessoria"], ["#faq", "FAQ"]],
+    cta: ["Sua empresa precisa revisar regras internas?", "Uma política clara de uso de celular ajuda a orientar empregados, gestores e RH antes que o tema vire conflito trabalhista.", "Falar com o Dr. Eryx"],
+    recommendations: ["/artigos/demissao-por-justa-causa-empresa", "/artigos/nr-01-novas-exigencias-empresas-sorocaba", "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"],
+    recommendationTitle: "Outros conteúdos trabalhistas empresariais",
+    faq: [
+      { question: "A empresa pode proibir totalmente o celular?", answer: "Pode haver restrições amplas em atividades de risco, sigilo ou atendimento, mas a regra deve ser justificada, clara, comunicada e proporcional." },
+      { question: "O empregado pode usar celular no intervalo?", answer: "Em regra, o intervalo é período de descanso. Restrições nesse momento exigem justificativa consistente, especialmente por segurança, sigilo ou regras do ambiente." },
+      { question: "Pode aplicar advertência por uso de celular?", answer: "Pode, se houver regra clara, ciência do empregado e prova do descumprimento. A medida deve ser proporcional ao fato." },
+      { question: "Uso de celular pode gerar justa causa?", answer: "Pode ser discutido em casos graves ou reincidentes, principalmente com risco, dano, desobediência ou violação de sigilo, mas exige análise cuidadosa." }
+    ],
+    body: `
+      <p class="article-lead">A empresa pode estabelecer regras sobre o uso de celular no trabalho, desde que respeite limites legais, proporcionalidade e clareza na comunicação.</p>
+      <p>O tema parece simples, mas gera dúvidas frequentes para empresários, RH e gestores: é possível proibir totalmente? Pode advertir? E se o empregado usa durante atendimento, operação de máquina, direção, reunião com cliente ou acesso a informações confidenciais?</p>
+      <p>A resposta depende da atividade, do risco envolvido, da política interna e da forma como a empresa aplica as regras. Uma atuação preventiva em <a href="/atuacao/direito-trabalhista-empresas">Direito Trabalhista Empresarial</a> ajuda a transformar incômodo operacional em procedimento seguro.</p>
+      <h2 id="poder-diretivo">Poder diretivo do empregador</h2>
+      <p>O empregador dirige a prestação de serviços e pode definir regras de organização, produtividade, segurança, atendimento, confidencialidade e uso de equipamentos durante a jornada. Esse poder, porém, não é ilimitado.</p>
+      <p>As regras devem ser compatíveis com a função, aplicadas sem discriminação e comunicadas de maneira objetiva. A empresa também precisa considerar situações de emergência e o uso legítimo durante pausas e intervalos.</p>
+      <h2 id="limites">Proibição total x restrição de uso</h2>
+      <p>Em algumas atividades, a restrição ampla pode ser justificável. Operação de máquinas, direção, áreas industriais, laboratórios, hospitais, setores com dados sensíveis e atendimento direto ao público podem exigir controle mais rígido.</p>
+      <p>Em outras funções, uma proibição absoluta pode ser excessiva. A empresa pode optar por regras intermediárias, como limitar uso pessoal durante atendimento, reuniões, operação, produção ou contato com clientes, permitindo uso em intervalos e situações urgentes.</p>
+      <h2 id="riscos">Atividades de risco, produtividade, segurança e sigilo</h2>
+      <p>O celular pode afetar segurança quando desvia atenção em tarefas perigosas. Pode afetar produtividade quando interrompe a rotina de forma reiterada. Pode comprometer sigilo quando permite fotos, gravações ou envio de informações internas.</p>
+      <p>Esses fundamentos devem aparecer na política. Regras genéricas e sem relação com a realidade da empresa tendem a ser mais frágeis. É melhor explicar o motivo operacional: proteção de dados, segurança de terceiros, qualidade do atendimento, prevenção de acidentes ou organização da jornada.</p>
+      <h2 id="politica">Regras precisam ser claras</h2>
+      <p>A política de uso de celular deve indicar quando o uso é permitido, quando é proibido, quais áreas possuem restrição, quais exceções existem, como emergências familiares serão tratadas e quais consequências podem ocorrer em caso de descumprimento.</p>
+      <p>A comunicação aos empregados é tão importante quanto o texto. Regulamento interno, termo de ciência, treinamento de integração, comunicados e reforços periódicos ajudam a demonstrar que a regra era conhecida.</p>
+      <p>Também é recomendável alinhar gestores. Uma regra aplicada por um líder e ignorada por outro enfraquece a consistência disciplinar.</p>
+      <h2 id="emergencias">Exceções para emergências e intervalos</h2>
+      <p>Uma política equilibrada deve prever como o empregado pode ser localizado em caso de emergência familiar ou situação urgente. A empresa pode indicar canal de contato, responsável pelo setor ou local apropriado para uso rápido do aparelho, especialmente quando a atividade impede manuseio durante a execução do serviço.</p>
+      <p>Durante intervalos, a análise muda. O intervalo é período de descanso, e restrições absolutas precisam de justificativa consistente. Em áreas com sigilo, risco de acidente, controle sanitário ou proteção de dados, pode haver regras sobre onde o aparelho pode ser usado, mas a empresa deve explicar o fundamento e aplicar a norma de modo proporcional.</p>
+      <h2 id="dados">Sigilo, imagem e proteção de dados</h2>
+      <p>O celular também pode gerar risco quando permite fotos de documentos, gravações de reuniões, exposição de clientes, compartilhamento de dados pessoais ou divulgação de processos internos. Empresas que lidam com saúde, educação, finanças, tecnologia, indústria, logística ou atendimento ao público devem tratar o tema dentro de uma política de confidencialidade e proteção de dados.</p>
+      <p>A regra deve explicar o que não pode ser fotografado, filmado ou compartilhado. Também deve diferenciar uso pessoal, uso autorizado para o trabalho e uso de aplicativo corporativo. Quando a empresa utiliza grupos de mensagem, autenticação por aplicativo ou contato com clientes pelo celular, precisa organizar essa prática para não criar contradição com a proibição.</p>
+      <h2 id="penalidades">Advertência, suspensão e documentação</h2>
+      <p>Quando houver descumprimento, a empresa deve avaliar gravidade, reincidência, histórico e impacto do ato. Em muitos casos, advertência verbal formalizada ou advertência escrita é o primeiro passo. A suspensão pode ser considerada diante de reincidência ou falta mais relevante.</p>
+      <p>O registro deve indicar data, fato, regra descumprida, testemunhas ou evidências e ciência do empregado. O objetivo não é produzir papel por produzir, mas demonstrar coerência e dar oportunidade real de correção.</p>
+      <p>A advertência não deve ser genérica. Expressões como “mau comportamento” ou “uso inadequado” dizem pouco. O documento deve descrever a conduta: uso durante operação, atendimento, reunião, direção, manuseio de equipamento, acesso a área restrita ou descumprimento de orientação expressa. Quanto mais objetiva a descrição, menor a margem para dúvida futura.</p>
+      <h2 id="justa-causa">Quando pode haver justa causa por celular?</h2>
+      <p>A justa causa exige falta grave. O simples uso pontual do celular, sem dano e sem histórico, normalmente pede cautela antes de medida extrema. O risco muda quando há reincidência documentada, desobediência direta, acidente, exposição de dados, gravação indevida, abandono de posto, fraude ou prejuízo relevante.</p>
+      <p>Antes de aplicar a penalidade máxima, leia também o guia sobre <a href="/artigos/demissao-por-justa-causa-empresa">demissão por justa causa para empresas</a>. A análise deve considerar imediatidade, proporcionalidade, gradação e prova.</p>
+      <p>Exemplos que merecem análise mais rígida incluem uso do celular enquanto dirige veículo da empresa, filmagem de área sigilosa, divulgação de informação de cliente, recusa reiterada em cumprir norma de segurança ou abandono de posto essencial para conversar em aplicativos. Mesmo nesses casos, a decisão deve ser tomada com prova e avaliação do contexto.</p>
+      <h2 id="erros">Erros comuns das empresas</h2>
+      <p>Entre os erros frequentes estão proibir sem comunicar, aplicar punição diferente para empregados em situação semelhante, permitir exceções informais, não documentar reincidência, confundir uso em intervalo com uso durante atividade e punir sem prova.</p>
+      <p>Outro erro é criar regra incompatível com a rotina. Se a empresa exige que o empregado use aplicativo pessoal para autenticação, grupo de trabalho ou contato com cliente, precisa separar uso funcional de uso pessoal.</p>
+      <p>Também é problemático recolher aparelhos sem critério, acessar conteúdo pessoal, constranger publicamente empregados ou criar revistas e controles invasivos. A empresa pode proteger sua operação, mas deve respeitar privacidade, dignidade e limites do poder diretivo.</p>
+      <h2 id="assessoria">Como estruturar uma política de uso de celular?</h2>
+      <p>Uma boa política define finalidade, alcance, exemplos de condutas permitidas e proibidas, setores com restrição, exceções, procedimento disciplinar, proteção de dados e forma de ciência. Ela deve conversar com normas de segurança, compliance, confidencialidade e gestão de jornada.</p>
+      <p>O processo de implantação também importa. O ideal é revisar a rotina por setor, ouvir gestores, identificar riscos reais, redigir a política, comunicar os empregados, colher ciência, treinar lideranças e acompanhar a aplicação. Depois, a empresa deve revisar a regra quando mudar tecnologia, processo produtivo, modelo de atendimento ou forma de controle de jornada.</p>
+      <p>Em empresas com trabalho externo, remoto ou híbrido, a política deve prever situações específicas. O uso de celular pode ser ferramenta de trabalho, meio de autenticação, canal de contato ou fonte de controle de jornada. Nesses casos, a proibição simples pode não resolver o problema; a empresa precisa estabelecer limites de horário, finalidade e registro.</p>
+      <p>Quando a empresa fornece aparelho corporativo, a política deve separar equipamento da empresa e aparelho pessoal. O aparelho corporativo pode ter regras mais rígidas de uso, segurança, aplicativos permitidos, armazenamento e devolução. Ainda assim, o empregado deve saber quais controles existem e qual finalidade do monitoramento.</p>
+      <p>Quando o empregado usa aparelho próprio para tarefas de trabalho, a empresa deve evitar informalidade excessiva. Grupos de mensagem fora do horário, envio de ordens por aplicativos pessoais e expectativa de resposta permanente podem gerar discussões sobre jornada, sobreaviso e prova de trabalho. A política de celular precisa conversar com a política de comunicação interna.</p>
+      <p>Por fim, a regra deve ser escrita em linguagem que gestores consigam aplicar. Uma política juridicamente sofisticada, mas incompreensível para a liderança operacional, tende a falhar na prática. Clareza reduz conflito e ajuda a empresa a demonstrar que agiu de forma preventiva.</p>
+      <p>A empresa também deve pensar em proporcionalidade por função. Uma regra para motoristas, operadores de máquina ou profissionais em área de risco pode ser mais rígida do que a regra para funções administrativas. Tratar situações diferentes de forma diferente não é incoerência; pode ser justamente o que torna a política mais defensável.</p>
+      <p>Por outro lado, regras flexíveis demais podem perder eficácia. Se cada gestor decide conforme preferência pessoal, a empresa cria incerteza e aumenta a chance de alegações de perseguição ou tratamento desigual. O equilíbrio está em definir critérios e treinar quem aplica.</p>
+      <p>Esse tema também se conecta à prevenção de passivos. A revisão de políticas internas, canais de comunicação e condutas de liderança aparece no artigo sobre <a href="/artigos/nr-01-novas-exigencias-empresas-sorocaba">NR-01 e riscos psicossociais nas empresas</a>, porque documentos internos precisam refletir a prática real.</p>
+      <p>Para apoio na elaboração ou revisão de regulamento interno, a <a href="/atuacao/direito-trabalhista-empresas">assessoria trabalhista empresarial</a> pode orientar RH e gestores com foco em clareza, proporcionalidade e redução de risco.</p>
+    `
+  }
+};
+
+function newSeoArticleTemplate(path) {
+  const article = articleByHref(path);
+  const content = newSeoArticleContent[path];
+  const recommendations = content.recommendations.map(articleByHref).filter(Boolean);
+
+  return `
+    ${headerTemplate("/artigos")}
+    <main id="conteudo" class="article-page">
+      <section class="article-hero">
+        <div class="editorial-hero-mark" aria-hidden="true">
+          <img src="/monograma-mf.png" alt="" />
+        </div>
+        <div class="editorial-hero-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="article-hero-inner">
+          <div class="article-hero-copy">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="/">Home</a>
+              <span>/</span>
+              <a href="/artigos">Artigos</a>
+              <span>/</span>
+              <span>${content.breadcrumb}</span>
+            </nav>
+            <p class="article-type-label">Artigo jurídico</p>
+            <p class="eyebrow article-category-label">${article.eyebrow}</p>
+            <h1>${article.title}</h1>
+            <p>${article.excerpt}</p>
+            <div class="article-author">
+              ${authorAvatarTemplate()}
+              <div>
+                <strong>${SITE_CONFIG.responsible}</strong>
+                <span>${professionalRegistrationLink()}</span>
+              </div>
+            </div>
+            <div class="article-hero-meta">
+              <span>${article.readingTime}</span>
+              <span>${article.date}</span>
+            </div>
+          </div>
+          <figure class="article-hero-image">
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
+          </figure>
+        </div>
+      </section>
+
+      <section class="article-shell">
+        <aside class="article-summary" aria-label="Sumário do artigo">
+          <span>Sumário</span>
+          ${content.summary.map(([href, label]) => `<a href="${href}">${label}</a>`).join("")}
+        </aside>
+
+        <article class="article-content">
+          ${content.body}
+          ${articleInlineCtaTemplate(content.cta[0], content.cta[1], content.cta[2])}
+          <h2 id="faq">Perguntas frequentes</h2>
+          <div class="faq-list">
+            ${content.faq.map((item, index) => `
+              <article class="faq-item ${index === 0 ? "is-open" : ""}" data-faq-item>
+                <button type="button" data-faq-toggle aria-expanded="${index === 0 ? "true" : "false"}">
+                  <span>${String(index + 1).padStart(2, "0")}</span>${item.question}
+                </button>
+                <div class="faq-answer"><p>${item.answer}</p></div>
+              </article>`).join("")}
+          </div>
+          <aside class="article-final-cta">
+            <h2>${content.cta[0]}</h2>
+            <p>${content.cta[1]}</p>
+            <div class="cta-actions">
+              <a class="button button-primary" href="${SITE_CONFIG.whatsappUrl}" target="_blank" rel="noopener noreferrer">Falar com o Dr. Eryx</a>
+              <a class="button button-ghost" href="${article.category === "Imobiliário" ? "/atuacao/direito-imobiliario" : "/atuacao/direito-trabalhista-empresas"}">${article.category === "Imobiliário" ? "Ver atuação em Direito Imobiliário" : "Ver atuação trabalhista empresarial"}</a>
+            </div>
+          </aside>
+        </article>
+      </section>
+
+      <section class="article-recommendations reveal-block">
+        <div class="section-heading">
+          <p>Leituras relacionadas</p>
+          <h2>${content.recommendationTitle}</h2>
+        </div>
+        <div class="editorial-article-grid article-recommendations-grid">
+          ${recommendations.map(articleListingCardTemplate).join("")}
+        </div>
+      </section>
+    </main>
+    ${articleStructuredDataTemplate(article, content.faq, content.breadcrumb)}
+    ${footerTemplate()}
+  `;
 }
 
 const nr01FaqItems = [
@@ -3429,7 +3839,7 @@ function rescisaoIndirectArticleTemplate() {
             </nav>
             <p class="article-type-label">Artigo jurídico</p>
             <p class="eyebrow article-category-label">${article.eyebrow}</p>
-            <h1>Rescisão Indireta em Sorocaba:<br />Guia Completo para o Trabalhador</h1>
+            <h1>Rescisão indireta:<br />quando o trabalhador pode pedir?</h1>
             <p>${article.excerpt}</p>
             <div class="article-author">
               ${authorAvatarTemplate()}
@@ -3604,7 +4014,7 @@ function rescisaoIndirectArticleTemplate() {
         </div>
       </section>
     </main>
-    ${articleStructuredDataTemplate(article, rescisaoIndirectFaqItems, "Rescisão Indireta em Sorocaba")}
+    ${articleStructuredDataTemplate(article, rescisaoIndirectFaqItems, "Quando cabe rescisão indireta")}
     ${footerTemplate()}
   `;
 }
@@ -3999,16 +4409,7 @@ function laborRightsArticleSchemaTemplate(article) {
       identifier: SITE_CONFIG.oab,
       url: siteAbsoluteUrl("/quem-somos")
     },
-    publisher: {
-      "@type": "Organization",
-      "@id": siteAbsoluteUrl("/#organization"),
-      name: SITE_CONFIG.firmName,
-      url: siteAbsoluteUrl("/"),
-      logo: {
-        "@type": "ImageObject",
-        url: siteAbsoluteUrl("/favicon-512.png")
-      }
-    },
+    publisher: { "@id": siteAbsoluteUrl("/#organization") },
     image: siteAbsoluteUrl(article.image),
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -4848,7 +5249,8 @@ function renderGlobalBusinessSchema() {
 }
 
 export function restoreLocalDocumentMeta(path, initialTitle, initialDescription) {
-  if (!LOCAL_LABOR_CITY_BY_ROUTE.has(path)) return false;
+  const isSorocabaLaborPage = path === "/atuacao/direito-trabalhista-trabalhadores";
+  if (!LOCAL_LABOR_CITY_BY_ROUTE.has(path) && !isSorocabaLaborPage) return false;
 
   document.title = initialTitle;
   ensureMetaByName("description").setAttribute("content", initialDescription);
@@ -4962,10 +5364,10 @@ function updateDocumentMeta(path) {
     );
   }
   if (path === "/artigos/rescisao-indireta-sorocaba") {
-    document.title = "Rescisão indireta em Sorocaba: guia do trabalhador";
+    document.title = "Rescisão indireta: quando o trabalhador pode pedir? | Eryx Fernandes";
     description.setAttribute(
       "content",
-      "Entenda quando atraso salarial, falta de FGTS, assédio e outras faltas do empregador podem justificar a rescisão indireta em Sorocaba."
+      "Entenda quando faltas graves do empregador podem justificar a rescisão indireta, quais provas reunir e por que cada caso exige análise individual."
     );
   }
   if (path === "/artigos/fgts-nao-depositado-como-conferir") {
@@ -5305,7 +5707,25 @@ function localLaborCityTemplate(city) {
   const path = city.route;
   const whatsappUrl = getWhatsAppUrl(`Olá, Dr. Eryx. Procuro um advogado trabalhista em ${city.name} e gostaria de conversar sobre meu caso.`);
   const title = `Atendimento trabalhista em ${city.name}`;
-  const localText = `${city.name} é um município do interior de São Paulo com cerca de ${city.population} habitantes, conforme o Censo 2022 do IBGE. A dinâmica econômica local, marcada por ${city.economy}, reúne diferentes relações de emprego e situações que podem exigir orientação jurídica. Horas extras não pagas, demissão injusta, FGTS não depositado, assédio, acidente de trabalho e diferenças nas verbas rescisórias estão entre os problemas que merecem análise individual. Se você procura um Advogado Trabalhista em ${city.name}, o Dr. Eryx Fernandes pode ouvir seu relato, avaliar as informações disponíveis e orientar os próximos passos.`;
+  const localText = `${city.name} tem cerca de ${city.population} habitantes, conforme o Censo 2022 do IBGE, e uma economia marcada por ${city.economy}. Esse contexto ajuda a compreender a variedade de vínculos e rotinas de trabalho existentes no município, mas cada caso depende dos fatos, documentos e condições efetivamente vividas pelo trabalhador.`;
+  const nearbyCities = city.related
+    .map((slug) => {
+      if (slug === "sorocaba") {
+        return { name: "Sorocaba", route: "/atuacao/direito-trabalhista-trabalhadores" };
+      }
+      return LOCAL_LABOR_CITIES.find((item) => item.slug === slug);
+    })
+    .filter(Boolean);
+  const sectorTopics = [
+    city.economy.includes("indústr") && ["Rotinas industriais", `Em ambientes industriais de ${city.name}, cartões de ponto, escalas, descrição da função, treinamentos e registros de segurança podem ajudar a esclarecer jornada, atividades exercidas e condições de trabalho.`],
+    city.economy.includes("logística") && ["Jornada em logística", "Operações logísticas podem envolver turnos, trabalho noturno, horas extras e sistemas de compensação. A validade dos registros e a rotina efetivamente praticada precisam ser examinadas em conjunto."],
+    /(agricultura|agronegócio|agropecuárias|rurais)/.test(city.economy) && ["Trabalho rural e atividades de campo", "Nas atividades rurais, é importante compreender local da prestação, períodos de safra, alojamento quando existente, intervalos, forma de pagamento e quem dirigia o trabalho."],
+    city.economy.includes("turismo") && ["Trabalho em turismo e atendimento", "Atividades turísticas e de atendimento podem ter escalas em fins de semana, feriados e períodos sazonais. Folgas, intervalos, comissões e controle de horários merecem conferência documental."],
+    city.economy.includes("tecnologia") && ["Tecnologia e trabalho conectado", "Funções de tecnologia podem combinar trabalho presencial, remoto e híbrido. Mensagens fora do horário, sistemas de acesso, metas e autonomia real ajudam a compreender como a jornada ocorria."],
+    city.economy.includes("mineração") && ["Atividades de mineração", "Função exercida, ambiente de trabalho, equipamentos de proteção, treinamentos e laudos são elementos relevantes quando a rotina envolve mineração e exposição a condições específicas."],
+    city.economy.includes("comércio") && ["Comércio e remuneração", "No comércio, escalas, trabalho em datas especiais, comissões, prêmios e intervalos podem gerar dúvidas. Holerites, controles de horário e demonstrativos de vendas ajudam na análise."],
+    city.economy.includes("serviços") && ["Prestação de serviços", "Em serviços, o nome do cargo nem sempre descreve toda a rotina. Ordens recebidas, metas, visitas externas, uso de aplicativos e forma de controle podem ser relevantes para reconstruir o vínculo."]
+  ].filter(Boolean).slice(0, 4);
   const breadcrumbSchema = {
     "@type": "BreadcrumbList",
     itemListElement: [
@@ -5336,6 +5756,10 @@ function localLaborCityTemplate(city) {
           <p class="eyebrow">${city.name}/SP</p>
           <h2 id="local-city-title">${title}</h2>
           <p>${localText}</p>
+          <h3>Como o perfil de trabalho local pode influenciar a análise</h3>
+          <p>${city.workContext}</p>
+          <h3>Atendimento para quem está em ${city.name}</h3>
+          <p>${city.practicalContext}</p>
           <p class="local-city-source">População: <a href="https://www.ibge.gov.br/cidades-e-estados/sp/${city.slug}.html" target="_blank" rel="noopener noreferrer">IBGE — Censo 2022</a>.</p>
           <p class="local-city-source">Conheça também a página central de <a href="/atuacao/direito-trabalhista-trabalhadores">Direito Trabalhista para trabalhadores</a>.</p>
           <p class="local-city-hub-link"><a href="/cidades-atendidas">Ver outras cidades atendidas →</a></p>
@@ -5347,12 +5771,55 @@ function localLaborCityTemplate(city) {
         </div>
       </section>
 
+      <section class="local-work-context-section reveal-block" aria-labelledby="local-work-context-title">
+        <div class="section-heading">
+          <p>Mercado de trabalho local</p>
+          <h2 id="local-work-context-title">Pontos de atenção para trabalhadores de ${city.name}</h2>
+          <span>O setor econômico ajuda a contextualizar a rotina, mas não substitui a análise individual dos documentos e das provas.</span>
+        </div>
+        <div class="attention-grid">
+          ${sectorTopics.map(([heading, text], index) => `<article><span>${String(index + 1).padStart(2, "0")}</span><h3>${heading}</h3><p>${text}</p></article>`).join("")}
+        </div>
+      </section>
+
+      <section class="local-nearby-section reveal-block" aria-labelledby="nearby-cities-title">
+        <div class="section-heading">
+          <p>Atendimento regional</p>
+          <h2 id="nearby-cities-title">Cidades próximas de ${city.name}</h2>
+          <span>Consulte também informações de atendimento trabalhista para municípios relacionados à região.</span>
+        </div>
+        <div class="related-practices-grid">
+          ${nearbyCities.map((item) => `<a href="${item.route}"><strong>Advogado Trabalhista em ${item.name}</strong><span>Ver atendimento na cidade</span></a>`).join("")}
+        </div>
+      </section>
+
       <section class="worker-faq-section reveal-block">`
     )
     .replace(
       "</main>",
       `</main><script type="application/ld+json" id="local-labor-schema">${JSON.stringify({ "@context": "https://schema.org", "@graph": [breadcrumbSchema, serviceSchema] }).replace(/</g, "\\u003c")}</script>`
     );
+}
+
+function sorocabaWorkerLaborTemplate() {
+  return workerLaborTemplate().replace(
+    '<section class="worker-local-section reveal-block">',
+    `<section class="worker-sorocaba-context reveal-block" aria-labelledby="sorocaba-context-title">
+      <div class="section-heading">
+        <p>Atuação local</p>
+        <h2 id="sorocaba-context-title">Direito Trabalhista em Sorocaba e região</h2>
+        <span>Atendimento presencial na cidade onde o escritório está estabelecido e suporte digital para trabalhadores da região.</span>
+      </div>
+      <div class="worker-sorocaba-grid">
+        <article><span>01</span><h3>Economia diversificada</h3><p>Indústria, logística, comércio, tecnologia e serviços mantêm rotinas de trabalho distintas em Sorocaba. Jornada, função, metas e forma de remuneração precisam ser avaliadas dentro do contexto real de cada vínculo.</p></article>
+        <article><span>02</span><h3>Documentos e provas</h3><p>Contrato, holerites, cartões de ponto, extratos do FGTS, mensagens e documentos da rescisão ajudam a reconstruir o histórico e identificar quais pontos exigem análise jurídica.</p></article>
+        <article><span>03</span><h3>Atendimento presencial e digital</h3><p>O escritório fica em Sorocaba e também realiza atendimento por meios digitais. A conversa inicial serve para organizar os fatos, esclarecer dúvidas e indicar os próximos passos possíveis.</p></article>
+        <article><span>04</span><h3>Atendimento regional</h3><p>Consulte também as informações para trabalhadores de <a href="/advogado-trabalhista/votorantim">Votorantim</a>, <a href="/advogado-trabalhista/itu">Itu</a>, <a href="/advogado-trabalhista/jundiai">Jundiaí</a>, <a href="/advogado-trabalhista/indaiatuba">Indaiatuba</a> e <a href="/advogado-trabalhista/cotia">Cotia</a>.</p></article>
+      </div>
+    </section>
+
+    <section class="worker-local-section reveal-block">`
+  );
 }
 
 function servedCitiesTemplate() {
@@ -5444,6 +5911,8 @@ export function renderPageHtml(pathname) {
         ? practiceOverviewTemplate()
         : path === "/artigos"
           ? articlesTemplate()
+          : newSeoArticleContent[path]
+            ? newSeoArticleTemplate(path)
           : path === "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar"
             ? overtimeUnpaidArticleTemplate()
             : path === "/artigos/assedio-moral-no-trabalho-como-identificar"
@@ -5465,7 +5934,7 @@ export function renderPageHtml(pathname) {
                   : path === "/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca"
                     ? familyDecisionsArticleTemplate()
                     : path === "/atuacao/direito-trabalhista-trabalhadores"
-                      ? workerLaborTemplate()
+                      ? sorocabaWorkerLaborTemplate()
                       : path === "/atuacao/direito-trabalhista-empresas"
                         ? companyLaborTemplate()
                         : path === "/atuacao/direito-imobiliario"

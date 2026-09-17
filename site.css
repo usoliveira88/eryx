@@ -478,19 +478,37 @@ button {
 }
 
 .home-commercial-intro {
-  padding: 88px 0 34px;
+  padding: 78px 0 42px;
   background: var(--white);
 }
 
 .home-commercial-intro .section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.78fr);
+  align-items: end;
+  gap: 56px;
   margin-bottom: 0;
+  text-align: left;
+}
+
+.home-commercial-intro .section-heading h2 {
+  max-width: 660px;
+  color: var(--blue);
+  font-size: clamp(2.15rem, 3.6vw, 3.45rem);
+  line-height: 1.08;
 }
 
 .home-commercial-intro .section-heading p {
-  margin: 22px 0 0;
+  position: relative;
+  max-width: 520px;
+  margin: 0;
+  padding-left: 26px;
+  border-left: 2px solid rgba(200, 170, 110, 0.72);
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.82;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .practice-section {
@@ -4103,6 +4121,10 @@ button {
 @media (max-width: 720px) {
   :root {
     --header-height: 72px;
+  }
+
+  .home-commercial-intro {
+    display: none;
   }
 
   .header-inner,

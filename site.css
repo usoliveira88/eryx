@@ -485,9 +485,9 @@ button {
 .home-commercial-intro .section-heading {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+  grid-template-columns: minmax(0, 760px) minmax(360px, 1fr);
   align-items: center;
-  gap: clamp(48px, 7vw, 96px);
+  gap: clamp(42px, 4vw, 56px);
   margin-bottom: 0;
   text-align: left;
 }
@@ -495,8 +495,8 @@ button {
 .home-commercial-intro .section-heading h2 {
   max-width: 760px;
   color: var(--blue);
-  font-size: clamp(2.45rem, 4.2vw, 4.35rem);
-  line-height: 1.04;
+  font-size: clamp(2.35rem, 3.4vw, 3.45rem);
+  line-height: 1.07;
 }
 
 .home-commercial-intro .section-heading p {
@@ -511,6 +511,18 @@ button {
   line-height: 1.75;
   text-transform: none;
   letter-spacing: 0;
+}
+
+@media (max-width: 1180px) {
+  .home-commercial-intro .section-heading {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .home-commercial-intro .section-heading h2,
+  .home-commercial-intro .section-heading p {
+    max-width: 780px;
+  }
 }
 
 .practice-section {

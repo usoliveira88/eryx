@@ -24,6 +24,9 @@ const routes = [
   "/artigos/usucapiao-regularizacao-imovel",
   "/artigos/demissao-por-justa-causa-empresa",
   "/artigos/empresa-pode-proibir-celular-trabalho",
+  "/artigos/fui-demitido-nao-recebi-meus-direitos",
+  "/artigos/horas-extras-nao-pagas-como-provar",
+  "/artigos/assedio-moral-no-trabalho-quando-empresa-ultrapassa-limite",
   "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
   "/artigos/assedio-moral-no-trabalho-como-identificar",
   "/artigos/acidente-de-trabalho-direitos-do-trabalhador",
@@ -437,6 +440,82 @@ test("lista os três novos artigos com cards rastreáveis", () => {
     "/artigos/acidente-de-trabalho-direitos-do-trabalhador"
   ]) {
     assert.match(html, new RegExp(`href="${route}"`));
+  }
+});
+
+test("publica os três artigos de setembro com linkagem local, temática e schema", () => {
+  const expected = [
+    {
+      route: "/artigos/fui-demitido-nao-recebi-meus-direitos",
+      h1: "Fui demitido e não recebi todos os meus direitos: o que fazer?",
+      image: "/artigos/artigo-trabalhista-rescisao",
+      links: [
+        "/atuacao/direito-trabalhista-trabalhadores",
+        "/advogado-trabalhista/jundiai",
+        "/advogado-trabalhista/indaiatuba",
+        "/advogado-trabalhista/itu",
+        "/advogado-trabalhista/votorantim",
+        "/atuacao/verbas-rescisorias",
+        "/atuacao/fgts-nao-depositado",
+        "/atuacao/rescisao-indireta"
+      ],
+      reverseLp: "/atuacao/verbas-rescisorias"
+    },
+    {
+      route: "/artigos/horas-extras-nao-pagas-como-provar",
+      h1: "Horas extras não pagas: como provar e cobrar da empresa?",
+      image: "/artigos/hora-extra-qual-valor-sorocaba",
+      links: [
+        "/advogado-trabalhista/cotia",
+        "/advogado-trabalhista/itapetininga",
+        "/advogado-trabalhista/tatui",
+        "/advogado-trabalhista/sao-roque",
+        "/advogado-trabalhista/salto",
+        "/atuacao/horas-extras",
+        "/atuacao/fgts-nao-depositado",
+        "/atuacao/rescisao-indireta"
+      ],
+      reverseLp: "/atuacao/horas-extras"
+    },
+    {
+      route: "/artigos/assedio-moral-no-trabalho-quando-empresa-ultrapassa-limite",
+      h1: "Assédio moral no trabalho: quando a empresa ultrapassa o limite?",
+      image: "/artigos/assedio-moral-trabalho-sorocaba",
+      links: [
+        "/advogado-trabalhista/boituva",
+        "/advogado-trabalhista/ibiuna",
+        "/advogado-trabalhista/piedade",
+        "/advogado-trabalhista/itupeva",
+        "/advogado-trabalhista/campo-limpo-paulista",
+        "/atuacao/assedio-moral-no-trabalho",
+        "/atuacao/rescisao-indireta",
+        "/atuacao/acidente-de-trabalho"
+      ],
+      reverseLp: "/atuacao/assedio-moral-no-trabalho"
+    }
+  ];
+
+  const listing = renderPageHtml("/artigos");
+  const sitemap = readFileSync(new URL("./sitemap.xml", import.meta.url), "utf8");
+
+  for (const item of expected) {
+    const html = renderPageHtml(item.route);
+    assert.equal((html.match(/<h1>/g) || []).length, 1, item.route);
+    assert.match(html, new RegExp(`<h1>${item.h1.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}</h1>`));
+    assert.match(html, new RegExp(`${item.image.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}-1200\\.avif`));
+    for (const link of item.links) {
+      assert.match(html, new RegExp(`href="${link.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), `${item.route} -> ${link}`);
+    }
+    assert.match(html, /"datePublished":"2026-09-21"/);
+    assert.match(html, /"@type":"BlogPosting"/);
+    assert.match(html, /"@type":"FAQPage"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(html, /OAB\/SP nº 530\.983/);
+    assert.match(listing, new RegExp(`href="${item.route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+    assert.ok(sitemap.includes(`${SITE_CONFIG.siteUrl}${item.route}`), item.route);
+
+    const reverseHtml = renderPageHtml(item.reverseLp);
+    assert.match(reverseHtml, new RegExp(`href="${item.route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), item.reverseLp);
   }
 });
 

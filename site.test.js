@@ -24,6 +24,9 @@ const routes = [
   "/artigos/usucapiao-regularizacao-imovel",
   "/artigos/demissao-por-justa-causa-empresa",
   "/artigos/empresa-pode-proibir-celular-trabalho",
+  "/artigos/abandono-de-emprego-justa-causa",
+  "/artigos/distrato-imobiliario-desistencia-compra-imovel",
+  "/artigos/acumulo-desvio-funcao-diferencas-salariais",
   "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
   "/artigos/assedio-moral-no-trabalho-como-identificar",
   "/artigos/acidente-de-trabalho-direitos-do-trabalhador",
@@ -437,6 +440,81 @@ test("lista os três novos artigos com cards rastreáveis", () => {
     "/artigos/acidente-de-trabalho-direitos-do-trabalhador"
   ]) {
     assert.match(html, new RegExp(`href="${route}"`));
+  }
+});
+
+test("publica os três artigos novos do briefing com diferenciação, linkagem e schema", () => {
+  const expected = [
+    {
+      route: "/artigos/abandono-de-emprego-justa-causa",
+      h1: "Abandono de emprego: quando pode caracterizar justa causa?",
+      image: "/home-detalhe-documentos",
+      category: "Trabalhista Empresarial",
+      links: [
+        "/atuacao/direito-trabalhista-empresas",
+        "/artigos/demissao-por-justa-causa-empresa",
+        "/artigos/empresa-pode-proibir-celular-trabalho",
+        "/artigos/nr-01-novas-exigencias-empresas-sorocaba"
+      ],
+      reverse: ["/atuacao/direito-trabalhista-empresas", "/artigos/demissao-por-justa-causa-empresa"]
+    },
+    {
+      route: "/artigos/distrato-imobiliario-desistencia-compra-imovel",
+      h1: "Distrato imobiliário: quando o comprador pode desistir do imóvel e recuperar valores?",
+      image: "/artigos/artigo-imobiliario",
+      category: "Imobiliário",
+      links: [
+        "/atuacao/direito-imobiliario",
+        "/artigos/contrato-compra-venda-imovel-cuidados",
+        "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar",
+        "/artigos/usucapiao-regularizacao-imovel"
+      ],
+      reverse: ["/atuacao/direito-imobiliario"]
+    },
+    {
+      route: "/artigos/acumulo-desvio-funcao-diferencas-salariais",
+      h1: "Acúmulo e desvio de função: quando o trabalhador pode cobrar diferenças salariais?",
+      image: "/artigos/artigo-trabalhista-rescisao",
+      category: "Trabalhista",
+      links: [
+        "/atuacao/direito-trabalhista-trabalhadores",
+        "/atuacao/rescisao-indireta",
+        "/artigos/rescisao-indireta-sorocaba",
+        "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica",
+        "/advogado-trabalhista/ipero",
+        "/advogado-trabalhista/mairinque",
+        "/advogado-trabalhista/itapetininga",
+        "/advogado-trabalhista/campo-limpo-paulista",
+        "/advogado-trabalhista/aracoiaba-da-serra",
+        "/advogado-trabalhista/cotia"
+      ],
+      reverse: ["/atuacao/direito-trabalhista-trabalhadores"]
+    }
+  ];
+
+  const listing = renderPageHtml("/artigos");
+  const sitemap = readFileSync(new URL("./sitemap.xml", import.meta.url), "utf8");
+
+  for (const item of expected) {
+    const html = renderPageHtml(item.route);
+    assert.equal((html.match(/<h1>/g) || []).length, 1, item.route);
+    assert.match(html, new RegExp(`<h1>${item.h1.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}</h1>`));
+    assert.match(html, new RegExp(`${item.image.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}-1200\\.avif`));
+    assert.match(html, new RegExp(item.category.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    for (const link of item.links) {
+      assert.match(html, new RegExp(`href="${link.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), `${item.route} -> ${link}`);
+    }
+    for (const reverseRoute of item.reverse) {
+      const reverseHtml = renderPageHtml(reverseRoute);
+      assert.match(reverseHtml, new RegExp(`href="${item.route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), `${reverseRoute} -> ${item.route}`);
+    }
+    assert.match(html, /"datePublished":"2026-09-21"/);
+    assert.match(html, /"@type":"BlogPosting"/);
+    assert.match(html, /"@type":"FAQPage"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(html, /OAB\/SP nº 530\.983/);
+    assert.match(listing, new RegExp(`href="${item.route.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+    assert.ok(sitemap.includes(`${SITE_CONFIG.siteUrl}${item.route}`), item.route);
   }
 });
 

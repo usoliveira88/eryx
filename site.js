@@ -96,66 +96,6 @@ const practiceItems = [
 
 const articles = [
   {
-    category: "Trabalhista",
-    filterCategory: "Trabalhista",
-    homeCategory: "Trabalhista",
-    eyebrow: "ARTIGO | TRABALHISTA",
-    title: "Fui demitido e não recebi todos os meus direitos: o que fazer?",
-    seoTitle: "Fui Demitido e Não Recebi Meus Direitos: O Que Fazer?",
-    seoDescription:
-      "Foi demitido e acredita que não recebeu corretamente suas verbas rescisórias? Entenda quais direitos podem ser cobrados e quando procurar um advogado trabalhista.",
-    excerpt:
-      "Veja como conferir verbas rescisórias, FGTS, aviso-prévio, férias, 13º salário e documentos antes de decidir os próximos passos.",
-    image: "/artigos/artigo-trabalhista-rescisao.jpg",
-    alt: "Trabalhador conferindo documentos de rescisão após demissão",
-    href: "/artigos/fui-demitido-nao-recebi-meus-direitos",
-    readingTime: "13 min de leitura",
-    date: "21 de setembro de 2026",
-    publishedAt: "2026-09-21",
-    modifiedAt: "2026-09-21",
-    authorRole: "Advogado Trabalhista"
-  },
-  {
-    category: "Trabalhista",
-    filterCategory: "Trabalhista",
-    homeCategory: "Trabalhista",
-    eyebrow: "ARTIGO | TRABALHISTA",
-    title: "Horas extras não pagas: como provar e cobrar da empresa?",
-    seoTitle: "Horas Extras Não Pagas: Como Provar e Cobrar?",
-    seoDescription:
-      "Entenda como comprovar horas extras não pagas, quais provas podem ser utilizadas e quando buscar um advogado trabalhista para cobrar seus direitos.",
-    excerpt:
-      "Entenda quais registros ajudam a demonstrar a jornada real, como organizar provas e quando a cobrança de horas extras merece análise jurídica.",
-    image: "/artigos/hora-extra-qual-valor-sorocaba.jpg",
-    alt: "Relógio e documentos para análise de horas extras não pagas",
-    href: "/artigos/horas-extras-nao-pagas-como-provar",
-    readingTime: "12 min de leitura",
-    date: "21 de setembro de 2026",
-    publishedAt: "2026-09-21",
-    modifiedAt: "2026-09-21",
-    authorRole: "Advogado Trabalhista"
-  },
-  {
-    category: "Trabalhista",
-    filterCategory: "Trabalhista",
-    homeCategory: "Trabalhista",
-    eyebrow: "ARTIGO | TRABALHISTA",
-    title: "Assédio moral no trabalho: quando a empresa ultrapassa o limite?",
-    seoTitle: "Assédio Moral no Trabalho: Quando a Empresa Ultrapassa o Limite?",
-    seoDescription:
-      "Entenda o que pode caracterizar assédio moral no trabalho, quais provas podem ser utilizadas e quando procurar um advogado trabalhista.",
-    excerpt:
-      "Saiba diferenciar cobrança profissional de práticas abusivas, preservar provas e avaliar medidas possíveis diante de humilhações ou perseguições.",
-    image: "/artigos/assedio-moral-trabalho-sorocaba.webp",
-    alt: "Trabalhadora preocupada em ambiente de escritório diante de possível assédio moral",
-    href: "/artigos/assedio-moral-no-trabalho-quando-empresa-ultrapassa-limite",
-    readingTime: "12 min de leitura",
-    date: "21 de setembro de 2026",
-    publishedAt: "2026-09-21",
-    modifiedAt: "2026-09-21",
-    authorRole: "Advogado Trabalhista"
-  },
-  {
     category: "Imobiliário",
     filterCategory: "Imobiliário",
     homeCategory: "Imobiliário",
@@ -1724,8 +1664,7 @@ const laborLandingPages = {
       ["Como saber se o cálculo está correto?", "É necessário confrontar o termo com salário, médias, jornada, férias, depósitos e forma de encerramento do vínculo."],
       ["Assinei a rescisão. Ainda posso questionar?", "A assinatura, por si só, não impede necessariamente a análise de diferenças, mas os documentos e circunstâncias devem ser avaliados."],
       ["Posso analisar apenas os documentos?", "Sim. O primeiro passo pode ser a conferência do termo de rescisão e dos comprovantes disponíveis."]
-    ],
-    article: ["/artigos/fui-demitido-nao-recebi-meus-direitos", "Leia também: o que fazer se foi demitido e não recebeu todos os direitos"]
+    ]
   },
   "/atuacao/fgts-nao-depositado": {
     shortTitle: "FGTS Não Depositado",
@@ -1787,8 +1726,7 @@ const laborLandingPages = {
       ["Quem trabalha em casa tem direito?", "O trabalho remoto não exclui automaticamente o controle de jornada. A rotina e os meios de acompanhamento precisam ser verificados."],
       ["Banco de horas pode substituir o pagamento?", "A validade da compensação depende da forma adotada, dos registros e do cumprimento das regras aplicáveis."],
       ["Hora extra gera reflexos em outras verbas?", "Valores habituais podem repercutir em outras parcelas, conforme a natureza e o período analisado."]
-    ],
-    article: ["/artigos/horas-extras-nao-pagas-como-provar", "Leia também: como provar e cobrar horas extras não pagas"]
+    ]
   },
   "/atuacao/assedio-moral-no-trabalho": {
     shortTitle: "Assédio Moral",
@@ -1819,8 +1757,7 @@ const laborLandingPages = {
       ["Posso gravar uma conversa da qual participo?", "A utilização de gravações depende das circunstâncias e da forma de obtenção. O material deve ser analisado antes de ser divulgado ou utilizado."],
       ["Preciso denunciar internamente primeiro?", "Canais internos podem ser úteis, mas a melhor sequência depende do risco, das provas e da situação concreta."],
       ["O assédio pode justificar indenização ou rescisão indireta?", "Conforme a gravidade e a prova, podem existir diferentes consequências jurídicas, que precisam ser avaliadas individualmente."]
-    ],
-    article: ["/artigos/assedio-moral-no-trabalho-quando-empresa-ultrapassa-limite", "Leia também: quando a empresa ultrapassa o limite no assédio moral"]
+    ]
   },
   "/atuacao/acidente-de-trabalho": {
     shortTitle: "Acidente de Trabalho",
@@ -3221,187 +3158,6 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
 }
 
 const newSeoArticleContent = {
-  "/artigos/fui-demitido-nao-recebi-meus-direitos": {
-    breadcrumb: "Demissão e direitos",
-    summary: [["#primeiros-passos", "Primeiros passos"], ["#verbas", "Verbas rescisórias"], ["#prazo", "Prazo de pagamento"], ["#fgts", "FGTS e multa"], ["#descontos", "Descontos"], ["#provas", "Provas"], ["#cidades", "Atendimento regional"], ["#advogado", "Quando buscar advogado"], ["#faq", "FAQ"]],
-    cta: ["Foi demitido e quer conferir sua rescisão?", "A análise compara termo de rescisão, depósitos, holerites, jornada e forma de desligamento para verificar possíveis diferenças.", "Falar com o Dr. Eryx"],
-    recommendations: ["/artigos/fgts-nao-depositado-como-conferir", "/artigos/rescisao-indireta-sorocaba", "/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica"],
-    recommendationTitle: "Leituras relacionadas a rescisão e direitos trabalhistas",
-    faq: [
-      { question: "Fui demitido e recebi menos do que esperava. Posso questionar?", answer: "Pode haver possibilidade de questionamento quando faltam parcelas, há descontos indevidos, erro de média, FGTS incompleto ou pagamento fora do prazo. A viabilidade depende dos documentos e do histórico do contrato." },
-      { question: "Assinar o termo de rescisão impede cobrança depois?", answer: "A assinatura não elimina automaticamente toda possibilidade de discutir diferenças, mas o conteúdo assinado, os recibos e os pagamentos precisam ser avaliados com cuidado." },
-      { question: "Quais documentos devo separar?", answer: "Termo de rescisão, aviso de desligamento, comprovantes de pagamento, holerites, carteira de trabalho, extrato analítico do FGTS, mensagens e registros de jornada ajudam na conferência." },
-      { question: "Quando procurar um advogado trabalhista?", answer: "Vale buscar orientação quando os valores não fecham, o FGTS não foi depositado, há desconto sem explicação, atraso no pagamento ou dúvida sobre a modalidade de desligamento." }
-    ],
-    body: `
-      <p class="article-lead">Ser demitido e perceber que os valores pagos não correspondem ao que foi trabalhado gera insegurança, especialmente quando o termo de rescisão vem cheio de rubricas, descontos e códigos pouco claros.</p>
-      <p>O primeiro cuidado é evitar conclusões apressadas. Algumas diferenças aparecem por erro de cálculo, outras por falta de pagamento de parcelas habituais, ausência de depósitos de FGTS, média incorreta de horas extras, férias vencidas, aviso-prévio calculado de forma inadequada ou descontos sem documentação suficiente.</p>
-      <p>Para quem precisa de <a href="/atuacao/direito-trabalhista-trabalhadores">orientação trabalhista em Sorocaba</a>, a conferência deve partir dos documentos reais do vínculo. O valor líquido depositado na conta é apenas o resultado final. A análise responsável olha o caminho até ele.</p>
-      <h2 id="primeiros-passos">Primeiros passos depois da demissão</h2>
-      <p>O ideal é reunir termo de rescisão, aviso-prévio, comprovante de pagamento, carteira de trabalho, holerites, extrato analítico do FGTS, contrato, acordo de banco de horas, escalas e mensagens relevantes. Mesmo que algum documento esteja faltando, a conversa inicial pode começar com o que você já tem.</p>
-      <p>Também vale anotar datas importantes: último dia trabalhado, data do aviso, data do pagamento, data de baixa na carteira e dia em que recebeu as guias. Essas informações ajudam a verificar se a empresa observou os prazos e se a modalidade de encerramento foi aplicada corretamente.</p>
-      <p>Se você trabalhava em jornada variável, fazia horas extras ou recebia comissões, adicionais, gratificações ou prêmios habituais, a conferência precisa ser mais cuidadosa. Essas parcelas podem influenciar médias e reflexos, conforme a natureza do pagamento e o histórico do contrato.</p>
-      <h2 id="verbas">Quais verbas rescisórias costumam ser conferidas?</h2>
-      <p>Em uma dispensa sem justa causa, normalmente são analisados saldo de salário, aviso-prévio, férias vencidas e proporcionais com um terço, 13º salário proporcional, depósitos de FGTS, multa de 40%, médias de parcelas variáveis e eventuais diferenças salariais. Em outras modalidades, como pedido de demissão ou justa causa, a composição muda.</p>
-      <p>A página de <a href="/atuacao/verbas-rescisorias">verbas rescisórias</a> explica com mais foco essa conferência. O ponto essencial é que cada rubrica precisa conversar com a realidade do contrato. Se houve salário por fora, função exercida diferente da registrada, jornada superior à anotada ou parcelas pagas com habitualidade, o termo pode não refletir tudo.</p>
-      <p>Em atendimentos de <a href="/advogado-trabalhista/jundiai">advogado trabalhista em Jundiaí</a> e região, uma dúvida comum é se o trabalhador precisa saber fazer o cálculo sozinho antes de procurar ajuda. Não precisa. O papel da análise é justamente organizar documentos, comparar períodos e identificar onde pode haver diferença.</p>
-      <h2 id="prazo">Prazo de pagamento da rescisão</h2>
-      <p>O prazo para pagamento é um ponto sensível porque o atraso pode gerar discussão própria. A regra atual da CLT prevê prazo contado do término do contrato, mas a contagem depende da modalidade e das datas efetivas. Por isso, é importante conferir o aviso e o termo antes de afirmar que houve atraso.</p>
-      <p>Além do dinheiro, as guias e informações necessárias para saque de FGTS e seguro-desemprego, quando cabíveis, também podem afetar a situação prática do trabalhador. Um acerto aparentemente pago pode continuar problemático se impede o acesso a valores ou benefícios relacionados ao desligamento.</p>
-      <p>Quem busca um <a href="/advogado-trabalhista/itu">advogado trabalhista em Itu</a> costuma chegar com extratos, comprovantes e dúvidas sobre datas. Esses detalhes são importantes porque pequenas diferenças de cronologia mudam a leitura jurídica do caso.</p>
-      <h2 id="fgts">FGTS, multa de 40% e depósitos ausentes</h2>
-      <p>O FGTS merece atenção separada. Não basta olhar apenas o valor liberado no aplicativo. O extrato analítico permite verificar se todos os meses do contrato tiveram recolhimento, se a base de cálculo parece compatível com os salários e se a multa rescisória considerou os valores corretos.</p>
-      <p>Quando aparecem meses sem depósito, recolhimentos muito baixos ou regularização apenas no fim do contrato, pode ser necessário avaliar a página de <a href="/atuacao/fgts-nao-depositado">FGTS não depositado</a>. A ausência de recolhimentos pode gerar cobrança de diferenças e, em alguns contextos, integrar um conjunto maior de irregularidades.</p>
-      <p>Para trabalhadores que procuram <a href="/advogado-trabalhista/indaiatuba">atendimento trabalhista em Indaiatuba</a>, esse costuma ser um dos documentos mais reveladores, porque mostra o histórico do vínculo mês a mês e ajuda a comparar o que foi registrado com o que efetivamente ocorreu.</p>
-      <h2 id="descontos">Descontos, justa causa e aviso-prévio</h2>
-      <p>Descontos no termo de rescisão precisam ser compreensíveis e documentados. Faltas, adiantamentos, danos, benefícios, empréstimos ou saldo negativo de banco de horas não devem aparecer como surpresa sem base clara. A análise verifica se o desconto tem origem, autorização quando necessária e compatibilidade com os limites aplicáveis.</p>
-      <p>Outro ponto importante é a modalidade de desligamento. Dispensa sem justa causa, pedido de demissão, acordo, término de contrato e justa causa geram efeitos diferentes. Se a empresa aplicou justa causa sem prova adequada, proporcionalidade ou imediatidade, a discussão pode mudar completamente o acerto.</p>
-      <p>Em situações em que a empresa já vinha descumprindo obrigações durante o contrato, pode ser útil entender a <a href="/atuacao/rescisao-indireta">rescisão indireta</a>. Ela não é a mesma coisa que ser demitido, mas pode ser relevante quando o trabalhador ainda está no emprego e enfrenta faltas graves do empregador.</p>
-      <h2 id="provas">Como provar que faltaram direitos?</h2>
-      <p>A prova depende do tipo de diferença. Para verbas rescisórias, o termo, os recibos, holerites e comprovantes bancários são centrais. Para FGTS, o extrato analítico é fundamental. Para horas extras não consideradas, registros de ponto, escalas, mensagens, e-mails, aplicativos de rota, controles internos e testemunhas podem ajudar.</p>
-      <p>É recomendável guardar documentos em ordem cronológica, sem editar mensagens ou recortar conversas de forma confusa. Prints podem ser úteis, mas o contexto da conversa costuma importar. Quando possível, preserve arquivos originais e identifique datas, pessoas e assunto.</p>
-      <p>Também é importante não assinar declarações novas sem entender o conteúdo. Algumas empresas apresentam documentos complementares no desligamento. Antes de reconhecer pagamento integral ou dar quitação ampla em termos pouco claros, vale compreender o alcance do texto.</p>
-      <h2 id="erros-comuns">Erros comuns ao conferir a rescisão</h2>
-      <p>Um erro frequente é comparar apenas o valor líquido recebido com uma expectativa informal. A rescisão deve ser conferida rubrica por rubrica. Às vezes o líquido parece próximo do esperado, mas férias, média de horas extras ou FGTS foram calculados de forma incompleta.</p>
-      <p>Outro problema é desconsiderar parcelas variáveis. Comissões, adicionais, horas extras habituais e outras verbas podem influenciar médias. Se a empresa pagava essas parcelas durante o contrato e deixou de considerá-las no encerramento, pode haver diferença relevante.</p>
-      <p>Também é comum aceitar explicações verbais sem pedir comprovantes. Se há desconto por dano, adiantamento, empréstimo ou falta, a origem precisa ser demonstrada. O documento ajuda a separar desconto legítimo de cobrança indevida.</p>
-      <p>Por fim, cuidado com prazos. A demora para organizar documentos pode dificultar prova, contato com testemunhas e recuperação de históricos em aplicativos. Mesmo quando não há decisão imediata sobre processo, preservar documentos cedo ajuda muito.</p>
-      <h2 id="cidades">Atendimento regional em casos de demissão</h2>
-      <p>O Eryx Fernandes Advocacia atende trabalhadores de Sorocaba e cidades próximas em demandas de rescisão, FGTS, horas extras, assédio e demais conflitos trabalhistas. Além de Sorocaba, há páginas específicas para quem busca <a href="/advogado-trabalhista/votorantim">advogado trabalhista em Votorantim</a>, Jundiaí, Indaiatuba, Itu e outras cidades da região.</p>
-      <p>A lógica do atendimento é a mesma: entender o vínculo, organizar documentos e avaliar riscos antes de qualquer medida. Cada cidade tem sua realidade econômica, mas os direitos trabalhistas precisam ser analisados a partir da prova concreta do contrato.</p>
-      <h2 id="advogado">Quando procurar um advogado trabalhista?</h2>
-      <p>Procure orientação quando o pagamento parece incompleto, quando o prazo não foi respeitado, quando faltam depósitos de FGTS, quando houve descontos sem explicação, quando a empresa não entregou guias ou quando você não entende a modalidade do desligamento.</p>
-      <p>A atuação jurídica não serve apenas para entrar com processo. Muitas vezes, o primeiro resultado útil é compreender se há diferença real, qual documento falta e qual caminho é proporcional. Se houver cobrança possível, a estratégia deve considerar valores, provas, prazo, riscos e objetivos do trabalhador.</p>
-      <p>O mais importante é não deixar a dúvida se perder com o tempo. Quanto mais cedo os documentos são preservados, mais fácil reconstruir o contrato e verificar se a rescisão refletiu tudo o que era devido.</p>
-      <p>Uma análise inicial bem feita também evita cobranças sem base. Nem toda diferença percebida pelo trabalhador se confirma juridicamente, e nem todo erro tem o mesmo impacto econômico. A orientação serve para separar valores discutíveis, documentos ausentes e pontos que realmente justificam uma medida.</p>
-      <p>Quando há possibilidade de cobrança, a estratégia pode envolver contato extrajudicial, negociação ou reclamação trabalhista. A escolha depende da prova disponível, do valor estimado, da postura da empresa e dos riscos de cada caminho. O objetivo é proteger direitos com clareza, não transformar toda dúvida em disputa desnecessária.</p>
-      <p>Também é importante observar prazos prescricionais e a data de encerramento do contrato. A demora pode limitar períodos discutíveis e reduzir alternativas. Por isso, mesmo que o trabalhador ainda esteja apenas desconfiado de erro, uma conferência inicial evita perder tempo precioso.</p>
-    `
-  },
-  "/artigos/horas-extras-nao-pagas-como-provar": {
-    breadcrumb: "Horas extras não pagas",
-    summary: [["#conceito", "Quando há hora extra"], ["#provas", "Como provar"], ["#ponto", "Cartão de ponto"], ["#mensagens", "Mensagens e sistemas"], ["#banco", "Banco de horas"], ["#reflexos", "Reflexos"], ["#cidades", "Atendimento regional"], ["#advogado", "Quando cobrar"], ["#faq", "FAQ"]],
-    cta: ["Quer analisar horas extras não pagas?", "A conferência da jornada exige comparação entre rotina real, registros, holerites, banco de horas e provas disponíveis.", "Falar com o Dr. Eryx"],
-    recommendations: ["/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar", "/artigos/fgts-nao-depositado-como-conferir", "/artigos/rescisao-indireta-sorocaba"],
-    recommendationTitle: "Conteúdos relacionados a jornada e contrato de trabalho",
-    faq: [
-      { question: "Sem cartão de ponto ainda posso provar horas extras?", answer: "Pode haver outros meios de prova, como mensagens, escalas, registros de acesso, localização, e-mails, testemunhas e documentos internos. A força desses elementos depende do contexto." },
-      { question: "Print de WhatsApp serve como prova?", answer: "Pode ajudar, especialmente quando mostra ordens, horários ou cobrança fora do expediente. O ideal é preservar a conversa completa e evitar recortes que retirem o contexto." },
-      { question: "Banco de horas impede cobrança?", answer: "Não necessariamente. É preciso verificar se o banco era válido, transparente, registrado e se as compensações ocorreram conforme as regras aplicáveis." },
-      { question: "Horas extras refletem em outras verbas?", answer: "Quando habituais e de natureza salarial, podem impactar outras parcelas, conforme o período, a remuneração e as regras aplicáveis." }
-    ],
-    body: `
-      <p class="article-lead">Horas extras não pagas costumam aparecer quando a rotina real do trabalhador é maior do que a jornada registrada ou remunerada pela empresa.</p>
-      <p>A dificuldade está em provar essa rotina. O trabalhador muitas vezes sabe que entrava antes, saía depois, respondia mensagens à noite ou perdia parte do intervalo, mas precisa transformar essa realidade em documentos, registros e uma narrativa cronológica coerente.</p>
-      <p>Para quem procura <a href="/advogado-trabalhista/cotia">advogado trabalhista em Cotia</a>, a análise começa pela pergunta prática: qual era a jornada efetivamente cumprida e quais provas mostram essa rotina?</p>
-      <h2 id="conceito">Quando pode existir hora extra não paga?</h2>
-      <p>Em linhas gerais, pode haver hora extra quando o trabalhador presta serviços além da jornada contratual ou legal sem compensação válida ou pagamento correto. A CLT prevê acréscimo mínimo para a hora extraordinária, mas acordos e convenções coletivas podem trazer detalhes relevantes.</p>
-      <p>Também podem existir diferenças quando o intervalo intrajornada não era usufruído corretamente, quando havia trabalho antes de bater o ponto, quando o empregado precisava continuar disponível após o expediente ou quando o banco de horas era apenas formal, sem controle transparente.</p>
-      <p>A página de <a href="/atuacao/horas-extras">horas extras</a> aprofunda essa atuação. O ponto central é que a cobrança não nasce apenas da sensação de trabalhar muito, mas da comparação entre jornada, registros, remuneração e regras aplicáveis.</p>
-      <h2 id="provas">Como provar horas extras?</h2>
-      <p>As provas mais comuns são cartões de ponto, espelhos de jornada, escalas, holerites, e-mails, mensagens, registros de acesso, logs de sistemas, aplicativos de rota, comprovantes de deslocamento, agenda, ordens de serviço e testemunhas. Nenhum desses elementos deve ser analisado isoladamente.</p>
-      <p>Uma boa organização separa provas por período. Em vez de reunir prints soltos, vale montar uma linha do tempo: em quais meses a jornada se repetia, quem dava ordens, quais sistemas eram usados, qual intervalo era efetivo e como a empresa pagava ou compensava.</p>
-      <p>Em casos atendidos como <a href="/advogado-trabalhista/itapetininga">advogado trabalhista em Itapetininga</a>, documentos simples costumam ajudar muito: escalas fotografadas, mensagens de convocação, e-mails enviados fora do horário e recibos de pagamento sem a quantidade correspondente de horas.</p>
-      <h2 id="ponto">Cartão de ponto e registro de jornada</h2>
-      <p>O cartão de ponto é uma prova importante, mas não encerra toda discussão. Há casos em que o registro mostra horários uniformes demais, não retrata a saída real ou era ajustado pelo gestor. Também existem situações em que o trabalhador era orientado a bater o ponto e continuar trabalhando.</p>
-      <p>Quando a empresa não apresenta controles ou quando os registros parecem incompatíveis com a rotina, outros elementos ganham relevância. A discussão exige cautela, porque cada atividade tem regras próprias e algumas funções envolvem regimes diferenciados.</p>
-      <p>Também é preciso observar intervalos. A pausa para refeição e descanso precisa corresponder à realidade. Se o trabalhador registrava intervalo completo, mas continuava atendendo clientes, separando pedidos ou respondendo ordens, a prova deve mostrar essa continuidade.</p>
-      <h2 id="mensagens">Mensagens, aplicativos e provas digitais</h2>
-      <p>Mensagens de WhatsApp, e-mails, aplicativos corporativos e sistemas de acesso podem demonstrar ordens e atividades fora do horário. Isso é comum em equipes comerciais, logística, saúde, varejo, atendimento, manutenção e trabalho remoto.</p>
-      <p>Para trabalhadores que buscam <a href="/advogado-trabalhista/tatui">orientação trabalhista em Tatuí</a>, um cuidado importante é não apagar conversas e não enviar prints desconectados. Quando possível, preserve a conversa completa, o nome dos participantes, a data e o contexto.</p>
-      <p>Provas digitais podem ser úteis, mas precisam ser obtidas de modo responsável. Divulgar dados sigilosos, acessar conta de terceiros ou manipular arquivos pode prejudicar a análise. A estratégia deve separar aquilo que prova a jornada daquilo que cria risco desnecessário.</p>
-      <h2 id="rotina">Como descrever a rotina de trabalho</h2>
-      <p>Além dos documentos, o relato do trabalhador precisa ser objetivo. Uma boa descrição informa horário médio de entrada e saída, dias da semana, duração real do intervalo, tarefas feitas antes ou depois do ponto, responsáveis pelas ordens e períodos em que a rotina mudou.</p>
-      <p>Evite frases genéricas como "sempre fazia hora extra". É melhor explicar que, por exemplo, a equipe chegava antes para preparar máquinas, abrir loja, separar pedidos, trocar uniforme obrigatório ou participar de reuniões. Detalhes práticos ajudam a conectar prova e rotina.</p>
-      <p>Também é importante separar situações excepcionais de padrão habitual. Uma semana atípica pode ter tratamento diferente de meses de jornada ampliada. A análise fica mais precisa quando o trabalhador indica se o excesso era diário, semanal, por escala, por fechamento de mês ou por demanda sazonal.</p>
-      <h2 id="banco">Banco de horas e compensação</h2>
-      <p>O banco de horas pode ser válido, mas precisa ser verificável. O trabalhador deve conseguir entender saldo, créditos, débitos, folgas concedidas e critérios de compensação. Se a empresa nunca informa o saldo ou muda registros sem explicação, a validade prática pode ser discutida.</p>
-      <p>Compensação informal também merece cuidado. Frases como "depois você sai mais cedo" não bastam quando não há controle, acordo ou correspondência real entre excesso e folga. A análise compara registros, holerites e documentos internos.</p>
-      <p>Quando irregularidades de jornada se somam a outros descumprimentos relevantes, como atraso salarial, falta de depósitos ou ambiente abusivo, pode ser necessário avaliar a <a href="/atuacao/rescisao-indireta">rescisão indireta</a>. Essa decisão exige orientação individual antes de qualquer afastamento.</p>
-      <h2 id="reflexos">Horas extras podem gerar reflexos?</h2>
-      <p>Horas extras habituais podem repercutir em outras parcelas, conforme o caso. A análise pode envolver descanso semanal remunerado, férias, 13º salário, aviso-prévio, FGTS e verbas rescisórias. Por isso, a cobrança geralmente não se limita ao adicional isolado.</p>
-      <p>Também pode haver impacto no <a href="/atuacao/fgts-nao-depositado">FGTS</a>, porque parcelas remuneratórias influenciam a base de cálculo. Se a jornada extra nunca foi paga, os depósitos podem ter sido feitos sobre valor menor do que o devido.</p>
-      <p>O cálculo depende de salário, adicional, quantidade de horas, frequência, reflexos e período. Estimativas sem documentos podem criar expectativa errada; por isso, a conferência técnica é importante.</p>
-      <h2 id="erros-empresa">Sinais de que o pagamento pode estar incorreto</h2>
-      <p>Alguns sinais merecem atenção: holerites sem horas extras apesar de ponto excedente, banco de horas sempre zerado sem explicação, intervalos registrados automaticamente, diferença entre escala e ponto, mensagens fora do expediente sem pagamento e registros invariáveis por muitos meses.</p>
-      <p>Também há risco quando o cargo é chamado de confiança apenas no nome, mas o trabalhador continua cumprindo horário, recebendo ordens diretas e sem autonomia real. O enquadramento deve ser analisado pela realidade da função, não apenas pelo título usado pela empresa.</p>
-      <p>Outro ponto comum é o trabalho externo. O fato de trabalhar fora da sede não elimina automaticamente o direito a horas extras. Se havia controle por rota, aplicativo, chamadas, relatórios, agenda, sistema ou acompanhamento de produtividade, pode existir discussão sobre jornada.</p>
-      <h2 id="cidades">Atendimento regional em casos de jornada</h2>
-      <p>O escritório atende trabalhadores de Sorocaba e região, incluindo demandas de jornada em Cotia, Itapetininga, Tatuí, São Roque e Salto. Quem busca <a href="/advogado-trabalhista/sao-roque">advogado trabalhista em São Roque</a> ou <a href="/advogado-trabalhista/salto">advogado trabalhista em Salto</a> pode iniciar a análise com documentos digitais, holerites e relato organizado da rotina.</p>
-      <p>Em cidades com atividades industriais, comércio, serviços, logística e trabalho em escala, horas extras podem aparecer de formas diferentes. O essencial é compreender a função real e os meios de controle disponíveis.</p>
-      <h2 id="advogado">Quando cobrar horas extras da empresa?</h2>
-      <p>Vale buscar orientação quando o ponto não reflete a rotina, quando a empresa não paga horas registradas, quando o banco de horas é confuso, quando há trabalho frequente fora do expediente ou quando o intervalo nunca é respeitado.</p>
-      <p>A cobrança deve ser proporcional e baseada em prova. Um advogado trabalhista pode ajudar a separar fatos relevantes, estimar valores com mais segurança e definir se há espaço para tentativa extrajudicial, reclamação trabalhista ou outra estratégia.</p>
-      <p>Quanto antes as provas forem organizadas, melhor. A memória perde detalhes, aplicativos apagam histórico e documentos podem ficar mais difíceis de acessar depois do fim do contrato.</p>
-      <p>Se o contrato ainda está ativo, a orientação também pode ajudar a decidir como preservar provas sem confronto desnecessário. Se o vínculo já acabou, a análise se concentra em documentos disponíveis, testemunhas e reconstrução do período trabalhado. Em ambos os cenários, a cobrança deve ser feita com método.</p>
-      <p>A análise também considera convenção coletiva, cargo, salário, adicionais e forma de compensação. Dois trabalhadores da mesma empresa podem ter resultados diferentes se um tinha banco de horas formal, outro trabalhava em escala diferenciada e outro recebia adicional por acordo coletivo.</p>
-      <p>Por isso, antes de cobrar, vale transformar a rotina em dados: horários médios, dias trabalhados, intervalos, documentos e pagamentos. Esse conjunto permite calcular com mais segurança e evita que a discussão dependa apenas de lembranças gerais.</p>
-      <p>Quando a prova é bem organizada, a conversa com a empresa ou a eventual ação trabalhista ficam mais objetivas. O foco passa a ser a diferença entre jornada real, registros e remuneração, e não apenas a sensação de que havia trabalho excessivo.</p>
-      <p>Essa organização também ajuda a avaliar acordos. Sem uma estimativa minimamente consistente, o trabalhador pode aceitar valor muito baixo ou recusar uma proposta razoável por falta de parâmetro. A documentação dá medida à decisão.</p>
-    `
-  },
-  "/artigos/assedio-moral-no-trabalho-quando-empresa-ultrapassa-limite": {
-    breadcrumb: "Assédio moral no trabalho",
-    summary: [["#limite", "O limite da empresa"], ["#exemplos", "Exemplos"], ["#provas", "Provas"], ["#saude", "Saúde"], ["#medidas", "Medidas possíveis"], ["#rescisao", "Rescisão indireta"], ["#cidades", "Atendimento regional"], ["#advogado", "Quando procurar ajuda"], ["#faq", "FAQ"]],
-    cta: ["Está vivendo uma situação de assédio moral?", "A análise é feita com confidencialidade, organização dos fatos, preservação de provas e avaliação cuidadosa das medidas possíveis.", "Falar com o Dr. Eryx"],
-    recommendations: ["/artigos/assedio-moral-no-trabalho-como-identificar", "/artigos/rescisao-indireta-sorocaba", "/artigos/acidente-de-trabalho-direitos-do-trabalhador"],
-    recommendationTitle: "Conteúdos relacionados a ambiente de trabalho",
-    faq: [
-      { question: "Toda cobrança de chefe é assédio moral?", answer: "Não. Cobrança profissional pode ser legítima. O problema surge quando há humilhação, perseguição, intimidação, isolamento, abuso reiterado ou método que atinge a dignidade do trabalhador." },
-      { question: "Preciso ter testemunhas?", answer: "Testemunhas ajudam, mas não são o único meio de prova. Mensagens, e-mails, advertências, protocolos internos, atestados e registros cronológicos também podem ser relevantes." },
-      { question: "Assédio moral pode gerar rescisão indireta?", answer: "Dependendo da gravidade, frequência e prova, pode integrar fundamento para rescisão indireta, indenização ou outras medidas. A decisão precisa ser individualizada." },
-      { question: "Posso procurar ajuda antes de sair do emprego?", answer: "Sim. Em muitos casos, a orientação antes de qualquer decisão evita perda de prova e reduz o risco de uma saída precipitada." }
-    ],
-    body: `
-      <p class="article-lead">A empresa pode cobrar desempenho, organizar equipes e estabelecer metas, mas esse poder tem limite. Quando a cobrança vira humilhação, perseguição, ameaça ou constrangimento reiterado, o ambiente de trabalho pode ultrapassar a fronteira da legalidade.</p>
-      <p>Assédio moral não deve ser banalizado. Nem todo conflito, bronca ou divergência caracteriza assédio. Ao mesmo tempo, práticas abusivas não precisam ser aceitas como parte normal do emprego. A análise exige contexto, frequência, prova e impacto concreto na vida profissional ou pessoal do trabalhador.</p>
-      <p>Quem procura <a href="/advogado-trabalhista/boituva">advogado trabalhista em Boituva</a> por esse tema costuma chegar com medo de retaliação. Por isso, o primeiro passo é organizar os fatos com confidencialidade e prudência.</p>
-      <h2 id="limite">Quando a empresa ultrapassa o limite?</h2>
-      <p>O limite é ultrapassado quando a gestão deixa de cobrar resultados de modo profissional e passa a expor, humilhar, perseguir, isolar, ameaçar ou degradar a pessoa trabalhadora. O Tribunal Superior do Trabalho trata o tema como uma prática que pode atingir dignidade, integridade e identidade do trabalhador, especialmente quando reiterada.</p>
-      <p>A página de <a href="/atuacao/assedio-moral-no-trabalho">assédio moral no trabalho</a> explica os sinais e documentos úteis. Na prática, o que diferencia a cobrança legítima do abuso é a forma, a repetição, o propósito, o contexto e os efeitos.</p>
-      <p>Uma reunião dura pode ser desagradável sem configurar assédio. Já apelidos vexatórios, gritos frequentes, isolamento deliberado, metas acompanhadas de ridicularização e ameaças constantes podem indicar quadro mais grave.</p>
-      <h2 id="exemplos">Exemplos de condutas que merecem atenção</h2>
-      <p>Podem merecer análise situações como humilhações públicas, xingamentos, piadas ofensivas, exposição de ranking vexatório, ameaça de dispensa em tom abusivo, retirada injustificada de tarefas, isolamento, boicote, acusações sem prova, punições repetitivas e cobrança de metas com constrangimento.</p>
-      <p>Também há casos em que o assédio é mais silencioso. O trabalhador deixa de receber informações, é excluído de grupos, perde acesso a ferramentas, passa a receber tarefas impossíveis ou é colocado em situação de erro. Esse padrão precisa ser documentado com calma.</p>
-      <p>Em atendimentos para <a href="/advogado-trabalhista/ibiuna">advogado trabalhista em Ibiúna</a>, uma orientação recorrente é escrever uma cronologia dos episódios. Datas aproximadas, pessoas presentes, mensagens, consequências e testemunhas ajudam a transformar sofrimento disperso em análise objetiva.</p>
-      <h2 id="provas">Quais provas podem ser utilizadas?</h2>
-      <p>Mensagens, e-mails, áudios, advertências, comunicados internos, protocolos de denúncia, prints, gravações de conversa da qual o trabalhador participa, relatórios médicos, atestados e testemunhas podem ser relevantes. A utilidade depende da forma como foram obtidos e do contexto.</p>
-      <p>Não é recomendável invadir contas, acessar documentos sigilosos indevidamente ou divulgar material sensível sem orientação. A preservação de prova deve ser feita com responsabilidade para não criar novo problema.</p>
-      <p>Quem busca <a href="/advogado-trabalhista/piedade">atendimento trabalhista em Piedade</a> pode começar reunindo provas simples: mensagens recebidas, e-mails, nomes de pessoas que presenciaram os fatos, datas de reuniões, mudanças de função e registros de reclamações internas.</p>
-      <h2 id="cronologia">Por que montar uma cronologia?</h2>
-      <p>A cronologia evita que o caso fique preso a impressões gerais. Ela mostra quando os fatos começaram, se houve repetição, quem participou, como a empresa reagiu e quais consequências surgiram. Isso ajuda a diferenciar conflito isolado de prática abusiva persistente.</p>
-      <p>Uma anotação útil descreve data aproximada, local, pessoas presentes, frase ou conduta, prova disponível e impacto. Não precisa ser perfeita, mas deve ser fiel ao que aconteceu. Exageros ou omissões podem fragilizar a análise.</p>
-      <p>Também convém registrar mudanças depois de reclamações internas: alteração de escala, retirada de tarefas, isolamento, advertências repentinas ou piora da cobrança. Esses fatos podem mostrar retaliação ou continuidade do problema.</p>
-      <h2 id="saude">Assédio moral e saúde do trabalhador</h2>
-      <p>O assédio moral pode afetar sono, ansiedade, autoestima, concentração e saúde física. Quando há atendimento médico ou psicológico, atestados e relatórios podem ajudar a demonstrar impacto, sempre respeitando a privacidade do trabalhador.</p>
-      <p>Em alguns casos, o adoecimento relacionado ao trabalho também pode exigir análise de <a href="/atuacao/acidente-de-trabalho">acidente de trabalho ou doença ocupacional</a>. Essa avaliação não é automática, mas pode ser relevante quando há nexo entre o ambiente e o agravamento da saúde.</p>
-      <p>Para quem procura <a href="/advogado-trabalhista/itupeva">advogado trabalhista em Itupeva</a>, é importante não tratar documentos médicos apenas como detalhe. Eles podem mostrar a evolução do quadro e a necessidade de cuidado, sem substituir a prova das condutas abusivas.</p>
-      <h2 id="medidas">Quais medidas podem ser avaliadas?</h2>
-      <p>As medidas variam conforme gravidade, prova, risco e objetivo do trabalhador. Pode haver conversa orientada, denúncia interna, preservação de provas, tentativa de composição, reclamação trabalhista, pedido de indenização ou discussão sobre encerramento do contrato.</p>
-      <p>A decisão não deve ser automática. Em alguns casos, denunciar internamente ajuda a demonstrar ciência da empresa e tentativa de solução. Em outros, pode aumentar risco de retaliação. A sequência mais adequada depende do cenário concreto.</p>
-      <p>Também é possível que a empresa responda por atos de gestores, superiores, colegas ou estruturas de cobrança quando há omissão, tolerância ou falha de prevenção. A prova precisa mostrar como a empresa participou, permitiu ou deixou de agir diante do quadro.</p>
-      <p>Quando existe canal interno, é útil guardar número de protocolo, e-mail enviado, resposta recebida e data da comunicação. Se a empresa promete apurar e nada muda, essa sequência pode ser importante. Se a denúncia aumenta o abuso, o registro também ajuda a compreender o risco.</p>
-      <p>Em ambientes pequenos, a denúncia interna nem sempre é simples. O trabalhador pode temer perder o emprego, virar alvo de comentários ou ficar sem testemunhas. Por isso, a orientação jurídica pode ser procurada antes de qualquer comunicação formal, para avaliar vantagens e riscos.</p>
-      <h2 id="rescisao">Assédio moral pode justificar rescisão indireta?</h2>
-      <p>Quando as condutas tornam inviável a continuidade do contrato, pode ser necessário avaliar a <a href="/atuacao/rescisao-indireta">rescisão indireta</a>. Essa medida exige cautela, porque sair do emprego sem orientação pode gerar discussão sobre abandono, pedido de demissão ou ausência de prova suficiente.</p>
-      <p>A rescisão indireta não é uma reação emocional imediata; é uma estratégia jurídica baseada em falta grave do empregador. Por isso, antes de deixar de comparecer ao trabalho, procure orientação individual.</p>
-      <p>Também pode haver pedido de indenização por danos morais, dependendo da gravidade, repetição, prova e consequências. Nenhum resultado deve ser prometido sem análise do caso concreto.</p>
-      <h2 id="cidades">Atendimento regional em casos de assédio moral</h2>
-      <p>O Eryx Fernandes Advocacia atende trabalhadores de Sorocaba e cidades próximas, incluindo Boituva, Ibiúna, Piedade, Itupeva e Campo Limpo Paulista. Quem busca <a href="/advogado-trabalhista/campo-limpo-paulista">advogado trabalhista em Campo Limpo Paulista</a> pode relatar a situação com reserva e receber orientação sobre quais documentos preservar.</p>
-      <p>O atendimento regional é especialmente útil porque muitos trabalhadores atuam em polos industriais, comércio, logística, atendimento e serviços, com rotinas de cobrança intensa. O fato de haver pressão por resultado não autoriza abuso.</p>
-      <h2 id="advogado">Quando procurar um advogado trabalhista?</h2>
-      <p>Procure orientação quando as condutas se repetem, quando há humilhação pública, quando gestores usam ameaça ou isolamento, quando a saúde foi afetada, quando a empresa ignora reclamações ou quando você pensa em pedir demissão por não suportar mais o ambiente.</p>
-      <p>O advogado trabalhista ajuda a organizar os fatos, avaliar a prova, identificar riscos e definir a sequência mais segura. Em casos sensíveis, o cuidado com a estratégia é tão importante quanto a indignação com o que aconteceu.</p>
-      <p>Preservar provas, evitar decisões precipitadas e buscar orientação antes de romper o vínculo pode fazer diferença na proteção dos seus direitos.</p>
-      <p>A conversa inicial não obriga o trabalhador a entrar com ação. Ela pode servir para entender o que caracteriza assédio, quais provas ainda podem ser preservadas e quais atitudes devem ser evitadas. Em casos delicados, clareza é uma forma de proteção.</p>
-      <p>Se a situação já provocou afastamento médico, pedido de demissão por pressão ou mudança brusca na rotina profissional, a análise deve considerar o histórico completo. O assédio moral raramente aparece em um único documento; normalmente ele é reconstruído pelo conjunto de condutas, provas e consequências.</p>
-      <p>Também é necessário avaliar quem praticou a conduta e como a empresa reagiu. O caso pode envolver superior hierárquico, colega, equipe inteira ou uma política de cobrança institucionalizada. Cada cenário muda a forma de demonstrar responsabilidade.</p>
-      <p>Quando há testemunhas, é importante identificar quem viu ou ouviu fatos específicos, e não apenas quem sabe que o ambiente era ruim. Testemunhos sobre episódios concretos costumam ser mais úteis do que impressões genéricas sobre clima organizacional.</p>
-      <p>Por fim, a estratégia deve proteger a pessoa trabalhadora durante o processo de decisão. Em situações de medo, adoecimento ou pressão intensa, a orientação jurídica ajuda a escolher medidas proporcionais e a evitar que o trabalhador fique isolado diante da empresa.</p>
-      <p>Também é importante preservar a própria segurança emocional. Guardar provas não significa reviver todos os episódios sem limite. A orientação ajuda a selecionar o que é juridicamente relevante, organizar o relato e buscar caminhos possíveis sem aumentar desnecessariamente o desgaste.</p>
-      <p>Quando houver risco imediato, adoecimento grave ou ameaça concreta, a prioridade deve ser proteção e atendimento adequado. A discussão jurídica vem junto, mas não substitui cuidado médico, apoio familiar ou medidas urgentes quando a situação exige.</p>
-    `
-  },
   "/artigos/contrato-compra-venda-imovel-cuidados": {
     breadcrumb: "Contrato de compra e venda",
     summary: [["#atencao", "Por que exige atenção"], ["#imovel", "Identificação do imóvel"], ["#proprietario", "Proprietário e ônus"], ["#certidoes", "Certidões"], ["#pagamento", "Pagamento e arras"], ["#posse", "Posse e despesas"], ["#financiamento", "Financiamento"], ["#escritura", "Escritura"], ["#advogado", "Advogado imobiliário"], ["#faq", "FAQ"]],

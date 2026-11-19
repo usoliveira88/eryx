@@ -5,6 +5,8 @@ import { getWhatsAppUrl, isWhatsAppUrl, professionalRegistrationLink, renderPage
 import { LOCAL_LABOR_CITIES } from "./local-cities.js";
 
 const routes = [
+  "/artigos/despejo-falta-pagamento-aluguel",
+  "/artigos/divida-condominio-antigo-proprietario",
   "/",
   "/quem-somos",
   "/atuacao",

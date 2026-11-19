@@ -1,3 +1,4 @@
+import { rentalAndCondominiumArticleContent } from "./rental-and-condominium-articles.js";
 import { realEstateArticleContent } from "./real-estate-articles.js";
 
 export const SITE_CONFIG = {
@@ -97,6 +98,46 @@ const practiceItems = [
 ];
 
 const articles = [
+  {
+    category: "Imobiliário",
+    filterCategory: "Imobiliário",
+    homeCategory: "Imobiliário",
+    eyebrow: "ARTIGO | DIREITO IMOBILIÁRIO",
+    title: "Inquilino não paga o aluguel: quando o proprietário pode pedir o despejo?",
+    seoTitle: "Despejo por Falta de Pagamento: Quando Cabe? | Eryx",
+    seoDescription: "Inquilino não paga o aluguel? Entenda quando cabe despejo por falta de pagamento, liminar, garantias, cobrança e documentos necessários.",
+    excerpt: "Saiba quando o atraso permite pedir despejo, quais são os requisitos da liminar e como avaliar garantias, pagamentos e tentativas de acordo.",
+    image: "/artigos/despejo-falta-pagamento.jpg",
+    alt: "Chaves, pasta de documentos e calculadora diante da porta de um apartamento",
+    imageWidth: 1600,
+    imageHeight: 1120,
+    href: "/artigos/despejo-falta-pagamento-aluguel",
+    readingTime: "8 min de leitura",
+    date: "19 de novembro de 2026",
+    publishedAt: "2026-11-19",
+    modifiedAt: "2026-11-19",
+    authorRole: "Advogado Imobiliário"
+  },
+  {
+    category: "Imobiliário",
+    filterCategory: "Imobiliário",
+    homeCategory: "Imobiliário",
+    eyebrow: "ARTIGO | DIREITO IMOBILIÁRIO",
+    title: "Comprei um imóvel com dívida de condomínio: quem deve pagar?",
+    seoTitle: "Dívida de Condomínio do Antigo Dono: Quem Paga? | Eryx",
+    seoDescription: "Comprou imóvel com dívida de condomínio do antigo proprietário? Veja quem responde, os cuidados com o contrato e quando avaliar ressarcimento.",
+    excerpt: "Entenda a responsabilidade de comprador e vendedor, os documentos a conferir e o que fazer ao descobrir débitos depois da compra.",
+    image: "/artigos/divida-condominio-antigo-proprietario.jpg",
+    alt: "Maquete de edifício residencial ao lado de documentos e chaves de um imóvel",
+    imageWidth: 1600,
+    imageHeight: 1120,
+    href: "/artigos/divida-condominio-antigo-proprietario",
+    readingTime: "8 min de leitura",
+    date: "19 de novembro de 2026",
+    publishedAt: "2026-11-19",
+    modifiedAt: "2026-11-19",
+    authorRole: "Advogado Imobiliário"
+  },
   {
     category: "Imobiliário",
     filterCategory: "Imobiliário",
@@ -447,6 +488,8 @@ function articleByHref(href) {
 const articleFilters = ["Todos", "Trabalhista", "Trabalhista Empresarial", "Imobiliário", "Condominial", "Família"];
 
 const optimizedImageVariants = new Map([
+  ["/artigos/despejo-falta-pagamento.jpg", "/artigos/despejo-falta-pagamento"],
+  ["/artigos/divida-condominio-antigo-proprietario.jpg", "/artigos/divida-condominio-antigo-proprietario"],
   ["/home-reuniao-juridica.jpg", "/home-reuniao-juridica"],
   ["/home-retrato-advogado.jpg", "/home-retrato-advogado"],
   ["/home-atendimento-cliente.jpg", "/home-atendimento-cliente"],
@@ -2458,6 +2501,7 @@ function realEstateTemplate() {
         <div>
           <h2>Antes de assinar, comprar, vender ou discutir, analise o risco.</h2>
           <p>Contratos imobiliários, locações, cobranças e conflitos envolvendo imóveis exigem atenção aos detalhes. Uma cláusula mal compreendida pode gerar insegurança, prejuízo e conflito futuro, especialmente em situações de <a href="/artigos/distrato-imobiliario-desistencia-compra-imovel">distrato imobiliário e devolução de valores</a> e de <a href="/artigos/execucao-taxas-condominio-atrasadas">execução de taxas condominiais atrasadas</a>.</p>
+          <p>Confira também quando cabe <a href="/artigos/despejo-falta-pagamento-aluguel">despejo por falta de pagamento do aluguel</a> e quem responde por <a href="/artigos/divida-condominio-antigo-proprietario">dívida de condomínio do antigo proprietário</a>.</p>
         </div>
       </section>
 
@@ -3238,6 +3282,7 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
 }
 
 const newSeoArticleContent = {
+  ...rentalAndCondominiumArticleContent,
   ...realEstateArticleContent,
   "/artigos/abandono-de-emprego-justa-causa": {
     breadcrumb: "Abandono de emprego",
@@ -3650,7 +3695,7 @@ function newSeoArticleTemplate(path) {
             </div>
           </div>
           <figure class="article-hero-image">
-            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high" })}
+            ${optimizedPicture(article.image, article.alt, { lazy: false, fetchPriority: "high", width: article.imageWidth, height: article.imageHeight })}
           </figure>
         </div>
       </section>

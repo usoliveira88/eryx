@@ -43,6 +43,8 @@ function gtag_report_conversion(url) {
 }
 
 const pageInputs = {
+  evictionArticle: resolve("artigos/despejo-falta-pagamento-aluguel/index.html"),
+  previousCondominiumDebtArticle: resolve("artigos/divida-condominio-antigo-proprietario/index.html"),
   main: resolve("index.html"),
   about: resolve("quem-somos/index.html"),
   contact: resolve("contato/index.html"),
@@ -86,6 +88,8 @@ for (const city of LOCAL_LABOR_CITIES) {
 }
 
 const pageRoutes = new Map([
+  [pageInputs.evictionArticle, "/artigos/despejo-falta-pagamento-aluguel"],
+  [pageInputs.previousCondominiumDebtArticle, "/artigos/divida-condominio-antigo-proprietario"],
   [pageInputs.main, "/"],
   [pageInputs.about, "/quem-somos"],
   [pageInputs.contact, "/contato"],
@@ -129,6 +133,8 @@ for (const city of LOCAL_LABOR_CITIES) {
 }
 
 const routeImages = new Map([
+  ["/artigos/despejo-falta-pagamento-aluguel", "/artigos/despejo-falta-pagamento.jpg"],
+  ["/artigos/divida-condominio-antigo-proprietario", "/artigos/divida-condominio-antigo-proprietario.jpg"],
   ["/artigos/execucao-taxas-condominio-atrasadas", "/artigos/artigo-imobiliario.jpg"],
   ["/cidades-atendidas", "/home-hero-fallback-desktop.webp"],
   ["/quem-somos", "/home-retrato-advogado.jpg"],

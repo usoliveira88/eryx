@@ -93,7 +93,7 @@ export const realEstateArticleContent = {
       <h2 id="penhora">O imóvel pode ir a leilão por dívida de condomínio?</h2>
       <p>A dívida condominial está vinculada ao imóvel que gerou as despesas. Por isso, a jurisprudência admite que ele responda pelo débito, inclusive quando é bem de família. A eventual penhora e alienação dependem de decisão e do procedimento judicial; não decorrem automaticamente do atraso.</p>
       <p>Imóveis financiados, alienação fiduciária e direitos de terceiros exigem análise específica. Também é importante verificar quem deve integrar a cobrança, considerando propriedade, posse e circunstâncias da aquisição. O adquirente pode responder por débitos do vendedor, conforme o artigo 1.345 do Código Civil.</p>
-      <p>Antes de comprar, confira a situação condominial e os <a href="/artigos/contrato-compra-venda-imovel-cuidados">cuidados com o contrato de compra e venda de imóvel</a>.</p>
+      <p>Antes de comprar, confira a situação condominial, os <a href="/artigos/contrato-compra-venda-imovel-cuidados">cuidados com o contrato de compra e venda de imóvel</a> e <a href="/artigos/divida-condominio-antigo-proprietario">quem responde pela dívida de condomínio do antigo proprietário</a>.</p>
       <h2 id="prescricao">Qual é o prazo de prescrição das taxas condominiais?</h2>
       <p>O STJ fixa, em regra, cinco anos para a pretensão de cobrança de contribuições ordinárias ou extraordinárias documentadas, contados do dia seguinte ao vencimento de cada parcela. Cada competência deve ser examinada separadamente.</p>
       <p>Acordos, reconhecimento de dívida e causas legais de suspensão ou interrupção podem influenciar a contagem. Não basta olhar a idade da dívida para concluir que toda a cobrança prescreveu.</p>

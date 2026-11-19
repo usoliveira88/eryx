@@ -451,7 +451,7 @@ test("publica os três artigos novos do briefing com diferenciação, linkagem e
     {
       route: "/artigos/abandono-de-emprego-justa-causa",
       h1: "Abandono de emprego: quando pode caracterizar justa causa?",
-      image: "/home-detalhe-documentos",
+      image: "/artigos/abandono-emprego-capa",
       category: "Trabalhista Empresarial",
       links: [
         "/atuacao/direito-trabalhista-empresas",
@@ -464,7 +464,7 @@ test("publica os três artigos novos do briefing com diferenciação, linkagem e
     {
       route: "/artigos/distrato-imobiliario-desistencia-compra-imovel",
       h1: "Distrato imobiliário: quando o comprador pode desistir do imóvel e recuperar valores?",
-      image: "/artigos/artigo-imobiliario",
+      image: "/artigos/distrato-imobiliario-capa",
       category: "Imobiliário",
       links: [
         "/atuacao/direito-imobiliario",
@@ -477,7 +477,7 @@ test("publica os três artigos novos do briefing com diferenciação, linkagem e
     {
       route: "/artigos/acumulo-desvio-funcao-diferencas-salariais",
       h1: "Acúmulo e desvio de função: quando o trabalhador pode cobrar diferenças salariais?",
-      image: "/artigos/artigo-trabalhista-rescisao",
+      image: "/artigos/acumulo-desvio-funcao-capa",
       category: "Trabalhista",
       links: [
         "/atuacao/direito-trabalhista-trabalhadores",
@@ -532,7 +532,7 @@ test("publica os quatro novos artigos SEO com linkagem interna e schema", () => 
     {
       route: "/artigos/usucapiao-regularizacao-imovel",
       h1: "Usucapião: quando é possível regularizar um imóvel pela posse?",
-      image: "/artigos/artigo-imobiliario",
+      image: "/artigos/usucapiao-imovel-capa",
       links: ["/atuacao/direito-imobiliario", "/artigos/contrato-compra-venda-imovel-cuidados", "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar"]
     },
     {
@@ -544,7 +544,7 @@ test("publica os quatro novos artigos SEO com linkagem interna e schema", () => 
     {
       route: "/artigos/empresa-pode-proibir-celular-trabalho",
       h1: "Empresa pode proibir o uso de celular no trabalho?",
-      image: "/home-detalhe-documentos",
+      image: "/artigos/celular-trabalho-capa",
       links: ["/atuacao/direito-trabalhista-empresas", "/artigos/demissao-por-justa-causa-empresa", "/artigos/nr-01-novas-exigencias-empresas-sorocaba"]
     }
   ];

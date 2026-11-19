@@ -135,17 +135,17 @@ for (const city of LOCAL_LABOR_CITIES) {
 const routeImages = new Map([
   ["/artigos/despejo-falta-pagamento-aluguel", "/artigos/despejo-falta-pagamento.jpg"],
   ["/artigos/divida-condominio-antigo-proprietario", "/artigos/divida-condominio-antigo-proprietario.jpg"],
-  ["/artigos/execucao-taxas-condominio-atrasadas", "/artigos/artigo-imobiliario.jpg"],
+  ["/artigos/execucao-taxas-condominio-atrasadas", "/artigos/execucao-condominio-capa.jpg"],
   ["/cidades-atendidas", "/home-hero-fallback-desktop.webp"],
   ["/quem-somos", "/home-retrato-advogado.jpg"],
   ["/contato", "/home-retrato-advogado.jpg"],
   ["/artigos/contrato-compra-venda-imovel-cuidados", "/artigos/artigo-imobiliario.jpg"],
-  ["/artigos/usucapiao-regularizacao-imovel", "/artigos/artigo-imobiliario.jpg"],
+  ["/artigos/usucapiao-regularizacao-imovel", "/artigos/usucapiao-imovel-capa.jpg"],
   ["/artigos/demissao-por-justa-causa-empresa", "/home-detalhe-documentos.jpg"],
-  ["/artigos/empresa-pode-proibir-celular-trabalho", "/home-detalhe-documentos.jpg"],
-  ["/artigos/abandono-de-emprego-justa-causa", "/home-detalhe-documentos.jpg"],
-  ["/artigos/distrato-imobiliario-desistencia-compra-imovel", "/artigos/artigo-imobiliario.jpg"],
-  ["/artigos/acumulo-desvio-funcao-diferencas-salariais", "/artigos/artigo-trabalhista-rescisao.jpg"],
+  ["/artigos/empresa-pode-proibir-celular-trabalho", "/artigos/celular-trabalho-capa.jpg"],
+  ["/artigos/abandono-de-emprego-justa-causa", "/artigos/abandono-emprego-capa.jpg"],
+  ["/artigos/distrato-imobiliario-desistencia-compra-imovel", "/artigos/distrato-imobiliario-capa.jpg"],
+  ["/artigos/acumulo-desvio-funcao-diferencas-salariais", "/artigos/acumulo-desvio-funcao-capa.jpg"],
   ["/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar", "/artigos/hora-extra-qual-valor-sorocaba.jpg"],
   ["/artigos/assedio-moral-no-trabalho-como-identificar", "/artigos/assedio-moral-trabalho-sorocaba.webp"],
   ["/artigos/acidente-de-trabalho-direitos-do-trabalhador", "/artigos/acidente-trabalho-sorocaba.webp"],
@@ -153,7 +153,7 @@ const routeImages = new Map([
   ["/artigos/fgts-nao-depositado-como-conferir", "/artigos/fgts-nao-depositado.jpg"],
   ["/artigos/rescisao-indireta-sorocaba", "/artigos/rescisao-indireta-sorocaba.jpg"],
   ["/artigos/direitos-trabalhistas-quando-procurar-orientacao-juridica", "/artigos/artigo-trabalhista-rescisao.jpg"],
-  ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/artigo-imobiliario.jpg"],
+  ["/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/contratos-imobiliarios-capa.jpg"],
   ["/artigos/divorcio-guarda-partilha-como-tomar-decisoes-com-seguranca", "/artigos/artigo-familia-divorcio-guarda.jpg"]
   ,["/artigos/pensao-alimenticia-atrasada-como-cobrar", "/artigos/pensao-alimenticia-atrasada.webp"]
 ]);

@@ -26,6 +26,7 @@ const routes = [
   "/artigos/empresa-pode-proibir-celular-trabalho",
   "/artigos/abandono-de-emprego-justa-causa",
   "/artigos/distrato-imobiliario-desistencia-compra-imovel",
+  "/artigos/execucao-taxas-condominio-atrasadas",
   "/artigos/acumulo-desvio-funcao-diferencas-salariais",
   "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar",
   "/artigos/assedio-moral-no-trabalho-como-identificar",

@@ -64,6 +64,7 @@ const pageInputs = {
   justCauseCompanyArticle: resolve("artigos/demissao-por-justa-causa-empresa/index.html"),
   cellphoneWorkArticle: resolve("artigos/empresa-pode-proibir-celular-trabalho/index.html"),
   jobAbandonmentArticle: resolve("artigos/abandono-de-emprego-justa-causa/index.html"),
+  condominiumExecutionArticle: resolve("artigos/execucao-taxas-condominio-atrasadas/index.html"),
   realEstateCancellationArticle: resolve("artigos/distrato-imobiliario-desistencia-compra-imovel/index.html"),
   functionDeviationArticle: resolve("artigos/acumulo-desvio-funcao-diferencas-salariais/index.html"),
   overtimeUnpaidArticle: resolve("artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar/index.html"),
@@ -106,6 +107,7 @@ const pageRoutes = new Map([
   [pageInputs.justCauseCompanyArticle, "/artigos/demissao-por-justa-causa-empresa"],
   [pageInputs.cellphoneWorkArticle, "/artigos/empresa-pode-proibir-celular-trabalho"],
   [pageInputs.jobAbandonmentArticle, "/artigos/abandono-de-emprego-justa-causa"],
+  [pageInputs.condominiumExecutionArticle, "/artigos/execucao-taxas-condominio-atrasadas"],
   [pageInputs.realEstateCancellationArticle, "/artigos/distrato-imobiliario-desistencia-compra-imovel"],
   [pageInputs.functionDeviationArticle, "/artigos/acumulo-desvio-funcao-diferencas-salariais"],
   [pageInputs.overtimeUnpaidArticle, "/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar"],
@@ -127,6 +129,7 @@ for (const city of LOCAL_LABOR_CITIES) {
 }
 
 const routeImages = new Map([
+  ["/artigos/execucao-taxas-condominio-atrasadas", "/artigos/artigo-imobiliario.jpg"],
   ["/cidades-atendidas", "/home-hero-fallback-desktop.webp"],
   ["/quem-somos", "/home-retrato-advogado.jpg"],
   ["/contato", "/home-retrato-advogado.jpg"],
@@ -184,7 +187,7 @@ const seoByRoute = new Map([
   }],
   ["/artigos", { title: "Artigos Jurídicos | Eryx Fernandes Advocacia" }],
   ["/artigos/abandono-de-emprego-justa-causa", { title: "Abandono de Emprego: Quando Pode Caracterizar Justa Causa?", description: "Entenda quando o abandono de emprego pode justificar justa causa, quais provas a empresa deve reunir e quais cuidados reduzem o risco de reversão judicial." }],
-  ["/artigos/distrato-imobiliario-desistencia-compra-imovel", { title: "Distrato Imobiliário: Quando é Possível Desistir e Recuperar Valores?", description: "Entenda quando o comprador pode desistir da compra de um imóvel, quais valores podem ser discutidos e quais cuidados devem ser tomados no distrato." }],
+  ["/artigos/distrato-imobiliario-desistencia-compra-imovel", { title: "Distrato Imobiliário: Quando o Consumidor Pode Pedir? | Eryx", description: "Saiba quando pedir o distrato imobiliário, como funcionam multas, devolução de valores, arrependimento em sete dias e atraso na entrega do imóvel." }],
   ["/artigos/acumulo-desvio-funcao-diferencas-salariais", { title: "Acúmulo e Desvio de Função: Quando Cabe Diferença Salarial?", description: "Entenda a diferença entre acúmulo e desvio de função, quando pode existir diferença salarial e quais provas ajudam o trabalhador a demonstrar a situação." }],
   ["/artigos/horas-extras-nao-pagas-como-comprovar-e-cobrar", { title: "Horas Extras Não Pagas: Como Comprovar e Cobrar? | Eryx Fernandes", description: "Entenda como comprovar horas extras não pagas, quais provas podem ser utilizadas e quais cuidados o trabalhador deve tomar para buscar seus direitos." }],
   ["/artigos/assedio-moral-no-trabalho-como-identificar", { title: "Assédio Moral no Trabalho: Como Identificar? | Eryx Fernandes", description: "Saiba quais situações podem caracterizar assédio moral no trabalho, como reunir provas e quando buscar orientação jurídica." }],

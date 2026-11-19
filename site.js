@@ -1,3 +1,5 @@
+import { realEstateArticleContent } from "./real-estate-articles.js";
+
 export const SITE_CONFIG = {
   firmName: "Eryx Fernandes Advocacia",
   siteUrl: "https://www.advmartinsfernandes.com.br",
@@ -96,6 +98,24 @@ const practiceItems = [
 
 const articles = [
   {
+    category: "Imobiliário",
+    filterCategory: "Imobiliário",
+    homeCategory: "Imobiliário",
+    eyebrow: "ARTIGO | DIREITO IMOBILIÁRIO",
+    title: "Taxas de condomínio atrasadas: quando o condomínio pode executar o condômino?",
+    seoTitle: "Condomínio Atrasado: Quando Cabe Execução? | Eryx Fernandes",
+    seoDescription: "Saiba quando o condomínio pode executar taxas atrasadas, os documentos necessários, multa, juros, prescrição e riscos de penhora do imóvel.",
+    excerpt: "Entenda se uma única cota vencida permite execução, quais documentos são necessários e como funcionam juros, prazos, defesa e penhora.",
+    image: "/artigos/artigo-imobiliario.jpg",
+    alt: "Documentos imobiliários sobre mesa para análise de obrigações condominiais",
+    href: "/artigos/execucao-taxas-condominio-atrasadas",
+    readingTime: "8 min de leitura",
+    date: "19 de novembro de 2026",
+    publishedAt: "2026-11-19",
+    modifiedAt: "2026-11-19",
+    authorRole: "Advogado Imobiliário"
+  },
+  {
     category: "Trabalhista Empresarial",
     filterCategory: "Trabalhista Empresarial",
     homeCategory: "Trabalhista Empresarial",
@@ -121,18 +141,18 @@ const articles = [
     homeCategory: "Imobiliário",
     eyebrow: "ARTIGO | DIREITO IMOBILIÁRIO",
     title: "Distrato imobiliário: quando o comprador pode desistir do imóvel e recuperar valores?",
-    seoTitle: "Distrato Imobiliário: Quando é Possível Desistir e Recuperar Valores?",
+    seoTitle: "Distrato Imobiliário: Quando o Consumidor Pode Pedir? | Eryx",
     seoDescription:
-      "Entenda quando o comprador pode desistir da compra de um imóvel, quais valores podem ser discutidos e quais cuidados devem ser tomados no distrato.",
+      "Saiba quando pedir o distrato imobiliário, como funcionam multas, devolução de valores, arrependimento em sete dias e atraso na entrega do imóvel.",
     excerpt:
-      "Entenda desistência da compra, devolução de parcelas, retenções, corretagem, atraso na entrega, vícios e cuidados antes de assinar o distrato.",
+      "Entenda desistência da compra, devolução de parcelas, multas, arrependimento em sete dias, atraso na entrega e cuidados antes de assinar o distrato.",
     image: "/artigos/artigo-imobiliario.jpg",
     alt: "Contrato imobiliário e chaves para análise de distrato e devolução de valores",
     href: "/artigos/distrato-imobiliario-desistencia-compra-imovel",
-    readingTime: "13 min de leitura",
-    date: "21 de setembro de 2026",
+    readingTime: "8 min de leitura",
+    date: "Atualizado em 19 de novembro de 2026",
     publishedAt: "2026-09-21",
-    modifiedAt: "2026-09-21",
+    modifiedAt: "2026-11-19",
     authorRole: "Advogado Imobiliário"
   },
   {
@@ -2437,7 +2457,7 @@ function realEstateTemplate() {
       <section class="worker-manifest reveal-block">
         <div>
           <h2>Antes de assinar, comprar, vender ou discutir, analise o risco.</h2>
-          <p>Contratos imobiliários, locações, cobranças e conflitos envolvendo imóveis exigem atenção aos detalhes. Uma cláusula mal compreendida pode gerar insegurança, prejuízo e conflito futuro, especialmente em situações de <a href="/artigos/distrato-imobiliario-desistencia-compra-imovel">distrato imobiliário e devolução de valores</a>.</p>
+          <p>Contratos imobiliários, locações, cobranças e conflitos envolvendo imóveis exigem atenção aos detalhes. Uma cláusula mal compreendida pode gerar insegurança, prejuízo e conflito futuro, especialmente em situações de <a href="/artigos/distrato-imobiliario-desistencia-compra-imovel">distrato imobiliário e devolução de valores</a> e de <a href="/artigos/execucao-taxas-condominio-atrasadas">execução de taxas condominiais atrasadas</a>.</p>
         </div>
       </section>
 
@@ -3218,6 +3238,7 @@ function articleStructuredDataTemplate(article, faqItems, currentLabel) {
 }
 
 const newSeoArticleContent = {
+  ...realEstateArticleContent,
   "/artigos/abandono-de-emprego-justa-causa": {
     breadcrumb: "Abandono de emprego",
     summary: [["#conceito", "O que é"], ["#elementos", "Elementos"], ["#dias", "Número de dias"], ["#contato", "Tentativas de contato"], ["#retorno", "Retorno e justificativas"], ["#diferencas", "Abandono x desídia"], ["#aplicacao", "Justa causa"], ["#documentacao", "Documentação do RH"], ["#advogado", "Assessoria empresarial"], ["#faq", "FAQ"]],
@@ -3276,68 +3297,6 @@ const newSeoArticleContent = {
       <p>O advogado trabalhista empresarial pode revisar documentos, sugerir notificação, avaliar risco de reversão e orientar a forma de comunicação. Em casos de abandono, o tempo é importante, mas a pressa sem prova pode sair cara.</p>
       <p>Para empresas de Sorocaba e região, o Eryx Fernandes Advocacia atua em consultoria preventiva, desligamentos, documentação interna e defesa trabalhista. A decisão de desligar por justa causa deve ser tomada com técnica, não apenas com frustração diante da ausência.</p>
       <p>Quando a empresa documenta corretamente o caso, ela melhora sua posição em eventual negociação ou defesa judicial. A prova organizada demonstra que a decisão não foi improvisada, mas resultado de análise responsável da ausência e da intenção de abandono.</p>
-    `
-  },
-  "/artigos/distrato-imobiliario-desistencia-compra-imovel": {
-    breadcrumb: "Distrato imobiliário",
-    summary: [["#conceito", "O que é distrato"], ["#desistencia", "Quando desistir"], ["#planta", "Imóvel na planta"], ["#pronto", "Imóvel pronto"], ["#valores", "Valores e retenções"], ["#culpa", "Culpa das partes"], ["#contrato", "Revisão do contrato"], ["#documentos", "Documentos"], ["#advogado", "Advogado imobiliário"], ["#faq", "FAQ"]],
-    cta: ["Está pensando em desistir da compra de um imóvel?", "Antes de assinar o distrato, vale conferir contrato, valores pagos, retenções, corretagem, prazos e riscos de devolução.", "Falar com o Dr. Eryx"],
-    recommendations: ["/artigos/contrato-compra-venda-imovel-cuidados", "/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar", "/artigos/usucapiao-regularizacao-imovel"],
-    recommendationTitle: "Conteúdos relacionados a contratos imobiliários",
-    faq: [
-      { question: "Posso desistir da compra de um imóvel?", answer: "A desistência pode ser discutida, mas os efeitos dependem do tipo de contrato, da fase do negócio, da culpa pelo desfazimento, dos valores pagos e das cláusulas assinadas." },
-      { question: "Recebo tudo de volta no distrato?", answer: "Nem sempre. Podem existir retenções, comissão de corretagem, cláusula penal ou outras deduções, mas retenção integral ou abusiva pode ser questionada conforme o caso." },
-      { question: "Atraso na entrega muda a análise?", answer: "Sim. Quando a vendedora ou incorporadora dá causa ao desfazimento, especialmente por atraso relevante, vícios ou descumprimento contratual, a discussão sobre devolução pode ser diferente." },
-      { question: "Devo assinar o distrato apresentado pela construtora?", answer: "É recomendável revisar antes. O documento pode conter quitação ampla, retenções, prazos de devolução e renúncias que afetam direitos." }
-    ],
-    body: `
-      <p class="article-lead">Distrato imobiliário é o desfazimento de um contrato de compra de imóvel, normalmente acompanhado da discussão sobre devolução de valores, retenções e responsabilidades de cada parte.</p>
-      <p>Quem pretende desistir da compra costuma perguntar quanto pode recuperar. A resposta depende do contrato, da fase do negócio, do motivo da desistência, da posse do imóvel, da existência de financiamento, da comissão de corretagem e de eventual culpa da incorporadora, construtora ou vendedora.</p>
-      <p>Este artigo é diferente do guia sobre <a href="/artigos/contrato-compra-venda-imovel-cuidados">contrato de compra e venda de imóvel</a>. Aqui, o foco é a saída do contrato: desistência, rescisão, devolução de parcelas e cuidados antes de assinar um distrato.</p>
-      <h2 id="conceito">O que é distrato imobiliário?</h2>
-      <p>Distrato é o acordo ou a formalização do encerramento de um contrato. No mercado imobiliário, pode envolver imóvel na planta, lote, unidade pronta, promessa de compra e venda, contrato particular, incorporação imobiliária ou negociação direta entre particulares.</p>
-      <p>Na prática, o documento de distrato costuma tratar de devolução de valores, retenções, prazo de pagamento, multa, corretagem, taxa de fruição, devolução da posse, quitação e encerramento das obrigações. Cada uma dessas cláusulas precisa ser lida com cuidado.</p>
-      <p>A atuação em <a href="/atuacao/direito-imobiliario">Direito Imobiliário</a> ajuda a comparar o contrato original, o motivo do desfazimento e a proposta de distrato antes que o comprador aceite condições desfavoráveis.</p>
-      <h2 id="desistencia">Quando o comprador pode desistir?</h2>
-      <p>O comprador pode querer desistir por dificuldade financeira, perda de renda, mudança de planos, negativa de financiamento, atraso da obra, vícios no imóvel, divergência documental ou descumprimento de promessa feita durante a venda. Cada motivo produz efeitos diferentes.</p>
-      <p>Quando a desistência decorre de escolha ou dificuldade do comprador, podem existir retenções previstas em lei ou contrato, desde que observados limites e razoabilidade. Quando o desfazimento decorre de culpa da vendedora, como atraso relevante na entrega ou descumprimento contratual, a discussão pode favorecer devolução mais ampla.</p>
-      <p>Por isso, não basta perguntar "quanto a construtora devolve". É preciso entender quem deu causa ao rompimento, em que fase o contrato está e quais documentos comprovam a situação.</p>
-      <h2 id="planta">Distrato de imóvel na planta</h2>
-      <p>No imóvel na planta, a Lei do Distrato trouxe regras específicas para contratos de incorporação e loteamento, inclusive com destaque para penalidades e prazos de devolução. Ainda assim, a aplicação depende da data do contrato, do tipo de empreendimento e das cláusulas assinadas.</p>
-      <p>O comprador deve verificar memorial de incorporação, quadro-resumo, prazo de entrega, tolerância, forma de pagamento, corretagem, taxa de assessoria, cláusula penal e previsão de devolução. Atraso de obra, mudança relevante do projeto ou ausência de informações obrigatórias podem alterar a análise.</p>
-      <p>Se o imóvel nunca foi entregue e o comprador não teve posse, algumas cobranças precisam ser vistas com mais cautela. Já quando houve fruição, ocupação ou disponibilidade da unidade, a discussão pode envolver despesas associadas ao período.</p>
-      <h2 id="pronto">Imóvel pronto, contrato particular e financiamento</h2>
-      <p>Em imóvel pronto, a análise muda. Se o comprador recebeu chaves, tomou posse, usou o imóvel ou deixou de pagar parcelas, o distrato pode envolver despesas de ocupação, condomínio, IPTU, conservação e devolução da posse.</p>
-      <p>Em contrato particular entre pessoas físicas, é essencial revisar sinal, arras, multa, prazo para escritura, financiamento e condições de desistência. O artigo sobre <a href="/artigos/contratos-imobiliarios-pontos-de-atencao-antes-de-assinar">contratos imobiliários antes de assinar</a> explica como cláusulas mal redigidas podem gerar conflitos depois.</p>
-      <p>Quando a compra depende de financiamento, a negativa de crédito precisa ser analisada conforme o contrato. Se havia condição expressa de aprovação bancária, o efeito pode ser diferente de um contrato que colocou o risco integralmente sobre o comprador.</p>
-      <h2 id="valores">Devolução de valores, retenções e corretagem</h2>
-      <p>A devolução de valores pode envolver parcelas pagas diretamente ao vendedor ou incorporador, correção monetária, retenção por cláusula penal, comissão de corretagem, taxa administrativa e outros encargos. Retenção integral ou devolução irrisória costuma merecer atenção.</p>
-      <p>A comissão de corretagem deve ser analisada com cuidado. Em alguns contextos, pode haver retenção se houve informação adequada e prestação do serviço; em outros, a cobrança pode ser discutida. O mesmo vale para taxa de assessoria, despesas administrativas e valores que não foram claramente explicados.</p>
-      <p>O prazo para devolução também importa. Um distrato pode prever pagamento parcelado, devolução após revenda ou prazo longo. Antes de aceitar, o comprador precisa entender se a condição é compatível com o contrato, com a legislação aplicável e com a origem do desfazimento.</p>
-      <p>Também é preciso separar valores pagos ao vendedor de despesas pagas a terceiros. ITBI, escritura, registro, avaliação bancária, condomínio, IPTU, seguros e tarifas podem ter tratamento diferente. Misturar tudo em uma única conta costuma gerar expectativas equivocadas.</p>
-      <p>Quando há sinal ou arras, a redação do contrato é decisiva. Arras confirmatórias, cláusula de arrependimento e multa por inadimplemento podem produzir efeitos distintos. Por isso, a análise do distrato começa na leitura do contrato assinado, não apenas na proposta de devolução enviada pela vendedora.</p>
-      <h2 id="culpa">Culpa do comprador x culpa da vendedora</h2>
-      <p>Quando o comprador desiste sem descumprimento da vendedora, é comum discutir retenção parcial para cobrir custos do empreendimento e desestimular rompimento unilateral. O percentual e as deduções dependem do regime jurídico aplicável.</p>
-      <p>Quando a vendedora dá causa ao distrato, a análise é diferente. Atraso além do prazo tolerável, vícios relevantes, falta de documentação, divergência grave entre oferta e contrato ou impossibilidade de transferência podem justificar pedido de devolução mais ampla.</p>
-      <p>Vícios no imóvel também devem ser documentados com fotos, laudos, comunicações e protocolos. O comprador deve evitar abandonar o imóvel ou deixar de pagar sem orientação, porque a reação inadequada pode gerar nova discussão contratual.</p>
-      <p>Outro cuidado é distinguir atraso tolerável de atraso relevante. Muitos contratos preveem prazo de tolerância para entrega, mas essa cláusula não autoriza demora indefinida nem elimina o dever de informar o comprador. A data prometida, a data efetiva e as comunicações enviadas pela incorporadora devem ser conferidas em conjunto.</p>
-      <p>Quando o problema é vício construtivo, o distrato pode não ser a única saída. Dependendo do caso, pode haver pedido de reparo, abatimento, indenização ou outras medidas. A escolha depende da gravidade do defeito, do interesse do comprador em manter o imóvel e da prova técnica disponível.</p>
-      <h2 id="contrato">Importância de revisar o contrato antes de assinar o distrato</h2>
-      <p>O contrato original e o distrato devem ser lidos juntos. O distrato pode trazer quitação geral, renúncia a direitos, reconhecimento de culpa, autorização de retenções ou prazo de devolução desfavorável. Depois de assinado, discutir o conteúdo pode ficar mais difícil.</p>
-      <p>Também é importante conferir se o distrato trata de todos os pagamentos realizados. Valores de entrada, parcelas, intermediação, corretagem, taxa de evolução, condomínio, IPTU, despesas cartorárias e sinal não devem desaparecer da conta.</p>
-      <p>O foco não é transformar todo distrato em processo judicial. Em muitos casos, um distrato amigável bem revisado resolve a situação com previsibilidade. O problema é assinar rapidamente sem entender quanto será retido, quando haverá devolução e qual quitação está sendo dada.</p>
-      <p>Se a incorporadora ou vendedora apresenta minuta pronta, o comprador deve verificar se ela corresponde ao que foi negociado. Propostas verbais sobre percentual de devolução, parcelamento ou abatimento precisam constar expressamente no documento final.</p>
-      <p>Também vale observar se há cláusula de confidencialidade, eleição de foro, autorização para revenda imediata, entrega de chaves e responsabilidade por débitos até a data da devolução. Esses pontos parecem acessórios, mas podem gerar conflito depois.</p>
-      <h2 id="documentos">Documentos necessários</h2>
-      <p>Normalmente são úteis contrato de compra e venda, proposta, quadro-resumo, comprovantes de pagamento, boletos, recibos, mensagens, material publicitário, comunicações sobre atraso, laudos, fotos, documentos de financiamento e minuta de distrato.</p>
-      <p>Também vale organizar uma linha do tempo: data da proposta, assinatura, pagamentos, previsão de entrega, entrega de chaves, problemas encontrados, tentativas de solução e proposta de desfazimento. Essa sequência ajuda a identificar responsabilidades.</p>
-      <p>Em casos de regularização, promessa antiga ou imóvel sem documentação adequada, pode haver conexão com outros temas imobiliários. O artigo sobre <a href="/artigos/usucapiao-regularizacao-imovel">usucapião e regularização de imóvel</a> pode ser útil apenas quando o problema envolve posse prolongada ou falha registral, não como regra em todo distrato.</p>
-      <p>Guarde também anúncios, folders, prints de página de venda e conversas com corretores. A oferta pode integrar a expectativa legítima do comprador e ajudar a demonstrar promessa de metragem, padrão de acabamento, data de entrega, vagas, lazer ou condições comerciais que influenciaram a decisão.</p>
-      <h2 id="advogado">Quando procurar advogado imobiliário?</h2>
-      <p>Procure orientação antes de assinar o distrato quando há retenção alta, atraso na entrega, vício relevante, negativa de financiamento, promessa verbal não cumprida, comissão de corretagem discutível ou cláusula de quitação ampla.</p>
-      <p>Um advogado imobiliário em Sorocaba pode revisar documentos, estimar riscos, negociar condições e, quando necessário, avaliar medida judicial. A ideia é proteger o comprador de perdas indevidas sem ignorar que contratos podem prever consequências legítimas para a desistência.</p>
-      <p>Quanto mais cedo a análise acontece, maior a chance de negociar com clareza e evitar assinatura de um distrato desequilibrado.</p>
-      <p>A orientação também ajuda a decidir se vale insistir em solução amigável, apresentar contraproposta ou discutir judicialmente. Essa escolha depende do valor envolvido, da prova de culpa, do tempo esperado para devolução e do impacto financeiro para o comprador.</p>
     `
   },
   "/artigos/acumulo-desvio-funcao-diferencas-salariais": {
